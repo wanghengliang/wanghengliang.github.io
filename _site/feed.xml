@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hengliang</title>
+    <description>快乐地创造和品味生活</description>
+    <link>http://wanghengliang.cn/</link>
+    <atom:link href="http://wanghengliang.cn/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 04 Sep 2017 22:13:15 +0800</pubDate>
+    <lastBuildDate>Mon, 04 Sep 2017 22:13:15 +0800</lastBuildDate>
+    <generator>Jekyll v3.1.1</generator>
+    
+      <item>
+        <title>Hello World</title>
+        <description>&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;quick-start&quot;&gt;Quick Start&lt;/h2&gt;
+
+&lt;h3 id=&quot;create-a-new-post&quot;&gt;Create a new post&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bash
+$ hexo new &quot;My New Post&quot;
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;run-server&quot;&gt;Run server&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bash
+$ hexo server
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;generate-static-files&quot;&gt;Generate static files&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bash
+$ hexo generate
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;deploy-to-remote-sites&quot;&gt;Deploy to remote sites&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bash
+$ hexo deploy
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 03 Jan 2017 00:00:00 +0800</pubDate>
+        <link>http://wanghengliang.cn/2017/01/hello-world/</link>
+        <guid isPermaLink="true">http://wanghengliang.cn/2017/01/hello-world/</guid>
+        
+        <category>jekyll</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>IntelliJ IDEA Mac OS X Keymap</title>
+        <description>&lt;h2 id=&quot;editing&quot;&gt;Editing&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;快捷键&lt;/th&gt;
+      &lt;th&gt;功能描述&lt;/th&gt;
+      &lt;th&gt;中文描述&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^ Space&lt;/td&gt;
+      &lt;td&gt;Basic code completion (the name of any class, method or variable)&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^ ⇧ Space&lt;/td&gt;
+      &lt;td&gt;Smart code completion ( lters the list of methods and variables by expected type)&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⇧↩&lt;/td&gt;
+      &lt;td&gt;Complete statement&lt;/td&gt;
+      &lt;td&gt;自动补全语法错误部分，比如自动补全&lt;code class=&quot;highlighter-rouge&quot;&gt;;&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;)&lt;/code&gt;等，特别是对于多重&lt;code class=&quot;highlighter-rouge&quot;&gt;)&lt;/code&gt;不匹配等错误进行自动补全比较方便，好像只支持单行的，不支持多行代码块&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘P&lt;/td&gt;
+      &lt;td&gt;Parameter info (within method call arguments)&lt;/td&gt;
+      &lt;td&gt;显示方法有哪些参数，类型是什么等信息&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^J , Mid. button click&lt;/td&gt;
+      &lt;td&gt;Quick documentation lookup&lt;/td&gt;
+      &lt;td&gt;快速文档查询，可快速查看类、接口、方法等的说明信息，（我的电脑可直接按F1，功能相同），按⎋关闭说明信息&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⇧F1&lt;/td&gt;
+      &lt;td&gt;External Doc&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘+ mouse over code&lt;/td&gt;
+      &lt;td&gt;Brief Info&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘F1&lt;/td&gt;
+      &lt;td&gt;Show descriptions of error or warning at caret&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘N,^↩,^N&lt;/td&gt;
+      &lt;td&gt;Generate code… (Getters, Setters, Constructors, hashCode/equals, toString)&lt;/td&gt;
+      &lt;td&gt;生成getter and setters 和构造函数等&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^O&lt;/td&gt;
+      &lt;td&gt;Override methods&lt;/td&gt;
+      &lt;td&gt;重写父类方法&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^I&lt;/td&gt;
+      &lt;td&gt;Implement methods&lt;/td&gt;
+      &lt;td&gt;添加接口实现方法&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⌥T&lt;/td&gt;
+      &lt;td&gt;Surround with… (if..else, try..catch, for, synchronized, etc.)&lt;/td&gt;
+      &lt;td&gt;快速添加if..else,try..catch,for等代码块&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘/&lt;/td&gt;
+      &lt;td&gt;Comment/uncomment with line comment&lt;/td&gt;
+      &lt;td&gt;单行注释&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⌥/&lt;/td&gt;
+      &lt;td&gt;Comment/uncomment with block comment&lt;/td&gt;
+      &lt;td&gt;多行注释&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌥↑&lt;/td&gt;
+      &lt;td&gt;Select successively increasing code blocks&lt;/td&gt;
+      &lt;td&gt;逐步增大选择代码块&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌥↓&lt;/td&gt;
+      &lt;td&gt;Decrease current selection to previous state&lt;/td&gt;
+      &lt;td&gt;逐步缩小当前选中代码块&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^⇧Q&lt;/td&gt;
+      &lt;td&gt;Context info&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌥↩&lt;/td&gt;
+      &lt;td&gt;Show intention actions and quick-fixes&lt;/td&gt;
+      &lt;td&gt;显示建议的代码和快速修复&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⌥L&lt;/td&gt;
+      &lt;td&gt;Reformat code&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^⌥O&lt;/td&gt;
+      &lt;td&gt;Optimize imports&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^⌥I&lt;/td&gt;
+      &lt;td&gt;Auto-indent line(s)&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⇥/⇧⇥&lt;/td&gt;
+      &lt;td&gt;Indent/unindent selected lines&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘X&lt;/td&gt;
+      &lt;td&gt;Cut current line or selected block to clipboard&lt;/td&gt;
+      &lt;td&gt;剪切文本到剪贴板&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘C&lt;/td&gt;
+      &lt;td&gt;Copy current line or selected block to clipboard&lt;/td&gt;
+      &lt;td&gt;拷贝文本到剪贴板&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘V&lt;/td&gt;
+      &lt;td&gt;Paste from clipboard&lt;/td&gt;
+      &lt;td&gt;从剪贴板粘贴文本&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⇧V&lt;/td&gt;
+      &lt;td&gt;Paste from recent buffers…&lt;/td&gt;
+      &lt;td&gt;从缓冲区(最近复制文本列表)粘贴文本&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘D&lt;/td&gt;
+      &lt;td&gt;Duplicate current line or selected block&lt;/td&gt;
+      &lt;td&gt;重复当前行或者重复选择内容块&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⌫&lt;/td&gt;
+      &lt;td&gt;Delete line at caret&lt;/td&gt;
+      &lt;td&gt;删除整行&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^⇧J&lt;/td&gt;
+      &lt;td&gt;Smart line join&lt;/td&gt;
+      &lt;td&gt;将下面一行内容和本行合并，加到本行后边&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘↩&lt;/td&gt;
+      &lt;td&gt;Smart line split&lt;/td&gt;
+      &lt;td&gt;光标处换行，和直接↩区别是光标保持在当前位置&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⇧↩&lt;/td&gt;
+      &lt;td&gt;Start new line&lt;/td&gt;
+      &lt;td&gt;开始新行，和直接↩区别是光标可以不在行末&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⇧U&lt;/td&gt;
+      &lt;td&gt;Toggle case for word at caret or selected block&lt;/td&gt;
+      &lt;td&gt;选中内容字符大小写切换&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⇧]/⌘⇧[&lt;/td&gt;
+      &lt;td&gt;Select till code block end/start&lt;/td&gt;
+      &lt;td&gt;我的测试结果为多个tab页切换&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌥⌦&lt;/td&gt;
+      &lt;td&gt;Delete to word end&lt;/td&gt;
+      &lt;td&gt;（⌥+Fn+⌫）删除光标到当前单词结束位置的内容&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌥⌫&lt;/td&gt;
+      &lt;td&gt;Delete to word start&lt;/td&gt;
+      &lt;td&gt;删除光标到当前单词开始位置的内容&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘+/⌘-&lt;/td&gt;
+      &lt;td&gt;Expand/collapse code block&lt;/td&gt;
+      &lt;td&gt;展开/折叠当前方法代码块&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⇧+&lt;/td&gt;
+      &lt;td&gt;Expand all&lt;/td&gt;
+      &lt;td&gt;展开当前类所有方法代码块&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⇧-&lt;/td&gt;
+      &lt;td&gt;Collapse all&lt;/td&gt;
+      &lt;td&gt;折叠当前类所有方法代码块&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘W&lt;/td&gt;
+      &lt;td&gt;Close active editor tab&lt;/td&gt;
+      &lt;td&gt;关闭当前编辑文件&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;searchreplace&quot;&gt;Search/Replace&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;快捷键&lt;/th&gt;
+      &lt;th&gt;功能描述&lt;/th&gt;
+      &lt;th&gt;中文描述&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Double⇧&lt;/td&gt;
+      &lt;td&gt;Search everywhere&lt;/td&gt;
+      &lt;td&gt;全局搜索&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘F&lt;/td&gt;
+      &lt;td&gt;Find&lt;/td&gt;
+      &lt;td&gt;搜索文本&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘G&lt;/td&gt;
+      &lt;td&gt;Find next&lt;/td&gt;
+      &lt;td&gt;跳转到下一个搜索结果&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⇧G&lt;/td&gt;
+      &lt;td&gt;Find previous&lt;/td&gt;
+      &lt;td&gt;跳转到上一个搜索结果&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘R&lt;/td&gt;
+      &lt;td&gt;Replace&lt;/td&gt;
+      &lt;td&gt;替换文本&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⇧F&lt;/td&gt;
+      &lt;td&gt;Find in path&lt;/td&gt;
+      &lt;td&gt;指定路径、文件类型等搜索&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⇧R&lt;/td&gt;
+      &lt;td&gt;Replace in path&lt;/td&gt;
+      &lt;td&gt;指定路径、文件类型等搜索并替换&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⇧S&lt;/td&gt;
+      &lt;td&gt;Search structurally (Ultimate Edition only)&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⇧M&lt;/td&gt;
+      &lt;td&gt;Replace structurally (Ultimate Edition only)&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;视图切换快捷键&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;各视图区域的切换 cmd + 视图区域对应的数字&lt;/li&gt;
+  &lt;li&gt;cmd+e 列出最近查看的文件列表&lt;/li&gt;
+  &lt;li&gt;shift + cmd + e 最近修改文件列表&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;搜索快捷键&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;在编辑文档中，cmd+f 开始搜索 cmd + r 搜索替换&lt;/li&gt;
+  &lt;li&gt;alt + F7 搜索对象被引用的地方&lt;/li&gt;
+  &lt;li&gt;在project中，按下ctrl + shift + f(r) 即是在当前目前下递归查找或替换,搜索出来后，要全部替换，按下alt + a&lt;/li&gt;
+  &lt;li&gt;cmd + F7   搜索对象在当前文件被引用的地方&lt;/li&gt;
+  &lt;li&gt;cmd + n     查找类&lt;/li&gt;
+  &lt;li&gt;shift + cmd + n  查找文件&lt;/li&gt;
+  &lt;li&gt;大小写切换 cmd+shift+u&lt;/li&gt;
+  &lt;li&gt;生成getter and setter&lt;/li&gt;
+  &lt;li&gt;跳转到实现类 cmd+alt+b&lt;/li&gt;
+  &lt;li&gt;删除多余的import ctrl+alt+o&lt;/li&gt;
+  &lt;li&gt;修改变量名 shift+F6&lt;/li&gt;
+  &lt;li&gt;列编辑模式 cmd+shift+8&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Tue, 03 Jan 2017 00:00:00 +0800</pubDate>
+        <link>http://wanghengliang.cn/2017/01/IntelliJIDEA_ReferenceCard_mac/</link>
+        <guid isPermaLink="true">http://wanghengliang.cn/2017/01/IntelliJIDEA_ReferenceCard_mac/</guid>
+        
+        <category>IntelliJ IDEA 快捷键</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
