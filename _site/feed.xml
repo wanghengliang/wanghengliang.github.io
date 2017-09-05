@@ -5,8 +5,8 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 05 Sep 2017 13:50:48 +0800</pubDate>
-    <lastBuildDate>Tue, 05 Sep 2017 13:50:48 +0800</lastBuildDate>
+    <pubDate>Tue, 05 Sep 2017 17:33:02 +0800</pubDate>
+    <lastBuildDate>Tue, 05 Sep 2017 17:33:02 +0800</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
     
       <item>
@@ -175,7 +175,7 @@ jekyll 3.1.1 | Error:  jekyll-sitemap
 &lt;/blockquote&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;2、升级 jekyll 版本，我当前的是 jekyll 3.1.2 ,此处我发现无法升级，没有找到3.1.2不知为什么，所以去掉了jekyll-sitemap。&lt;/p&gt;
+  &lt;p&gt;2、升级 jekyll 版本。&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;修改完成后保存配置，再次执行&lt;/p&gt;
@@ -222,6 +222,8 @@ Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpa
         
         <category>jekyll</category>
         
+        
+        <category>jekyll</category>
         
       </item>
     
@@ -313,55 +315,14 @@ https://gems.ruby-china.org
         <link>http://localhost:4000/2017/09/rvm_install_ruby/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/09/rvm_install_ruby/</guid>
         
-        <category>rvm Ruby MacOS10.12</category>
+        <category>rvm</category>
+        
+        <category>Ruby</category>
+        
+        <category>MacOS10.12</category>
         
         
-      </item>
-    
-      <item>
-        <title>Hello World</title>
-        <description>&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;quick-start&quot;&gt;Quick Start&lt;/h2&gt;
-
-&lt;h3 id=&quot;create-a-new-post&quot;&gt;Create a new post&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;hexo new &lt;span class=&quot;s2&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;run-server&quot;&gt;Run server&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;hexo server
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;generate-static-files&quot;&gt;Generate static files&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;hexo generate
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;deploy-to-remote-sites&quot;&gt;Deploy to remote sites&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;hexo deploy
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Tue, 03 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/01/hello-world/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/01/hello-world/</guid>
-        
-        <category>jekyll</category>
-        
+        <category>MacOS</category>
         
       </item>
     
@@ -663,8 +624,14 @@ https://gems.ruby-china.org
         <link>http://localhost:4000/2017/01/IntelliJIDEA_ReferenceCard_mac/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/01/IntelliJIDEA_ReferenceCard_mac/</guid>
         
+        <category>IntelliJ</category>
+        
+        <category>IDEA</category>
+        
         <category>快捷键</category>
         
+        
+        <category>开发工具</category>
         
       </item>
     

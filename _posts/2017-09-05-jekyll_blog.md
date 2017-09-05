@@ -2,7 +2,8 @@
 layout: post
 title: Jekyll搭建个人博客过程记录
 date: 2017-09-05 
-tag: jekyll
+categories: jekyll
+tags: jekyll
 ---
 一直想搭建一个自己的博客系统，网上搜了一下发现了[Hexo](https://hexo.io/)! 但是没有找到一个自己满意的模板，后来发现<a href="http://baixin.io/" target="_blank">潘柏信</a>的博客,非常喜欢这个模板，作者也愿意共享此模板并提供源码，但发现采用的不是Hexo而是Jekyll，了解了一下这两个Blog系统，发现Jekyll还有个优点就是所有的Markdown文档也是放到一起的，而用Hexo则需要将Markdown单独存放，如果想多端同步更新blog则需要建立两个Github项目进行存放，关于Hexo和Jekyll的优缺点自行对比，以上为个人关注的优缺点。最终决定采用Jekyll搭建个人blog，然后主要按照<a href="http://baixin.io/2016/10/jekyll_tutorials1/" target="_blank">Jekyll搭建个人博客</a>进行搭建，在此记录一下搭建过程遇到的问题和有一些细节.
 
@@ -161,7 +162,7 @@ jekyll 3.1.1 | Error:  jekyll-sitemap
 
 > 1、打开当前目录下的 _config.yml 文件，把 gems: [jekyll-paginate,jekyll-sitemap] 换成 gems: [jekyll-paginate] ，也就是去掉jekyll-sitemap。
 
-> 2、升级 jekyll 版本，我当前的是 jekyll 3.1.2 ,此处我发现无法升级，没有找到3.1.2不知为什么，所以去掉了jekyll-sitemap。
+> 2、升级 jekyll 版本。
 
 修改完成后保存配置，再次执行
 
