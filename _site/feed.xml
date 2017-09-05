@@ -5,13 +5,13 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 05 Sep 2017 13:43:46 +0800</pubDate>
-    <lastBuildDate>Tue, 05 Sep 2017 13:43:46 +0800</lastBuildDate>
+    <pubDate>Tue, 05 Sep 2017 13:50:48 +0800</pubDate>
+    <lastBuildDate>Tue, 05 Sep 2017 13:50:48 +0800</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
     
       <item>
         <title>Jekyll搭建个人博客过程记录</title>
-        <description>&lt;p&gt;一直想搭建一个自己的博客系统，网上搜了一下发现了&lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! 但是没有找到一个自己满意的模板，后来发现&lt;a href=&quot;http://baixin.io/&quot;&gt;潘柏信&lt;/a&gt;的博客,非常喜欢这个模板，作者也愿意共享此模板并提供源码，但发现采用的不是Hexo而是Jekyll，了解了一下这两个Blog系统，发现Jekyll还有个优点就是所有的Markdown文档也是放到一起的，而用Hexo则需要将Markdown单独存放，如果想多端同步更新blog则需要建立两个Github项目进行存放，关于Hexo和Jekyll的优缺点自行对比，以上为个人关注的优缺点。最终决定采用Jekyll搭建个人blog，然后主要按照&lt;a href=&quot;http://baixin.io/2016/10/jekyll_tutorials1/&quot;&gt;Jekyll搭建个人博客&lt;/a&gt;进行搭建，在此记录一下搭建过程遇到的问题和有一些细节.&lt;/p&gt;
+        <description>&lt;p&gt;一直想搭建一个自己的博客系统，网上搜了一下发现了&lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! 但是没有找到一个自己满意的模板，后来发现&lt;a href=&quot;http://baixin.io/&quot; target=&quot;_blank&quot;&gt;潘柏信&lt;/a&gt;的博客,非常喜欢这个模板，作者也愿意共享此模板并提供源码，但发现采用的不是Hexo而是Jekyll，了解了一下这两个Blog系统，发现Jekyll还有个优点就是所有的Markdown文档也是放到一起的，而用Hexo则需要将Markdown单独存放，如果想多端同步更新blog则需要建立两个Github项目进行存放，关于Hexo和Jekyll的优缺点自行对比，以上为个人关注的优缺点。最终决定采用Jekyll搭建个人blog，然后主要按照&lt;a href=&quot;http://baixin.io/2016/10/jekyll_tutorials1/&quot; target=&quot;_blank&quot;&gt;Jekyll搭建个人博客&lt;/a&gt;进行搭建，在此记录一下搭建过程遇到的问题和有一些细节.&lt;/p&gt;
 
 &lt;h2 id=&quot;安装jekyll&quot;&gt;安装Jekyll&lt;/h2&gt;
 
