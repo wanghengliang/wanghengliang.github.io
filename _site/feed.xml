@@ -3,11 +3,320 @@
   <channel>
     <title>hengliang</title>
     <description>快乐地创造和品味生活</description>
-    <link>http://wanghengliang.cn/</link>
-    <atom:link href="http://wanghengliang.cn/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 04 Sep 2017 22:30:38 +0800</pubDate>
-    <lastBuildDate>Mon, 04 Sep 2017 22:30:38 +0800</lastBuildDate>
-    <generator>Jekyll v3.1.1</generator>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 05 Sep 2017 13:43:46 +0800</pubDate>
+    <lastBuildDate>Tue, 05 Sep 2017 13:43:46 +0800</lastBuildDate>
+    <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>Jekyll搭建个人博客过程记录</title>
+        <description>&lt;p&gt;一直想搭建一个自己的博客系统，网上搜了一下发现了&lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! 但是没有找到一个自己满意的模板，后来发现&lt;a href=&quot;http://baixin.io/&quot;&gt;潘柏信&lt;/a&gt;的博客,非常喜欢这个模板，作者也愿意共享此模板并提供源码，但发现采用的不是Hexo而是Jekyll，了解了一下这两个Blog系统，发现Jekyll还有个优点就是所有的Markdown文档也是放到一起的，而用Hexo则需要将Markdown单独存放，如果想多端同步更新blog则需要建立两个Github项目进行存放，关于Hexo和Jekyll的优缺点自行对比，以上为个人关注的优缺点。最终决定采用Jekyll搭建个人blog，然后主要按照&lt;a href=&quot;http://baixin.io/2016/10/jekyll_tutorials1/&quot;&gt;Jekyll搭建个人博客&lt;/a&gt;进行搭建，在此记录一下搭建过程遇到的问题和有一些细节.&lt;/p&gt;
+
+&lt;h2 id=&quot;安装jekyll&quot;&gt;安装Jekyll&lt;/h2&gt;
+
+&lt;h3 id=&quot;更新ruby&quot;&gt;更新Ruby&lt;/h3&gt;
+&lt;p&gt;Jekyll 是基于 Ruby 开发的，而且要求Ruby不低于2.1版本，但是MacOS的默认的Ruby版本为2.0，故需要升级Ruby。升级过程发现不成功，原因为我的系统升级为了OSX 10.12，Mac系统升级osx 10.11后，brew在使用的时候就会直接报错了，会影响Ruby升级操作，因为从10.11开始，对几个重要目录的权限苹果有了新的限制，特别是/usr目录，经过各种搜索，最终采用rvm进行安装升级Ruby，详细步骤请查看&lt;a href=&quot;http://wanghengliang.cn/2017/09/rvm_install_ruby/&quot; target=&quot;_blank&quot;&gt;Mac OS10.12采用rvm更新安装ruby&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;安装jekyll-1&quot;&gt;安装Jekyll&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;gem install jekyll
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;创建博客&quot;&gt;创建博客&lt;/h3&gt;
+&lt;p&gt;此处有两种方式：1直接创建，2通过已有模板创建&lt;/p&gt;
+
+&lt;h4 id=&quot;直接创建&quot;&gt;直接创建&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll new myBlog
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;通过已有模板创建&quot;&gt;通过已有模板创建&lt;/h4&gt;
+&lt;p&gt;1.为了将最终blog放到Github Pages，先进行创建Github Pages项目。&lt;/p&gt;
+
+&lt;p&gt;建立与你用户名对应的仓库，仓库名必须为【your_user_name.github.io】固定写法,如我的 github 账户名叫 wanghengliang，我的 Github Pages 仓库名就叫 wanghengliang.github.io;然后clone到本地,可以通过HTTPS，如果为Github添加了SSH keys可以采用SSH方式，如clone我的项目命令如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone git@github.com:wanghengliang/wanghengliang.github.io.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;2.下载模板，我采用的是潘柏信提供的&lt;a href=&quot;https://github.com/leopardpan/leopardpan.github.io&quot; target=&quot;_blank&quot;&gt;leopardpan&lt;/a&gt;模板，下载zip版本，并将内容解压到Github Pages本地目录。&lt;/p&gt;
+
+&lt;p&gt;3.修改Blog配置&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;删除模板原有文章并创建自己的文章，&lt;/li&gt;
+    &lt;li&gt;修改配置文件_config.yml里面的内容为你自己的。&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;编写文章&quot;&gt;编写文章&lt;/h3&gt;
+&lt;p&gt;所有的文章都在_posts目录下面，文章格式为 mardown 格式，文章文件名可以是 .mardown 或者 .md；&lt;/p&gt;
+
+&lt;p&gt;文章名的格式:前面必须为日期如：2016-10-16-welcome_jekyll.md&lt;/p&gt;
+
+&lt;p&gt;文章head格式&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+layout: post
+title:  &quot;Welcome to Jekyll!&quot;
+date:   2016-10-16 11:29:08 +0800
+categories: jekyll update
+tag: jekyll
+---
+正文...
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;启动博客系统&quot;&gt;启动博客系统&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;jekyll server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;如果你本机没配置过任何jekyll的环境可能会报错&quot;&gt;如果你本机没配置过任何jekyll的环境，可能会报错&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- bundler (LoadError)
+	from /Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
+	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/lib/jekyll/plugin_manager.rb:34:in `require_from_bundler'
+	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/exe/jekyll:9:in `&amp;lt;top (required)&amp;gt;'
+	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/jekyll:23:in `load'
+	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/jekyll:23:in `&amp;lt;main&amp;gt;'
+	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `eval'
+	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `&amp;lt;main&amp;gt;'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;原因： 没有安装 bundler ，执行安装 bundler 命令&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem install bundler
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;提示：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Fetching: bundler-1.13.5.gem (100%)
+Successfully installed bundler-1.13.5
+Parsing documentation for bundler-1.13.5
+Installing ri documentation for bundler-1.13.5
+Done installing documentation for bundler after 5 seconds
+1 gem installed
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;再次执行 $ jekyll server  ，提示&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+Could not find proper version of jekyll (3.1.1) in any of the sources
+Run `bundle install` to install missing gems.
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;跟着提示运行命令&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ bundle install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这个时候你可能会发现 bundle install 运行卡主不动了。&lt;/p&gt;
+
+&lt;p&gt;如果很长时间都没任何提示的话，你可以尝试修改 gem 的 source&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
+$ gem sources -l
+*** CURRENT SOURCES ***
+
+https://gems.ruby-china.org
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;再次执行命令 $ bundle install，发现开始有动静了&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Fetching gem metadata from https://rubygems.org/...........
+Fetching version metadata from https://rubygems.org/..
+Fetching dependency metadata from https://rubygems.org/.
+。。。
+Installing jekyll-watch 1.3.1
+Installing jekyll 3.1.1
+Bundle complete! 3 Gemfile dependencies, 17 gems now installed.
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;bundler安装完成，后再次启动本地服务&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll server
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;继续报错&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Configuration file: /Users/tendcloud-Caroline/Desktop/leopardpan.github.io/_config.yml
+  Dependency Error: Yikes! It looks like you don't have jekyll-sitemap or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. The full error message from Ruby is: 'cannot load such file -- jekyll-sitemap' If you run into trouble, you can find helpful resources at http://jekyllrb.com/help/! 
+jekyll 3.1.1 | Error:  jekyll-sitemap
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;表示 当前的 jekyll 版本是 3.1.1 ，无法使用 jekyll-sitemap&lt;/p&gt;
+
+&lt;p&gt;解决方法有两个&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;1、打开当前目录下的 _config.yml 文件，把 gems: [jekyll-paginate,jekyll-sitemap] 换成 gems: [jekyll-paginate] ，也就是去掉jekyll-sitemap。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;2、升级 jekyll 版本，我当前的是 jekyll 3.1.2 ,此处我发现无法升级，没有找到3.1.2不知为什么，所以去掉了jekyll-sitemap。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;修改完成后保存配置，再次执行&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll server
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;提示&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
+            Source: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github
+       Destination: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+                    done in 0.901 seconds.
+ Auto-regeneration: enabled for '/Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github'
+Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
+    Server address: http://127.0.0.1:4000/
+  Server running... press ctrl-c to stop.
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;表示本地服务部署成功。&lt;/p&gt;
+
+&lt;p&gt;在浏览器输入 &lt;a href=&quot;127.0.0.1:4000&quot;&gt;127.0.0.1:4000&lt;/a&gt; ， 就可以看到&lt;a href=&quot;http://wanghengliang.cn&quot;&gt;wanghengliang.cn&lt;/a&gt;博客效果了。&lt;/p&gt;
+
+&lt;p&gt;发现markdown中代码部分显示不正常，原因是jekyllMarkdown的解析器版本太旧，通过如下命令更新：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ bundle update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;发布博客&quot;&gt;发布博客&lt;/h3&gt;
+&lt;p&gt;然后使用 git push 到你自己的仓库里面去，检查你远端仓库，在浏览器输入 username.github.io 就会发现，你有一个漂亮的主题模板了。&lt;/p&gt;
+
+&lt;h3 id=&quot;绑定自己的域名&quot;&gt;绑定自己的域名&lt;/h3&gt;
+&lt;p&gt;CNAME里面的wanghengliang.cn修改成你自己的域名，如果你暂时没有域名，直接把CNAME文件删除即可。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 05 Sep 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/09/jekyll_blog/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/09/jekyll_blog/</guid>
+        
+        <category>jekyll</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Mac OS10.12采用rvm更新安装Ruby</title>
+        <description>&lt;p&gt;因为很多软件需要Ruby高版本支持，但Mac默认安装的版本为2.0，故需要升级Ruby，升级步骤如下：&lt;/p&gt;
+
+&lt;p&gt;注意事项：升级osx 10.11后，brew在使用的时候就会直接报错了，会影响以下操作，因为从10.11开始，对几个重要目录的权限苹果有了新的限制，特别是/usr目录，解决办法：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo chown -R $(whoami):admin /usr/local
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;第一步安装rvm&quot;&gt;第一步：安装rvm&lt;/h2&gt;
+&lt;p&gt;rvm是什么？为什么要安装rvm呢，因为rvm可以让你拥有多个版本的Ruby，并且可以在多个版本之间自由切换。&lt;/p&gt;
+
+&lt;p&gt;安装命令：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ curl -L get.rvm.io | bash -s stable
+$ source ~/.rvm/scripts/rvm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;检查是否安装成功：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm -v
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;如果能显示版本好则安装成功了&lt;/p&gt;
+
+&lt;h2 id=&quot;第二步安装ruby&quot;&gt;第二步：安装ruby&lt;/h2&gt;
+&lt;p&gt;列出ruby可安装的版本信息&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm list known
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;安装一个ruby版本&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm install 2.3.3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;设置默认版本&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm use 2.3.3 --default
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;查看已安装的ruby&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;卸载一个已安装ruby版本&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm remove 2.3.3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;第三步更换源&quot;&gt;第三步：更换源&lt;/h2&gt;
+&lt;p&gt;查看已有的源&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem source -l
+*** CURRENT SOURCES ***
+
+https://rubygems.org/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;然后我们需要来修改更换源（由于国内被墙）所以要把源切换至国内镜像服务器 在终端执行以下命令&lt;/p&gt;
+
+&lt;p&gt;以下命令酌情执行，我未执行也成功&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem update --system
+$ gem uninstall ruby gems -update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;以下命令必须执行，并确保最终输出结果只有 gems.ruby-china.org&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
+$ gem sources -l
+*** CURRENT SOURCES ***
+
+https://gems.ruby-china.org
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Mon, 04 Sep 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/09/rvm_install_ruby/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/09/rvm_install_ruby/</guid>
+        
+        <category>rvm Ruby MacOS10.12</category>
+        
+        
+      </item>
     
       <item>
         <title>Hello World</title>
@@ -17,39 +326,39 @@
 
 &lt;h3 id=&quot;create-a-new-post&quot;&gt;Create a new post&lt;/h3&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bash
-$ hexo new &quot;My New Post&quot;
-&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;hexo new &lt;span class=&quot;s2&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;run-server&quot;&gt;Run server&lt;/h3&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bash
-$ hexo server
-&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;hexo server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;generate-static-files&quot;&gt;Generate static files&lt;/h3&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bash
-$ hexo generate
-&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;hexo generate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;deploy-to-remote-sites&quot;&gt;Deploy to remote sites&lt;/h3&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bash
-$ hexo deploy
-&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;hexo deploy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 03 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://wanghengliang.cn/2017/01/hello-world/</link>
-        <guid isPermaLink="true">http://wanghengliang.cn/2017/01/hello-world/</guid>
+        <link>http://localhost:4000/2017/01/hello-world/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/hello-world/</guid>
         
         <category>jekyll</category>
         
@@ -326,14 +635,14 @@ $ hexo deploy
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;视图切换快捷键&lt;/h2&gt;
+&lt;h2 id=&quot;视图切换快捷键&quot;&gt;视图切换快捷键&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;各视图区域的切换 cmd + 视图区域对应的数字&lt;/li&gt;
   &lt;li&gt;cmd+e 列出最近查看的文件列表&lt;/li&gt;
   &lt;li&gt;shift + cmd + e 最近修改文件列表&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;section-1&quot;&gt;搜索快捷键&lt;/h2&gt;
+&lt;h2 id=&quot;搜索快捷键&quot;&gt;搜索快捷键&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;在编辑文档中，cmd+f 开始搜索 cmd + r 搜索替换&lt;/li&gt;
   &lt;li&gt;alt + F7 搜索对象被引用的地方&lt;/li&gt;
@@ -351,10 +660,10 @@ $ hexo deploy
 
 </description>
         <pubDate>Tue, 03 Jan 2017 00:00:00 +0800</pubDate>
-        <link>http://wanghengliang.cn/2017/01/IntelliJIDEA_ReferenceCard_mac/</link>
-        <guid isPermaLink="true">http://wanghengliang.cn/2017/01/IntelliJIDEA_ReferenceCard_mac/</guid>
+        <link>http://localhost:4000/2017/01/IntelliJIDEA_ReferenceCard_mac/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/IntelliJIDEA_ReferenceCard_mac/</guid>
         
-        <category>IntelliJ IDEA 快捷键</category>
+        <category>快捷键</category>
         
         
       </item>

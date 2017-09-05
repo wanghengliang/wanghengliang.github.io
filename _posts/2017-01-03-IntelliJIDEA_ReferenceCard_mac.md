@@ -2,7 +2,8 @@
 layout: post
 title: IntelliJ IDEA Mac OS X Keymap
 date: 2017-01-03 
-tag: IntelliJ IDEA 快捷键
+tag: IntelliJ IDEA
+tag: 快捷键
 ---
 
 ## Editing

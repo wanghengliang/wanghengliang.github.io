@@ -45,6 +45,7 @@ social:
 
 permalink: /:year/:month/:title/
 # Format
+markdown: kramdown
 highlighter: rouge
 
 textColor: #FF0000
@@ -64,7 +65,7 @@ nav:
     
 
 # Pagination,jekyll-sitemap
-gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
 paginate: 20
 paginate_path: "page/:num/"
 
