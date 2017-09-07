@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>Go2Shell安装和设置</title>
-  <meta name="description" content="MacOS使用小技巧整理，持续更新">
+  <title>JDK安装</title>
+  <meta name="description" content="下载jdk下载地址:http://www.oracle.com/technetwork/java/javase/downloads/index.html">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Go2Shell安装和设置">
-  <meta name="twitter:description" content="MacOS使用小技巧整理，持续更新">
+  <meta name="twitter:title" content="JDK安装">
+  <meta name="twitter:description" content="下载jdk下载地址:http://www.oracle.com/technetwork/java/javase/downloads/index.html">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Go2Shell安装和设置">
-  <meta property="og:description" content="MacOS使用小技巧整理，持续更新">
+  <meta property="og:title" content="JDK安装">
+  <meta property="og:description" content="下载jdk下载地址:http://www.oracle.com/technetwork/java/javase/downloads/index.html">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2016/11/go2shell/">
+  <link rel="canonical" href="http://localhost:4000/2016/12/linux_jdk/">
   <link rel="alternate" type="application/rss+xml" title="hengliang" href="http://localhost:4000/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -157,10 +157,10 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title">Go2Shell安装和设置</h1>
+    <h1 class="post-title">JDK安装</h1>
     <div class="post-meta">
       <img src="/images/calendar.png" width="20px"/> 
-      <time datetime="2016-11-17 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2016-11-17</time>  
+      <time datetime="2016-12-15 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2016-12-15</time>  
          
       <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
     </p>
@@ -168,30 +168,53 @@
   </header>
 
   <section class="post">
-    <p>MacOS使用小技巧整理，持续更新</p>
+    <h3 id="下载jdk">下载jdk</h3>
+<p>下载地址:http://www.oracle.com/technetwork/java/javase/downloads/index.html</p>
 
-<h3 id="介绍">介绍</h3>
+<h3 id="rpm安装">rpm安装</h3>
 
-<p>Go2Shell.app 很好使, 图标也萌萌哒. 作为一个 Finder 常驻图标, <code class="highlighter-rouge">&gt;_&lt;</code>这个就是. 在你想进的目录里点击直接会启动终端并进入到当前目录. 同时支持 <strong>Terminal</strong>, <strong>iTerm</strong>, <strong>xterm</strong>.</p>
-
-<h3 id="下载">下载</h3>
-
-<p>传送门: <a href="https://itunes.apple.com/cn/app/go2shell/id445770608">Mac App Store-Go2Shell</a></p>
-
-<h3 id="使用方法">使用方法</h3>
-<p>直接拖拽到 Finder 里即可. <code class="highlighter-rouge">10.10</code> 以后需要按着 <code class="highlighter-rouge">command</code> 进行拖拽.</p>
-
-<h3 id="配置方法">配置方法</h3>
-<p>执行命令</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>open -a Go2Shell --args config
+<div class="highlighter-rouge"><pre class="highlight"><code>rpm -ivh jdk-7u79-linux-x64.rpm
 </code></pre>
 </div>
 
-<p>终端（Terminal）设置进入当前目录
-可配置command to execute in terminal如下：</p>
+<h3 id="targz包安装">tar.gz包安装</h3>
+<p>新建安装目录
+将下载文件拷贝其中并添加执行权限</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>cd %PATH%; clear; pwd
+<div class="highlighter-rouge"><pre class="highlight"><code># mkdir /usr/java
+# cd /usr/java
+# tar -zxvf /opt/jdk-7u79-linux-x64.tar.gz
+</code></pre>
+</div>
+<p>生成链接以便版本升级</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># ln -s jdk1.7.0_79 latest
+# ln -s latest default
+</code></pre>
+</div>
+
+<h3 id="配置环境变量">配置环境变量</h3>
+<p>编辑配置文件<code class="highlighter-rouge">/etc/profile</code>，将如下内容添加到其中</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>export JAVA_HOME=/usr/java/default
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+
+export PATH=$JAVA_HOME/bin:$PATH
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># vi /etc/profile
+# source /etc/profile
+</code></pre>
+</div>
+
+<h3 id="测试">测试</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># java -version # 测试是否成功
+
+java version "1.7.0_79"
+Java(TM) SE Runtime Environment (build 1.7.0_79-b15)
+Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)
 </code></pre>
 </div>
 
@@ -262,9 +285,14 @@
 
        <ul class="pager">
         
+        <li class="previous">
+            <a href="/2016/12/linux_MySQL/" data-toggle="tooltip" data-placement="top" title="MySQL安装">上一篇：  <span>MySQL安装</span>
+            </a>
+        </li>
+        
         
         <li class="next">
-            <a href="/2016/12/linux_MySQL/" data-toggle="tooltip" data-placement="top" title="MySQL安装">下一篇：  <span>MySQL安装</span>
+            <a href="/2016/12/linux_tomcat/" data-toggle="tooltip" data-placement="top" title="Tomcat安装">下一篇：  <span>Tomcat安装</span>
             </a>
         </li>
         

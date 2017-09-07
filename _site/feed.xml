@@ -5,8 +5,8 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 07 Sep 2017 16:08:21 +0800</pubDate>
-    <lastBuildDate>Thu, 07 Sep 2017 16:08:21 +0800</lastBuildDate>
+    <pubDate>Thu, 07 Sep 2017 16:53:08 +0800</pubDate>
+    <lastBuildDate>Thu, 07 Sep 2017 16:53:08 +0800</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
     
       <item>
@@ -687,6 +687,361 @@ source ~/.bash_profile
         <category>MacOS</category>
         
         <category>开发工具</category>
+        
+      </item>
+    
+      <item>
+        <title>Tomcat安装</title>
+        <description>&lt;h3 id=&quot;下载tomcat&quot;&gt;下载Tomcat&lt;/h3&gt;
+&lt;p&gt;下载地址:http://tomcat.apache.org/&lt;/p&gt;
+
+&lt;h3 id=&quot;安装tomcat&quot;&gt;安装Tomcat&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mkdir /usr/local/tomcat
+# cd /usr/local/tomcat
+# tar -zxvf /opt/apache-tomcat-7.0.54.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;生成链接以便版本升级&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# ln -s apache-tomcat-7.0.54 server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;配置tomcat&quot;&gt;配置Tomcat&lt;/h3&gt;
+
+&lt;h5 id=&quot;配置虚拟主机&quot;&gt;配置虚拟主机&lt;/h5&gt;
+&lt;h6 id=&quot;方法1直接配置confserverxml配置虚拟主机&quot;&gt;方法1，直接配置conf/server.xml配置虚拟主机&lt;/h6&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;wwww.aaa.com&quot;&amp;gt;
+    &amp;lt;Host name=&quot;www.aaa.com&quot; appBase=&quot;webapps_1&quot; autoDeploy=&quot;true&quot; unpackWARs=&quot;true&quot; xmlNamespaceAware=&quot;false&quot; xmlValidation=&quot;false&quot;&amp;gt;
+        &amp;lt;Alias&amp;gt;aaa.com&amp;lt;/Alias&amp;gt;
+        &amp;lt;Context path=&quot;/&quot; docBase=&quot;./war/aaa.war&quot; reloadable=&quot;true&quot; /&amp;gt;
+    &amp;lt;/Host&amp;gt;
+    &amp;lt;Host name=&quot;www.bbb.com&quot; appBase=&quot;webapps_2&quot; autoDeploy=&quot;true&quot; unpackWARs=&quot;true&quot; xmlNamespaceAware=&quot;false&quot; xmlValidation=&quot;false&quot;&amp;gt;
+        &amp;lt;Context path=&quot;/&quot; docBase=&quot;./war/bbb.war&quot; reloadable=&quot;true&quot; /&amp;gt;
+    &amp;lt;/Host&amp;gt;
+    &amp;lt;Host name=&quot;www.ccc.com&quot; appBase=&quot;webapps_3&quot; autoDeploy=&quot;true&quot; unpackWARs=&quot;true&quot; xmlNamespaceAware=&quot;false&quot; xmlValidation=&quot;false&quot;&amp;gt;
+        &amp;lt;Context path=&quot;/&quot; docBase=&quot;./war/ccc.war&quot; reloadable=&quot;true&quot; /&amp;gt;
+    &amp;lt;/Host&amp;gt;
+&amp;lt;/Engine&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h6 id=&quot;方法2confserverxml引入子文件配置虚拟主机&quot;&gt;方法2，conf/server.xml引入子文件配置虚拟主机&lt;/h6&gt;
+&lt;p&gt;在&lt;server&gt;元素前添加如下格式：&lt;/server&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE server-xml [
+  &amp;lt;!ENTITY localhost-vhost SYSTEM &quot;file:///usr/local/tomcat/conf/vhost/localhost.xml&quot;&amp;gt;&lt;/span&gt;
+]&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;并在&lt;Engine&gt;...&lt;/Engine&gt;引用它（localhost-vhost，注：不能以数字开头）即可。&lt;/p&gt;
+
+&lt;p&gt;完整代码如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE server-xml [
+&amp;lt;!ENTITY vhost-localhost SYSTEM &quot;file:///usr/local/tomcat/conf/vhost/localhost.xml&quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!ENTITY vhost-www.wanghengliang.cn SYSTEM &quot;file:///usr/local/tomcat/conf/vhost/www.wanghengliang.cn.xml&quot;&amp;gt;&lt;/span&gt;
+]&amp;gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Server&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;port=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;8005&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;shutdown=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SHUTDOWN&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  ...
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;Service&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Catalina&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Connector&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;port=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;8080&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;protocol=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HTTP/1.1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;connectionTimeout=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;20000&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;redirectPort=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;8443&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Engine&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Catalina&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;defaultHost=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;localhost&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      ...
+      &lt;span class=&quot;ni&quot;&gt;&amp;amp;vhost-localhost;&lt;/span&gt;
+      &lt;span class=&quot;ni&quot;&gt;&amp;amp;vhost-www.wanghengliang.cn;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Engine&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Service&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Server&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;每个单独虚拟主机文件内容如下:
+/usr/local/tomcat/conf/vhost/www.wanghengliang.cn.xml&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;Host name=&quot;www.wanghengliang.cn&quot; appBase=&quot;webapps&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&amp;gt;
+    &amp;lt;Alias&amp;gt;wanghengliang.cn&amp;lt;/Alias&amp;gt;
+    &amp;lt;Context path=&quot;&quot; docBase=&quot;/data/wwwroot/wechat&quot; debug=&quot;0&quot; reloadable=&quot;false&quot; crossContext=&quot;true&quot;/&amp;gt;
+    &amp;lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot; prefix=&quot;www.wanghengliang.cn_access_log.&quot; suffix=&quot;.txt&quot; pattern=&quot;%h %l %u %t &amp;amp;quot;%r&amp;amp;quot; %s %b&quot; /&amp;gt;
+&amp;lt;/Host&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 15 Dec 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/12/linux_tomcat/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/linux_tomcat/</guid>
+        
+        <category>Tomcat</category>
+        
+        
+        <category>服务器架设</category>
+        
+      </item>
+    
+      <item>
+        <title>JDK安装</title>
+        <description>&lt;h3 id=&quot;下载jdk&quot;&gt;下载jdk&lt;/h3&gt;
+&lt;p&gt;下载地址:http://www.oracle.com/technetwork/java/javase/downloads/index.html&lt;/p&gt;
+
+&lt;h3 id=&quot;rpm安装&quot;&gt;rpm安装&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rpm -ivh jdk-7u79-linux-x64.rpm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;targz包安装&quot;&gt;tar.gz包安装&lt;/h3&gt;
+&lt;p&gt;新建安装目录
+将下载文件拷贝其中并添加执行权限&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mkdir /usr/java
+# cd /usr/java
+# tar -zxvf /opt/jdk-7u79-linux-x64.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;生成链接以便版本升级&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# ln -s jdk1.7.0_79 latest
+# ln -s latest default
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;配置环境变量&quot;&gt;配置环境变量&lt;/h3&gt;
+&lt;p&gt;编辑配置文件&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/profile&lt;/code&gt;，将如下内容添加到其中&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;export JAVA_HOME=/usr/java/default
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+
+export PATH=$JAVA_HOME/bin:$PATH
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# vi /etc/profile
+# source /etc/profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;测试&quot;&gt;测试&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# java -version # 测试是否成功
+
+java version &quot;1.7.0_79&quot;
+Java(TM) SE Runtime Environment (build 1.7.0_79-b15)
+Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 15 Dec 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/12/linux_jdk/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/linux_jdk/</guid>
+        
+        <category>JDK</category>
+        
+        
+        <category>服务器架设</category>
+        
+      </item>
+    
+      <item>
+        <title>MySQL安装</title>
+        <description>&lt;h3 id=&quot;mysql-下载&quot;&gt;mysql 下载&lt;/h3&gt;
+&lt;h4 id=&quot;下载地址&quot;&gt;下载地址:&lt;/h4&gt;
+&lt;p&gt;http://www.mysql.com/downloads/&lt;/p&gt;
+
+&lt;h4 id=&quot;版本mysql包括三个版本&quot;&gt;版本（mysql包括三个版本）&lt;/h4&gt;
+
+&lt;p&gt;MySQL Enterprise Edition (commercial) MySQL企业版（商业）&lt;/p&gt;
+
+&lt;p&gt;MySQL Cluster CGE (commercial) MySQL集群CGE（商业）&lt;/p&gt;
+
+&lt;p&gt;MySQL Community Edition (GPL) MySQL社区版（GPL）&lt;/p&gt;
+
+&lt;p&gt;–&amp;gt;MySQL Community Server (GPL) MySQL社区服务器（GPL）&lt;/p&gt;
+
+&lt;p&gt;–&amp;gt;MySQL Cluster (GPL) MySQL集群（GPL）&lt;/p&gt;
+
+&lt;p&gt;–&amp;gt;MySQL Fabric (GPL) MySQL的织物（GPL）&lt;/p&gt;
+
+&lt;p&gt;选择MySQL Community Server (GPL) MySQL社区服务器（GPL）
+有几种选择
+1.RPM Bundle（是该版本所有包的集合）
+2.RPM PACKAGE（是某个特定的包，比如server,client,shared lib等）
+3.Compressed TAR Archive，是源码，必须用源码方式安装。
+这里下载RPM Bundle，然后解压并安装&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tar -xvf mysql-5.7.18-1.el7.x86_64.rpm-bundle.tar
+rpm -ivh mysql-community-server-minimal-5.7.18-1.el7.x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;mysql-安装&quot;&gt;mysql 安装&lt;/h3&gt;
+&lt;h4 id=&quot;安装前需要先卸载mariadb-lib&quot;&gt;安装前需要先卸载mariadb-lib&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# rpm -qa|grep mariadb
+mariadb-libs-5.5.44-2.el7.centos.x86_64
+# rpm -e mariadb-libs-5.5.44-2.el7.centos.x86_64 --nodeps
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h4 id=&quot;解压出rpm-bundletar实际上只需要安装以下几个包&quot;&gt;解压出rpm-bundle.tar,实际上只需要安装以下几个包&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# rpm -ivh mysql-community-common-5.7.16-1.el7.x86_64.rpm
+# rpm -ivh mysql-community-libs-5.7.16-1.el7.x86_64.rpm
+# rpm -ivh mysql-community-client-5.7.16-1.el7.x86_64.rpm
+# rpm -ivh mysql-community-server-5.7.16-1.el7.x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;上面几个包有依赖关系，执行有先后。&lt;/p&gt;
+
+&lt;p&gt;使用rpm安装方式安装mysql，安装的路径如下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a 数据库目录 /var/lib/mysql/&lt;/li&gt;
+  &lt;li&gt;b 配置文件 /usr/share/mysql(mysql.server命令及配置文件)&lt;/li&gt;
+  &lt;li&gt;c 相关命令 /usr/bin(mysqladmin mysqldump等命令)&lt;/li&gt;
+  &lt;li&gt;d 启动脚本 /etc/rc.d/init.d/(启动脚本文件mysql的目录)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;mysql-配置&quot;&gt;mysql 配置&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# vi /etc/my.cnf
+[client]
+port=3306
+socket=/var/lib/mysql/mysql.sock
+default-character-set=utf8
+
+[mysqld]
+port=3306
+socket=/var/lib/mysql/mysql.sock
+
+basedir = /usr/local/mysql
+pid-file = /data/mysql/mysql.pid
+datadir = /data/mysql
+log_error = /data/mysql/mysql-error.log
+slow_query_log = 1
+long_query_time = 1
+slow_query_log_file = /data/mysql/mysql-slow.log
+
+character-set-server=utf8
+lower_case_table_names=1
+#MySQL服务器默认的“wait_timeout”是28800秒即8小时，意味着如果一个连接的空闲时间超过8个小时，MySQL将自动断开该连接,需要同时修改wait_timeout和interactive_timeout这两个参数
+wait_timeout=288000
+interactive_timeout=288000
+#开启计划
+event_scheduler=1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;数据库初始化&quot;&gt;数据库初始化&lt;/h4&gt;
+&lt;p&gt;为了保证数据库目录为与文件的所有者为 mysql 登陆用户，如果你是以 root 身份运行 mysql 服务，需要执行下面的命令初始化&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mysqld --initialize --user=mysql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;如果是以 mysql 身份运行，则可以去掉 –user 选项。&lt;/p&gt;
+
+&lt;p&gt;如果 datadir 指向的目标目录下已经有数据文件，则会有类似提示：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mysqld --initialize --user=mysql
+2017-05-03T02:18:00.758981Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2017-05-03T02:18:00.761364Z 0 [ERROR] --initialize specified but the data directory has files in it. Aborting.
+2017-05-03T02:18:00.761398Z 0 [ERROR] Aborting
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;因此，需要先确保 datadir 目标目录下是空的，避免误操作破坏已有数据。&lt;/p&gt;
+
+&lt;p&gt;另外 –initialize 选项默认以“安全”模式来初始化，则会为 root 用户生成一个密码并将该密码标记为过期，登陆后你需要设置一个新的密码，&lt;/p&gt;
+
+&lt;p&gt;而使用 –initialize-insecure 命令则不使用安全模式，则不会为 root 用户生成一个密码。&lt;/p&gt;
+
+&lt;p&gt;这里演示使用的 –initialize 初始化的，会生成一个 root 账户密码，密码在log文件里,root@localhost:后面都是&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# cat /var/log/mysqld.log | grep password
+2017-05-03T02:26:10.001375Z 1 [Note] A temporary password is generated for root@localhost: (tfywy9JHk7J
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;数据库测试&quot;&gt;数据库测试&lt;/h3&gt;
+&lt;p&gt;启动服务器并登录测试&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# service mysqld start
+Redirecting to /bin/systemctl start  mysqld.service
+# mysql -uroot -p      
+Enter password: 
+...
+mysql&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;首次使用会有类似提示&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; show databases;
+ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
+mysql&amp;gt; use mysql;
+ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;因为新用户登入后需要立刻修改密码，否则无法继续后续的工作：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; set password = password('abc');
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;重启并测试&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# service mysqld stop
+Redirecting to /bin/systemctl stop  mysqld.service
+# service mysqld start
+Redirecting to /bin/systemctl start  mysqld.service
+# mysql -uroot -p      
+Enter password: 
+...
+mysql&amp;gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;mysql-创建数据库和用户&quot;&gt;mysql 创建数据库和用户&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; CREATE DATABASE IF NOT EXISTS `db_test` DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+Query OK, 1 row affected (0.00 sec)
+
+mysql&amp;gt; CREATE USER 'testusr'@'%' IDENTIFIED BY 'testusr-a123';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&amp;gt; GRANT all ON db_test.* TO 'testusr'@'%';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&amp;gt; exit
+Bye
+
+# mysql -utestusr -p
+Enter password: 
+...
+mysql&amp;gt; use db_test;
+Database changed
+mysql&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 15 Dec 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/12/linux_MySQL/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/linux_MySQL/</guid>
+        
+        <category>MySQL</category>
+        
+        
+        <category>服务器架设</category>
         
       </item>
     
