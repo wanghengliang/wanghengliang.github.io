@@ -3,7 +3,7 @@ layout: post
 title: Mac OS10.12采用rvm更新安装Ruby
 date: 2017-09-04
 categories: MacOS
-tags: rvm Ruby MacOS10.12
+tags: rvm Ruby MacOS
 ---
 因为很多软件需要Ruby高版本支持，但Mac默认安装的版本为2.0，故需要升级Ruby，升级步骤如下：
 

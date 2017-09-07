@@ -1,12 +1,16 @@
 ---
 layout: post
-title: IntelliJ IDEA Mac OS X Keymap
+title: IntelliJ IDEA Mac OS X 快捷键
 date: 2017-01-03 
 categories: 开发工具
-tags: IntelliJ IDEA 快捷键
+tags: IntelliJIDEA 快捷键
 ---
 
-## Editing
+IntelliJ IDEA Mac OS X 快捷键
+
+备注：⌘ command,⌥ option,^ control,⇧ shift
+
+### Editing
 
 快捷键 | 功能描述 | 中文描述
 ---|---|---
@@ -50,7 +54,7 @@ tags: IntelliJ IDEA 快捷键
 ⌘⇧-|Collapse all|折叠当前类所有方法代码块
 ⌘W|Close active editor tab|关闭当前编辑文件
 
-## Search/Replace
+### Search/Replace
 
 快捷键 | 功能描述 | 中文描述
 ---|---|---
@@ -64,14 +68,53 @@ Double⇧|Search everywhere|全局搜索
 ⌘⇧S|Search structurally (Ultimate Edition only)
 ⌘⇧M|Replace structurally (Ultimate Edition only)
 
+### Usage Search
+
+快捷键 | 功能描述 | 中文描述
+---|---|---
+⌥F7/⌘F7|Find usages / Find usages in file |
+⌘⇧F7|Highlight usages in file |
+⌘⌥F7|Show usages | 
+
+### Compile and Run
+
+快捷键 | 功能描述 | 中文描述
+---|---|---
+⌘F9|Make project (compile modifed and dependent)|
+⌘⇧F9|Compile selected  le, package or module|
+^⌥R|Select con guration and run|
+^⌥D|Select con guration and debug|
+^R|Run|
+^D|Debug|
+^⇧R,^⇧D|Run context con guration from editor|
+
+### Debugging
+
+快捷键 | 功能描述 | 中文描述
+---|---|---
+F8|Step over|
+F7|Step into|
+⇧F7|Smart step into|
+⇧F8|Step out|
+⌥F9|Run to cursor|
+⌥F8|Evaluate expression|
+⌘⌥R|Resume program|
+⌘F8|Toggle breakpoint|
+⌘⇧F8|View breakpoints|
 
 
-## 视图切换快捷键
+
+### 其他
+
 - 各视图区域的切换 cmd + 视图区域对应的数字
 - cmd+e 列出最近查看的文件列表
 - shift + cmd + e 最近修改文件列表
+- 代码格式化 option+command+L
+- 删除行 command+x
+- 复制行 command+d
+- 生成getter/setter command+n
 
-## 搜索快捷键
+
 - 在编辑文档中，cmd+f 开始搜索 cmd + r 搜索替换
 - alt + F7 搜索对象被引用的地方
 - 在project中，按下ctrl + shift + f(r) 即是在当前目前下递归查找或替换,搜索出来后，要全部替换，按下alt + a
@@ -84,4 +127,3 @@ Double⇧|Search everywhere|全局搜索
 - 删除多余的import ctrl+alt+o
 - 修改变量名 shift+F6
 - 列编辑模式 cmd+shift+8
-

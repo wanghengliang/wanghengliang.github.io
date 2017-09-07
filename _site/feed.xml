@@ -5,9 +5,39 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 07 Sep 2017 16:53:08 +0800</pubDate>
-    <lastBuildDate>Thu, 07 Sep 2017 16:53:08 +0800</lastBuildDate>
+    <pubDate>Thu, 07 Sep 2017 18:02:55 +0800</pubDate>
+    <lastBuildDate>Thu, 07 Sep 2017 18:02:55 +0800</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>IntelliJ IDEA 创建多模块项目的正确姿势</title>
+        <description>&lt;ol&gt;
+  &lt;li&gt;新建一个空文件夹workspace, 用idea作为项目打开&lt;/li&gt;
+  &lt;li&gt;选中External Libraries, 在菜单: File –&amp;gt; new –&amp;gt; Modual… 新建立模块&lt;/li&gt;
+  &lt;li&gt;新建好模块后, .idea文件夹里的modules.xml里会有两个模块(如果没有找到, 重启idea), 删除第一个同工程名相同的那个默认模块. 这时.idea文件夹会从idea里消失, 不过没关系, 以后我们可以到workspace/.idea文件夹里的修改相应的文件&lt;/li&gt;
+  &lt;li&gt;以后增加模块, 重复第2步(一定要选中External Libraries后创建, 不然新建出来是某个模块的模块了)&lt;/li&gt;
+  &lt;li&gt;如果要实现eclipse里的workset模块分组功能, 有两种方式&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;a. 右键点击模块找Move Module To Group &amp;gt; New Top Level Group,然后新建分组名称即可，此方法发现有时重新后分组会失效，建议到.idea/modules.xml下确认是否添加了 &lt;em&gt;group=”mygroup”&lt;/em&gt; 属性，添加了说明成功了，没有添加可手动添加或多等待一会儿看是否成功添加&lt;/p&gt;
+
+&lt;p&gt;b. 在.idea/modules.xml里的相应模块添加group=”groupName” 如:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;module fileurl=&quot;file://$PROJECT_DIR$/test1/test1.iml&quot; filepath=&quot;$PROJECT_DIR$/test1/test1.iml&quot; group=&quot;mygroup&quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Thu, 07 Sep 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/09/IntelliJIDEA_Multi_Module/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/09/IntelliJIDEA_Multi_Module/</guid>
+        
+        <category>IntelliJIDEA</category>
+        
+        
+        <category>开发工具</category>
+        
+      </item>
     
       <item>
         <title>Jekyll搭建个人博客过程记录</title>
@@ -319,7 +349,7 @@ https://gems.ruby-china.org
         
         <category>Ruby</category>
         
-        <category>MacOS10.12</category>
+        <category>MacOS</category>
         
         
         <category>MacOS</category>
@@ -348,8 +378,12 @@ https://gems.ruby-china.org
       </item>
     
       <item>
-        <title>IntelliJ IDEA Mac OS X Keymap</title>
-        <description>&lt;h2 id=&quot;editing&quot;&gt;Editing&lt;/h2&gt;
+        <title>IntelliJ IDEA Mac OS X 快捷键</title>
+        <description>&lt;p&gt;IntelliJ IDEA Mac OS X 快捷键&lt;/p&gt;
+
+&lt;p&gt;备注：⌘ command,⌥ option,^ control,⇧ shift&lt;/p&gt;
+
+&lt;h3 id=&quot;editing&quot;&gt;Editing&lt;/h3&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -558,7 +592,7 @@ https://gems.ruby-china.org
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h2 id=&quot;searchreplace&quot;&gt;Search/Replace&lt;/h2&gt;
+&lt;h3 id=&quot;searchreplace&quot;&gt;Search/Replace&lt;/h3&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -617,15 +651,155 @@ https://gems.ruby-china.org
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h2 id=&quot;视图切换快捷键&quot;&gt;视图切换快捷键&lt;/h2&gt;
+&lt;h3 id=&quot;usage-search&quot;&gt;Usage Search&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;快捷键&lt;/th&gt;
+      &lt;th&gt;功能描述&lt;/th&gt;
+      &lt;th&gt;中文描述&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌥F7/⌘F7&lt;/td&gt;
+      &lt;td&gt;Find usages / Find usages in file&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⇧F7&lt;/td&gt;
+      &lt;td&gt;Highlight usages in file&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⌥F7&lt;/td&gt;
+      &lt;td&gt;Show usages&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;compile-and-run&quot;&gt;Compile and Run&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;快捷键&lt;/th&gt;
+      &lt;th&gt;功能描述&lt;/th&gt;
+      &lt;th&gt;中文描述&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘F9&lt;/td&gt;
+      &lt;td&gt;Make project (compile modifed and dependent)&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⇧F9&lt;/td&gt;
+      &lt;td&gt;Compile selected  le, package or module&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^⌥R&lt;/td&gt;
+      &lt;td&gt;Select con guration and run&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^⌥D&lt;/td&gt;
+      &lt;td&gt;Select con guration and debug&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^R&lt;/td&gt;
+      &lt;td&gt;Run&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^D&lt;/td&gt;
+      &lt;td&gt;Debug&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^⇧R,^⇧D&lt;/td&gt;
+      &lt;td&gt;Run context con guration from editor&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;debugging&quot;&gt;Debugging&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;快捷键&lt;/th&gt;
+      &lt;th&gt;功能描述&lt;/th&gt;
+      &lt;th&gt;中文描述&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;F8&lt;/td&gt;
+      &lt;td&gt;Step over&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;F7&lt;/td&gt;
+      &lt;td&gt;Step into&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⇧F7&lt;/td&gt;
+      &lt;td&gt;Smart step into&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⇧F8&lt;/td&gt;
+      &lt;td&gt;Step out&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌥F9&lt;/td&gt;
+      &lt;td&gt;Run to cursor&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌥F8&lt;/td&gt;
+      &lt;td&gt;Evaluate expression&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⌥R&lt;/td&gt;
+      &lt;td&gt;Resume program&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘F8&lt;/td&gt;
+      &lt;td&gt;Toggle breakpoint&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘⇧F8&lt;/td&gt;
+      &lt;td&gt;View breakpoints&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;其他&quot;&gt;其他&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;各视图区域的切换 cmd + 视图区域对应的数字&lt;/li&gt;
   &lt;li&gt;cmd+e 列出最近查看的文件列表&lt;/li&gt;
   &lt;li&gt;shift + cmd + e 最近修改文件列表&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;搜索快捷键&quot;&gt;搜索快捷键&lt;/h2&gt;
-&lt;ul&gt;
+  &lt;li&gt;代码格式化 option+command+L&lt;/li&gt;
+  &lt;li&gt;删除行 command+x&lt;/li&gt;
+  &lt;li&gt;复制行 command+d&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;生成getter/setter command+n&lt;/p&gt;
+  &lt;/li&gt;
   &lt;li&gt;在编辑文档中，cmd+f 开始搜索 cmd + r 搜索替换&lt;/li&gt;
   &lt;li&gt;alt + F7 搜索对象被引用的地方&lt;/li&gt;
   &lt;li&gt;在project中，按下ctrl + shift + f(r) 即是在当前目前下递归查找或替换,搜索出来后，要全部替换，按下alt + a&lt;/li&gt;
@@ -639,15 +813,12 @@ https://gems.ruby-china.org
   &lt;li&gt;修改变量名 shift+F6&lt;/li&gt;
   &lt;li&gt;列编辑模式 cmd+shift+8&lt;/li&gt;
 &lt;/ul&gt;
-
 </description>
         <pubDate>Tue, 03 Jan 2017 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2017/01/IntelliJIDEA_ReferenceCard_mac/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/01/IntelliJIDEA_ReferenceCard_mac/</guid>
         
-        <category>IntelliJ</category>
-        
-        <category>IDEA</category>
+        <category>IntelliJIDEA</category>
         
         <category>快捷键</category>
         
