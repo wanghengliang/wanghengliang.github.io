@@ -8,7 +8,7 @@ tags: IntelliJIDEA 快捷键
 
 IntelliJ IDEA Mac OS X 快捷键
 
-备注：⌘ command,⌥ option,^ control,⇧ shift
+备注：⌘ command,⌥ option,^ control,⇧ shift，⎋ esc，⇥ tab，↩ return
 
 ### Editing
 
@@ -32,8 +32,8 @@ IntelliJ IDEA Mac OS X 快捷键
 ⌥↓|Decrease current selection to previous state|逐步缩小当前选中代码块
 ^⇧Q|Context info
 ⌥↩|Show intention actions and quick-fixes|显示建议的代码和快速修复
-⌘⌥L|Reformat code
-^⌥O|Optimize imports
+⌘⌥L|Reformat code|代码格式化
+^⌥O|Optimize imports|删除多余的import
 ^⌥I|Auto-indent line(s)
 ⇥/⇧⇥|Indent/unindent selected lines
 ⌘X|Cut current line or selected block to clipboard|剪切文本到剪贴板
@@ -72,7 +72,7 @@ Double⇧|Search everywhere|全局搜索
 
 快捷键 | 功能描述 | 中文描述
 ---|---|---
-⌥F7/⌘F7|Find usages / Find usages in file |
+⌥F7/⌘F7|Find usages / Find usages in file |搜索对象在当前文件被引用的地方
 ⌘⇧F7|Highlight usages in file |
 ⌘⌥F7|Show usages | 
 
@@ -102,28 +102,99 @@ F7|Step into|
 ⌘F8|Toggle breakpoint|
 ⌘⇧F8|View breakpoints|
 
+### Debugging
+
+快捷键 | 功能描述 | 中文描述
+---|---|---
+⌘O|Go to class|
+⌘⇧O|Go to file|
+⌘⌥O|Go to symbol|
+^←/^→|Go to next/previous editor tab|
+F12|Go back to previous tool window|
+⎋|Go to editor (from tool window)|
+⇧⎋|Hide active or last active window|
+⌘⇧F4|Close active run/messages/find/... tab|
+⌘L|Go to line|
+⌘E|Recent files popup|列出最近查看的文件列表
+⌘⌥←/⌘⌥→|Navigate back/forward|
+⌘⇧⌫|Navigate to last edit location|
+⌥F1|Select current file or symbol in any view|
+⌘B,⌘click|Go to declaration|
+⌘⌥B|Go to implementation(s)|跳转到实现类
+⌥space，⌘Y|Open quick de nition lookup|
+^⇧B|Go to type declaration|
+⌘U|Go to super-method/super-class|
+^↑/^↓|Go to previous/next method|
+⌘]/⌘[|Move to code block end/start|
+⌘F12|File structure popup|
+^H|Type hierarchy|
+⌘⇧H|Method hierarchy|
+^⌥H|Call hierarchy|
+F2/⇧F2|Next/previous highlighted error|
+F4/⌘↓|Edit source / View source|
+⌥Home|Show navigation bar|
+F3|Toggle bookmark|
+⌥F3|Toggle bookmark with mnemonic|
+^0...^9|Go to numbered bookmark|
+⌘F3|Show bookmarks|
+
+### Refactoring
+
+快捷键 | 功能描述 | 中文描述
+---|---|---
+F5|Copy|
+F6|Move|
+⌘Delete|Safe Delete|
+⇧F6|Rename|修改变量名|
+⌘F6|Change Signature|
+⌘⌥N|Inline|
+⌘⌥M|Extract Method|
+⌘⌥V|Extract Variable|
+⌘⌥F|Extract Field
+⌘⌥C|Extract Constant
+⌘⌥P|Extract Parameter
+
+### VCS/Local History
+
+快捷键 | 功能描述 | 中文描述
+---|---|---
+⌘K|Commit project to VCS|
+⌘T|Update project from VCS|
+⌥⇧C|View recent changes
+^C|‘VCS’ quick popup
+
+
+### Live Templates
+
+快捷键 | 功能描述 | 中文描述
+---|---|---
+⌘⌥J|Surround with Live Template|
+⌘J|Insert Live Template
+
+
+### General
+
+快捷键 | 功能描述 | 中文描述
+---|---|---
+⌘0...⌘9|Open corresponding tool window|
+⌘S|Save all|
+⌘⌥Y|Synchronize|
+^⌘F|Toggle full screen mode|
+⌘⇧F12|Toggle maximizing editor|
+⌥⇧F|Add to Favorites|
+⌥⇧I|Inspect current file with current profile|
+^§，^`|Quick switch current scheme|
+⌘,|Open Settings dialog|
+⌘;|Open Project Structure dialog|
+⇧⌘A|Find Action|
+^⇥|Switch between tabs and tool window|
+
 
 
 ### 其他
-
 - 各视图区域的切换 cmd + 视图区域对应的数字
-- cmd+e 列出最近查看的文件列表
 - shift + cmd + e 最近修改文件列表
-- 代码格式化 option+command+L
-- 删除行 command+x
-- 复制行 command+d
-- 生成getter/setter command+n
-
-
-- 在编辑文档中，cmd+f 开始搜索 cmd + r 搜索替换
 - alt + F7 搜索对象被引用的地方
 - 在project中，按下ctrl + shift + f(r) 即是在当前目前下递归查找或替换,搜索出来后，要全部替换，按下alt + a
-- cmd + F7   搜索对象在当前文件被引用的地方
-- cmd + n     查找类
 - shift + cmd + n  查找文件
-- 大小写切换 cmd+shift+u
-- 生成getter and setter 
-- 跳转到实现类 cmd+alt+b
-- 删除多余的import ctrl+alt+o
-- 修改变量名 shift+F6
 - 列编辑模式 cmd+shift+8

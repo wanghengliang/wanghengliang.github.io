@@ -170,7 +170,7 @@
   <section class="post">
     <p>IntelliJ IDEA Mac OS X 快捷键</p>
 
-<p>备注：⌘ command,⌥ option,^ control,⇧ shift</p>
+<p>备注：⌘ command,⌥ option,^ control,⇧ shift，⎋ esc，⇥ tab，↩ return</p>
 
 <h3 id="editing">Editing</h3>
 
@@ -276,12 +276,12 @@
     <tr>
       <td>⌘⌥L</td>
       <td>Reformat code</td>
-      <td> </td>
+      <td>代码格式化</td>
     </tr>
     <tr>
       <td>^⌥O</td>
       <td>Optimize imports</td>
-      <td> </td>
+      <td>删除多余的import</td>
     </tr>
     <tr>
       <td>^⌥I</td>
@@ -454,7 +454,7 @@
     <tr>
       <td>⌥F7/⌘F7</td>
       <td>Find usages / Find usages in file</td>
-      <td> </td>
+      <td>搜索对象在当前文件被引用的地方</td>
     </tr>
     <tr>
       <td>⌘⇧F7</td>
@@ -577,29 +577,383 @@
   </tbody>
 </table>
 
-<h3 id="其他">其他</h3>
+<h3 id="debugging-1">Debugging</h3>
 
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>⌘O</td>
+      <td>Go to class</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⇧O</td>
+      <td>Go to file</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥O</td>
+      <td>Go to symbol</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^←/^→</td>
+      <td>Go to next/previous editor tab</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>F12</td>
+      <td>Go back to previous tool window</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⎋</td>
+      <td>Go to editor (from tool window)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⇧⎋</td>
+      <td>Hide active or last active window</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⇧F4</td>
+      <td>Close active run/messages/find/… tab</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘L</td>
+      <td>Go to line</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘E</td>
+      <td>Recent files popup</td>
+      <td>列出最近查看的文件列表</td>
+    </tr>
+    <tr>
+      <td>⌘⌥←/⌘⌥→</td>
+      <td>Navigate back/forward</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⇧⌫</td>
+      <td>Navigate to last edit location</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌥F1</td>
+      <td>Select current file or symbol in any view</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘B,⌘click</td>
+      <td>Go to declaration</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥B</td>
+      <td>Go to implementation(s)</td>
+      <td>跳转到实现类</td>
+    </tr>
+    <tr>
+      <td>⌥space，⌘Y</td>
+      <td>Open quick de nition lookup</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^⇧B</td>
+      <td>Go to type declaration</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘U</td>
+      <td>Go to super-method/super-class</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^↑/^↓</td>
+      <td>Go to previous/next method</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘]/⌘[</td>
+      <td>Move to code block end/start</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘F12</td>
+      <td>File structure popup</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^H</td>
+      <td>Type hierarchy</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⇧H</td>
+      <td>Method hierarchy</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^⌥H</td>
+      <td>Call hierarchy</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>F2/⇧F2</td>
+      <td>Next/previous highlighted error</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>F4/⌘↓</td>
+      <td>Edit source / View source</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌥Home</td>
+      <td>Show navigation bar</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>F3</td>
+      <td>Toggle bookmark</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌥F3</td>
+      <td>Toggle bookmark with mnemonic</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^0…^9</td>
+      <td>Go to numbered bookmark</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘F3</td>
+      <td>Show bookmarks</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="refactoring">Refactoring</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>F5</td>
+      <td>Copy</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>F6</td>
+      <td>Move</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘Delete</td>
+      <td>Safe Delete</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⇧F6</td>
+      <td>Rename</td>
+      <td>修改变量名</td>
+    </tr>
+    <tr>
+      <td>⌘F6</td>
+      <td>Change Signature</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥N</td>
+      <td>Inline</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥M</td>
+      <td>Extract Method</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥V</td>
+      <td>Extract Variable</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥F</td>
+      <td>Extract Field</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥C</td>
+      <td>Extract Constant</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥P</td>
+      <td>Extract Parameter</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="vcslocal-history">VCS/Local History</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>⌘K</td>
+      <td>Commit project to VCS</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘T</td>
+      <td>Update project from VCS</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌥⇧C</td>
+      <td>View recent changes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^C</td>
+      <td>‘VCS’ quick popup</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="live-templates">Live Templates</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>⌘⌥J</td>
+      <td>Surround with Live Template</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘J</td>
+      <td>Insert Live Template</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="general">General</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>⌘0…⌘9</td>
+      <td>Open corresponding tool window</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘S</td>
+      <td>Save all</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥Y</td>
+      <td>Synchronize</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^⌘F</td>
+      <td>Toggle full screen mode</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⇧F12</td>
+      <td>Toggle maximizing editor</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌥⇧F</td>
+      <td>Add to Favorites</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌥⇧I</td>
+      <td>Inspect current file with current profile</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^§，^`</td>
+      <td>Quick switch current scheme</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘,</td>
+      <td>Open Settings dialog</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘;</td>
+      <td>Open Project Structure dialog</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⇧⌘A</td>
+      <td>Find Action</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^⇥</td>
+      <td>Switch between tabs and tool window</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="其他">其他</h3>
 <ul>
   <li>各视图区域的切换 cmd + 视图区域对应的数字</li>
-  <li>cmd+e 列出最近查看的文件列表</li>
   <li>shift + cmd + e 最近修改文件列表</li>
-  <li>代码格式化 option+command+L</li>
-  <li>删除行 command+x</li>
-  <li>复制行 command+d</li>
-  <li>
-    <p>生成getter/setter command+n</p>
-  </li>
-  <li>在编辑文档中，cmd+f 开始搜索 cmd + r 搜索替换</li>
   <li>alt + F7 搜索对象被引用的地方</li>
   <li>在project中，按下ctrl + shift + f(r) 即是在当前目前下递归查找或替换,搜索出来后，要全部替换，按下alt + a</li>
-  <li>cmd + F7   搜索对象在当前文件被引用的地方</li>
-  <li>cmd + n     查找类</li>
   <li>shift + cmd + n  查找文件</li>
-  <li>大小写切换 cmd+shift+u</li>
-  <li>生成getter and setter</li>
-  <li>跳转到实现类 cmd+alt+b</li>
-  <li>删除多余的import ctrl+alt+o</li>
-  <li>修改变量名 shift+F6</li>
   <li>列编辑模式 cmd+shift+8</li>
 </ul>
 
