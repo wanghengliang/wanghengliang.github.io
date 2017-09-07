@@ -5,8 +5,8 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 05 Sep 2017 17:33:02 +0800</pubDate>
-    <lastBuildDate>Tue, 05 Sep 2017 17:33:02 +0800</lastBuildDate>
+    <pubDate>Wed, 06 Sep 2017 12:57:56 +0800</pubDate>
+    <lastBuildDate>Wed, 06 Sep 2017 12:57:56 +0800</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
     
       <item>
@@ -42,7 +42,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;2.下载模板，我采用的是潘柏信提供的&lt;a href=&quot;https://github.com/leopardpan/leopardpan.github.io&quot; target=&quot;_blank&quot;&gt;leopardpan&lt;/a&gt;模板，下载zip版本，并将内容解压到Github Pages本地目录。&lt;/p&gt;
+&lt;p&gt;2.下载模板，可采用潘柏信提供的&lt;a href=&quot;https://github.com/leopardpan/leopardpan.github.io&quot; target=&quot;_blank&quot;&gt;leopardpan&lt;/a&gt;模板，，或者我修改后的&lt;a href=&quot;https://github.com/wanghengliang/wanghengliang.github.io&quot; target=&quot;_blank&quot;&gt;模板&lt;/a&gt;(只增加了分类信息)，下载zip版本，并将内容解压到Github Pages本地目录。&lt;/p&gt;
 
 &lt;p&gt;3.修改Blog配置&lt;/p&gt;
 
@@ -56,7 +56,7 @@
 &lt;h3 id=&quot;编写文章&quot;&gt;编写文章&lt;/h3&gt;
 &lt;p&gt;所有的文章都在_posts目录下面，文章格式为 mardown 格式，文章文件名可以是 .mardown 或者 .md；&lt;/p&gt;
 
-&lt;p&gt;文章名的格式:前面必须为日期如：2016-10-16-welcome_jekyll.md&lt;/p&gt;
+&lt;p&gt;文章名的格式:前面必须为日期开头如：2016-10-16-welcome_jekyll.md&lt;/p&gt;
 
 &lt;p&gt;文章head格式&lt;/p&gt;
 
@@ -223,7 +223,7 @@ Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpa
         <category>jekyll</category>
         
         
-        <category>jekyll</category>
+        <category>技术开发</category>
         
       </item>
     
@@ -323,6 +323,615 @@ https://gems.ruby-china.org
         
         
         <category>MacOS</category>
+        
+      </item>
+    
+      <item>
+        <title>MacBook使用小技巧</title>
+        <description>&lt;p&gt;MacOS使用小技巧整理，持续更新&lt;/p&gt;
+
+&lt;h3 id=&quot;finder始终显示用户资料库打开终端运行以下命令&quot;&gt;Finder始终显示用户「资料库」,打开终端，运行以下命令：&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chflags nohidden ~/Library/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Fri, 01 Sep 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/09/mac_skill/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/09/mac_skill/</guid>
+        
+        <category>MacOS</category>
+        
+        
+        <category>MacOS</category>
+        
+      </item>
+    
+      <item>
+        <title>IPTV故障信息对照表</title>
+        <description>&lt;p&gt;电信IPTV故障信息对照表&lt;/p&gt;
+
+&lt;h3 id=&quot;故障信息对照表&quot;&gt;故障信息对照表&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;结果码&lt;/th&gt;
+      &lt;th&gt;说明&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;处理成功&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;999&lt;/td&gt;
+      &lt;td&gt;IMSP订购失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9101&lt;/td&gt;
+      &lt;td&gt;1.开机时用户不存在；&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;2.业务鉴权时UserToken中解析出来的账号与请求中的UserID参数不一致；&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;3.业务订购时,生活账户不存在；&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9102&lt;/td&gt;
+      &lt;td&gt;用户业务账号状态异常&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9103&lt;/td&gt;
+      &lt;td&gt;用户业务密码错误&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9104&lt;/td&gt;
+      &lt;td&gt;用户没有用户分组&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9106&lt;/td&gt;
+      &lt;td&gt;绑定类型校验失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9108&lt;/td&gt;
+      &lt;td&gt;认证字符串解密失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9109&lt;/td&gt;
+      &lt;td&gt;认证字符串中参数错误&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9111&lt;/td&gt;
+      &lt;td&gt;用户账号已经存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9112&lt;/td&gt;
+      &lt;td&gt;非法访问资源（平台认证地址错误）&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9113&lt;/td&gt;
+      &lt;td&gt;读取配置文件失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9114&lt;/td&gt;
+      &lt;td&gt;用户分组中没有分配频道&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9115&lt;/td&gt;
+      &lt;td&gt;非法删除&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9116&lt;/td&gt;
+      &lt;td&gt;用户登录账号的机顶盒数量超过其终端数量&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9201&lt;/td&gt;
+      &lt;td&gt;UserToken格式错误&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9202&lt;/td&gt;
+      &lt;td&gt;UserToken过期&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9203&lt;/td&gt;
+      &lt;td&gt;Cookie为空&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9204&lt;/td&gt;
+      &lt;td&gt;UserToken不存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9301&lt;/td&gt;
+      &lt;td&gt;产品不存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9302&lt;/td&gt;
+      &lt;td&gt;产品状态非法&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9303&lt;/td&gt;
+      &lt;td&gt;用户尚未定购该产品&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9304&lt;/td&gt;
+      &lt;td&gt;用户已经定购该产品&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9305&lt;/td&gt;
+      &lt;td&gt;用户当月消费限额不足&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9306&lt;/td&gt;
+      &lt;td&gt;计费类型错误&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9307&lt;/td&gt;
+      &lt;td&gt;产品类型非法&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9308&lt;/td&gt;
+      &lt;td&gt;属地不存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9309&lt;/td&gt;
+      &lt;td&gt;非法的IP地址&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9310&lt;/td&gt;
+      &lt;td&gt;SP编码不存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9311&lt;/td&gt;
+      &lt;td&gt;产品过期&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9312&lt;/td&gt;
+      &lt;td&gt;节目不存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9401&lt;/td&gt;
+      &lt;td&gt;内容提供商不存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9402&lt;/td&gt;
+      &lt;td&gt;内容提供商状态错误&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9403&lt;/td&gt;
+      &lt;td&gt;xml文件格式错误&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9404&lt;/td&gt;
+      &lt;td&gt;FTP文件失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9405&lt;/td&gt;
+      &lt;td&gt;获取同步日志信息失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9406&lt;/td&gt;
+      &lt;td&gt;厂商回执失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9407&lt;/td&gt;
+      &lt;td&gt;解析厂商回执的XML文件失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9408&lt;/td&gt;
+      &lt;td&gt;修改同步日志信息失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9409&lt;/td&gt;
+      &lt;td&gt;增加同步日志信息失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9410&lt;/td&gt;
+      &lt;td&gt;内容不存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9411&lt;/td&gt;
+      &lt;td&gt;创建xml文件失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9501&lt;/td&gt;
+      &lt;td&gt;节点信息不存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9502&lt;/td&gt;
+      &lt;td&gt;频道信息不存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9503&lt;/td&gt;
+      &lt;td&gt;节点频道信息不存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9504&lt;/td&gt;
+      &lt;td&gt;该频道时刻表不需要录制&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9601&lt;/td&gt;
+      &lt;td&gt;参数错误:参数为空&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9602&lt;/td&gt;
+      &lt;td&gt;参数错误：参数不合法&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9603&lt;/td&gt;
+      &lt;td&gt;参数错误：参数不完整&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9604&lt;/td&gt;
+      &lt;td&gt;数据库操作错误&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9606&lt;/td&gt;
+      &lt;td&gt;获取区号失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9607&lt;/td&gt;
+      &lt;td&gt;获取主键失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9608&lt;/td&gt;
+      &lt;td&gt;获取产品的spid失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9610&lt;/td&gt;
+      &lt;td&gt;获取计费策略失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9611&lt;/td&gt;
+      &lt;td&gt;获取绑定内容的节目失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9612&lt;/td&gt;
+      &lt;td&gt;获取专辑信息失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9613&lt;/td&gt;
+      &lt;td&gt;获取用户定购的产品失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9614&lt;/td&gt;
+      &lt;td&gt;根据P0和栏目获取P1失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9615&lt;/td&gt;
+      &lt;td&gt;根据P1获取P2失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9616&lt;/td&gt;
+      &lt;td&gt;增加节点信息失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9617&lt;/td&gt;
+      &lt;td&gt;修改节点信息失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9618&lt;/td&gt;
+      &lt;td&gt;删除节点信息失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9619&lt;/td&gt;
+      &lt;td&gt;获取频道列表失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9620&lt;/td&gt;
+      &lt;td&gt;获取业务入口列表失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9621&lt;/td&gt;
+      &lt;td&gt;首页鉴权中更新EPGURL失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9623&lt;/td&gt;
+      &lt;td&gt;更新定购关系失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9624&lt;/td&gt;
+      &lt;td&gt;BSS接口中产品编码转化失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9625&lt;/td&gt;
+      &lt;td&gt;找不到匹配的用户分组&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9626&lt;/td&gt;
+      &lt;td&gt;用户属地和套餐属地不匹配&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9627&lt;/td&gt;
+      &lt;td&gt;BSS接口中同时开用户和产品失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9628&lt;/td&gt;
+      &lt;td&gt;BSS接口中状态暂停失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9629&lt;/td&gt;
+      &lt;td&gt;BSS接口中状态销户失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9630&lt;/td&gt;
+      &lt;td&gt;BSS接口中状态恢复失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9631&lt;/td&gt;
+      &lt;td&gt;BSS接口中信息修改失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9632&lt;/td&gt;
+      &lt;td&gt;获取内容信息失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9633&lt;/td&gt;
+      &lt;td&gt;该栏目或其子栏目下有节目&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9634&lt;/td&gt;
+      &lt;td&gt;获取栏目信息失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9635&lt;/td&gt;
+      &lt;td&gt;获取内容匹配关系失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9636&lt;/td&gt;
+      &lt;td&gt;获取产品匹配关系失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9637&lt;/td&gt;
+      &lt;td&gt;获取产品绑定关系失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9638&lt;/td&gt;
+      &lt;td&gt;获取产品失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9639&lt;/td&gt;
+      &lt;td&gt;获取节目失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9640&lt;/td&gt;
+      &lt;td&gt;获取节目绑定关系失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9641&lt;/td&gt;
+      &lt;td&gt;节目状态非法&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9642&lt;/td&gt;
+      &lt;td&gt;你没有权限访问用户&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9643&lt;/td&gt;
+      &lt;td&gt;用户属地和产品属地不匹配&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9644&lt;/td&gt;
+      &lt;td&gt;获取定购关系失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9645&lt;/td&gt;
+      &lt;td&gt;会议信息不存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9646&lt;/td&gt;
+      &lt;td&gt;会议状态非法&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9647&lt;/td&gt;
+      &lt;td&gt;会议信息已经存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9648&lt;/td&gt;
+      &lt;td&gt;时间格式错误&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9649&lt;/td&gt;
+      &lt;td&gt;存储类型错误&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9650&lt;/td&gt;
+      &lt;td&gt;节目过期&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9651&lt;/td&gt;
+      &lt;td&gt;套餐过期&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9652&lt;/td&gt;
+      &lt;td&gt;频道时刻信息已经存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9653&lt;/td&gt;
+      &lt;td&gt;用户分组权限已经存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9654&lt;/td&gt;
+      &lt;td&gt;获取统一账号失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9655&lt;/td&gt;
+      &lt;td&gt;HTTP 连接失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9656&lt;/td&gt;
+      &lt;td&gt;返回响应消息为空&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9657&lt;/td&gt;
+      &lt;td&gt;返回响应消息的格式错误&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9658&lt;/td&gt;
+      &lt;td&gt;会议预约用户账号类型非法&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9659&lt;/td&gt;
+      &lt;td&gt;频道时刻表信息不存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9660&lt;/td&gt;
+      &lt;td&gt;频道时刻表状态非法&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9661&lt;/td&gt;
+      &lt;td&gt;套餐不存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9662&lt;/td&gt;
+      &lt;td&gt;套餐状态非法&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9663&lt;/td&gt;
+      &lt;td&gt;该频道繁忙&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9664&lt;/td&gt;
+      &lt;td&gt;套餐尚未生效&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9665&lt;/td&gt;
+      &lt;td&gt;产品尚未生效&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9666&lt;/td&gt;
+      &lt;td&gt;节目尚未生效&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9667&lt;/td&gt;
+      &lt;td&gt;用户不在线&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9668&lt;/td&gt;
+      &lt;td&gt;用户mac地址错误&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9669&lt;/td&gt;
+      &lt;td&gt;会议已开始&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9670&lt;/td&gt;
+      &lt;td&gt;会议尚未开始&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9671&lt;/td&gt;
+      &lt;td&gt;管理员不存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9672&lt;/td&gt;
+      &lt;td&gt;管理员密码错误&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9673&lt;/td&gt;
+      &lt;td&gt;管理员状态非法&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9674&lt;/td&gt;
+      &lt;td&gt;管理员属地和用户属地不匹配&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9675&lt;/td&gt;
+      &lt;td&gt;在线userToken不存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9676&lt;/td&gt;
+      &lt;td&gt;频道未绑定到产品&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9677&lt;/td&gt;
+      &lt;td&gt;用户登录日志为空&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9678&lt;/td&gt;
+      &lt;td&gt;用户订购清单为空&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9679&lt;/td&gt;
+      &lt;td&gt;用户当天尚未认证&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9681&lt;/td&gt;
+      &lt;td&gt;用户放弃订购&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9690&lt;/td&gt;
+      &lt;td&gt;check验证失败&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9691&lt;/td&gt;
+      &lt;td&gt;此SP未开通老产品鉴权功能&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9692&lt;/td&gt;
+      &lt;td&gt;返回异常:同一请求多次返回&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9693&lt;/td&gt;
+      &lt;td&gt;请求类型错误:通过服务器直接请求&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9999&lt;/td&gt;
+      &lt;td&gt;系统错误，数据库操作失败&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        <pubDate>Tue, 29 Aug 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/08/iptv_error_code_map/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/08/iptv_error_code_map/</guid>
+        
+        <category>IPTV</category>
+        
+        <category>EPG</category>
+        
+        
+        <category>软件开发</category>
+        
+        <category>未发布</category>
+        
+      </item>
+    
+      <item>
+        <title>Nexus安装和配置</title>
+        <description>
+</description>
+        <pubDate>Mon, 20 Mar 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/03/Nexus/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/03/Nexus/</guid>
+        
+        <category>Nexus</category>
+        
+        <category>Maven</category>
+        
+        
+        <category>开发工具</category>
+        
+      </item>
+    
+      <item>
+        <title>Git安装和使用</title>
+        <description>
+</description>
+        <pubDate>Fri, 06 Jan 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/01/Git/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/01/Git/</guid>
+        
+        <category>Git</category>
+        
+        <category>版本控制</category>
+        
+        
+        <category>开发工具</category>
+        
+        <category>版本控制</category>
         
       </item>
     
@@ -632,6 +1241,151 @@ https://gems.ruby-china.org
         
         
         <category>开发工具</category>
+        
+      </item>
+    
+      <item>
+        <title>Mac终端用Sublime打开指定文件或文件夹</title>
+        <description>&lt;p&gt;经常使用Mac终端或iTerm,但是编辑工具习惯了使用Sublime，所以希望从终端用sublime打开指定文件或文件夹，方法如下：&lt;/p&gt;
+
+&lt;h3 id=&quot;1建立sublime的别名软连接&quot;&gt;1.建立Sublime的别名软连接&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir ~/bin
+sudo ln -s &quot;/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl&quot; ~/bin/subl
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;2将bin添加到环境变量中&quot;&gt;2.将~/bin添加到环境变量中&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi ~/.bash_profile
+   export PATH=&quot;~/bin:$PATH&quot;
+
+source ~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;3使用mac终端用sublime打开指定文件或文件夹&quot;&gt;3.使用mac终端用Sublime打开指定文件或文件夹&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;subl xx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Tue, 27 Dec 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/12/Terminal_Sublime/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/Terminal_Sublime/</guid>
+        
+        <category>Sublime</category>
+        
+        
+        <category>MacOS</category>
+        
+        <category>开发工具</category>
+        
+      </item>
+    
+      <item>
+        <title>Maven安装和使用</title>
+        <description>
+</description>
+        <pubDate>Sun, 25 Dec 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/12/Maven/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/Maven/</guid>
+        
+        <category>Maven</category>
+        
+        
+        <category>开发工具</category>
+        
+      </item>
+    
+      <item>
+        <title>Tomcat安装</title>
+        <description>&lt;h3 id=&quot;下载tomcat&quot;&gt;下载Tomcat&lt;/h3&gt;
+&lt;p&gt;下载地址:http://tomcat.apache.org/&lt;/p&gt;
+
+&lt;h3 id=&quot;安装tomcat&quot;&gt;安装Tomcat&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mkdir /usr/local/tomcat
+# cd /usr/local/tomcat
+# tar -zxvf /opt/apache-tomcat-7.0.54.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;生成链接以便版本升级&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# ln -s apache-tomcat-7.0.54 server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;配置tomcat&quot;&gt;配置Tomcat&lt;/h3&gt;
+
+&lt;h5 id=&quot;配置虚拟主机&quot;&gt;配置虚拟主机&lt;/h5&gt;
+&lt;h6 id=&quot;方法1直接配置confserverxml配置虚拟主机&quot;&gt;方法1，直接配置conf/server.xml配置虚拟主机&lt;/h6&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;wwww.aaa.com&quot;&amp;gt;
+    &amp;lt;Host name=&quot;www.aaa.com&quot; appBase=&quot;webapps_1&quot; autoDeploy=&quot;true&quot; unpackWARs=&quot;true&quot; xmlNamespaceAware=&quot;false&quot; xmlValidation=&quot;false&quot;&amp;gt;
+        &amp;lt;Alias&amp;gt;aaa.com&amp;lt;/Alias&amp;gt;
+        &amp;lt;Context path=&quot;/&quot; docBase=&quot;./war/aaa.war&quot; reloadable=&quot;true&quot; /&amp;gt;
+    &amp;lt;/Host&amp;gt;
+    &amp;lt;Host name=&quot;www.bbb.com&quot; appBase=&quot;webapps_2&quot; autoDeploy=&quot;true&quot; unpackWARs=&quot;true&quot; xmlNamespaceAware=&quot;false&quot; xmlValidation=&quot;false&quot;&amp;gt;
+        &amp;lt;Context path=&quot;/&quot; docBase=&quot;./war/bbb.war&quot; reloadable=&quot;true&quot; /&amp;gt;
+    &amp;lt;/Host&amp;gt;
+    &amp;lt;Host name=&quot;www.ccc.com&quot; appBase=&quot;webapps_3&quot; autoDeploy=&quot;true&quot; unpackWARs=&quot;true&quot; xmlNamespaceAware=&quot;false&quot; xmlValidation=&quot;false&quot;&amp;gt;
+        &amp;lt;Context path=&quot;/&quot; docBase=&quot;./war/ccc.war&quot; reloadable=&quot;true&quot; /&amp;gt;
+    &amp;lt;/Host&amp;gt;
+&amp;lt;/Engine&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h6 id=&quot;方法2confserverxml引入子文件配置虚拟主机&quot;&gt;方法2，conf/server.xml引入子文件配置虚拟主机&lt;/h6&gt;
+&lt;p&gt;在&lt;server&gt;元素前添加如下格式：&lt;/server&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE server-xml [
+  &amp;lt;!ENTITY localhost-vhost SYSTEM &quot;file:///usr/local/tomcat/conf/vhost/localhost.xml&quot;&amp;gt;&lt;/span&gt;
+]&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;并在&lt;Engine&gt;...&lt;/Engine&gt;引用它（localhost-vhost，注：不能以数字开头）即可。&lt;/p&gt;
+
+&lt;p&gt;完整代码如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE server-xml [
+&amp;lt;!ENTITY vhost-localhost SYSTEM &quot;file:///usr/local/tomcat/conf/vhost/localhost.xml&quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!ENTITY vhost-www.wanghengliang.cn SYSTEM &quot;file:///usr/local/tomcat/conf/vhost/www.wanghengliang.cn.xml&quot;&amp;gt;&lt;/span&gt;
+]&amp;gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;Server&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;port=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;8005&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;shutdown=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;SHUTDOWN&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  ...
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;Service&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Catalina&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Connector&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;port=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;8080&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;protocol=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HTTP/1.1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;connectionTimeout=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;20000&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;redirectPort=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;8443&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;Engine&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Catalina&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;defaultHost=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;localhost&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      ...
+      &lt;span class=&quot;ni&quot;&gt;&amp;amp;vhost-localhost;&lt;/span&gt;
+      &lt;span class=&quot;ni&quot;&gt;&amp;amp;vhost-www.wanghengliang.cn;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Engine&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/Service&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/Server&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;每个单独虚拟主机文件内容如下:
+/usr/local/tomcat/conf/vhost/www.wanghengliang.cn.xml&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;Host name=&quot;www.wanghengliang.cn&quot; appBase=&quot;webapps&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&amp;gt;
+    &amp;lt;Alias&amp;gt;wanghengliang.cn&amp;lt;/Alias&amp;gt;
+    &amp;lt;Context path=&quot;&quot; docBase=&quot;/data/wwwroot/wechat&quot; debug=&quot;0&quot; reloadable=&quot;false&quot; crossContext=&quot;true&quot;/&amp;gt;
+    &amp;lt;Valve className=&quot;org.apache.catalina.valves.AccessLogValve&quot; directory=&quot;logs&quot; prefix=&quot;www.wanghengliang.cn_access_log.&quot; suffix=&quot;.txt&quot; pattern=&quot;%h %l %u %t &amp;amp;quot;%r&amp;amp;quot; %s %b&quot; /&amp;gt;
+&amp;lt;/Host&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 15 Dec 2016 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2016/12/linux_tomcat/</link>
+        <guid isPermaLink="true">http://localhost:4000/2016/12/linux_tomcat/</guid>
+        
+        <category>Tomcat</category>
+        
+        
+        <category>服务器架设</category>
+        
+        <category>未发布</category>
         
       </item>
     
