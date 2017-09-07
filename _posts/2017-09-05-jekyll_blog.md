@@ -2,9 +2,10 @@
 layout: post
 title: Jekyll搭建个人博客过程记录
 date: 2017-09-05 
-categories: jekyll
+categories: 技术开发
 tags: jekyll
 ---
+
 一直想搭建一个自己的博客系统，网上搜了一下发现了[Hexo](https://hexo.io/)! 但是没有找到一个自己满意的模板，后来发现<a href="http://baixin.io/" target="_blank">潘柏信</a>的博客,非常喜欢这个模板，作者也愿意共享此模板并提供源码，但发现采用的不是Hexo而是Jekyll，了解了一下这两个Blog系统，发现Jekyll还有个优点就是所有的Markdown文档也是放到一起的，而用Hexo则需要将Markdown单独存放，如果想多端同步更新blog则需要建立两个Github项目进行存放，关于Hexo和Jekyll的优缺点自行对比，以上为个人关注的优缺点。最终决定采用Jekyll搭建个人blog，然后主要按照<a href="http://baixin.io/2016/10/jekyll_tutorials1/" target="_blank">Jekyll搭建个人博客</a>进行搭建，在此记录一下搭建过程遇到的问题和有一些细节.
 
 ## 安装Jekyll
@@ -36,7 +37,7 @@ $ jekyll new myBlog
 git clone git@github.com:wanghengliang/wanghengliang.github.io.git
 ```
 
-2.下载模板，我采用的是潘柏信提供的<a href="https://github.com/leopardpan/leopardpan.github.io" target="_blank">leopardpan</a>模板，下载zip版本，并将内容解压到Github Pages本地目录。
+2.下载模板，可采用潘柏信提供的<a href="https://github.com/leopardpan/leopardpan.github.io" target="_blank">leopardpan</a>模板，，或者我修改后的<a href="https://github.com/wanghengliang/wanghengliang.github.io" target="_blank">模板</a>(只增加了分类信息)，下载zip版本，并将内容解压到Github Pages本地目录。
 
 3.修改Blog配置
 
@@ -46,7 +47,7 @@ git clone git@github.com:wanghengliang/wanghengliang.github.io.git
 ### 编写文章
 所有的文章都在_posts目录下面，文章格式为 mardown 格式，文章文件名可以是 .mardown 或者 .md；
 
-文章名的格式:前面必须为日期如：2016-10-16-welcome_jekyll.md
+文章名的格式:前面必须为日期开头如：2016-10-16-welcome_jekyll.md
 
 文章head格式
 
