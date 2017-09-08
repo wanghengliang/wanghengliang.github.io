@@ -8,7 +8,7 @@ tags: IntelliJIDEA 快捷键
 
 IntelliJ IDEA Mac OS X 快捷键
 
-备注：⌘ command,⌥ option,^ control,⇧ shift，⎋ esc，⇥ tab，↩ return
+备注：⌘ command,⌥ option,^ control,⇧ shift，⎋ esc，⇥ tab，↩ return/enter
 
 ### Editing
 
@@ -33,7 +33,7 @@ IntelliJ IDEA Mac OS X 快捷键
 ^⇧Q|Context info
 ⌥↩|Show intention actions and quick-fixes|显示建议的代码和快速修复
 ⌘⌥L|Reformat code|代码格式化
-^⌥O|Optimize imports|删除多余的import
+^⌥O|Optimize imports|导包并删除多余的import
 ^⌥I|Auto-indent line(s)
 ⇥/⇧⇥|Indent/unindent selected lines
 ⌘X|Cut current line or selected block to clipboard|剪切文本到剪贴板
@@ -72,7 +72,7 @@ Double⇧|Search everywhere|全局搜索
 
 快捷键 | 功能描述 | 中文描述
 ---|---|---
-⌥F7/⌘F7|Find usages / Find usages in file |搜索对象在当前文件被引用的地方
+⌥F7/⌘F7|Find usages / Find usages in file |搜索对象在当前文件被引用的地方,搜索对象被引用的地方
 ⌘⇧F7|Highlight usages in file |
 ⌘⌥F7|Show usages | 
 
@@ -194,7 +194,6 @@ F6|Move|
 ### 其他
 - 各视图区域的切换 cmd + 视图区域对应的数字
 - shift + cmd + e 最近修改文件列表
-- alt + F7 搜索对象被引用的地方
 - 在project中，按下ctrl + shift + f(r) 即是在当前目前下递归查找或替换,搜索出来后，要全部替换，按下alt + a
 - shift + cmd + n  查找文件
 - 列编辑模式 cmd+shift+8

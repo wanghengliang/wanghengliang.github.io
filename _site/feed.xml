@@ -5,8 +5,8 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 07 Sep 2017 21:49:17 +0800</pubDate>
-    <lastBuildDate>Thu, 07 Sep 2017 21:49:17 +0800</lastBuildDate>
+    <pubDate>Fri, 08 Sep 2017 16:22:38 +0800</pubDate>
+    <lastBuildDate>Fri, 08 Sep 2017 16:22:38 +0800</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
     
       <item>
@@ -381,7 +381,7 @@ https://gems.ruby-china.org
         <title>IntelliJ IDEA Mac OS X 快捷键</title>
         <description>&lt;p&gt;IntelliJ IDEA Mac OS X 快捷键&lt;/p&gt;
 
-&lt;p&gt;备注：⌘ command,⌥ option,^ control,⇧ shift，⎋ esc，⇥ tab，↩ return&lt;/p&gt;
+&lt;p&gt;备注：⌘ command,⌥ option,^ control,⇧ shift，⎋ esc，⇥ tab，↩ return/enter&lt;/p&gt;
 
 &lt;h3 id=&quot;editing&quot;&gt;Editing&lt;/h3&gt;
 
@@ -492,7 +492,7 @@ https://gems.ruby-china.org
     &lt;tr&gt;
       &lt;td&gt;^⌥O&lt;/td&gt;
       &lt;td&gt;Optimize imports&lt;/td&gt;
-      &lt;td&gt;删除多余的import&lt;/td&gt;
+      &lt;td&gt;导包并删除多余的import&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;^⌥I&lt;/td&gt;
@@ -665,7 +665,7 @@ https://gems.ruby-china.org
     &lt;tr&gt;
       &lt;td&gt;⌥F7/⌘F7&lt;/td&gt;
       &lt;td&gt;Find usages / Find usages in file&lt;/td&gt;
-      &lt;td&gt;搜索对象在当前文件被引用的地方&lt;/td&gt;
+      &lt;td&gt;搜索对象在当前文件被引用的地方,搜索对象被引用的地方&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;⌘⇧F7&lt;/td&gt;
@@ -1162,7 +1162,6 @@ https://gems.ruby-china.org
 &lt;ul&gt;
   &lt;li&gt;各视图区域的切换 cmd + 视图区域对应的数字&lt;/li&gt;
   &lt;li&gt;shift + cmd + e 最近修改文件列表&lt;/li&gt;
-  &lt;li&gt;alt + F7 搜索对象被引用的地方&lt;/li&gt;
   &lt;li&gt;在project中，按下ctrl + shift + f(r) 即是在当前目前下递归查找或替换,搜索出来后，要全部替换，按下alt + a&lt;/li&gt;
   &lt;li&gt;shift + cmd + n  查找文件&lt;/li&gt;
   &lt;li&gt;列编辑模式 cmd+shift+8&lt;/li&gt;
