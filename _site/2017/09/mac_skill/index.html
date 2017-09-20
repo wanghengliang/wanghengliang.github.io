@@ -170,11 +170,33 @@
   <section class="post">
     <p>MacOS使用小技巧整理，持续更新</p>
 
-<h3 id="finder始终显示用户资料库打开终端运行以下命令">Finder始终显示用户「资料库」,打开终端，运行以下命令：</h3>
+<h3 id="finder始终显示用户资料库">Finder始终显示用户「资料库」</h3>
+
+<ol>
+  <li>打开终端，运行以下命令：</li>
+</ol>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>chflags nohidden ~/Library/
 </code></pre>
 </div>
+
+<h3 id="macos-sierra-如何打开任何来源">macOS Sierra 如何打开任何来源</h3>
+
+<ol>
+  <li>打开终端，运行以下命令：</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo spctl --master-disable
+</code></pre>
+</div>
+
+<ol>
+  <li>打开应用程序-系统偏好设置-安全性和隐私-通用，消失的任何来源终于出现了（默认应该勾选了）；</li>
+</ol>
+
+<blockquote>
+  <p>如果你不喜欢用终端输入命令的方式打开任何来源选项，你也可以通过另一种方法来打开第三方应用程序： 按住Control键并点按或右键点按该app的图标，点击打开即可出现“打开”选项，是不是也很方便？大家按照自己的喜欢选择这两种方法即可在macOS Sierra下打开第三方应用。</p>
+</blockquote>
 
 
   </section>
