@@ -198,6 +198,16 @@
   <p>如果你不喜欢用终端输入命令的方式打开任何来源选项，你也可以通过另一种方法来打开第三方应用程序： 按住Control键并点按或右键点按该app的图标，点击打开即可出现“打开”选项，是不是也很方便？大家按照自己的喜欢选择这两种方法即可在macOS Sierra下打开第三方应用。</p>
 </blockquote>
 
+<h3 id="mac-os-x的升级或其他原因可能会导致Ｍysql启动或开机自动运行失败">Mac OS X的升级或其他原因可能会导致ＭySQL启动或开机自动运行失败</h3>
+<p>在ＭySQL操作面板上会提示 <em>Warning:The /usr/local/mysql/data directory is not owned by the ‘mysql‘ or ‘_mysql‘</em></p>
+
+<p>只需要运行如下命令即可</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo chown -R mysql /usr/local/mysql/data
+</code></pre>
+</div>
+
+
 
   </section>
 </article>

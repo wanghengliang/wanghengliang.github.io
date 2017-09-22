@@ -102,7 +102,7 @@ F7|Step into|
 ⌘F8|Toggle breakpoint|
 ⌘⇧F8|View breakpoints|
 
-### Debugging
+### Navigation
 
 快捷键 | 功能描述 | 中文描述
 ---|---|---
@@ -145,7 +145,7 @@ F3|Toggle bookmark|
 F5|Copy|
 F6|Move|
 ⌘Delete|Safe Delete|
-⇧F6|Rename|修改变量名|
+⇧F6|Rename|修改变量名
 ⌘F6|Change Signature|
 ⌘⌥N|Inline|
 ⌘⌥M|Extract Method|
@@ -190,10 +190,14 @@ F6|Move|
 ^⇥|Switch between tabs and tool window|
 
 
+### Other
+
+快捷键 | 功能描述 | 中文描述
+---|---|---
+⇧⌘E| |最近修改文件列表
+⌘1-⌘9| |切换对应视图区域(各个视图对应不同数字)
+⇧⌘8| |列编辑模式
 
 ### 其他
-- 各视图区域的切换 cmd + 视图区域对应的数字
-- shift + cmd + e 最近修改文件列表
 - 在project中，按下ctrl + shift + f(r) 即是在当前目前下递归查找或替换,搜索出来后，要全部替换，按下alt + a
 - shift + cmd + n  查找文件
-- 列编辑模式 cmd+shift+8

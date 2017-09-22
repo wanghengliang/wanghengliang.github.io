@@ -26,9 +26,10 @@ MySQL Community Edition (GPL) MySQL社区版（GPL）
 
 选择MySQL Community Server (GPL) MySQL社区服务器（GPL）
 有几种选择
-1.RPM Bundle（是该版本所有包的集合）
-2.RPM PACKAGE（是某个特定的包，比如server,client,shared lib等）
-3.Compressed TAR Archive，是源码，必须用源码方式安装。
+
+1. RPM Bundle（是该版本所有包的集合）
+2. RPM PACKAGE（是某个特定的包，比如server,client,shared lib等）
+3. Compressed TAR Archive，是源码，必须用源码方式安装。
 这里下载RPM Bundle，然后解压并安装
 
 ```

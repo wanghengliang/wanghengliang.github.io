@@ -5,9 +5,130 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 20 Sep 2017 15:52:05 +0800</pubDate>
-    <lastBuildDate>Wed, 20 Sep 2017 15:52:05 +0800</lastBuildDate>
+    <pubDate>Fri, 22 Sep 2017 17:08:49 +0800</pubDate>
+    <lastBuildDate>Fri, 22 Sep 2017 17:08:49 +0800</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>Mac安装Gitbook并导出电子书</title>
+        <description>&lt;p&gt;安装Gitbook并导出电子书&lt;/p&gt;
+
+&lt;h3 id=&quot;安装gitbook客户端&quot;&gt;安装Gitbook客户端&lt;/h3&gt;
+
+&lt;p&gt;输入如下命令进行安装，一定要用到-g，这个代表全局安装&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo npm install gitbook-cli -g
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在终端输入如下命令即可查看当前Gitbook版本，出现版本信息代表安装成功。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gitbook -V
+CLI version: 2.3.2
+GitBook version: 3.2.3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;安装gitbook编辑器&quot;&gt;安装Gitbook编辑器&lt;/h3&gt;
+
+&lt;p&gt;终端环境下的Gitbook只是为了生成HTML文档与电子书使用的，为了方便进行文章书写建议安装Gitbook编辑器。&lt;/p&gt;
+
+&lt;p&gt;下载地址：&lt;a href=&quot;https://www.gitbook.com/editor/&quot;&gt;GitBook Editor&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;安装了Gitbook桌面端之后，你可以在客户端看见gitbook上已有的书籍，也可进行新建一本书籍。创建书籍一般在~/GitBook/Library/目录下&lt;/p&gt;
+
+&lt;h3 id=&quot;创建电子书&quot;&gt;创建电子书&lt;/h3&gt;
+
+&lt;p&gt;有了书籍后，在对应电子书目录，通过如下命令生成HTML&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gitbook build
+info: 7 plugins are installed
+info: 6 explicitly listed
+info: loading plugin &quot;highlight&quot;... OK
+info: loading plugin &quot;search&quot;... OK
+info: loading plugin &quot;lunr&quot;... OK
+info: loading plugin &quot;sharing&quot;... OK
+info: loading plugin &quot;fontsettings&quot;... OK
+info: loading plugin &quot;theme-default&quot;... OK
+info: found 13 pages
+info: found 1 asset files
+info: &amp;gt;&amp;gt; generation finished with success in 3.1s !
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;看到success的提示表示成功，这个时候对应电子书目录下就生成了一个_book的文件夹。打开就是该书籍的HTML格式了。&lt;/p&gt;
+
+&lt;p&gt;通过如下命令启动服务，就可以在本地浏览了&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gitbook serve
+Live reload server started on port: 35729
+Press CTRL+C to quit ...
+
+info: 7 plugins are installed
+info: loading plugin &quot;livereload&quot;... OK
+info: loading plugin &quot;highlight&quot;... OK
+info: loading plugin &quot;search&quot;... OK
+info: loading plugin &quot;lunr&quot;... OK
+info: loading plugin &quot;sharing&quot;... OK
+info: loading plugin &quot;fontsettings&quot;... OK
+info: loading plugin &quot;theme-default&quot;... OK
+info: found 13 pages
+info: found 1 asset files
+info: &amp;gt;&amp;gt; generation finished with success in 3.3s !
+
+Starting server ...
+Serving book on http://localhost:4000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;看到Serving book on http://localhost:4000，这个时候就可以在浏览器中输入http://localhost:4000进行查看电子书了。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;如果愿意将文档公开到gitbook，可通过Gitbook编辑器提交到gitbook服务器，Gitbook网站上可以直接导出PDF，MOBI，EBUP等电子书格式。
+如果不愿意将文档公开，可以不提交然后在本地生成电子书，方法如下。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;本地生成电子书&quot;&gt;本地生成电子书&lt;/h3&gt;
+
+&lt;p&gt;首先需要安装ebook-convert插件，下载&lt;a href=&quot;https://calibre-ebook.com/download&quot;&gt;calibre&lt;/a&gt;并安装.&lt;/p&gt;
+
+&lt;p&gt;安装好后执行如下命令&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo ln -s /Applications/calibre.app/Contents/MacOS/ebook-convert /usr/local/bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;插件安装并配置完成，接下来生成电子书，执行如下命令&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gitbook pdf . ename.pdf
+info: 7 plugins are installed
+info: 6 explicitly listed
+info: loading plugin &quot;highlight&quot;... OK
+info: loading plugin &quot;search&quot;... OK
+info: loading plugin &quot;lunr&quot;... OK
+info: loading plugin &quot;sharing&quot;... OK
+info: loading plugin &quot;fontsettings&quot;... OK
+info: loading plugin &quot;theme-default&quot;... OK
+info: found 13 pages
+info: found 1 asset files
+info: &amp;gt;&amp;gt; generation finished with success in 6.6s !
+info: &amp;gt;&amp;gt; 1 file(s) generated
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;执行完以上代码，进入书籍目录，即可看到已经转换完成的pdf文件了。
+同理将&lt;code class=&quot;highlighter-rouge&quot;&gt;gitbook pdf . ename.pdf&lt;/code&gt;改为&lt;code class=&quot;highlighter-rouge&quot;&gt;gitbook mobi . ename.mobi&lt;/code&gt;即可生成mobi文件。&lt;/p&gt;
+</description>
+        <pubDate>Fri, 22 Sep 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/09/gitbook/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/09/gitbook/</guid>
+        
+        <category>gitbook</category>
+        
+        
+        <category>开发工具</category>
+        
+      </item>
     
       <item>
         <title>让macOS Sierra 10.12支持KeyGen和Special [K]</title>
@@ -426,6 +547,16 @@ https://gems.ruby-china.org
 &lt;blockquote&gt;
   &lt;p&gt;如果你不喜欢用终端输入命令的方式打开任何来源选项，你也可以通过另一种方法来打开第三方应用程序： 按住Control键并点按或右键点按该app的图标，点击打开即可出现“打开”选项，是不是也很方便？大家按照自己的喜欢选择这两种方法即可在macOS Sierra下打开第三方应用。&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;h3 id=&quot;mac-os-x的升级或其他原因可能会导致Ｍysql启动或开机自动运行失败&quot;&gt;Mac OS X的升级或其他原因可能会导致ＭySQL启动或开机自动运行失败&lt;/h3&gt;
+&lt;p&gt;在ＭySQL操作面板上会提示 &lt;em&gt;Warning:The /usr/local/mysql/data directory is not owned by the ‘mysql‘ or ‘_mysql‘&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;只需要运行如下命令即可&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo chown -R mysql /usr/local/mysql/data
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 </description>
         <pubDate>Fri, 01 Sep 2017 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2017/09/mac_skill/</link>
@@ -849,7 +980,7 @@ https://gems.ruby-china.org
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h3 id=&quot;debugging-1&quot;&gt;Debugging&lt;/h3&gt;
+&lt;h3 id=&quot;navigation&quot;&gt;Navigation&lt;/h3&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -1219,13 +1350,39 @@ https://gems.ruby-china.org
   &lt;/tbody&gt;
 &lt;/table&gt;
 
+&lt;h3 id=&quot;other&quot;&gt;Other&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;快捷键&lt;/th&gt;
+      &lt;th&gt;功能描述&lt;/th&gt;
+      &lt;th&gt;中文描述&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⇧⌘E&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;最近修改文件列表&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⌘1-⌘9&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;切换对应视图区域(各个视图对应不同数字)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;⇧⌘8&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;列编辑模式&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
 &lt;h3 id=&quot;其他&quot;&gt;其他&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;各视图区域的切换 cmd + 视图区域对应的数字&lt;/li&gt;
-  &lt;li&gt;shift + cmd + e 最近修改文件列表&lt;/li&gt;
   &lt;li&gt;在project中，按下ctrl + shift + f(r) 即是在当前目前下递归查找或替换,搜索出来后，要全部替换，按下alt + a&lt;/li&gt;
   &lt;li&gt;shift + cmd + n  查找文件&lt;/li&gt;
-  &lt;li&gt;列编辑模式 cmd+shift+8&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 03 Jan 2017 00:00:00 +0800</pubDate>
@@ -1426,204 +1583,6 @@ Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)
         <guid isPermaLink="true">http://localhost:4000/2016/12/linux_jdk/</guid>
         
         <category>JDK</category>
-        
-        
-        <category>服务器架设</category>
-        
-      </item>
-    
-      <item>
-        <title>MySQL安装</title>
-        <description>&lt;h3 id=&quot;mysql-下载&quot;&gt;mysql 下载&lt;/h3&gt;
-&lt;h4 id=&quot;下载地址&quot;&gt;下载地址:&lt;/h4&gt;
-&lt;p&gt;http://www.mysql.com/downloads/&lt;/p&gt;
-
-&lt;h4 id=&quot;版本mysql包括三个版本&quot;&gt;版本（mysql包括三个版本）&lt;/h4&gt;
-
-&lt;p&gt;MySQL Enterprise Edition (commercial) MySQL企业版（商业）&lt;/p&gt;
-
-&lt;p&gt;MySQL Cluster CGE (commercial) MySQL集群CGE（商业）&lt;/p&gt;
-
-&lt;p&gt;MySQL Community Edition (GPL) MySQL社区版（GPL）&lt;/p&gt;
-
-&lt;p&gt;–&amp;gt;MySQL Community Server (GPL) MySQL社区服务器（GPL）&lt;/p&gt;
-
-&lt;p&gt;–&amp;gt;MySQL Cluster (GPL) MySQL集群（GPL）&lt;/p&gt;
-
-&lt;p&gt;–&amp;gt;MySQL Fabric (GPL) MySQL的织物（GPL）&lt;/p&gt;
-
-&lt;p&gt;选择MySQL Community Server (GPL) MySQL社区服务器（GPL）
-有几种选择
-1.RPM Bundle（是该版本所有包的集合）
-2.RPM PACKAGE（是某个特定的包，比如server,client,shared lib等）
-3.Compressed TAR Archive，是源码，必须用源码方式安装。
-这里下载RPM Bundle，然后解压并安装&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tar -xvf mysql-5.7.18-1.el7.x86_64.rpm-bundle.tar
-rpm -ivh mysql-community-server-minimal-5.7.18-1.el7.x86_64.rpm
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h3 id=&quot;mysql-安装&quot;&gt;mysql 安装&lt;/h3&gt;
-&lt;h4 id=&quot;安装前需要先卸载mariadb-lib&quot;&gt;安装前需要先卸载mariadb-lib&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# rpm -qa|grep mariadb
-mariadb-libs-5.5.44-2.el7.centos.x86_64
-# rpm -e mariadb-libs-5.5.44-2.el7.centos.x86_64 --nodeps
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h4 id=&quot;解压出rpm-bundletar实际上只需要安装以下几个包&quot;&gt;解压出rpm-bundle.tar,实际上只需要安装以下几个包&lt;/h4&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# rpm -ivh mysql-community-common-5.7.16-1.el7.x86_64.rpm
-# rpm -ivh mysql-community-libs-5.7.16-1.el7.x86_64.rpm
-# rpm -ivh mysql-community-client-5.7.16-1.el7.x86_64.rpm
-# rpm -ivh mysql-community-server-5.7.16-1.el7.x86_64.rpm
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;上面几个包有依赖关系，执行有先后。&lt;/p&gt;
-
-&lt;p&gt;使用rpm安装方式安装mysql，安装的路径如下：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;a 数据库目录 /var/lib/mysql/&lt;/li&gt;
-  &lt;li&gt;b 配置文件 /usr/share/mysql(mysql.server命令及配置文件)&lt;/li&gt;
-  &lt;li&gt;c 相关命令 /usr/bin(mysqladmin mysqldump等命令)&lt;/li&gt;
-  &lt;li&gt;d 启动脚本 /etc/rc.d/init.d/(启动脚本文件mysql的目录)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;mysql-配置&quot;&gt;mysql 配置&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# vi /etc/my.cnf
-[client]
-port=3306
-socket=/var/lib/mysql/mysql.sock
-default-character-set=utf8
-
-[mysqld]
-port=3306
-socket=/var/lib/mysql/mysql.sock
-
-basedir = /usr/local/mysql
-pid-file = /data/mysql/mysql.pid
-datadir = /data/mysql
-log_error = /data/mysql/mysql-error.log
-slow_query_log = 1
-long_query_time = 1
-slow_query_log_file = /data/mysql/mysql-slow.log
-
-character-set-server=utf8
-lower_case_table_names=1
-#MySQL服务器默认的“wait_timeout”是28800秒即8小时，意味着如果一个连接的空闲时间超过8个小时，MySQL将自动断开该连接,需要同时修改wait_timeout和interactive_timeout这两个参数
-wait_timeout=288000
-interactive_timeout=288000
-#开启计划
-event_scheduler=1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;数据库初始化&quot;&gt;数据库初始化&lt;/h4&gt;
-&lt;p&gt;为了保证数据库目录为与文件的所有者为 mysql 登陆用户，如果你是以 root 身份运行 mysql 服务，需要执行下面的命令初始化&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mysqld --initialize --user=mysql
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;如果是以 mysql 身份运行，则可以去掉 –user 选项。&lt;/p&gt;
-
-&lt;p&gt;如果 datadir 指向的目标目录下已经有数据文件，则会有类似提示：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mysqld --initialize --user=mysql
-2017-05-03T02:18:00.758981Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
-2017-05-03T02:18:00.761364Z 0 [ERROR] --initialize specified but the data directory has files in it. Aborting.
-2017-05-03T02:18:00.761398Z 0 [ERROR] Aborting
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;因此，需要先确保 datadir 目标目录下是空的，避免误操作破坏已有数据。&lt;/p&gt;
-
-&lt;p&gt;另外 –initialize 选项默认以“安全”模式来初始化，则会为 root 用户生成一个密码并将该密码标记为过期，登陆后你需要设置一个新的密码，&lt;/p&gt;
-
-&lt;p&gt;而使用 –initialize-insecure 命令则不使用安全模式，则不会为 root 用户生成一个密码。&lt;/p&gt;
-
-&lt;p&gt;这里演示使用的 –initialize 初始化的，会生成一个 root 账户密码，密码在log文件里,root@localhost:后面都是&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# cat /var/log/mysqld.log | grep password
-2017-05-03T02:26:10.001375Z 1 [Note] A temporary password is generated for root@localhost: (tfywy9JHk7J
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;数据库测试&quot;&gt;数据库测试&lt;/h3&gt;
-&lt;p&gt;启动服务器并登录测试&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# service mysqld start
-Redirecting to /bin/systemctl start  mysqld.service
-# mysql -uroot -p      
-Enter password: 
-...
-mysql&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;首次使用会有类似提示&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; show databases;
-ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
-mysql&amp;gt; use mysql;
-ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;因为新用户登入后需要立刻修改密码，否则无法继续后续的工作：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; set password = password('abc');
-Query OK, 0 rows affected, 1 warning (0.00 sec)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;重启并测试&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# service mysqld stop
-Redirecting to /bin/systemctl stop  mysqld.service
-# service mysqld start
-Redirecting to /bin/systemctl start  mysqld.service
-# mysql -uroot -p      
-Enter password: 
-...
-mysql&amp;gt; show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-4 rows in set (0.00 sec)
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;mysql-创建数据库和用户&quot;&gt;mysql 创建数据库和用户&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; CREATE DATABASE IF NOT EXISTS `db_test` DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
-Query OK, 1 row affected (0.00 sec)
-
-mysql&amp;gt; CREATE USER 'testusr'@'%' IDENTIFIED BY 'testusr-a123';
-Query OK, 0 rows affected (0.00 sec)
-
-mysql&amp;gt; GRANT all ON db_test.* TO 'testusr'@'%';
-Query OK, 0 rows affected (0.00 sec)
-
-mysql&amp;gt; exit
-Bye
-
-# mysql -utestusr -p
-Enter password: 
-...
-mysql&amp;gt; use db_test;
-Database changed
-mysql&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Thu, 15 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/linux_MySQL/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/linux_MySQL/</guid>
-        
-        <category>MySQL</category>
         
         
         <category>服务器架设</category>
