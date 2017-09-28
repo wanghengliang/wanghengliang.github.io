@@ -1,7 +1,7 @@
 ---
 layout: post
 title: IntelliJ IDEA Mac OS X 快捷键
-date: 2017-01-03 
+date: 2017-01-03
 categories: 开发工具
 tags: IntelliJIDEA 快捷键
 ---
@@ -10,18 +10,18 @@ IntelliJ IDEA Mac OS X 快捷键
 
 备注：⌘ command,⌥ option,^ control,⇧ shift，⎋ esc，⇥ tab，↩ return/enter
 
-### Editing
+### Editing 编辑
 
 快捷键 | 功能描述 | 中文描述
 ---|---|---
-^ Space | Basic code completion (the name of any class, method or variable) | 
-^ ⇧ Space | Smart code completion ( lters the list of methods and variables by expected type)|
+^ Space | Basic code completion (the name of any class, method or variable) |？基本的代码补全
+^ ⇧ Space | Smart code completion ( lters the list of methods and variables by expected type)|？智能代码补全
 ⌘⇧↩|Complete statement|自动补全语法错误部分，比如自动补全`;`、`)`等，特别是对于多重`)`不匹配等错误进行自动补全比较方便，好像只支持单行的，不支持多行代码块
 ⌘P|Parameter info (within method call arguments)|显示方法有哪些参数，类型是什么等信息
 ^J , Mid. button click|Quick documentation lookup|快速文档查询，可快速查看类、接口、方法等的说明信息，（我的电脑可直接按F1，功能相同），按⎋关闭说明信息
-⇧F1|External Doc|
-⌘+ mouse over code|Brief Info
-⌘F1|Show descriptions of error or warning at caret
+⇧F1|External Doc|？外部文档
+⌘+ mouse over code|Brief Info|？简要信息显示
+⌘F1|Show descriptions of error or warning at caret|显示错误或警告的说明
 ⌘N,^↩,^N|Generate code... (Getters, Setters, Constructors, hashCode/equals, toString)|生成getter and setters 和构造函数等
 ^O|Override methods|重写父类方法
 ^I|Implement methods|添加接口实现方法
@@ -30,12 +30,12 @@ IntelliJ IDEA Mac OS X 快捷键
 ⌘⌥/|Comment/uncomment with block comment|多行注释
 ⌥↑|Select successively increasing code blocks|逐步增大选择代码块
 ⌥↓|Decrease current selection to previous state|逐步缩小当前选中代码块
-^⇧Q|Context info
+^⇧Q|Context info|
 ⌥↩|Show intention actions and quick-fixes|显示建议的代码和快速修复
 ⌘⌥L|Reformat code|代码格式化
 ^⌥O|Optimize imports|导包并删除多余的import
-^⌥I|Auto-indent line(s)
-⇥/⇧⇥|Indent/unindent selected lines
+^⌥I|Auto-indent line(s)|
+⇥/⇧⇥|Indent/unindent selected lines|
 ⌘X|Cut current line or selected block to clipboard|剪切文本到剪贴板
 ⌘C|Copy current line or selected block to clipboard|拷贝文本到剪贴板
 ⌘V|Paste from clipboard|从剪贴板粘贴文本
@@ -65,8 +65,8 @@ Double⇧|Search everywhere|全局搜索
 ⌘R|Replace|替换文本
 ⌘⇧F|Find in path|指定路径、文件类型等搜索
 ⌘⇧R|Replace in path|指定路径、文件类型等搜索并替换
-⌘⇧S|Search structurally (Ultimate Edition only)
-⌘⇧M|Replace structurally (Ultimate Edition only)
+⌘⇧S|Search structurally (Ultimate Edition only)|
+⌘⇧M|Replace structurally (Ultimate Edition only)|
 
 ### Usage Search
 
@@ -74,7 +74,7 @@ Double⇧|Search everywhere|全局搜索
 ---|---|---
 ⌥F7/⌘F7|Find usages / Find usages in file |搜索对象在当前文件被引用的地方,搜索对象被引用的地方
 ⌘⇧F7|Highlight usages in file |
-⌘⌥F7|Show usages | 
+⌘⌥F7|Show usages |
 
 ### Compile and Run
 
@@ -176,7 +176,7 @@ F6|Move|
 
 快捷键 | 功能描述 | 中文描述
 ---|---|---
-⌘0...⌘9|Open corresponding tool window|
+⌘0...⌘9|Open corresponding tool window|切换对应视图区域(各个视图对应不同数字)
 ⌘S|Save all|
 ⌘⌥Y|Synchronize|
 ^⌘F|Toggle full screen mode|
@@ -195,7 +195,6 @@ F6|Move|
 快捷键 | 功能描述 | 中文描述
 ---|---|---
 ⇧⌘E| |最近修改文件列表
-⌘1-⌘9| |切换对应视图区域(各个视图对应不同数字)
 ⇧⌘8| |列编辑模式
 
 ### 其他
