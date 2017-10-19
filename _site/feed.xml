@@ -5,9 +5,217 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 28 Sep 2017 17:34:38 +0800</pubDate>
-    <lastBuildDate>Thu, 28 Sep 2017 17:34:38 +0800</lastBuildDate>
+    <pubDate>Thu, 19 Oct 2017 15:42:40 +0800</pubDate>
+    <lastBuildDate>Thu, 19 Oct 2017 15:42:40 +0800</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>保留旧版本安装新版本MySQL</title>
+        <description>&lt;p&gt;保留旧版本安装新版本mysql&lt;/p&gt;
+
+&lt;h3 id=&quot;准备工作&quot;&gt;准备工作&lt;/h3&gt;
+
+&lt;h4 id=&quot;下载新版本mysql&quot;&gt;下载新版本MySQL&lt;/h4&gt;
+&lt;p&gt;下载地址：http://www.mysql.com/downloads/&lt;/p&gt;
+
+&lt;p&gt;依次选择 MySQL Community Edition (GPL) MySQL社区版（GPL）–&amp;gt; MySQL Community Server (GPL) MySQL社区服务器（GPL）&lt;/p&gt;
+
+&lt;p&gt;操作系统选择：Source Code&lt;/p&gt;
+
+&lt;p&gt;下载如下版本：Generic Linux (Architecture Independent), Compressed TAR Archive Includes Boost Headers&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;选择包含Boost的Generic Linux版本，应为每个版本对应的Boost版本有要求，直接选择包含Boost的版本不会出现版本不对应的情况&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;创建安装目录并修改目录拥有者&quot;&gt;创建安装目录并修改目录拥有者&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mkdir /data/mysql3308
+# chown -R mysql:mysql /usr/local/mysql3308
+# chown -R mysql:mysql /data/mysql3308
+
+# mkdir /etc/mysql3308
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;备份mysql&quot;&gt;备份MySQL&lt;/h4&gt;
+&lt;p&gt;…&lt;/p&gt;
+
+&lt;h3 id=&quot;安装新版本mysql&quot;&gt;安装新版本MySQL&lt;/h3&gt;
+&lt;p&gt;然后解压并跳转到解压目录进行编译安装&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# tar -xzvf mysql-boost-5.7.19.tar.gz
+# cd mysql-boost-5.7.19
+
+# cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql3308 \
+-DMYSQL_DATADIR=/data/mysql3308 \
+-DMYSQL_UNIX_ADDR=/data/mysql3308/mysql.sock \
+-DSYSCONFDIR=/etc/mysql3308 \
+-DMYSQL_USER=mysql \
+-DMYSQL_TCP_PORT=3308 \
+-DDEFAULT_CHARSET=utf8mb4 \
+-DDEFAULT_COLLATION=utf8mb4_general_ci \
+-DEXTRA_CHARSETS=all \
+-DWITH_MYISAM_STORAGE_ENGINE=1 \
+-DWITH_INNOBASE_STORAGE_ENGINE=1 \
+-DWITH_ARCHIVE_STORAGE_ENGINE=1 \
+-DWITH_BLACKHOLE_STORAGE_ENGINE=1 \
+-DWITH_MEMORY_STORAGE_ENGINE=1 \
+-DWITH_PARTITION_STORAGE_ENGINE=1 \
+-DWITH_READLINE=1 \
+-DENABLED_LOCAL_INFILE=1 \
+-DWITH_EMBEDDED_SERVER=1 \
+-DWITH_BOOST=boost/boost_1_59_0
+
+# make &amp;amp;&amp;amp; make install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;DWITH_BOOST参数对应的是刚刚解压后的boost目录&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;DSYSCONFDIR参数为配置文件my.cnf存放路径&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;初始化mysqld&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql3308 --datadir=/data/mysql3308
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;初始化后会生成默认临时密码，记住密码一会儿登录时需要：A temporary password is generated for root@localhost: ET#&amp;amp;dQs_p22%&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;添加mysql配置文件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# vi /etc/mysql3308/my.cnf
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;添加启动项配置&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# cd /usr/local/mysql3308/support-files
+# cp mysql.server /etc/init.d/mysql3308
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;修改/etc/init.d/mysql3308文件中的如下代码&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;basedir=/usr/local/mysql3308
+datadir=/data/mysql3308
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;设置为系统服务&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# chkconfig --add mysql3308
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;启动服务&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# service mysql3308 restart
+...
+
+# /usr/local/mysql3308/bin/mysql -uroot -p
+Enter password: 
+...
+mysql&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;输入之前初始化时候的密码进入，首次使用会有提示修改密码&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; ALTER USER 'root'@'localhost' IDENTIFIED BY 'abc1';
+mysql&amp;gt; FLUSH PRIVILEGES;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;测试mysql&quot;&gt;测试MySQL&lt;/h3&gt;
+&lt;p&gt;重启并测试&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# service mysql3308 restart
+...
+
+# /usr/local/mysql3308/bin/mysql -uroot -p     
+Enter password: 
+...
+mysql&amp;gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;旧版本测试&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mysql -uroot -p
+Enter password: 
+...
+mysql&amp;gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;通过如下命令可查看两个mysql的端口和连接数信息&lt;/p&gt;
+
+&lt;p&gt;查询端口&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; show global variables like 'port';
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;查询连接数&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; show processlist;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;删除旧版本&quot;&gt;删除旧版本&lt;/h3&gt;
+&lt;p&gt;如果是升级可迁移数据后删除旧版本&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# rpm -qa | grep mysql
+mysql-connector-odbc-5.1.5r1144-7.el6.x86_64
+mysql-libs-5.1.71-1.el6.x86_64
+mysql-5.1.71-1.el6.x86_64
+mysql-server-5.1.71-1.el6.x86_64
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;逐一卸载&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# rpm -e mysql-connector-odbc-5.1.5r1144-7.el6.x86_64
+# rpm -e mysql-libs-5.1.71-1.el6.x86_64
+# rpm -e mysql-5.1.71-1.el6.x86_64
+# rpm -e mysql-server-5.1.71-1.el6.x86_64
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 19 Oct 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/10/linux_update_mysql/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/10/linux_update_mysql/</guid>
+        
+        <category>MySQL</category>
+        
+        
+        <category>服务器架设</category>
+        
+      </item>
     
       <item>
         <title>Apache许可证2.0 中文版</title>
@@ -473,7 +681,7 @@ https://github.com/progit/progit2&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;打开下载的文件，解压后将“CORE Patcher.app”拖入应用程序中；&lt;/li&gt;
-  &lt;li&gt;选择需要修复的“CORE Keygen.app”，屏幕右上角有修复完成的提示，“CORE Keygen.app”就能顺利打开了，此工具支持CORE和x-force系列注册机；&lt;/li&gt;
+  &lt;li&gt;运行“CORE Patcher.app”,选择需要修复的“CORE Keygen.app”，屏幕右上角有修复完成的提示，“CORE Keygen.app”就能顺利打开了，此工具支持CORE和x-force系列注册机；&lt;/li&gt;
   &lt;li&gt;Have done！&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -1728,40 +1936,6 @@ https://gems.ruby-china.org
         
         <category>快捷键</category>
         
-        
-        <category>开发工具</category>
-        
-      </item>
-    
-      <item>
-        <title>Mac终端用Sublime打开指定文件或文件夹</title>
-        <description>&lt;p&gt;经常使用Mac终端或iTerm,但是编辑工具习惯了使用Sublime，所以希望从终端用sublime打开指定文件或文件夹，方法如下：&lt;/p&gt;
-
-&lt;h3 id=&quot;1建立sublime的别名软连接&quot;&gt;1.建立Sublime的别名软连接&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir ~/bin
-sudo ln -s &quot;/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl&quot; ~/bin/subl
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h3 id=&quot;2将bin添加到环境变量中&quot;&gt;2.将~/bin添加到环境变量中&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi ~/.bash_profile
-   export PATH=&quot;~/bin:$PATH&quot;
-
-source ~/.bash_profile
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h3 id=&quot;3使用mac终端用sublime打开指定文件或文件夹&quot;&gt;3.使用mac终端用Sublime打开指定文件或文件夹&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;subl xx
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Tue, 27 Dec 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/12/Terminal_Sublime/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/12/Terminal_Sublime/</guid>
-        
-        <category>Sublime</category>
-        
-        
-        <category>MacOS</category>
         
         <category>开发工具</category>
         

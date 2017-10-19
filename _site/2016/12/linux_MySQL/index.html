@@ -193,8 +193,13 @@
   <li>RPM Bundle（是该版本所有包的集合）</li>
   <li>RPM PACKAGE（是某个特定的包，比如server,client,shared lib等）</li>
   <li>Compressed TAR Archive，是源码，必须用源码方式安装。
-这里下载RPM Bundle，然后解压并安装</li>
+    <blockquote>
+      <p>如果没有Compressed TAR Archive，想采用源码安装，则在选择操作系统下拉框中选择Source Code，然后选择Generic Linux，带boost库的mysql下载。</p>
+    </blockquote>
+  </li>
 </ol>
+
+<p>这里下载RPM Bundle，然后解压并安装</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>tar -xvf mysql-5.7.18-1.el7.x86_64.rpm-bundle.tar
 rpm -ivh mysql-community-server-minimal-5.7.18-1.el7.x86_64.rpm

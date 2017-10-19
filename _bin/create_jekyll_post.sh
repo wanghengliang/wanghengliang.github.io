@@ -19,6 +19,11 @@ categories="${defaultCategories}"
 #文档标签
 tags="${defaultTags}"
 
+#现有参考分类
+existingCategorys="$(cat _site/existingcategorys.txt)"
+#现有参考标签
+existingTags="$(cat _site/existingtags.txt)"
+
 # 设置项目编号
 if  [ ! -n "$1" ] ;then
 	read -p "请输入文件名：" pFileName
@@ -33,12 +38,14 @@ else
 	#帮助文档
 	if [[ ("$1" = "--help") || ("$1" = "-H") ]] ;then
 		echo "使用方法："
-		echo "命令如下： ./create_post.sh mac_skill sysdate MacBook使用小技巧 MacOS MacOS"
+		echo "命令如下： whladdblog mac_skill sysdate MacBook使用小技巧 MacOS MacOS"
 		echo "参数1（M）：文件名，支持英文、数字、 下划线_ 、中划线-"
 		echo "参数2（O）：文档时间，格式为%Y-%m-%d，sysdate为当前时间"
 		echo "参数3（O）：文档标题"
-		echo "参数4（O）：文档分类"
-		echo "参数5（O）：文档标签"
+		echo "参数4（O）：文档分类,现有分类建议如下:"
+		echo "${existingCategorys}"
+		echo "参数5（O）：文档标签,现有标签建议如下:"
+		echo "${existingTags}"
 		exit
 	fi
 	#echo "参数设置的文件名为：$1"
@@ -53,7 +60,11 @@ if [ ! -n "$1" ] ;then
 		ctime="${defaultTime}"
 	else
 		#echo "输入的文档时间为：$pTime"
-		ctime="$pTime"
+		if [[ ("$pTime" = "null") || ("$pTime" = "sysdate") ]] ;then
+			ctime="${defaultTime}"
+		else
+			ctime="$pTime"
+		fi
 	fi
 elif [ ! -n "$2" ] ;then
 	echo "没有第2个参数，设置为默认文档时间：${defaultTime}"
@@ -88,10 +99,7 @@ fi
 # 设置文档分类
 if  [ ! -n "$1" ] ;then
 	echo "请输入文档分类：现有分类建议如下："
-	echo "  MacOS"
-	echo "  开发工具"
-	echo "  服务器架设"
-	echo "  技术开发"
+	echo "${existingCategorys}"
 	read pCategories
 	if  [ ! -n "$pCategories" ] ;then
 		echo "没有输入文档分类，设置为默认文档分类：${defaultCategories}"
@@ -110,7 +118,9 @@ fi
 
 # 设置文档标签
 if [ ! -n "$1" ] ;then
-	read -p "请输入文档标签：" pTags
+	echo "请输入文档标签：现有标签建议如下："
+	echo "${existingTags}"
+	read pTags
 	if  [ ! -n "$pTags" ] ;then
 		echo "没有输入文档标签，设置为默认文档标签：${defaultTags}"
 		tags="${defaultTags}"

@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>让macOS Sierra 10.12支持KeyGen和Special [K]</title>
-  <meta name="description" content="macOS Sierra 10.12 注册机修复工具，下载链接: 百度云 密码: ngf4">
+  <title>保留旧版本安装新版本MySQL</title>
+  <meta name="description" content="保留旧版本安装新版本mysql">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="让macOS Sierra 10.12支持KeyGen和Special [K]">
-  <meta name="twitter:description" content="macOS Sierra 10.12 注册机修复工具，下载链接: 百度云 密码: ngf4">
+  <meta name="twitter:title" content="保留旧版本安装新版本MySQL">
+  <meta name="twitter:description" content="保留旧版本安装新版本mysql">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="让macOS Sierra 10.12支持KeyGen和Special [K]">
-  <meta property="og:description" content="macOS Sierra 10.12 注册机修复工具，下载链接: 百度云 密码: ngf4">
+  <meta property="og:title" content="保留旧版本安装新版本MySQL">
+  <meta property="og:description" content="保留旧版本安装新版本mysql">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2017/09/macOS_Sierra_Keygen/">
+  <link rel="canonical" href="http://localhost:4000/2017/10/linux_update_mysql/">
   <link rel="alternate" type="application/rss+xml" title="hengliang" href="http://localhost:4000/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -157,10 +157,10 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title">让macOS Sierra 10.12支持KeyGen和Special [K]</h1>
+    <h1 class="post-title">保留旧版本安装新版本MySQL</h1>
     <div class="post-meta">
       <img src="/images/calendar.png" width="20px"/> 
-      <time datetime="2017-09-20 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-09-20</time>  
+      <time datetime="2017-10-19 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-10-19</time>  
          
       <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
     </p>
@@ -168,27 +168,200 @@
   </header>
 
   <section class="post">
-    <p>macOS Sierra 10.12 注册机修复工具，下载链接: <a href="https://pan.baidu.com/s/1nvgd5HJ">百度云</a> 密码: ngf4</p>
+    <p>保留旧版本安装新版本mysql</p>
 
-<h3 id="corel-keygen-系列">Corel Keygen 系列</h3>
+<h3 id="准备工作">准备工作</h3>
 
-<ol>
-  <li>打开下载的文件，解压后将“CORE Patcher.app”拖入应用程序中；</li>
-  <li>运行“CORE Patcher.app”,选择需要修复的“CORE Keygen.app”，屏幕右上角有修复完成的提示，“CORE Keygen.app”就能顺利打开了，此工具支持CORE和x-force系列注册机；</li>
-  <li>Have done！</li>
-</ol>
+<h4 id="下载新版本mysql">下载新版本MySQL</h4>
+<p>下载地址：http://www.mysql.com/downloads/</p>
 
-<h3 id="special-k-系列">Special K 系列</h3>
+<p>依次选择 MySQL Community Edition (GPL) MySQL社区版（GPL）–&gt; MySQL Community Server (GPL) MySQL社区服务器（GPL）</p>
 
-<ol>
-  <li>将“Special K for Sierra Utility.app”拖入应用程序中，打开提示安装Xcode，必须安装；</li>
-  <li>第一次弹出对话框选择要运行的Special K系列注册机，第二次弹出对话框选择拖入应用程序后需要破解的应用；</li>
-  <li>Have done！</li>
-</ol>
+<p>操作系统选择：Source Code</p>
+
+<p>下载如下版本：Generic Linux (Architecture Independent), Compressed TAR Archive Includes Boost Headers</p>
+<blockquote>
+  <p>选择包含Boost的Generic Linux版本，应为每个版本对应的Boost版本有要求，直接选择包含Boost的版本不会出现版本不对应的情况</p>
+</blockquote>
+
+<h4 id="创建安装目录并修改目录拥有者">创建安装目录并修改目录拥有者</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># mkdir /data/mysql3308
+# chown -R mysql:mysql /usr/local/mysql3308
+# chown -R mysql:mysql /data/mysql3308
+
+# mkdir /etc/mysql3308
+</code></pre>
+</div>
+
+<h4 id="备份mysql">备份MySQL</h4>
+<p>…</p>
+
+<h3 id="安装新版本mysql">安装新版本MySQL</h3>
+<p>然后解压并跳转到解压目录进行编译安装</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># tar -xzvf mysql-boost-5.7.19.tar.gz
+# cd mysql-boost-5.7.19
+
+# cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql3308 \
+-DMYSQL_DATADIR=/data/mysql3308 \
+-DMYSQL_UNIX_ADDR=/data/mysql3308/mysql.sock \
+-DSYSCONFDIR=/etc/mysql3308 \
+-DMYSQL_USER=mysql \
+-DMYSQL_TCP_PORT=3308 \
+-DDEFAULT_CHARSET=utf8mb4 \
+-DDEFAULT_COLLATION=utf8mb4_general_ci \
+-DEXTRA_CHARSETS=all \
+-DWITH_MYISAM_STORAGE_ENGINE=1 \
+-DWITH_INNOBASE_STORAGE_ENGINE=1 \
+-DWITH_ARCHIVE_STORAGE_ENGINE=1 \
+-DWITH_BLACKHOLE_STORAGE_ENGINE=1 \
+-DWITH_MEMORY_STORAGE_ENGINE=1 \
+-DWITH_PARTITION_STORAGE_ENGINE=1 \
+-DWITH_READLINE=1 \
+-DENABLED_LOCAL_INFILE=1 \
+-DWITH_EMBEDDED_SERVER=1 \
+-DWITH_BOOST=boost/boost_1_59_0
+
+# make &amp;&amp; make install
+</code></pre>
+</div>
 
 <blockquote>
-  <p>PS.此方法也不能保证100%所有注册机都可以正常运行！</p>
+  <p>DWITH_BOOST参数对应的是刚刚解压后的boost目录</p>
 </blockquote>
+
+<blockquote>
+  <p>DSYSCONFDIR参数为配置文件my.cnf存放路径</p>
+</blockquote>
+
+<p>初始化mysqld</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql3308 --datadir=/data/mysql3308
+</code></pre>
+</div>
+
+<blockquote>
+  <p>初始化后会生成默认临时密码，记住密码一会儿登录时需要：A temporary password is generated for root@localhost: ET#&amp;dQs_p22%</p>
+</blockquote>
+
+<p>添加mysql配置文件</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># vi /etc/mysql3308/my.cnf
+...
+</code></pre>
+</div>
+
+<p>添加启动项配置</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># cd /usr/local/mysql3308/support-files
+# cp mysql.server /etc/init.d/mysql3308
+</code></pre>
+</div>
+
+<p>修改/etc/init.d/mysql3308文件中的如下代码</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>basedir=/usr/local/mysql3308
+datadir=/data/mysql3308
+</code></pre>
+</div>
+
+<p>设置为系统服务</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># chkconfig --add mysql3308
+</code></pre>
+</div>
+
+<p>启动服务</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># service mysql3308 restart
+...
+
+# /usr/local/mysql3308/bin/mysql -uroot -p
+Enter password: 
+...
+mysql&gt;
+</code></pre>
+</div>
+<p>输入之前初始化时候的密码进入，首次使用会有提示修改密码</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; ALTER USER 'root'@'localhost' IDENTIFIED BY 'abc1';
+mysql&gt; FLUSH PRIVILEGES;
+</code></pre>
+</div>
+
+<h3 id="测试mysql">测试MySQL</h3>
+<p>重启并测试</p>
+<div class="highlighter-rouge"><pre class="highlight"><code># service mysql3308 restart
+...
+
+# /usr/local/mysql3308/bin/mysql -uroot -p     
+Enter password: 
+...
+mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+</code></pre>
+</div>
+
+<p>旧版本测试</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># mysql -uroot -p
+Enter password: 
+...
+mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+</code></pre>
+</div>
+
+<p>通过如下命令可查看两个mysql的端口和连接数信息</p>
+
+<p>查询端口</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; show global variables like 'port';
+</code></pre>
+</div>
+
+<p>查询连接数</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; show processlist;
+</code></pre>
+</div>
+
+<h3 id="删除旧版本">删除旧版本</h3>
+<p>如果是升级可迁移数据后删除旧版本</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># rpm -qa | grep mysql
+mysql-connector-odbc-5.1.5r1144-7.el6.x86_64
+mysql-libs-5.1.71-1.el6.x86_64
+mysql-5.1.71-1.el6.x86_64
+mysql-server-5.1.71-1.el6.x86_64
+</code></pre>
+</div>
+
+<p>逐一卸载</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># rpm -e mysql-connector-odbc-5.1.5r1144-7.el6.x86_64
+# rpm -e mysql-libs-5.1.71-1.el6.x86_64
+# rpm -e mysql-5.1.71-1.el6.x86_64
+# rpm -e mysql-server-5.1.71-1.el6.x86_64
+</code></pre>
+</div>
 
 
   </section>
@@ -258,15 +431,10 @@
        <ul class="pager">
         
         <li class="previous">
-            <a href="/2017/09/IntelliJIDEA_Multi_Module/" data-toggle="tooltip" data-placement="top" title="IntelliJ IDEA 创建多模块项目的正确姿势">上一篇：  <span>IntelliJ IDEA 创建多模块项目的正确姿势</span>
+            <a href="/2017/09/Apache_License_Version_2.0_zh/" data-toggle="tooltip" data-placement="top" title="Apache许可证2.0 中文版">上一篇：  <span>Apache许可证2.0 中文版</span>
             </a>
         </li>
         
-        
-        <li class="next">
-            <a href="/2017/09/gitbook/" data-toggle="tooltip" data-placement="top" title="Mac安装Gitbook并导出电子书">下一篇：  <span>Mac安装Gitbook并导出电子书</span>
-            </a>
-        </li>
         
     </ul>
 </section>
