@@ -2,8 +2,8 @@
 layout: post
 title: MySQL安装
 date: 2016-12-15
-categories: 服务器架设
-tags: MySQL
+categories: linux
+tags: MySQL 服务器架设
 ---
 
 ### mysql 下载

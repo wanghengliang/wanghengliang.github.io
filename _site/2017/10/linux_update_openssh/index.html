@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>标签</title>
-  <meta name="description" content="快乐地创造和品味生活">
+  <title>CentOS 6.5升级OpenSSH步骤</title>
+  <meta name="description" content="备份当前openssh">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="标签">
-  <meta name="twitter:description" content="快乐地创造和品味生活">
+  <meta name="twitter:title" content="CentOS 6.5升级OpenSSH步骤">
+  <meta name="twitter:description" content="备份当前openssh">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="标签">
-  <meta property="og:description" content="快乐地创造和品味生活">
+  <meta property="og:title" content="CentOS 6.5升级OpenSSH步骤">
+  <meta property="og:description" content="备份当前openssh">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/tags/">
+  <link rel="canonical" href="http://localhost:4000/2017/10/linux_update_openssh/">
   <link rel="alternate" type="application/rss+xml" title="hengliang" href="http://localhost:4000/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -157,566 +157,134 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
+    <h1 class="post-title">CentOS 6.5升级OpenSSH步骤</h1>
     <div class="post-meta">
-      <time datetime="" itemprop="datePublished" class="post-meta__date date"></time>
-      <span class="post-meta__tags tags"></span>
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2017-10-19 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-10-19</time>  
+         
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
     </div>
-    <h1 class="post-title">标签</h1>
   </header>
 
   <section class="post">
-    
+    <h3 id="备份当前openssh">备份当前openssh</h3>
 
-<!--
-<ul class="tag_box inline">
-    
-  
-
-
-  
-     
-    	<li><a href="#MacOS-ref">MacOS <span>4</span></a></li>
-     
-    	<li><a href="#Go2Shell-ref">Go2Shell <span>1</span></a></li>
-     
-    	<li><a href="#MySQL-ref">MySQL <span>2</span></a></li>
-     
-    	<li><a href="#服务器架设-ref">服务器架设 <span>5</span></a></li>
-     
-    	<li><a href="#JDK-ref">JDK <span>1</span></a></li>
-     
-    	<li><a href="#Tomcat-ref">Tomcat <span>1</span></a></li>
-     
-    	<li><a href="#Sublime-ref">Sublime <span>1</span></a></li>
-     
-    	<li><a href="#IntelliJIDEA-ref">IntelliJIDEA <span>2</span></a></li>
-     
-    	<li><a href="#快捷键-ref">快捷键 <span>1</span></a></li>
-     
-    	<li><a href="#rvm-ref">rvm <span>1</span></a></li>
-     
-    	<li><a href="#Ruby-ref">Ruby <span>1</span></a></li>
-     
-    	<li><a href="#jekyll-ref">jekyll <span>1</span></a></li>
-     
-    	<li><a href="#blog系统-ref">blog系统 <span>1</span></a></li>
-     
-    	<li><a href="#Sierra-ref">Sierra <span>1</span></a></li>
-     
-    	<li><a href="#注册机修复工具-ref">注册机修复工具 <span>1</span></a></li>
-     
-    	<li><a href="#gitbook-ref">gitbook <span>1</span></a></li>
-     
-    	<li><a href="#License-ref">License <span>2</span></a></li>
-     
-    	<li><a href="#CentOS-ref">CentOS <span>1</span></a></li>
-    
-  
-
-
-
-</ul>
--->
-<div class = "card">
- 
-
-  <h3 id="MacOS-ref">MacOS</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2017/09/macOS_Sierra_Keygen/">让macOS Sierra 10.12支持KeyGen和Special [K]</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/2017/09/rvm_install_ruby/">Mac OS10.12采用rvm更新安装Ruby</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/2017/09/mac_skill/">MacBook使用小技巧</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/2016/11/go2shell/">Go2Shell安装和设置</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
- 
-
-  <h3 id="Go2Shell-ref">Go2Shell</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2016/11/go2shell/">Go2Shell安装和设置</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
- 
-
-  <h3 id="MySQL-ref">MySQL</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2017/10/linux_update_mysql/">保留旧版本安装新版本MySQL</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/2016/12/linux_MySQL/">MySQL安装</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
- 
-
-  <h3 id="服务器架设-ref">服务器架设</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2017/10/linux_update_openssh/">CentOS 6.5升级OpenSSH步骤</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/2017/10/linux_update_mysql/">保留旧版本安装新版本MySQL</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/2016/12/linux_tomcat/">Tomcat安装</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/2016/12/linux_jdk/">JDK安装</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/2016/12/linux_MySQL/">MySQL安装</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
- 
-
-  <h3 id="JDK-ref">JDK</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2016/12/linux_jdk/">JDK安装</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
- 
-
-  <h3 id="Tomcat-ref">Tomcat</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2016/12/linux_tomcat/">Tomcat安装</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
- 
-
-  <h3 id="Sublime-ref">Sublime</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2016/12/Terminal_Sublime/">Mac终端用Sublime打开指定文件或文件夹</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
- 
-
-  <h3 id="IntelliJIDEA-ref">IntelliJIDEA</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2017/09/IntelliJIDEA_Multi_Module/">IntelliJ IDEA 创建多模块项目的正确姿势</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/2017/01/IntelliJIDEA_ReferenceCard_mac/">IntelliJ IDEA Mac OS X 快捷键</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
- 
-
-  <h3 id="快捷键-ref">快捷键</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2017/01/IntelliJIDEA_ReferenceCard_mac/">IntelliJ IDEA Mac OS X 快捷键</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
- 
-
-  <h3 id="rvm-ref">rvm</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2017/09/rvm_install_ruby/">Mac OS10.12采用rvm更新安装Ruby</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
- 
-
-  <h3 id="Ruby-ref">Ruby</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2017/09/rvm_install_ruby/">Mac OS10.12采用rvm更新安装Ruby</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
- 
-
-  <h3 id="jekyll-ref">jekyll</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2017/09/jekyll_blog/">Jekyll搭建个人博客过程记录</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
- 
-
-  <h3 id="blog系统-ref">blog系统</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2017/09/jekyll_blog/">Jekyll搭建个人博客过程记录</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
- 
-
-  <h3 id="Sierra-ref">Sierra</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2017/09/macOS_Sierra_Keygen/">让macOS Sierra 10.12支持KeyGen和Special [K]</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
- 
-
-  <h3 id="注册机修复工具-ref">注册机修复工具</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2017/09/macOS_Sierra_Keygen/">让macOS Sierra 10.12支持KeyGen和Special [K]</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
- 
-
-  <h3 id="gitbook-ref">gitbook</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2017/09/gitbook/">Mac安装Gitbook并导出电子书</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
- 
-
-  <h3 id="License-ref">License</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2017/09/Apache_License_Version_2.0_zh/">Apache许可证2.0 中文版</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/2017/09/Apache_License_Version_2.0/">Apache License Version 2.0</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
- 
-
-  <h3 id="CentOS-ref">CentOS</h3>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/2017/10/linux_update_openssh/">CentOS 6.5升级OpenSSH步骤</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
-
+<div class="highlighter-rouge"><pre class="highlight"><code># mv /etc/ssh /etc/ssh.old
+</code></pre>
 </div>
+
+<h3 id="卸载当前openssh">卸载当前openssh</h3>
+
+<h4 id="查看已安装的openssh">查看已安装的openssh</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># rpm -qa | grep openssh
+</code></pre>
+</div>
+
+<h4 id="删除">删除</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># rpm -qa |grep openssh|xargs -i rpm -e --nodeps {}
+</code></pre>
+</div>
+
+
 
   </section>
 </article>
+
+<section>
+
+            <div class="content-play">
+              <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">打赏一个呗</a></p>
+              <div class="hide_box-play"></div>
+              <div class="shang_box-play">
+                <a class="shang_close-play" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="/images/payimg/close.jpg" alt="取消" /></a>
+                <div class="shang_tit-play">
+                  <p>感谢您的支持，我会继续努力的!</p>
+                </div>
+                <div class="shang_payimg">
+                    <img src="/images/payimg/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+              <div class="shang_payimg">    
+                    <img src="/images/payimg/weipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+                <div class="pay_explain">扫码打赏</div>
+                <div class="shang_payselect">
+                  <div class="pay_item checked" data-id="alipay">
+                    <span class="pay_logo"><img src="/images/payimg/alipay.jpg" alt="支付宝" /></span>
+                  </div>
+                  <div class="pay_item" data-id="weipay">
+                    <span class="pay_logo"><img src="/images/payimg/wechat.jpg" alt="微信" /></span>
+                  </div>
+                </div>
+                <div class="shang_info-play">
+                  <p>打开<span id="shang_pay_txt">支付宝或微信</span>扫一扫，即可进行扫码打赏哦</p>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+            function dashangToggle(){
+              $(".hide_box-play").fadeToggle();
+              $(".shang_box-play").fadeToggle();
+            }
+            </script>
+
+            <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+
+            <style type="text/css">
+              .content-play{width:80%;margin-top: 20px;margin-bottom: 10px;height:40px;}
+              .hide_box-play{z-index:999;filter:alpha(opacity=50);background:#666;opacity: 0.5;-moz-opacity: 0.5;left:0;top:0;height:99%;width:100%;position:fixed;display:none;}
+              .shang_box-play{width:540px;height:540px;padding:10px;background-color:#fff;border-radius:10px;position:fixed;z-index:1000;left:50%;top:50%;margin-left:-280px;margin-top:-280px;border:1px dotted #dedede;display:none;}
+              .shang_box-play img{border:none;border-width:0;}
+              .dashang{display:block;width:100px;margin:5px auto;height:25px;line-height:25px;padding:10px;background-color:#E74851;color:#fff;text-align:center;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;}
+              .dashang:hover{opacity:0.8;padding:15px;font-size:18px;}
+              .shang_close-play{float:right;display:inline-block;
+                margin-right: 10px;margin-top: 20px;
+              }
+              .shang_logo{display:block;text-align:center;margin:20px auto;}
+              .shang_tit-play{width: 100%;height: 75px;text-align: center;line-height: 66px;color: #a3a3a3;font-size: 16px;background: url('/images/payimg/cy-reward-title-bg.jpg');font-family: 'Microsoft YaHei';margin-top: 7px;margin-right:2px;}
+              .shang_tit-play p{color:#a3a3a3;text-align:center;font-size:16px;}
+              .shang_payimg{width:140px;padding:10px;padding-left: 80px; /*border:6px solid #EA5F00;**/margin:0 auto;border-radius:3px;height:140px;display:inline-block;}
+              .shang_payimg img{display:inline-block;margin-right:10px;float:left;text-align:center;width:140px;height:140px; }
+              .pay_explain{text-align:center;margin:10px auto;font-size:12px;color:#545454;}
+              .shang_payselect{text-align:center;margin:0 auto;margin-top:40px;cursor:pointer;height:60px;width:500px;margin-left:110px;}
+              .shang_payselect .pay_item{display:inline-block;margin-right:140px;float:left;}
+              .shang_info-play{clear:both;}
+              .shang_info-play p,.shang_info-play a{color:#C3C3C3;text-align:center;font-size:12px;text-decoration:none;line-height:2em;}
+            </style>
+
+       <ul class="pager">
+        
+        <li class="previous">
+            <a href="/2017/10/linux_update_mysql/" data-toggle="tooltip" data-placement="top" title="保留旧版本安装新版本MySQL">上一篇：  <span>保留旧版本安装新版本MySQL</span>
+            </a>
+        </li>
+        
+        
+    </ul>
+</section>
+
+<section class="post-comments">
+
+
+    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    <script>
+    var cloudTieConfig = {
+      url: document.location.href, 
+      sourceId: "",
+      productKey: "aa395cf7778f458492060f3f53301b7c",
+      target: "cloud-tie-wrapper"
+    };
+    var yunManualLoad = true;
+    Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+    </script>
+
+
+  
+</section>
+
 
             <section class="footer">
     <footer>

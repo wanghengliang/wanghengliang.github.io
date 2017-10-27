@@ -36,7 +36,7 @@ IntelliJ IDEA Mac OS X 快捷键
 ^⌥O|Optimize imports|导包并删除多余的import
 ^⌥I|Auto-indent line(s)|
 ⇥/⇧⇥|Indent/unindent selected lines|
-⌘X|Cut current line or selected block to clipboard|剪切文本到剪贴板
+⌘X|Cut current line or selected block to clipboard|剪切文本到剪贴板(剪切当前行或选中文本)
 ⌘C|Copy current line or selected block to clipboard|拷贝文本到剪贴板
 ⌘V|Paste from clipboard|从剪贴板粘贴文本
 ⌘⇧V|Paste from recent buffers...|从缓冲区(最近复制文本列表)粘贴文本
@@ -200,3 +200,8 @@ F6|Move|
 ### 其他
 - 在project中，按下ctrl + shift + f(r) 即是在当前目前下递归查找或替换,搜索出来后，要全部替换，按下alt + a
 - shift + cmd + n  查找文件
+- idea自动引入包, Editor->General->auto Import, 勾选Add unambiguous imports on the fly后, 可以实现自动导入
+- 如果idea不刷新依赖, 可以在pom右键, 找到maven->reimport重新导入
+
+
+

@@ -3,7 +3,7 @@ layout: post
 title: Apache License Version 2.0
 date: 2017-09-26
 categories: 
-tags: 
+tags: License 
 ---
                                  Apache License
                            Version 2.0, January 2004

@@ -2,7 +2,7 @@
 layout: post
 title: Mac终端用Sublime打开指定文件或文件夹
 date: 2016-12-27
-categories: MacOS 开发工具
+categories: 开发工具
 tags: Sublime
 ---
 经常使用Mac终端或iTerm,但是编辑工具习惯了使用Sublime，所以希望从终端用sublime打开指定文件或文件夹，方法如下：

@@ -2,8 +2,8 @@
 layout: post
 title: Tomcat安装
 date: 2016-12-15
-categories: 服务器架设
-tags: Tomcat
+categories: linux
+tags: Tomcat 服务器架设
 ---
 
 ### 下载Tomcat

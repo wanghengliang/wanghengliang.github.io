@@ -1,6 +1,7 @@
 	MacOS
 	Go2Shell
 	MySQL
+	服务器架设
 	JDK
 	Tomcat
 	Sublime
@@ -9,7 +10,10 @@
 	rvm
 	Ruby
 	jekyll
+	blog系统
 	Sierra
 	注册机修复工具
 	gitbook
+	License
+	CentOS
 

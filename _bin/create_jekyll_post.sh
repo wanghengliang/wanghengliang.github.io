@@ -1,6 +1,6 @@
 #!/bin/bash
 
-postPath="./_posts"
+defaultPostPath="./_posts"
 
 defaultTime=$(date +%Y-%m-%d)
 defaultFileName="default"
@@ -136,8 +136,19 @@ else
 	tags=$5
 fi
 
+# 设置文档存放路径
+postPath="${defaultPostPath}"
+# 如果文档分类不为空则创建分类目录并将其设置为文档存放路径
+if [[ ("$categories" != "") ]] ;then
+	postPath="${postPath}/${categories}"
+fi
+# 如果目录不存在则创建目录
+if [ ! -d "${postPath}" ]; then
+	mkdir ${postPath}
+fi
 
 postFile="${postPath}/${ctime}-${fileName}.md"
+
 echo -e "---" > $postFile
 echo -e "layout: post" >> $postFile
 echo -e "title: ${title}" >> $postFile
