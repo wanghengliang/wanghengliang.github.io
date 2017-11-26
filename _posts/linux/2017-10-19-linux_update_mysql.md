@@ -89,6 +89,7 @@ tags: MySQL 服务器架设
 ```
 
 修改/etc/init.d/mysql3308文件中的如下代码
+
 ```
 basedir=/usr/local/mysql3308
 datadir=/data/mysql3308
@@ -120,6 +121,7 @@ mysql> FLUSH PRIVILEGES;
 
 ### 测试MySQL
 重启并测试
+
 ```
 # service mysql3308 restart
 ...
