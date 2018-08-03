@@ -25,6 +25,48 @@ tags: Tomcat 服务器架设
 
 ### 配置Tomcat
 
+##### 修改日志文件路径
+
+修改catalina.out路径日志
+tomcat/bin目录下修改catalina.sh改变catalina.out的目录
+
+```
+# vi /usr/local/tomcat/server/bin/catalina.sh
+//命令模式下输入/CATALINA_OUT查找,按n查找下一个
+
+CATALINA_OUT="$CATALINA_BASE"/logs/catalina.out；//此行内的"$CATALINA_BASE",更改为想要更换的目录如：CATALINA_OUT=/data/wwwlogs/catalina.out
+
+```
+
+修改localhost、catalina、manager、host-manager日志路径
+打开Tomcat目录conf/logging.properties，修改
+
+```
+# vi /usr/local/tomcat/server/conf/logging.properties
+//分别修改其路径，将${catalina.base}更改为想要更换的目录
+1catalina.org.apache.juli.AsyncFileHandler.directory = ${catalina.base}/logs
+2localhost.org.apache.juli.AsyncFileHandler.directory = ${catalina.base}/logs
+3manager.org.apache.juli.AsyncFileHandler.directory = ${catalina.base}/logs
+4host-manager.org.apache.juli.AsyncFileHandler.directory = ${catalina.base}/logs
+```
+
+修改localhost_access_log日志路径
+打开Tomcat目录conf/server.xml,修改
+
+```
+# vi /usr/local/tomcat/server/conf/server.xml
+//修改directory为想要更换的目录
+<Valve className="org.apache.catalina.valves.AccessLogValve" directory="/usr/local/tomcats/logs" ...>
+```
+
+##### 删除自带的项目
+
+```
+# cd /usr/local/tomcat/server/webapps
+# rm -rf *
+```
+
+
 ##### 配置虚拟主机
 ###### 方法1，直接配置conf/server.xml配置虚拟主机
 
@@ -59,8 +101,8 @@ tags: Tomcat 服务器架设
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE server-xml [
-<!ENTITY vhost-localhost SYSTEM "file:///usr/local/tomcat/conf/vhost/localhost.xml">
-<!ENTITY vhost-www.wanghengliang.cn SYSTEM "file:///usr/local/tomcat/conf/vhost/www.wanghengliang.cn.xml">
+<!ENTITY vhost-wwww.aaa.com SYSTEM "file:///usr/local/tomcat/conf/vhost/wwww.aaa.com.xml">
+<!ENTITY vhost-wwww.bbb.com SYSTEM "file:///usr/local/tomcat/conf/vhost/wwww.bbb.com.xml">
 ]>
 
 <Server port="8005" shutdown="SHUTDOWN">
@@ -69,20 +111,31 @@ tags: Tomcat 服务器架设
     <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" />
     <Engine name="Catalina" defaultHost="localhost">
       ...
-      &vhost-localhost;
-      &vhost-www.wanghengliang.cn;
+      &vhost-wwww.aaa.com;
+      &vhost-wwww.bbb.com;
     </Engine>
   </Service>
 </Server>
 ```
 
 每个单独虚拟主机文件内容如下:
-/usr/local/tomcat/conf/vhost/www.wanghengliang.cn.xml
+/usr/local/tomcat/conf/vhost/www.aaa.com.xml
 
 ```
-<Host name="www.wanghengliang.cn" appBase="webapps" unpackWARs="true" autoDeploy="true">
-    <Alias>wanghengliang.cn</Alias>
-    <Context path="" docBase="/data/wwwroot/wechat" debug="0" reloadable="false" crossContext="true"/>
-    <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" prefix="www.wanghengliang.cn_access_log." suffix=".txt" pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+<Host name="wwww.aaa.com" appBase="webapps" unpackWARs="true" autoDeploy="true">
+    <Alias>www.aaa.cn</Alias>
+    <Context path="" docBase="/data/wwwroot/aaa" debug="0" reloadable="false" crossContext="true"/>
+    <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" prefix="wwww.aaa.com_access_log." suffix=".txt" pattern="%h %l %u %t &quot;%r&quot; %s %b" />
 </Host>
 ```
+
+/usr/local/tomcat/conf/vhost/www.bbb.com.xml
+
+```
+<Host name="wwww.bbb.com" appBase="webapps" unpackWARs="true" autoDeploy="true">
+    <Context path="" docBase="/data/wwwroot/bbb" debug="0" reloadable="false" crossContext="true"/>
+    <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" prefix="wwww.bbb.com_access_log." suffix=".txt" pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+</Host>
+```
+
+

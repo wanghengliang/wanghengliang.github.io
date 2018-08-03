@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>JDK安装</title>
-  <meta name="description" content="下载jdk下载地址:http://www.oracle.com/technetwork/java/javase/downloads/index.html">
+  <title>Linux防火墙设置</title>
+  <meta name="description" content="Linux防火墙设置">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="JDK安装">
-  <meta name="twitter:description" content="下载jdk下载地址:http://www.oracle.com/technetwork/java/javase/downloads/index.html">
+  <meta name="twitter:title" content="Linux防火墙设置">
+  <meta name="twitter:description" content="Linux防火墙设置">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="JDK安装">
-  <meta property="og:description" content="下载jdk下载地址:http://www.oracle.com/technetwork/java/javase/downloads/index.html">
+  <meta property="og:title" content="Linux防火墙设置">
+  <meta property="og:description" content="Linux防火墙设置">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2016/12/linux_jdk/">
+  <link rel="canonical" href="http://localhost:4000/2018/07/linux_firewall/">
   <link rel="alternate" type="application/rss+xml" title="hengliang" href="http://localhost:4000/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -157,10 +157,10 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title">JDK安装</h1>
+    <h1 class="post-title">Linux防火墙设置</h1>
     <div class="post-meta">
       <img src="/images/calendar.png" width="20px"/> 
-      <time datetime="2016-12-15 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2016-12-15</time>  
+      <time datetime="2018-07-13 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-07-13</time>  
          
       <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
     </p>
@@ -168,55 +168,60 @@
   </header>
 
   <section class="post">
-    <h3 id="下载jdk">下载jdk</h3>
-<p>下载地址:http://www.oracle.com/technetwork/java/javase/downloads/index.html</p>
+    <p>Linux防火墙设置</p>
 
-<p>选择最下面的Java Archive &gt; Java SE 7 &gt; 根据系统选择下载版本</p>
+<h3 id="centos-65">CentOS 6.5</h3>
 
-<h3 id="rpm安装">rpm安装</h3>
+<h4 id="查看防火墙的状态">查看防火墙的状态</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rpm -ivh jdk-7u79-linux-x64.rpm
+<h4 id="查看已经开放的端口">查看已经开放的端口</h4>
+
+<h4 id="开启端口">开启端口</h4>
+
+<h4 id="启动防火墙">启动防火墙</h4>
+
+<h4 id="关闭防火墙">关闭防火墙</h4>
+
+<h4 id="重启防火墙">重启防火墙</h4>
+
+<h3 id="centos-7">CentOS 7</h3>
+
+<h4 id="查看防火墙的状态-1">查看防火墙的状态</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># firewall-cmd --state
 </code></pre>
 </div>
 
-<h3 id="targz包安装">tar.gz包安装</h3>
-<p>新建安装目录
-将下载文件拷贝其中并添加执行权限</p>
+<h4 id="查看已经开放的端口-1">查看已经开放的端口</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># mkdir /usr/java
-# cd /usr/java
-# tar -zxvf /opt/jdk-7u79-linux-x64.tar.gz
-</code></pre>
-</div>
-<p>生成链接以便版本升级</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># ln -s jdk1.7.0_79 latest
-# ln -s latest default
+<div class="highlighter-rouge"><pre class="highlight"><code>firewall-cmd --list-ports
 </code></pre>
 </div>
 
-<p>配置环境变量
-编辑配置文件<code class="highlighter-rouge">/etc/profile</code>，将如下内容添加到其中</p>
+<h4 id="开启端口-1">开启端口</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>export JAVA_HOME=/usr/java/default
-export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-
-export PATH=$JAVA_HOME/bin:$PATH
+<div class="highlighter-rouge"><pre class="highlight"><code>firewall-cmd --zone=public --add-port=80/tcp --permanent
+firewall-cmd --zone=public --add-port=30000-31000/tcp --permanent
 </code></pre>
 </div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># vi /etc/profile
-# source /etc/profile
+<h4 id="启动防火墙-1">启动防火墙</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>
 </code></pre>
 </div>
 
-<h3 id="测试">测试</h3>
+<h4 id="关闭防火墙-1">关闭防火墙</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># java -version # 测试是否成功
+<div class="highlighter-rouge"><pre class="highlight"><code>systemctl start firewalld.service #启动firewall
+systemctl stop firewalld.service #停止firewall
+systemctl disable firewalld.service #禁止firewall开机启动
+</code></pre>
+</div>
 
-java version "1.7.0_79"
-Java(TM) SE Runtime Environment (build 1.7.0_79-b15)
-Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)
+<h4 id="重启防火墙-1">重启防火墙</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>firewall-cmd --reload
 </code></pre>
 </div>
 
@@ -288,13 +293,13 @@ Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)
        <ul class="pager">
         
         <li class="previous">
-            <a href="/2016/12/linux_MySQL/" data-toggle="tooltip" data-placement="top" title="MySQL安装">上一篇：  <span>MySQL安装</span>
+            <a href="/2017/12/linux_ftp/" data-toggle="tooltip" data-placement="top" title="linux服务器架设FTP">上一篇：  <span>linux服务器架设FTP</span>
             </a>
         </li>
         
         
         <li class="next">
-            <a href="/2016/12/linux_tomcat/" data-toggle="tooltip" data-placement="top" title="Tomcat安装">下一篇：  <span>Tomcat安装</span>
+            <a href="/2018/07/mysql_backup/" data-toggle="tooltip" data-placement="top" title="MySQL备份">下一篇：  <span>MySQL备份</span>
             </a>
         </li>
         

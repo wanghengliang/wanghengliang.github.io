@@ -160,8 +160,113 @@
   <ol class="post-list">
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/07/mysql_debug/" title="访问 MySQL调试技巧">MySQL调试技巧</a></h2>
+      <p class="excerpt">MySQL调试技巧MySQL查询最近执行SQL      进入MySQL,略        启用Log功能  # 查询是否启用Log功能mysql&gt; SHOW VARIABLES LIKE "general_log%";+--------------------+--------------------------------------------------+| Variable_name      |    Value                              ...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2018-07-19 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2018-07-19</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">数据库MySQL</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2018/07/mysql_debug/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/07/mysql_backup/" title="访问 MySQL备份">MySQL备份</a></h2>
+      <p class="excerpt">MySQL备份mysql 导出excel方法1.执行如下命令，可将执行结果导出到excel中：mysql iptv_pet -uroot -p -e "call SP_PET_STATISTICS(1)" &gt; /data/tj_20160819.xlsmysql iptv_pet -uroot -p -e "select user_id,code ,create_time from tbl_statistics_order where code like '%result_0' an...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2018-07-19 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2018-07-19</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">数据库MySQL</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2018/07/mysql_backup/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/07/linux_firewall/" title="访问 Linux防火墙设置">Linux防火墙设置</a></h2>
+      <p class="excerpt">Linux防火墙设置CentOS 6.5查看防火墙的状态查看已经开放的端口开启端口启动防火墙关闭防火墙重启防火墙CentOS 7查看防火墙的状态# firewall-cmd --state查看已经开放的端口firewall-cmd --list-ports开启端口firewall-cmd --zone=public --add-port=80/tcp --permanentfirewall-cmd --zone=public --add-port=30000-31000/tcp --per...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2018-07-13 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2018-07-13</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">防火墙</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2018/07/linux_firewall/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/12/linux_ftp/" title="访问 linux服务器架设FTP">linux服务器架设FTP</a></h2>
+      <p class="excerpt">linux服务器架设FTP准备工作下载新版本FTP下载地址：https://pkgs.org/download/vsftpd/  根据服务器选择相应版本，此处选择CentOS 6的版本安装FTP检查安装vsftpd软件使用如下命令查询是否安装vsftpd软件#rpm -qa |grep vsftpd安装vsftpd软件rpm -ivh vsftpd-2.2.2-24.el6.i686.rpm  需要安装依赖包，且依赖包较多，有网络条件最好用yum安装。yum -y install vsft...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-12-06 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-12-06</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">FTP,服务器架设,CentOS</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/12/linux_ftp/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/11/tomcat_url_invalid_character/" title="访问 Tomcat的URL中存在特殊符号报404错误">Tomcat的URL中存在特殊符号报404错误</a></h2>
+      <p class="excerpt">Tomcat的URL中存在特殊符号报404错误            当url中存在 \      { } 等字符串时，tomcat报404错误，后台报错信息如下：      信息: Error parsing HTTP request header Note: further occurrences of HTTP header parsing errors will be logged at DEBUG level.java.lang.IllegalArgumentException:...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-11-24 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-11-24</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">Tomcat</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/11/tomcat_url_invalid_character/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2017/10/linux_update_openssh/" title="访问 CentOS 6.5升级OpenSSH步骤">CentOS 6.5升级OpenSSH步骤</a></h2>
-      <p class="excerpt">备份当前openssh# mv /etc/ssh /etc/ssh.old卸载当前openssh查看已安装的openssh# rpm -qa | grep openssh删除# rpm -qa |grep openssh|xargs -i rpm -e --nodeps {}&hellip;</p>
+      <p class="excerpt">安装telnet服务（我本地安装的没有做这步操作）安装软件1 # yum -y install telnet-server* telnet2.启用telnet服务vi /etc/xinetd.d/telnet将其中disable字段的yes改为no以启用telnet服务mv /etc/securetty /etc/securetty.old    #允许root用户通过telnet登录service xinetd start                    #启动telnet服务ch...&hellip;</p>
       <div class="post-list__meta">        
         <time datetime="2017-10-19 00:00:00 +0800" class="post-list__meta--date date">
           <img src="/images/calendar.png" width="20px" /> 
@@ -413,7 +518,7 @@
     
     <li>
       <h2 class="post-list__post-title post-title"><a href="/2016/12/linux_tomcat/" title="访问 Tomcat安装">Tomcat安装</a></h2>
-      <p class="excerpt">下载Tomcat下载地址:http://tomcat.apache.org/安装Tomcat# mkdir /usr/local/tomcat# cd /usr/local/tomcat# tar -zxvf /opt/apache-tomcat-7.0.54.tar.gz生成链接以便版本升级# ln -s apache-tomcat-7.0.54 server配置Tomcat配置虚拟主机方法1，直接配置conf/server.xml配置虚拟主机&lt;Engine name="Catal...&hellip;</p>
+      <p class="excerpt">下载Tomcat下载地址:http://tomcat.apache.org/安装Tomcat# mkdir /usr/local/tomcat# cd /usr/local/tomcat# tar -zxvf /opt/apache-tomcat-7.0.54.tar.gz生成链接以便版本升级# ln -s apache-tomcat-7.0.54 server配置Tomcat修改日志文件路径修改catalina.out路径日志tomcat/bin目录下修改catalina.sh改变cat...&hellip;</p>
       <div class="post-list__meta">        
         <time datetime="2016-12-15 00:00:00 +0800" class="post-list__meta--date date">
           <img src="/images/calendar.png" width="20px" /> 
@@ -434,7 +539,7 @@
     
     <li>
       <h2 class="post-list__post-title post-title"><a href="/2016/12/linux_jdk/" title="访问 JDK安装">JDK安装</a></h2>
-      <p class="excerpt">下载jdk下载地址:http://www.oracle.com/technetwork/java/javase/downloads/index.htmlrpm安装rpm -ivh jdk-7u79-linux-x64.rpmtar.gz包安装新建安装目录将下载文件拷贝其中并添加执行权限# mkdir /usr/java# cd /usr/java# tar -zxvf /opt/jdk-7u79-linux-x64.tar.gz生成链接以便版本升级# ln -s jdk1.7.0_79 l...&hellip;</p>
+      <p class="excerpt">下载jdk下载地址:http://www.oracle.com/technetwork/java/javase/downloads/index.html选择最下面的Java Archive &gt; Java SE 7 &gt; 根据系统选择下载版本rpm安装rpm -ivh jdk-7u79-linux-x64.rpmtar.gz包安装新建安装目录将下载文件拷贝其中并添加执行权限# mkdir /usr/java# cd /usr/java# tar -zxvf /opt/jdk-7u7...&hellip;</p>
       <div class="post-list__meta">        
         <time datetime="2016-12-15 00:00:00 +0800" class="post-list__meta--date date">
           <img src="/images/calendar.png" width="20px" /> 
@@ -474,27 +579,6 @@
       <hr class="post-list__divider" />
     </li>
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/11/go2shell/" title="访问 Go2Shell安装和设置">Go2Shell安装和设置</a></h2>
-      <p class="excerpt">MacOS使用小技巧整理，持续更新介绍Go2Shell.app 很好使, 图标也萌萌哒. 作为一个 Finder 常驻图标, &gt;_&lt;这个就是. 在你想进的目录里点击直接会启动终端并进入到当前目录. 同时支持 Terminal, iTerm, xterm.下载传送门: Mac App Store-Go2Shell使用方法直接拖拽到 Finder 里即可. 10.10 以后需要按着 command 进行拖拽.配置方法执行命令open -a Go2Shell --args confi...&hellip;</p>
-      <div class="post-list__meta">        
-        <time datetime="2016-11-17 00:00:00 +0800" class="post-list__meta--date date">
-          <img src="/images/calendar.png" width="20px" /> 
-          2016-11-17</time> 
-        <div class = "tag-img-icon">
-          <img src="/images/tag-icon.svg" width="20px" /> 
-        </div>
-        <a href="/tags">
-          <div class = "post-list-icon-mate">
-            <span class="post-list__meta--tags-right">MacOSGo2Shell</span>
-          </div>
-          <div class = "post-list-small-mate">
-          <a class="btn-border-small" href=/2016/11/go2shell/>阅读全文 » </a>
-          </div>
-      </div>
-      <hr class="post-list__divider" />
-    </li>
-    
   </ol>
 
   <hr class="post-list__divider " />
@@ -506,7 +590,9 @@
 	</script>
 	
     
-    <span class="pagination__page-number">1 / 1</span>
+    <span class="pagination__page-number">1 / 2</span>
+    
+        <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/page/2/#blog">更早 &rarr;</a>
     
 </nav>
 
@@ -560,7 +646,7 @@
 
         <div class = "footer_div">  
            <p class="copyright text-muted">
-            Copyright &copy; hengliang 2017 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
+            Copyright &copy; hengliang 2018 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
             <iframe
                 style="margin-left: 2px; margin-bottom:-5px;"
                 frameborder="0" scrolling="0" width="91px" height="20px"

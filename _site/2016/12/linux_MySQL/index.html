@@ -202,7 +202,6 @@
 <p>这里下载RPM Bundle，然后解压并安装</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>tar -xvf mysql-5.7.18-1.el7.x86_64.rpm-bundle.tar
-rpm -ivh mysql-community-server-minimal-5.7.18-1.el7.x86_64.rpm
 </code></pre>
 </div>
 <h3 id="mysql-安装">mysql 安装</h3>
@@ -289,13 +288,19 @@ event_scheduler=1
 2017-05-03T02:26:10.001375Z 1 [Note] A temporary password is generated for root@localhost: (tfywy9JHk7J
 </code></pre>
 </div>
+<p>或者</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># cat /data/mysql/mysql-error.log | grep password
+2018-07-19T10:45:38.681364Z 1 [Note] A temporary password is generated for root@localhost: Kz(tF&gt;cK4Zr&gt;
+</code></pre>
+</div>
 
 <h3 id="数据库测试">数据库测试</h3>
 <p>启动服务器并登录测试</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code># service mysqld start
-Redirecting to /bin/systemctl start  mysqld.service
-# mysql -uroot -p      
+Redirecting to /bin/systemctl start mysqld.service
+# mysql -uroot -p
 Enter password: 
 ...
 mysql&gt;
@@ -307,12 +312,21 @@ mysql&gt;
 ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
 mysql&gt; use mysql;
 ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
+
+或
+ERROR 1820 (HY000): You must SET PASSWORD before executing this statement 
 </code></pre>
 </div>
 <p>因为新用户登入后需要立刻修改密码，否则无法继续后续的工作：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; set password = password('abc');
+<div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; set password = password('mysql5.7.21(js');
 Query OK, 0 rows affected, 1 warning (0.00 sec)
+</code></pre>
+</div>
+<p>或者</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>alter user user() identified by "mysql5.7.21(js";
+Query OK, 0 rows affected (0.00 sec)
 </code></pre>
 </div>
 <p>重启并测试</p>
@@ -510,7 +524,7 @@ mysql&gt;
 
         <div class = "footer_div">  
            <p class="copyright text-muted">
-            Copyright &copy; hengliang 2017 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
+            Copyright &copy; hengliang 2018 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
             <iframe
                 style="margin-left: 2px; margin-bottom:-5px;"
                 frameborder="0" scrolling="0" width="91px" height="20px"

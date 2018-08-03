@@ -5,27 +5,745 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 27 Oct 2017 11:36:37 +0800</pubDate>
-    <lastBuildDate>Fri, 27 Oct 2017 11:36:37 +0800</lastBuildDate>
+    <pubDate>Fri, 03 Aug 2018 12:01:05 +0800</pubDate>
+    <lastBuildDate>Fri, 03 Aug 2018 12:01:05 +0800</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
     
       <item>
-        <title>CentOS 6.5升级OpenSSH步骤</title>
-        <description>&lt;h3 id=&quot;备份当前openssh&quot;&gt;备份当前openssh&lt;/h3&gt;
+        <title>MySQL调试技巧</title>
+        <description>&lt;p&gt;MySQL调试技巧&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mv /etc/ssh /etc/ssh.old
+&lt;h3 id=&quot;mysql查询最近执行sql&quot;&gt;MySQL查询最近执行SQL&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;进入MySQL,略&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;启用Log功能&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 查询是否启用Log功能
+mysql&amp;gt; SHOW VARIABLES LIKE &quot;general_log%&quot;;
++--------------------+--------------------------------------------------+
+| Variable_name      |    Value                                         |
++--------------------+--------------------------------------------------+
+| general_log        | OFF                                              |
+| general_log_file   | /usr/local/mysql/data/MacBook-Pro.log            |
++--------------------+--------------------------------------------------+
+# 启用Log功能
+mysql&amp;gt; SET GLOBAL general_log = 'ON';
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ol&gt;
+  &lt;li&gt;设置Log文件地址(所有Sql语句都会在general_log_file里)，采用默认则不设置&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; SET GLOBAL general_log_file = 'c:\mysql.log';
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h3 id=&quot;卸载当前openssh&quot;&gt;卸载当前openssh&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;执行mysql命令然后查看设置的Log文件，也可用其他可视化工具进行查看。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Thu, 19 Jul 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/07/mysql_debug/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/07/mysql_debug/</guid>
+        
+        <category>数据库</category>
+        
+        <category>MySQL</category>
+        
+        
+        <category>数据库</category>
+        
+      </item>
+    
+      <item>
+        <title>MySQL备份</title>
+        <description>&lt;p&gt;MySQL备份&lt;/p&gt;
 
-&lt;h4 id=&quot;查看已安装的openssh&quot;&gt;查看已安装的openssh&lt;/h4&gt;
+&lt;h3 id=&quot;mysql-导出excel方法&quot;&gt;mysql 导出excel方法&lt;/h3&gt;
+&lt;p&gt;1.执行如下命令，可将执行结果导出到excel中：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql iptv_pet -uroot -p -e &quot;call SP_PET_STATISTICS(1)&quot; &amp;gt; /data/tj_20160819.xls
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql iptv_pet -uroot -p -e &quot;select user_id,code ,create_time from tbl_statistics_order where code like '%result_0' and TO_DAYS(NOW())-TO_DAYS(CREATE_TIME) = 1 order by create_time desc &quot; &amp;gt; /data/order_tj_20160822.xls
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;2.因为office默认的是gb2312编码，服务器端生成的很有可能是utf-8编码，采用如下命令可将其转换为gb2312编码：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;iconv -futf8 -tgb2312 -otj_20160819_gb2312.xls tj_20160819.xls
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;shell脚本如下：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;date +%Y%m%d&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+mysql iptv_pet -uroot -p&lt;span class=&quot;k&quot;&gt;******&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&quot;call SP_PET_STATISTICS(1)&quot;&lt;/span&gt; &amp;gt; /data/backup/tj_&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;.xls
+&lt;span class=&quot;c&quot;&gt;#mysql iptv_pet -uroot -p****** -e &quot;select user_id,code ,create_time from tbl_statistics_order where code like '%result_0' and TO_DAYS(NOW())-TO_DAYS(CREATE_TIME) = 1 order by create_time desc &quot; &amp;gt; /data/backup/tj_order_${ctime}.xls&lt;/span&gt;
+iconv -futf8 -tgb2312 -otj_&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;_gb2312.xls tj_&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;.xls
+&lt;span class=&quot;c&quot;&gt;#iconv -futf8 -tgb2312 -otj_order_${ctime}_gb2312.xls tj_order_${ctime}.xls&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;date +%Y%m%d&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+mysql iptv_pet -uroot -p&lt;span class=&quot;k&quot;&gt;******&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&quot;call SP_PET_STATISTICS(1)&quot;&lt;/span&gt; &amp;gt; /data/backup/tj_&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;_utf8.xls
+&lt;span class=&quot;c&quot;&gt;#mysql iptv_pet -uroot -p****** -e &quot;select user_id,code ,create_time from tbl_statistics_order where code like '%result_0' and TO_DAYS(NOW())-TO_DAYS(CREATE_TIME) = 1 order by create_time desc &quot; &amp;gt; /data/backup/tj_order_${ctime}_utf8.xls&lt;/span&gt;
+sleep 1
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; ! -f &lt;span class=&quot;s2&quot;&gt;&quot;/data/backup/tj_&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;_utf8.xls&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
+&lt;/span&gt;iconv -futf8 -tgb2312 -o/data/backup/tj_&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;.xls /data/backup/tj_&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;_utf8.xls
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;mysql-备份&quot;&gt;mysql 备份&lt;/h3&gt;
+&lt;h4 id=&quot;1导出数据库&quot;&gt;1.导出数据库：&lt;/h4&gt;
+&lt;h5 id=&quot;11-执行如下命令可导出数据库所有表的数据&quot;&gt;1.1 执行如下命令，可导出数据库所有表的数据：&lt;/h5&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/local/mysql/bin/mysqldump -uroot -p iptv_pet &amp;gt; db_bak_iptv_pet_20160822.sql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h5 id=&quot;111-执行如下命令可导出数据库中某个表的数据&quot;&gt;1.1.1 执行如下命令，可导出数据库中某个表的数据：&lt;/h5&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/local/mysql/bin/mysqldump -uroot -p iptv_pet cms_channel &amp;gt; db_bak_iptv_pet_cmschannel_20160822.sql
+
+/usr/local/mysql/bin/mysqldump -uroot -p iptv_pet cms_channel cms_document &amp;gt; db_bak_iptv_pet_cmschannel_20160822.sql
+
+/usr/local/mysql/bin/mysqldump -uroot -p iptv_pet tbl_stat_order tbl_stat_click tbl_stat_click_manage &amp;gt; db_bak_tbl_stat_20170301.sql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;112-执行如下命令可导出数据库中某个表的部分数据&quot;&gt;1.1.2 执行如下命令，可导出数据库中某个表的部分数据&lt;/h5&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/local/mysql/bin/mysqldump -uroot -p iptv_pet tbl_statistics_player_201705 --where=&quot; TO_DAYS(NOW()) - TO_DAYS(CREATE_TIME) = 1&quot; &amp;gt; db_bak_tbl_statistics_player_20170505.sql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;12-执行如下命令可导出数据库存储过程&quot;&gt;1.2 执行如下命令，可导出数据库存储过程：&lt;/h5&gt;
+&lt;p&gt;注意：–events必须在数据库名称后面&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/local/mysql/bin/mysqldump -uroot -p -n -t -d -R --triggers=false iptv_pet --events &amp;gt; db_bak_iptv_pet_sp_20160822.sql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;2编写shell文件定时备份&quot;&gt;2.编写shell文件，定时备份&lt;/h4&gt;
+&lt;h5 id=&quot;21-需求如下&quot;&gt;2.1 需求如下：&lt;/h5&gt;
+&lt;p&gt;2.1.1 每天4点备份mysql数据&lt;/p&gt;
+
+&lt;p&gt;2.1.2 为节省空间，删除超过3个月的所有备份数据；&lt;/p&gt;
+
+&lt;p&gt;2.1.3 删除超过7天的备份数据，保留3个月里的 10号 20号 30号的备份数据；&lt;/p&gt;
+
+&lt;h5 id=&quot;22-实现方式如下&quot;&gt;2.2 实现方式如下：&lt;/h5&gt;
+&lt;p&gt;2.2.1 创建shell文件&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim backup_mysql.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;2.2.2 编辑shell文件，内容如下：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysqldump -uroot -p123456 --all-databases &amp;gt; /data/dbdata/mysqlbak/`date +%Y%m%d`.sql
+find /data/dbdata/mysqlbak/ -mtime +7 -name '*[1-9].sql' -exec rm -rf {} \;
+find /data/dbdata/mysqlbak/ -mtime +92 -name '*.sql' -exec rm -rf {} \;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;2.2.3 创建定时任务&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;crontab –e
+0 4 * * * /data/dbdata/backup_mysql.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;mysql-还原&quot;&gt;mysql 还原&lt;/h3&gt;
+&lt;p&gt;导入数据&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; source /home/qinglan/data/mysql/iptv_health.sql
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;日常操作语句归纳&quot;&gt;日常操作语句归纳&lt;/h3&gt;
+&lt;p&gt;mysql 添加表字段&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;alter table tbl_exp_card add activation_user varchar(50) NULL COMMENT '激活用户';
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Thu, 19 Jul 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/07/mysql_backup/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/07/mysql_backup/</guid>
+        
+        <category>数据库</category>
+        
+        <category>MySQL</category>
+        
+        
+        <category>数据库</category>
+        
+      </item>
+    
+      <item>
+        <title>Linux防火墙设置</title>
+        <description>&lt;p&gt;Linux防火墙设置&lt;/p&gt;
+
+&lt;h3 id=&quot;centos-65&quot;&gt;CentOS 6.5&lt;/h3&gt;
+
+&lt;h4 id=&quot;查看防火墙的状态&quot;&gt;查看防火墙的状态&lt;/h4&gt;
+
+&lt;h4 id=&quot;查看已经开放的端口&quot;&gt;查看已经开放的端口&lt;/h4&gt;
+
+&lt;h4 id=&quot;开启端口&quot;&gt;开启端口&lt;/h4&gt;
+
+&lt;h4 id=&quot;启动防火墙&quot;&gt;启动防火墙&lt;/h4&gt;
+
+&lt;h4 id=&quot;关闭防火墙&quot;&gt;关闭防火墙&lt;/h4&gt;
+
+&lt;h4 id=&quot;重启防火墙&quot;&gt;重启防火墙&lt;/h4&gt;
+
+&lt;h3 id=&quot;centos-7&quot;&gt;CentOS 7&lt;/h3&gt;
+
+&lt;h4 id=&quot;查看防火墙的状态-1&quot;&gt;查看防火墙的状态&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# firewall-cmd --state
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;查看已经开放的端口-1&quot;&gt;查看已经开放的端口&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;firewall-cmd --list-ports
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;开启端口-1&quot;&gt;开启端口&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;firewall-cmd --zone=public --add-port=80/tcp --permanent
+firewall-cmd --zone=public --add-port=30000-31000/tcp --permanent
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;启动防火墙-1&quot;&gt;启动防火墙&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;关闭防火墙-1&quot;&gt;关闭防火墙&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;systemctl start firewalld.service #启动firewall
+systemctl stop firewalld.service #停止firewall
+systemctl disable firewalld.service #禁止firewall开机启动
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;重启防火墙-1&quot;&gt;重启防火墙&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;firewall-cmd --reload
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Fri, 13 Jul 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/07/linux_firewall/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/07/linux_firewall/</guid>
+        
+        <category>防火墙</category>
+        
+        
+        <category>linux</category>
+        
+      </item>
+    
+      <item>
+        <title>linux服务器架设FTP</title>
+        <description>&lt;p&gt;linux服务器架设FTP&lt;/p&gt;
+
+&lt;h3 id=&quot;准备工作&quot;&gt;准备工作&lt;/h3&gt;
+
+&lt;h4 id=&quot;下载新版本ftp&quot;&gt;下载新版本FTP&lt;/h4&gt;
+
+&lt;p&gt;下载地址：https://pkgs.org/download/vsftpd/&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;根据服务器选择相应版本，此处选择CentOS 6的版本&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;安装ftp&quot;&gt;安装FTP&lt;/h3&gt;
+
+&lt;h4 id=&quot;检查安装vsftpd软件&quot;&gt;检查安装vsftpd软件&lt;/h4&gt;
+&lt;p&gt;使用如下命令查询是否安装vsftpd软件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#rpm -qa |grep vsftpd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;安装vsftpd软件&quot;&gt;安装vsftpd软件&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rpm -ivh vsftpd-2.2.2-24.el6.i686.rpm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;需要安装依赖包，且依赖包较多，有网络条件最好用yum安装。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yum -y install vsftpd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;配置vsftpd&quot;&gt;配置vsftpd&lt;/h4&gt;
+&lt;p&gt;ftp的配置文件主要有三个，位于/etc/vsftpd/目录下，分别是：
+vsftpd.conf   vsftpd的主配置文件
+ftpusers    该文件用来指定那些用户不能访问ftp服务器。
+user_list   该文件用来指示的默认账户在默认情况下也不能访问ftp&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# vi /etc/vsftpd/vsftpd.conf
+
+
+# 是否允许匿名登录（将其禁止）
+anonymous_enable=NO
+local_enable=YES
+
+# 仅在没有pam验证版本时有用,是否检查用户有一个有效的shell来登录
+check_shell=NO
+
+# 设置连接超时时间（单位秒）
+idle_session_timeout=600
+
+# 数据传输超时时间（单位秒）
+data_connection_timeout=120
+
+# 是否允许上传/下载二进制文件
+ascii_upload_enable=YES
+ascii_download_enable=YES
+
+# 限制所有的本地用户只能访问自己的目录
+chroot_local_user=YES
+
+# 是否允许使用ls -R等命令
+ls_recurse_enable=YES
+
+# [新增]是否只允许userlist_file文件中的用户登录FTP服务器，userlist_enable为YES才生效
+# YES，默认值，禁止文件中的用户登录，同时也不向这些用户发出输入密码的提示。
+# NO，只允许在文件中的用户登录FTP服务器
+userlist_deny=NO
+
+# [新增]所有用户的根目录（对匿名用户无效）
+local_root=/data/ftpdata
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;新增ftp用户并为其设置密码&quot;&gt;新增ftp用户并为其设置密码&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# useradd ftpuser -s /sbin/nologin
+# password ftpuser
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;编辑user_list文件给予用户访问ftp权限&quot;&gt;编辑user_list文件，给予用户访问ftp权限&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi /etc/vsftpd/user_list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;在文件末尾加入ftpuser并保存&lt;/p&gt;
+
+&lt;h4 id=&quot;建立可访问目录并指定用户&quot;&gt;建立可访问目录并指定用户&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mkdir -p /data/ftpdata
+# chown -R ftpuser /data/ftpdata/ # 注意后面有个/
+# chmod -R 755 /data/ftpdata
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;使用vsftpd软件&quot;&gt;使用vsftpd软件&lt;/h4&gt;
+
+&lt;p&gt;主要包括如下几个命令：
+启动ftp命令&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#service vsftpd start
+
+# 如果报错提示：Redirecting to /bin/systemctl start vsftpd.service，请使用
+# systemctl start vsftpd.service
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;停止ftp命令&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#service vsftpd stop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;重启ftp命令&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#service vsftpd restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;开机启动vsftpd服务&quot;&gt;开机启动vsftpd服务&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# chkconfig vsftpd on
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;解决无法登录问题&quot;&gt;解决无法登录问题&lt;/h4&gt;
+&lt;h5 id=&quot;错误信息如下&quot;&gt;错误信息如下：&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;状态:     正在连接 XXX.XXX.XXX.XXX:21...
+状态:     连接建立，等待欢迎消息...
+命令:     USER root
+响应:     331 Please specify the password.
+命令:     PASS ***************
+响应:     530 Login incorrect.
+错误:     严重错误: 无法连接到服务器
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h5 id=&quot;错误原因及解决办法&quot;&gt;错误原因及解决办法：&lt;/h5&gt;
+
+&lt;p&gt;原因一：启用了PAM，解决办法，删除文件/etc/pam.d/vsftpd&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo rm /etc/pam.d/vsftpd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;原因二：密码错误&lt;/p&gt;
+
+&lt;h4 id=&quot;解决vsftpd-读取目录列表失败的问题&quot;&gt;解决vsftpd 读取目录列表失败的问题&lt;/h4&gt;
+&lt;h5 id=&quot;错误信息如下-1&quot;&gt;错误信息如下：&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;...
+
+状态:    已连接
+状态:    读取目录列表...
+命令:    PWD
+响应:    257 &quot;/&quot;
+命令:    TYPE I
+响应:    200 Switching to Binary mode.
+命令:    PASV
+响应:    227 Entering Passive Mode (192,168,1,6,23,8).
+命令:    LIST
+错误:    连接超时
+错误:    读取目录列表失败
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;错误原因&quot;&gt;错误原因：&lt;/h5&gt;
+&lt;p&gt;该错误是由iptables的配置引起的&lt;/p&gt;
+
+&lt;h5 id=&quot;解决办法&quot;&gt;解决办法：&lt;/h5&gt;
+
+&lt;p&gt;临时的解决方法是执行如下命令,但当你重新启动服务器则iptables规则失效，又会出现相同的情况：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# modprobe ip_nat_ftp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;永久解决方法，需要修改/etc/sysconfig/iptables-config文件：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# vi /etc/sysconfig/iptables-config
+
+......
+
+IPTABLES_MODULES=&quot;ip_nat_ftp&quot;
+IPTABLES_MODULES_UNLOAD=&quot;yes&quot;
+
+......
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;IPTABLES_MODULES_UNLOAD=”yes”的意义：每次iptables停止或者重启都会Unload modules
+IPTABLES_MODULES=”“的意义：每次防火墙规则应用以后加载的模块
+我们需要把IPTABLES_MODULES=”“修改为：IPTABLES_MODULES=”ip_nat_ftp”，这样重启服务器之后就不必再每次都执行mobprobe啦&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;vsftpd配置文件详解&quot;&gt;vsftpd配置文件详解&lt;/h4&gt;
+
+&lt;p&gt;1.默认配置：
+a.允许匿名用户和本地用户登陆。
+     anonymous_enable=YES
+     local_enable=YES
+b.匿名用户使用的登陆名为ftp或anonymous，口令为空；匿名用户不能离开匿名用户家目录/var/ftp,且只能下载不能上传。
+c.本地用户的登录名为本地用户名，口令为此本地用户的口令；本地用户可以在自 己家目录中进行读写操作；本地用户可以离开自家目录切换至有权限访问的其他目录，并在权限允许的情况下进行上传/下载。
+    write_enable=YES
+4&amp;gt;写在文件/etc/vsftpd.ftpusers中的本地用户禁止登陆。&lt;/p&gt;
+
+&lt;p&gt;2.配置文件格式：&lt;br /&gt;
+vsftpd.conf 的内容非常单纯，每一行即为一项设定。若是空白行或是开头为#的一行，将会被忽略。内容的格式只有一种，如下所示
+option=value
+要注意的是，等号两边不能加空白。&lt;/p&gt;
+
+&lt;p&gt;3.匿名用户（anonymous）设置
+anonymous_enable=YES/NO（YES）
+控制是否允许匿名用户登入，YES 为允许匿名登入，NO 为不允许。默认值为YES。
+write_enable=YES/NO（YES）
+是否允许登陆用户有写权限。属于全局设置，默认值为YES。
+no_anon_password=YES/NO（NO）
+若是启动这项功能，则使用匿名登入时，不会询问密码。默认值为NO。
+ftp_username=ftp
+定义匿名登入的使用者名称。默认值为ftp。
+anon_root=/var/ftp
+使用匿名登入时，所登入的目录。默认值为/var/ftp。注意ftp目录不能是777的权限属性，即匿名用户的家目录不能有777的权限。
+anon_upload_enable=YES/NO（NO）
+如果设为YES，则允许匿名登入者有上传文件（非目录）的权限，只有在write_enable=YES时，此项才有效。当然，匿名用户必须要有对上层目录的写入权。默认值为NO。
+anon_world_readable_only=YES/NO（YES）
+如果设为YES，则允许匿名登入者下载可阅读的档案（可以下载到本机阅读，不能直接在FTP服务器中打开阅读）。默认值为YES。
+anon_mkdir_write_enable=YES/NO（NO）
+如果设为YES，则允许匿名登入者有新增目录的权限，只有在write_enable=YES时，此项才有效。当然，匿名用户必须要有对上层目录的写入权。默认值为NO。
+anon_other_write_enable=YES/NO（NO）
+如果设为YES，则允许匿名登入者更多于上传或者建立目录之外的权限，譬如删除或者重命名。（如果anon_upload_enable=NO，则匿名用户不能上传文件，但可以删除或者重命名已经存在的文件；如果anon_mkdir_write_enable=NO，则匿名用户不能上传或者新建文件夹，但可以删除或者重命名已经存在的文件夹。）默认值为NO。
+chown_uploads=YES/NO（NO）
+设置是否改变匿名用户上传文件（非目录）的属主。默认值为NO。
+chown_username=username
+设置匿名用户上传文件（非目录）的属主名。建议不要设置为root。
+anon_umask=077
+设置匿名登入者新增或上传档案时的umask 值。默认值为077，则新建档案的对应权限为700。
+deny_email_enable=YES/NO（NO）
+若是启动这项功能，则必须提供一个档案/etc/vsftpd/banner_emails，内容为email address。若是使用匿名登入，则会要求输入email address，若输入的email address 在此档案内，则不允许进入。默认值为NO。
+banned_email_file=/etc/vsftpd/banner_emails
+此文件用来输入email address，只有在deny_email_enable=YES时，才会使用到此档案。若是使用匿名登入，则会要求输入email address，若输入的email address 在此档案内，则不允许进入。&lt;/p&gt;
+
+&lt;p&gt;4.本地用户设置
+local_enable=YES/NO（YES）
+控制是否允许本地用户登入，YES 为允许本地用户登入，NO为不允许。默认值为YES。
+local_root=/home/username
+当本地用户登入时，将被更换到定义的目录下。默认值为各用户的家目录。
+write_enable=YES/NO（YES）
+是否允许登陆用户有写权限。属于全局设置，默认值为YES。
+local_umask=022
+本地用户新增档案时的umask 值。默认值为077。
+file_open_mode=0755
+本地用户上传档案后的档案权限，与chmod 所使用的数值相同。默认值为0666。&lt;/p&gt;
+
+&lt;p&gt;5.欢迎语设置
+dirmessage_enable=YES/NO（YES）
+如果启动这个选项，那么使用者第一次进入一个目录时，会检查该目录下是否有.message这个档案，如果有，则会出现此档案的内容，通常这个档案会放置欢迎话语，或是对该目录的说明。默认值为开启。
+message_file=.message
+设置目录消息文件，可将要显示的信息写入该文件。默认值为.message。
+banner_file=/etc/vsftpd/banner
+当使用者登入时，会显示此设定所在的档案内容，通常为欢迎话语或是说明。默认值为无。如果欢迎信息较多，则使用该配置项。
+ftpd_banner=Welcome to BOB’s FTP server
+这里用来定义欢迎话语的字符串，banner_file是档案的形式，而ftpd_banner 则是字符串的形式。预设为无。&lt;/p&gt;
+
+&lt;p&gt;6.控制用户是否允许切换到上级目录
+在默认配置下，本地用户登入FTP后可以使用cd命令切换到其他目录，这样会对系统带来安全隐患。可以通过以下三条配置文件来控制用户切换目录。
+chroot_list_enable=YES/NO（NO）
+设置是否启用chroot_list_file配置项指定的用户列表文件。默认值为NO。
+chroot_list_file=/etc/vsftpd.chroot_list
+用于指定用户列表文件，该文件用于控制哪些用户可以切换到用户家目录的上级目录。
+chroot_local_user=YES/NO（NO）
+用于指定用户列表文件中的用户是否允许切换到上级目录。默认值为NO。
+通过搭配能实现以下几种效果：
+①当chroot_list_enable=YES，chroot_local_user=YES时，在/etc/vsftpd.chroot_list文件中列出的用户，可以切换到其他目录；未在文件中列出的用户，不能切换到其他目录。
+②当chroot_list_enable=YES，chroot_local_user=NO时，在/etc/vsftpd.chroot_list文件中列出的用户，不能切换到其他目录；未在文件中列出的用户，可以切换到其他目录。
+③当chroot_list_enable=NO，chroot_local_user=YES时，所有的用户均不能切换到其他目录。
+④当chroot_list_enable=NO，chroot_local_user=NO时，所有的用户均可以切换到其他目录。&lt;/p&gt;
+
+&lt;p&gt;7.数据传输模式设置
+FTP在传输数据时，可以使用二进制方式，也可以使用ASCII模式来上传或下载数据。
+ascii_upload_enable=YES/NO（NO）
+设置是否启用ASCII 模式上传数据。默认值为NO。
+ascii_download_enable=YES/NO（NO）
+设置是否启用ASCII 模式下载数据。默认值为NO。&lt;/p&gt;
+
+&lt;p&gt;8.访问控制设置
+两种控制方式：一种控制主机访问，另一种控制用户访问。
+①控制主机访问：
+tcp_wrappers=YES/NO（YES）
+设置vsftpd是否与tcp wrapper相结合来进行主机的访问控制。默认值为YES。如果启用，则vsftpd服务器会检查/etc/hosts.allow 和/etc/hosts.deny 中的设置，来决定请求连接的主机，是否允许访问该FTP服务器。这两个文件可以起到简易的防火墙功能。
+比如：若要仅允许192.168.0.1—192.168.0.254的用户可以连接FTP服务器，则在/etc/hosts.allow文件中添加以下内容：
+vsftpd:192.168.0. :allow
+all:all :deny
+②控制用户访问：
+对于用户的访问控制可以通过/etc目录下的vsftpd.user_list和ftpusers文件来实现。
+userlist_file=/etc/vsftpd.user_list
+控制用户访问FTP的文件，里面写着用户名称。一个用户名称一行。
+userlist_enable=YES/NO（NO）
+是否启用vsftpd.user_list文件。
+userlist_deny=YES/NO（YES）
+决定vsftpd.user_list文件中的用户是否能够访问FTP服务器。若设置为YES，则vsftpd.user_list文件中的用户不允许访问FTP，若设置为NO，则只有vsftpd.user_list文件中的用户才能访问FTP。
+/etc/vsftpd/ftpusers文件专门用于定义不允许访问FTP服务器的用户列表（注意:如果userlist_enable=YES,userlist_deny=NO,此时如果在vsftpd.user_list和ftpusers中都有某个用户时，那么这个用户是不能够访问FTP的，即ftpusers的优先级要高）。默认情况下vsftpd.user_list和ftpusers，这两个文件已经预设置了一些不允许访问FTP服务器的系统内部账户。如果系统没有这两个文件，那么新建这两个文件，将用户添加进去即可。&lt;/p&gt;
+
+&lt;p&gt;9.访问速率设置
+anon_max_rate=0
+设置匿名登入者使用的最大传输速度，单位为B/s，0 表示不限制速度。默认值为0。
+local_max_rate=0
+本地用户使用的最大传输速度，单位为B/s，0 表示不限制速度。预设值为0。&lt;/p&gt;
+
+&lt;p&gt;10.超时时间设置
+accept_timeout=60
+设置建立FTP连接的超时时间，单位为秒。默认值为60。
+connect_timeout=60
+PORT 方式下建立数据连接的超时时间，单位为秒。默认值为60。
+data_connection_timeout=120
+设置建立FTP数据连接的超时时间，单位为秒。默认值为120。
+idle_session_timeout=300
+设置多长时间不对FTP服务器进行任何操作，则断开该FTP连接，单位为秒。默认值为300 。&lt;/p&gt;
+
+&lt;p&gt;11.日志文件设置
+xferlog_enable= YES/NO（YES）
+是否启用上传/下载日志记录。如果启用，则上传与下载的信息将被完整纪录在xferlog_file 所定义的档案中。预设为开启。
+xferlog_file=/var/log/vsftpd.log
+设置日志文件名和路径，默认值为/var/log/vsftpd.log。
+xferlog_std_format=YES/NO（NO）
+如果启用，则日志文件将会写成xferlog的标准格式，如同wu-ftpd 一般。默认值为关闭。
+log_ftp_protocol=YES|NO（NO） 
+如果启用此选项，所有的FTP请求和响应都会被记录到日志中，默认日志文件在/var/log/vsftpd.log。启用此选项时，xferlog_std_format不能被激活。这个选项有助于调试。默认值为NO。&lt;/p&gt;
+
+&lt;p&gt;12.定义用户配置文件
+在vsftpd中，可以通过定义用户配置文件来实现不同的用户使用不同的配置。
+user_config_dir=/etc/vsftpd/userconf
+设置用户配置文件所在的目录。当设置了该配置项后，用户登陆服务器后，系统就会到/etc/vsftpd/userconf目录下，读取与当前用户名相同的文件，并根据文件中的配置命令，对当前用户进行更进一步的配置。
+例如：定义user_config_dir=/etc/vsftpd/userconf，且主机上有使用者 test1,test2，那么我们就在user_config_dir 的目录新增文件名为test1和test2两个文件。若是test1 登入，则会读取user_config_dir 下的test1 这个档案内的设定。默认值为无。利用用户配置文件，可以实现对不同用户进行访问速度的控制，在各用户配置文件中定义local_max_rate=XX，即可。&lt;/p&gt;
+
+&lt;p&gt;13.FTP的工作方式与端口设置
+FTP有两种工作方式：PORT FTP（主动模式）和PASV FTP（被动模式）
+listen_port=21
+设置FTP服务器建立连接所监听的端口，默认值为21。
+connect_from_port_20=YES/NO
+指定FTP使用20端口进行数据传输，默认值为YES。
+ftp_data_port=20
+设置在PORT方式下，FTP数据连接使用的端口，默认值为20。
+pasv_enable=YES/NO（YES）
+若设置为YES，则使用PASV工作模式；若设置为NO，则使用PORT模式。默认值为YES，即使用PASV工作模式。
+pasv_max_port=0
+在PASV工作模式下，数据连接可以使用的端口范围的最大端口，0 表示任意端口。默认值为0。
+pasv_min_port=0
+在PASV工作模式下，数据连接可以使用的端口范围的最小端口，0 表示任意端口。默认值为0。&lt;/p&gt;
+
+&lt;p&gt;14.与连接相关的设置
+listen=YES/NO（YES）
+设置vsftpd服务器是否以standalone模式运行。以standalone模式运行是一种较好的方式，此时listen必须设置为YES，此为默认值。建议不要更改，有很多与服务器运行相关的配置命令，需要在此模式下才有效。若设置为NO，则vsftpd不是以独立的服务运行，要受到xinetd服务的管控，功能上会受到限制。
+max_clients=0
+设置vsftpd允许的最大连接数，默认值为0，表示不受限制。若设置为100时，则同时允许有100个连接，超出的将被拒绝。只有在standalone模式运行才有效。
+max_per_ip=0
+设置每个IP允许与FTP服务器同时建立连接的数目。默认值为0，表示不受限制。只有在standalone模式运行才有效。
+listen_address=IP地址
+设置FTP服务器在指定的IP地址上侦听用户的FTP请求。若不设置，则对服务器绑定的所有IP地址进行侦听。只有在standalone模式运行才有效。
+setproctitle_enable=YES/NO（NO）
+设置每个与FTP服务器的连接，是否以不同的进程表现出来。默认值为NO，此时使用ps aux |grep ftp只会有一个vsftpd的进程。若设置为YES，则每个连接都会有一个vsftpd的进程。&lt;/p&gt;
+
+&lt;p&gt;15.虚拟用户设置
+虚拟用户使用PAM认证方式。
+pam_service_name=vsftpd
+设置PAM使用的名称，默认值为/etc/pam.d/vsftpd。
+guest_enable= YES/NO（NO）
+启用虚拟用户。默认值为NO。
+guest_username=ftp
+这里用来映射虚拟用户。默认值为ftp。
+virtual_use_local_privs=YES/NO（NO）
+当该参数激活（YES）时，虚拟用户使用与本地用户相同的权限。当此参数关闭（NO）时，虚拟用户使用与匿名用户相同的权限。默认情况下此参数是关闭的（NO）。&lt;/p&gt;
+
+&lt;p&gt;16.其他设置
+text_userdb_names= YES/NO（NO）
+设置在执行ls –la之类的命令时，是显示UID、GID还是显示出具体的用户名和组名。默认值为NO，即以UID和GID方式显示。若希望显示用户名和组名，则设置为YES。
+ls_recurse_enable=YES/NO（NO）
+若是启用此功能，则允许登入者使用ls –R（可以查看当前目录下子目录中的文件）这个指令。默认值为NO。
+hide_ids=YES/NO（NO）
+如果启用此功能，所有档案的拥有者与群组都为ftp，也就是使用者登入使用ls -al之类的指令，所看到的档案拥有者跟群组均为ftp。默认值为关闭。
+download_enable=YES/NO（YES）
+如果设置为NO，所有的文件都不能下载到本地，文件夹不受影响。默认值为YES。&lt;/p&gt;
+
+&lt;p&gt;关于ftpusers和user_list两个文件的说明
+问题一：ftpusers和user_list两个文件各自的用途是什么？有何关系？
+首先请明确一点：ftpusers不受任何配制项的影响，它总是有效，它是一个黑名单！
+而user_list则是和vsftpd.conf中的userlist_enable和userlist_deny两个配置项紧密相关的，它可以有效，也可以无效，有效时它可以是一个黑名单，也可以是一个白名单！&lt;/p&gt;
+
+&lt;p&gt;问题二：vsftpd.conf中的userlist_enable和userlist_deny两个配置项各自起什么作用，两者如何搭配使用?
+1.userlist_enable和userlist_deny两个选项联合起来针对的是：本地全体用户（除去ftpusers中的用户）和出现在user_list文件中的用户以及不在在user_list文件中的用户这三类用户集合进行的设置。
+2.当且仅当userlist_enable=YES时：userlist_deny项的配置才有效，user_list文件才会被使用；当其为NO时，无论userlist_deny项为何值都是无效的，本地全体用户（除去ftpusers中的用户）都可以登入FTP
+3.当userlist_enable=YES时，userlist_deny=YES时：user_list是一个黑名单，即：所有出现在名单中的用户都会被拒绝登入；
+4.当userlist_enable=YES时，userlist_deny=NO时：user_list是一个白名单，即：只有出现在名单中的用户才会被准许登入(user_list之外的用户都被拒绝登入)；另外需要特别提醒的是：使用白名单后，匿名用户将无法登入！除非显式在user_list中加入一行：anonymous&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 06 Dec 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/12/linux_ftp/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/12/linux_ftp/</guid>
+        
+        <category>FTP,服务器架设,CentOS</category>
+        
+        
+        <category>linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Tomcat的URL中存在特殊符号报404错误</title>
+        <description>&lt;p&gt;Tomcat的URL中存在特殊符号报404错误&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;当url中存在 \&lt;/td&gt;
+      &lt;td&gt;{ } 等字符串时，tomcat报404错误，后台报错信息如下：&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;信息: Error parsing HTTP request header
+ Note: further occurrences of HTTP header parsing errors will be logged at DEBUG level.
+java.lang.IllegalArgumentException: Invalid character found in the request target. The valid characters are defined in RFC 7230 and RFC 3986
+        at org.apache.coyote.http11.InternalInputBuffer.parseRequestLine(InternalInputBuffer.java:192)
+        at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1028)
+        at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:637)
+        at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:318)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+        at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+        at java.lang.Thread.run(Thread.java:745)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Fri, 24 Nov 2017 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2017/11/tomcat_url_invalid_character/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/11/tomcat_url_invalid_character/</guid>
+        
+        <category>Tomcat</category>
+        
+        
+        <category>技术开发</category>
+        
+      </item>
+    
+      <item>
+        <title>CentOS 6.5升级OpenSSH步骤</title>
+        <description>&lt;h3 id=&quot;安装telnet服务我本地安装的没有做这步操作&quot;&gt;安装telnet服务（我本地安装的没有做这步操作）&lt;/h3&gt;
+
+&lt;h4 id=&quot;安装软件&quot;&gt;安装软件&lt;/h4&gt;
+&lt;p&gt;1 # yum -y install telnet-server* telnet&lt;/p&gt;
+
+&lt;p&gt;2.启用telnet服务&lt;/p&gt;
+&lt;h1 id=&quot;vi-etcxinetddtelnet&quot;&gt;vi /etc/xinetd.d/telnet&lt;/h1&gt;
+&lt;p&gt;将其中disable字段的yes改为no以启用telnet服务&lt;/p&gt;
+&lt;h1 id=&quot;mv-etcsecuretty-etcsecurettyold----允许root用户通过telnet登录&quot;&gt;mv /etc/securetty /etc/securetty.old    #允许root用户通过telnet登录&lt;/h1&gt;
+&lt;h1 id=&quot;service-xinetd-start--------------------启动telnet服务&quot;&gt;service xinetd start                    #启动telnet服务&lt;/h1&gt;
+&lt;h1 id=&quot;chkconfig-xinetd-on--------------------使telnet服务开机启动避免升级过程中服务器意外重启后无法远程登录系统&quot;&gt;chkconfig xinetd on                    #使telnet服务开机启动，避免升级过程中服务器意外重启后无法远程登录系统&lt;/h1&gt;
+
+&lt;p&gt;3.测试telnet能否正常登入系统&lt;/p&gt;
+
+&lt;h3 id=&quot;卸载当前openssh&quot;&gt;卸载当前openssh&lt;/h3&gt;
+&lt;h4 id=&quot;备份当前openssh&quot;&gt;备份当前openssh&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mv /etc/ssh /etc/ssh.old
+# mv /etc/init.d/sshd /etc/init.d/sshd.old
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;卸载当前openssh-1&quot;&gt;卸载当前openssh&lt;/h4&gt;
+
+&lt;h5 id=&quot;查看已安装的openssh&quot;&gt;查看已安装的openssh&lt;/h5&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# rpm -qa | grep openssh
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h4 id=&quot;删除&quot;&gt;删除&lt;/h4&gt;
+&lt;h5 id=&quot;删除&quot;&gt;删除&lt;/h5&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# rpm -qa |grep openssh|xargs -i rpm -e --nodeps {}
 &lt;/code&gt;&lt;/pre&gt;
@@ -63,9 +781,21 @@
   &lt;p&gt;选择包含Boost的Generic Linux版本，应为每个版本对应的Boost版本有要求，直接选择包含Boost的版本不会出现版本不对应的情况&lt;/p&gt;
 &lt;/blockquote&gt;
 
+&lt;h4 id=&quot;添加系统mysql组和mysql用户&quot;&gt;添加系统mysql组和mysql用户&lt;/h4&gt;
+
+&lt;p&gt;查看是否有mysql组和mysql用户，没有则添加&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# cat /etc/passwd
+# cat /etc/group
+# groupadd mysql
+# useradd -r -g mysql mysql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;h4 id=&quot;创建安装目录并修改目录拥有者&quot;&gt;创建安装目录并修改目录拥有者&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mkdir /data/mysql3308
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mkdir /usr/local/mysql3308
+# mkdir /data/mysql3308
 # chown -R mysql:mysql /usr/local/mysql3308
 # chown -R mysql:mysql /data/mysql3308
 
@@ -74,7 +804,10 @@
 &lt;/div&gt;
 
 &lt;h4 id=&quot;备份mysql&quot;&gt;备份MySQL&lt;/h4&gt;
-&lt;p&gt;…&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/local/mysql/bin/mysqldump -uroot -p db_name &amp;gt; db_bak_db_name_20160822.sql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;h3 id=&quot;安装新版本mysql&quot;&gt;安装新版本MySQL&lt;/h3&gt;
 &lt;p&gt;然后解压并跳转到解压目录进行编译安装&lt;/p&gt;
@@ -139,6 +872,7 @@
 &lt;/div&gt;
 
 &lt;p&gt;修改/etc/init.d/mysql3308文件中的如下代码&lt;/p&gt;
+
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;basedir=/usr/local/mysql3308
 datadir=/data/mysql3308
 &lt;/code&gt;&lt;/pre&gt;
@@ -170,6 +904,7 @@ mysql&amp;gt; FLUSH PRIVILEGES;
 
 &lt;h3 id=&quot;测试mysql&quot;&gt;测试MySQL&lt;/h3&gt;
 &lt;p&gt;重启并测试&lt;/p&gt;
+
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# service mysql3308 restart
 ...
 
@@ -710,460 +1445,6 @@ https://github.com/progit/progit2&lt;/p&gt;
         
         <category>gitbook</category>
         
-        
-      </item>
-    
-      <item>
-        <title>让macOS Sierra 10.12支持KeyGen和Special [K]</title>
-        <description>&lt;p&gt;macOS Sierra 10.12 注册机修复工具，下载链接: &lt;a href=&quot;https://pan.baidu.com/s/1nvgd5HJ&quot;&gt;百度云&lt;/a&gt; 密码: ngf4&lt;/p&gt;
-
-&lt;h3 id=&quot;corel-keygen-系列&quot;&gt;Corel Keygen 系列&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;打开下载的文件，解压后将“CORE Patcher.app”拖入应用程序中；&lt;/li&gt;
-  &lt;li&gt;运行“CORE Patcher.app”,选择需要修复的“CORE Keygen.app”，屏幕右上角有修复完成的提示，“CORE Keygen.app”就能顺利打开了，此工具支持CORE和x-force系列注册机；&lt;/li&gt;
-  &lt;li&gt;Have done！&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;special-k-系列&quot;&gt;Special K 系列&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;将“Special K for Sierra Utility.app”拖入应用程序中，打开提示安装Xcode，必须安装；&lt;/li&gt;
-  &lt;li&gt;第一次弹出对话框选择要运行的Special K系列注册机，第二次弹出对话框选择拖入应用程序后需要破解的应用；&lt;/li&gt;
-  &lt;li&gt;Have done！&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;PS.此方法也不能保证100%所有注册机都可以正常运行！&lt;/p&gt;
-&lt;/blockquote&gt;
-</description>
-        <pubDate>Wed, 20 Sep 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/09/macOS_Sierra_Keygen/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/macOS_Sierra_Keygen/</guid>
-        
-        <category>MacOS</category>
-        
-        <category>Sierra</category>
-        
-        <category>注册机修复工具</category>
-        
-        
-        <category>MacOS</category>
-        
-      </item>
-    
-      <item>
-        <title>IntelliJ IDEA 创建多模块项目的正确姿势</title>
-        <description>&lt;ol&gt;
-  &lt;li&gt;新建一个空文件夹workspace, 用idea作为项目打开&lt;/li&gt;
-  &lt;li&gt;选中External Libraries, 在菜单: File –&amp;gt; new –&amp;gt; Modual… 新建立模块&lt;/li&gt;
-  &lt;li&gt;新建好模块后, .idea文件夹里的modules.xml里会有两个模块(如果没有找到, 重启idea), 删除第一个同工程名相同的那个默认模块. 这时.idea文件夹会从idea里消失, 不过没关系, 以后我们可以到workspace/.idea文件夹里的修改相应的文件&lt;/li&gt;
-  &lt;li&gt;以后增加模块, 重复第2步(一定要选中External Libraries后创建, 不然新建出来是某个模块的模块了)&lt;/li&gt;
-  &lt;li&gt;如果要实现eclipse里的workset模块分组功能, 有两种方式&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;a. 右键点击模块找Move Module To Group &amp;gt; New Top Level Group,然后新建分组名称即可，此方法发现有时重新后分组会失效，建议到.idea/modules.xml下确认是否添加了 &lt;em&gt;group=”mygroup”&lt;/em&gt; 属性，添加了说明成功了，没有添加可手动添加或多等待一会儿看是否成功添加&lt;/p&gt;
-
-&lt;p&gt;b. 在.idea/modules.xml里的相应模块添加group=”groupName” 如:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;module fileurl=&quot;file://$PROJECT_DIR$/test1/test1.iml&quot; filepath=&quot;$PROJECT_DIR$/test1/test1.iml&quot; group=&quot;mygroup&quot;/&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-        <pubDate>Thu, 07 Sep 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/09/IntelliJIDEA_Multi_Module/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/IntelliJIDEA_Multi_Module/</guid>
-        
-        <category>IntelliJIDEA</category>
-        
-        
-        <category>开发工具</category>
-        
-      </item>
-    
-      <item>
-        <title>Jekyll搭建个人博客过程记录</title>
-        <description>&lt;p&gt;一直想搭建一个自己的博客系统，网上搜了一下发现了&lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! 但是没有找到一个自己满意的模板，后来发现&lt;a href=&quot;http://baixin.io/&quot; target=&quot;_blank&quot;&gt;潘柏信&lt;/a&gt;的博客,非常喜欢这个模板，作者也愿意共享此模板并提供源码，但发现采用的不是Hexo而是Jekyll，了解了一下这两个Blog系统，发现Jekyll还有个优点就是所有的Markdown文档也是放到一起的，而用Hexo则需要将Markdown单独存放，如果想多端同步更新blog则需要建立两个Github项目进行存放，关于Hexo和Jekyll的优缺点自行对比，以上为个人关注的优缺点。最终决定采用Jekyll搭建个人blog，然后主要按照&lt;a href=&quot;http://baixin.io/2016/10/jekyll_tutorials1/&quot; target=&quot;_blank&quot;&gt;Jekyll搭建个人博客&lt;/a&gt;进行搭建，在此记录一下搭建过程遇到的问题和有一些细节.&lt;/p&gt;
-
-&lt;h2 id=&quot;安装jekyll&quot;&gt;安装Jekyll&lt;/h2&gt;
-
-&lt;h3 id=&quot;更新ruby&quot;&gt;更新Ruby&lt;/h3&gt;
-&lt;p&gt;Jekyll 是基于 Ruby 开发的，而且要求Ruby不低于2.1版本，但是MacOS的默认的Ruby版本为2.0，故需要升级Ruby。升级过程发现不成功，原因为我的系统升级为了OSX 10.12，Mac系统升级osx 10.11后，brew在使用的时候就会直接报错了，会影响Ruby升级操作，因为从10.11开始，对几个重要目录的权限苹果有了新的限制，特别是/usr目录，经过各种搜索，最终采用rvm进行安装升级Ruby，详细步骤请查看&lt;a href=&quot;http://wanghengliang.cn/2017/09/rvm_install_ruby/&quot; target=&quot;_blank&quot;&gt;Mac OS10.12采用rvm更新安装ruby&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h3 id=&quot;安装jekyll-1&quot;&gt;安装Jekyll&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;gem install jekyll
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;创建博客&quot;&gt;创建博客&lt;/h3&gt;
-&lt;p&gt;此处有两种方式：1直接创建，2通过已有模板创建&lt;/p&gt;
-
-&lt;h4 id=&quot;直接创建&quot;&gt;直接创建&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll new myBlog
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;通过已有模板创建&quot;&gt;通过已有模板创建&lt;/h4&gt;
-&lt;p&gt;1.为了将最终blog放到Github Pages，先进行创建Github Pages项目。&lt;/p&gt;
-
-&lt;p&gt;建立与你用户名对应的仓库，仓库名必须为【your_user_name.github.io】固定写法,如我的 github 账户名叫 wanghengliang，我的 Github Pages 仓库名就叫 wanghengliang.github.io;然后clone到本地,可以通过HTTPS，如果为Github添加了SSH keys可以采用SSH方式，如clone我的项目命令如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone git@github.com:wanghengliang/wanghengliang.github.io.git
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;2.下载模板，可采用潘柏信提供的&lt;a href=&quot;https://github.com/leopardpan/leopardpan.github.io&quot; target=&quot;_blank&quot;&gt;leopardpan&lt;/a&gt;模板，，或者我修改后的&lt;a href=&quot;https://github.com/wanghengliang/wanghengliang.github.io&quot; target=&quot;_blank&quot;&gt;模板&lt;/a&gt;(只增加了分类信息)，下载zip版本，并将内容解压到Github Pages本地目录。&lt;/p&gt;
-
-&lt;p&gt;3.修改Blog配置&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;删除模板原有文章并创建自己的文章，&lt;/li&gt;
-    &lt;li&gt;修改配置文件_config.yml里面的内容为你自己的。&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;编写文章&quot;&gt;编写文章&lt;/h3&gt;
-&lt;p&gt;所有的文章都在_posts目录下面，文章格式为 mardown 格式，文章文件名可以是 .mardown 或者 .md；&lt;/p&gt;
-
-&lt;p&gt;文章名的格式:前面必须为日期开头如：2016-10-16-welcome_jekyll.md&lt;/p&gt;
-
-&lt;p&gt;文章head格式&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
-layout: post
-title:  &quot;Welcome to Jekyll!&quot;
-date:   2016-10-16 11:29:08 +0800
-categories: jekyll update
-tag: jekyll
----
-正文...
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;启动博客系统&quot;&gt;启动博客系统&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;jekyll server
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;如果你本机没配置过任何jekyll的环境可能会报错&quot;&gt;如果你本机没配置过任何jekyll的环境，可能会报错&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- bundler (LoadError)
-	from /Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
-	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/lib/jekyll/plugin_manager.rb:34:in `require_from_bundler'
-	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/exe/jekyll:9:in `&amp;lt;top (required)&amp;gt;'
-	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/jekyll:23:in `load'
-	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/jekyll:23:in `&amp;lt;main&amp;gt;'
-	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `eval'
-	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/bin/ruby_executable_hooks:15:in `&amp;lt;main&amp;gt;'
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;原因： 没有安装 bundler ，执行安装 bundler 命令&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem install bundler
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;提示：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Fetching: bundler-1.13.5.gem (100%)
-Successfully installed bundler-1.13.5
-Parsing documentation for bundler-1.13.5
-Installing ri documentation for bundler-1.13.5
-Done installing documentation for bundler after 5 seconds
-1 gem installed
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;再次执行 $ jekyll server  ，提示&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-Could not find proper version of jekyll (3.1.1) in any of the sources
-Run `bundle install` to install missing gems.
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;跟着提示运行命令&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ bundle install
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;这个时候你可能会发现 bundle install 运行卡主不动了。&lt;/p&gt;
-
-&lt;p&gt;如果很长时间都没任何提示的话，你可以尝试修改 gem 的 source&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
-$ gem sources -l
-*** CURRENT SOURCES ***
-
-https://gems.ruby-china.org
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;再次执行命令 $ bundle install，发现开始有动静了&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Fetching gem metadata from https://rubygems.org/...........
-Fetching version metadata from https://rubygems.org/..
-Fetching dependency metadata from https://rubygems.org/.
-。。。
-Installing jekyll-watch 1.3.1
-Installing jekyll 3.1.1
-Bundle complete! 3 Gemfile dependencies, 17 gems now installed.
-Use `bundle show [gemname]` to see where a bundled gem is installed.
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;bundler安装完成，后再次启动本地服务&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll server
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;继续报错&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Configuration file: /Users/tendcloud-Caroline/Desktop/leopardpan.github.io/_config.yml
-  Dependency Error: Yikes! It looks like you don't have jekyll-sitemap or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. The full error message from Ruby is: 'cannot load such file -- jekyll-sitemap' If you run into trouble, you can find helpful resources at http://jekyllrb.com/help/! 
-jekyll 3.1.1 | Error:  jekyll-sitemap
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;表示 当前的 jekyll 版本是 3.1.1 ，无法使用 jekyll-sitemap&lt;/p&gt;
-
-&lt;p&gt;解决方法有两个&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;1、打开当前目录下的 _config.yml 文件，把 gems: [jekyll-paginate,jekyll-sitemap] 换成 gems: [jekyll-paginate] ，也就是去掉jekyll-sitemap。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;2、升级 jekyll 版本。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;修改完成后保存配置，再次执行&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ jekyll server
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;提示&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
-            Source: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github
-       Destination: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_site
- Incremental build: disabled. Enable with --incremental
-      Generating... 
-                    done in 0.901 seconds.
- Auto-regeneration: enabled for '/Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github'
-Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
-    Server address: http://127.0.0.1:4000/
-  Server running... press ctrl-c to stop.
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;表示本地服务部署成功。&lt;/p&gt;
-
-&lt;p&gt;在浏览器输入 &lt;a href=&quot;127.0.0.1:4000&quot;&gt;127.0.0.1:4000&lt;/a&gt; ， 就可以看到&lt;a href=&quot;http://wanghengliang.cn&quot;&gt;wanghengliang.cn&lt;/a&gt;博客效果了。&lt;/p&gt;
-
-&lt;p&gt;发现markdown中代码部分显示不正常，原因是jekyllMarkdown的解析器版本太旧，通过如下命令更新：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ bundle update
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;发布博客&quot;&gt;发布博客&lt;/h3&gt;
-&lt;p&gt;然后使用 git push 到你自己的仓库里面去，检查你远端仓库，在浏览器输入 username.github.io 就会发现，你有一个漂亮的主题模板了。&lt;/p&gt;
-
-&lt;h3 id=&quot;绑定自己的域名&quot;&gt;绑定自己的域名&lt;/h3&gt;
-&lt;p&gt;CNAME里面的wanghengliang.cn修改成你自己的域名，如果你暂时没有域名，直接把CNAME文件删除即可。&lt;/p&gt;
-</description>
-        <pubDate>Tue, 05 Sep 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/09/jekyll_blog/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/jekyll_blog/</guid>
-        
-        <category>jekyll</category>
-        
-        <category>blog系统</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Mac OS10.12采用rvm更新安装Ruby</title>
-        <description>&lt;p&gt;因为很多软件需要Ruby高版本支持，但Mac默认安装的版本为2.0，故需要升级Ruby，升级步骤如下：&lt;/p&gt;
-
-&lt;p&gt;注意事项：升级osx 10.11后，brew在使用的时候就会直接报错了，会影响以下操作，因为从10.11开始，对几个重要目录的权限苹果有了新的限制，特别是/usr目录，解决办法：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo chown -R $(whoami):admin /usr/local
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;第一步安装rvm&quot;&gt;第一步：安装rvm&lt;/h2&gt;
-&lt;p&gt;rvm是什么？为什么要安装rvm呢，因为rvm可以让你拥有多个版本的Ruby，并且可以在多个版本之间自由切换。&lt;/p&gt;
-
-&lt;p&gt;安装命令：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ curl -L get.rvm.io | bash -s stable
-$ source ~/.rvm/scripts/rvm
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;检查是否安装成功：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm -v
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;如果能显示版本好则安装成功了&lt;/p&gt;
-
-&lt;h2 id=&quot;第二步安装ruby&quot;&gt;第二步：安装ruby&lt;/h2&gt;
-&lt;p&gt;列出ruby可安装的版本信息&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm list known
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;安装一个ruby版本&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm install 2.3.3
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;设置默认版本&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm use 2.3.3 --default
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;查看已安装的ruby&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm list
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;卸载一个已安装ruby版本&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm remove 2.3.3
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;第三步更换源&quot;&gt;第三步：更换源&lt;/h2&gt;
-&lt;p&gt;查看已有的源&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem source -l
-*** CURRENT SOURCES ***
-
-https://rubygems.org/
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;然后我们需要来修改更换源（由于国内被墙）所以要把源切换至国内镜像服务器 在终端执行以下命令&lt;/p&gt;
-
-&lt;p&gt;以下命令酌情执行，我未执行也成功&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem update --system
-$ gem uninstall ruby gems -update
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;以下命令必须执行，并确保最终输出结果只有 gems.ruby-china.org&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
-$ gem sources -l
-*** CURRENT SOURCES ***
-
-https://gems.ruby-china.org
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Mon, 04 Sep 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/09/rvm_install_ruby/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/rvm_install_ruby/</guid>
-        
-        <category>rvm</category>
-        
-        <category>Ruby</category>
-        
-        <category>MacOS</category>
-        
-        
-        <category>MacOS</category>
-        
-      </item>
-    
-      <item>
-        <title>MacBook使用小技巧</title>
-        <description>&lt;p&gt;MacOS使用小技巧整理，持续更新&lt;/p&gt;
-
-&lt;h3 id=&quot;finder始终显示用户资料库&quot;&gt;Finder始终显示用户「资料库」&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;打开终端，运行以下命令：&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chflags nohidden ~/Library/
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;macos-sierra-如何打开任何来源&quot;&gt;macOS Sierra 如何打开任何来源&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;打开终端，运行以下命令：&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo spctl --master-disable
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;打开应用程序-系统偏好设置-安全性和隐私-通用，消失的任何来源终于出现了（默认应该勾选了）；&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;如果你不喜欢用终端输入命令的方式打开任何来源选项，你也可以通过另一种方法来打开第三方应用程序： 按住Control键并点按或右键点按该app的图标，点击打开即可出现“打开”选项，是不是也很方便？大家按照自己的喜欢选择这两种方法即可在macOS Sierra下打开第三方应用。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;mac-os-x的升级或其他原因可能会导致Ｍysql启动或开机自动运行失败&quot;&gt;Mac OS X的升级或其他原因可能会导致ＭySQL启动或开机自动运行失败&lt;/h3&gt;
-
-&lt;p&gt;在ＭySQL操作面板上会提示 &lt;em&gt;Warning:The /usr/local/mysql/data directory is not owned by the ‘mysql‘ or ‘_mysql‘&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;只需要运行如下命令即可&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo chown -R mysql /usr/local/mysql/data
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;finder里排序如何让文件夹优先&quot;&gt;Finder里排序如何让文件夹优先&lt;/h3&gt;
-
-&lt;p&gt;打开Finder，选择「偏好设置」- 选择高级选项 - 勾选&lt;code class=&quot;highlighter-rouge&quot;&gt;按名称排序时保持文件夹在顶部&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/macos/finder_settings.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;替换mac1012-finder图标&quot;&gt;替换mac10.12 finder图标&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;准备图标文件，用图片工具打开，⌘+A全选，⌘+c复制图片&lt;/li&gt;
-  &lt;li&gt;邮件要修改文件夹，选择显示简介。&lt;/li&gt;
-  &lt;li&gt;先选中简介中上面的小图标，⌘+v粘贴，图标显示已经更换，直接关掉简介就好了。&lt;/li&gt;
-&lt;/ol&gt;
-
-</description>
-        <pubDate>Fri, 01 Sep 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/09/mac_skill/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/mac_skill/</guid>
-        
-        <category>MacOS</category>
-        
-        
-        <category>MacOS</category>
         
       </item>
     

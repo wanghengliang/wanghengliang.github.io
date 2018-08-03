@@ -36,7 +36,6 @@ MySQL Community Edition (GPL) MySQL社区版（GPL）
 
 ```
 tar -xvf mysql-5.7.18-1.el7.x86_64.rpm-bundle.tar
-rpm -ivh mysql-community-server-minimal-5.7.18-1.el7.x86_64.rpm
 ```
 ### mysql 安装
 #### 安装前需要先卸载mariadb-lib
@@ -120,14 +119,20 @@ event_scheduler=1
 # cat /var/log/mysqld.log | grep password
 2017-05-03T02:26:10.001375Z 1 [Note] A temporary password is generated for root@localhost: (tfywy9JHk7J
 ```
+或者
+
+```
+# cat /data/mysql/mysql-error.log | grep password
+2018-07-19T10:45:38.681364Z 1 [Note] A temporary password is generated for root@localhost: Kz(tF>cK4Zr>
+```
 
 ### 数据库测试
 启动服务器并登录测试
 
 ```
 # service mysqld start
-Redirecting to /bin/systemctl start  mysqld.service
-# mysql -uroot -p      
+Redirecting to /bin/systemctl start mysqld.service
+# mysql -uroot -p
 Enter password: 
 ...
 mysql>
@@ -139,12 +144,21 @@ mysql> show databases;
 ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
 mysql> use mysql;
 ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
+
+或
+ERROR 1820 (HY000): You must SET PASSWORD before executing this statement 
 ```
 因为新用户登入后需要立刻修改密码，否则无法继续后续的工作：
 
 ```
-mysql> set password = password('abc');
+mysql> set password = password('mysql5.7.21(js');
 Query OK, 0 rows affected, 1 warning (0.00 sec)
+```
+或者
+
+```
+alter user user() identified by "mysql5.7.21(js";
+Query OK, 0 rows affected (0.00 sec)
 ```
 重启并测试
 
@@ -168,6 +182,7 @@ mysql> show databases;
 4 rows in set (0.00 sec)
 
 ```
+
 
 ### mysql 创建数据库和用户
 

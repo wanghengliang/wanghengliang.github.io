@@ -187,6 +187,47 @@
 
 <h3 id="配置tomcat">配置Tomcat</h3>
 
+<h5 id="修改日志文件路径">修改日志文件路径</h5>
+
+<p>修改catalina.out路径日志
+tomcat/bin目录下修改catalina.sh改变catalina.out的目录</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># vi /usr/local/tomcat/server/bin/catalina.sh
+//命令模式下输入/CATALINA_OUT查找,按n查找下一个
+
+CATALINA_OUT="$CATALINA_BASE"/logs/catalina.out；//此行内的"$CATALINA_BASE",更改为想要更换的目录如：CATALINA_OUT=/data/wwwlogs/catalina.out
+
+</code></pre>
+</div>
+
+<p>修改localhost、catalina、manager、host-manager日志路径
+打开Tomcat目录conf/logging.properties，修改</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># vi /usr/local/tomcat/server/conf/logging.properties
+//分别修改其路径，将${catalina.base}更改为想要更换的目录
+1catalina.org.apache.juli.AsyncFileHandler.directory = ${catalina.base}/logs
+2localhost.org.apache.juli.AsyncFileHandler.directory = ${catalina.base}/logs
+3manager.org.apache.juli.AsyncFileHandler.directory = ${catalina.base}/logs
+4host-manager.org.apache.juli.AsyncFileHandler.directory = ${catalina.base}/logs
+</code></pre>
+</div>
+
+<p>修改localhost_access_log日志路径
+打开Tomcat目录conf/server.xml,修改</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># vi /usr/local/tomcat/server/conf/server.xml
+//修改directory为想要更换的目录
+&lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="/usr/local/tomcats/logs" ...&gt;
+</code></pre>
+</div>
+
+<h5 id="删除自带的项目">删除自带的项目</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># cd /usr/local/tomcat/server/webapps
+# rm -rf *
+</code></pre>
+</div>
+
 <h5 id="配置虚拟主机">配置虚拟主机</h5>
 <h6 id="方法1直接配置confserverxml配置虚拟主机">方法1，直接配置conf/server.xml配置虚拟主机</h6>
 
@@ -220,8 +261,8 @@
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="cp">&lt;!DOCTYPE server-xml [
-&lt;!ENTITY vhost-localhost SYSTEM "file:///usr/local/tomcat/conf/vhost/localhost.xml"&gt;</span>
-<span class="cp">&lt;!ENTITY vhost-www.wanghengliang.cn SYSTEM "file:///usr/local/tomcat/conf/vhost/www.wanghengliang.cn.xml"&gt;</span>
+&lt;!ENTITY vhost-wwww.aaa.com SYSTEM "file:///usr/local/tomcat/conf/vhost/wwww.aaa.com.xml"&gt;</span>
+<span class="cp">&lt;!ENTITY vhost-wwww.bbb.com SYSTEM "file:///usr/local/tomcat/conf/vhost/wwww.bbb.com.xml"&gt;</span>
 ]&gt;
 
 <span class="nt">&lt;Server</span> <span class="na">port=</span><span class="s">"8005"</span> <span class="na">shutdown=</span><span class="s">"SHUTDOWN"</span><span class="nt">&gt;</span>
@@ -230,8 +271,8 @@
     <span class="nt">&lt;Connector</span> <span class="na">port=</span><span class="s">"8080"</span> <span class="na">protocol=</span><span class="s">"HTTP/1.1"</span> <span class="na">connectionTimeout=</span><span class="s">"20000"</span> <span class="na">redirectPort=</span><span class="s">"8443"</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;Engine</span> <span class="na">name=</span><span class="s">"Catalina"</span> <span class="na">defaultHost=</span><span class="s">"localhost"</span><span class="nt">&gt;</span>
       ...
-      <span class="ni">&amp;vhost-localhost;</span>
-      <span class="ni">&amp;vhost-www.wanghengliang.cn;</span>
+      <span class="ni">&amp;vhost-wwww.aaa.com;</span>
+      <span class="ni">&amp;vhost-wwww.bbb.com;</span>
     <span class="nt">&lt;/Engine&gt;</span>
   <span class="nt">&lt;/Service&gt;</span>
 <span class="nt">&lt;/Server&gt;</span>
@@ -239,15 +280,25 @@
 </div>
 
 <p>每个单独虚拟主机文件内容如下:
-/usr/local/tomcat/conf/vhost/www.wanghengliang.cn.xml</p>
+/usr/local/tomcat/conf/vhost/www.aaa.com.xml</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;Host name="www.wanghengliang.cn" appBase="webapps" unpackWARs="true" autoDeploy="true"&gt;
-    &lt;Alias&gt;wanghengliang.cn&lt;/Alias&gt;
-    &lt;Context path="" docBase="/data/wwwroot/wechat" debug="0" reloadable="false" crossContext="true"/&gt;
-    &lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" prefix="www.wanghengliang.cn_access_log." suffix=".txt" pattern="%h %l %u %t &amp;quot;%r&amp;quot; %s %b" /&gt;
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;Host name="wwww.aaa.com" appBase="webapps" unpackWARs="true" autoDeploy="true"&gt;
+    &lt;Alias&gt;www.aaa.cn&lt;/Alias&gt;
+    &lt;Context path="" docBase="/data/wwwroot/aaa" debug="0" reloadable="false" crossContext="true"/&gt;
+    &lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" prefix="wwww.aaa.com_access_log." suffix=".txt" pattern="%h %l %u %t &amp;quot;%r&amp;quot; %s %b" /&gt;
 &lt;/Host&gt;
 </code></pre>
 </div>
+
+<p>/usr/local/tomcat/conf/vhost/www.bbb.com.xml</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;Host name="wwww.bbb.com" appBase="webapps" unpackWARs="true" autoDeploy="true"&gt;
+    &lt;Context path="" docBase="/data/wwwroot/bbb" debug="0" reloadable="false" crossContext="true"/&gt;
+    &lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" prefix="wwww.bbb.com_access_log." suffix=".txt" pattern="%h %l %u %t &amp;quot;%r&amp;quot; %s %b" /&gt;
+&lt;/Host&gt;
+</code></pre>
+</div>
+
 
 
   </section>
@@ -398,7 +449,7 @@
 
         <div class = "footer_div">  
            <p class="copyright text-muted">
-            Copyright &copy; hengliang 2017 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
+            Copyright &copy; hengliang 2018 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
             <iframe
                 style="margin-left: 2px; margin-bottom:-5px;"
                 frameborder="0" scrolling="0" width="91px" height="20px"

@@ -19,9 +19,21 @@ tags: MySQL 服务器架设
 下载如下版本：Generic Linux (Architecture Independent), Compressed TAR Archive Includes Boost Headers
 > 选择包含Boost的Generic Linux版本，应为每个版本对应的Boost版本有要求，直接选择包含Boost的版本不会出现版本不对应的情况
 
+#### 添加系统mysql组和mysql用户
+
+查看是否有mysql组和mysql用户，没有则添加
+
+```
+# cat /etc/passwd
+# cat /etc/group
+# groupadd mysql
+# useradd -r -g mysql mysql
+```
+
 #### 创建安装目录并修改目录拥有者
 
 ```
+# mkdir /usr/local/mysql3308
 # mkdir /data/mysql3308
 # chown -R mysql:mysql /usr/local/mysql3308
 # chown -R mysql:mysql /data/mysql3308
@@ -30,7 +42,10 @@ tags: MySQL 服务器架设
 ```
 
 #### 备份MySQL
-...
+
+```
+/usr/local/mysql/bin/mysqldump -uroot -p db_name > db_bak_db_name_20160822.sql
+```
 
 ### 安装新版本MySQL
 然后解压并跳转到解压目录进行编译安装

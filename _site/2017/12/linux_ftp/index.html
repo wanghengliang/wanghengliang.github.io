@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>linux服务器架设FTP</title>
+  <meta name="description" content="linux服务器架设FTP">
+  <meta name="author" content="leopardpan">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="linux服务器架设FTP">
+  <meta name="twitter:description" content="linux服务器架设FTP">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="linux服务器架设FTP">
+  <meta property="og:description" content="linux服务器架设FTP">
+  
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2017/12/linux_ftp/">
+  <link rel="alternate" type="application/rss+xml" title="hengliang" href="http://localhost:4000/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+
+<!-- 站点统计 -->
+  <script 
+  async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>  
+
+<!-- 百度统计 -->
+  
+
+<!-- google 统计 -->
+  
+
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">        
+      <div class="nav_container">
+         <nav class="nav-menu-item" style = "float:right">
+            <i class="nav-menu-item">
+              <a href="/#blog" title="" class="blog-button">  博客主页
+              </a>
+            </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/archive" title="archive" class="btn-mobile-menu__icon">
+                      所有文章
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/category" title="category" class="btn-mobile-menu__icon">
+                      分类
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/tags" title="tags" class="btn-mobile-menu__icon">
+                      标签
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/about" title="about" class="btn-mobile-menu__icon">
+                      关于我
+                  </a>
+                </i>
+            
+          </nav>
+      </div>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <!-- 头像效果-start -->
+        <div class="ih-item circle effect right_to_left">            
+            <a href="/#blog" title="前往 hengliang 的主页" class="blog-button">
+                <div class="img"><img src="/images/avatar.jpg" alt="img"></div>
+                <div class="info">
+                    <div class="info-back">
+                        <h2> 
+                            
+                                hengliang
+                            
+                        </h2>
+                        <p>
+                           
+                                java / iOS
+                            
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- 头像效果-end -->
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for hengliang" class="blog-button">hengliang</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">个人站</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">快乐地创造和品味生活</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">博客主页</a></li>
+                
+                  <li class="navigation__item"><a href="/archive" title="archive">所有文章</a></li>
+                
+                  <li class="navigation__item"><a href="/category" title="category">分类</a></li>
+                
+                  <li class="navigation__item"><a href="/tags" title="tags">标签</a></li>
+                
+                  <li class="navigation__item"><a href="/about" title="about">关于我</a></li>
+                
+              </ul>
+            </nav>
+          </div>          
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-clear"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">linux服务器架设FTP</h1>
+    <div class="post-meta">
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2017-12-06 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-12-06</time>  
+         
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
+    </div>
+  </header>
+
+  <section class="post">
+    <p>linux服务器架设FTP</p>
+
+<h3 id="准备工作">准备工作</h3>
+
+<h4 id="下载新版本ftp">下载新版本FTP</h4>
+
+<p>下载地址：https://pkgs.org/download/vsftpd/</p>
+
+<blockquote>
+  <p>根据服务器选择相应版本，此处选择CentOS 6的版本</p>
+</blockquote>
+
+<h3 id="安装ftp">安装FTP</h3>
+
+<h4 id="检查安装vsftpd软件">检查安装vsftpd软件</h4>
+<p>使用如下命令查询是否安装vsftpd软件</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#rpm -qa |grep vsftpd
+</code></pre>
+</div>
+
+<h4 id="安装vsftpd软件">安装vsftpd软件</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>rpm -ivh vsftpd-2.2.2-24.el6.i686.rpm
+</code></pre>
+</div>
+
+<blockquote>
+  <p>需要安装依赖包，且依赖包较多，有网络条件最好用yum安装。</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>yum -y install vsftpd
+</code></pre>
+</div>
+
+<h4 id="配置vsftpd">配置vsftpd</h4>
+<p>ftp的配置文件主要有三个，位于/etc/vsftpd/目录下，分别是：
+vsftpd.conf   vsftpd的主配置文件
+ftpusers    该文件用来指定那些用户不能访问ftp服务器。
+user_list   该文件用来指示的默认账户在默认情况下也不能访问ftp</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># vi /etc/vsftpd/vsftpd.conf
+
+
+# 是否允许匿名登录（将其禁止）
+anonymous_enable=NO
+local_enable=YES
+
+# 仅在没有pam验证版本时有用,是否检查用户有一个有效的shell来登录
+check_shell=NO
+
+# 设置连接超时时间（单位秒）
+idle_session_timeout=600
+
+# 数据传输超时时间（单位秒）
+data_connection_timeout=120
+
+# 是否允许上传/下载二进制文件
+ascii_upload_enable=YES
+ascii_download_enable=YES
+
+# 限制所有的本地用户只能访问自己的目录
+chroot_local_user=YES
+
+# 是否允许使用ls -R等命令
+ls_recurse_enable=YES
+
+# [新增]是否只允许userlist_file文件中的用户登录FTP服务器，userlist_enable为YES才生效
+# YES，默认值，禁止文件中的用户登录，同时也不向这些用户发出输入密码的提示。
+# NO，只允许在文件中的用户登录FTP服务器
+userlist_deny=NO
+
+# [新增]所有用户的根目录（对匿名用户无效）
+local_root=/data/ftpdata
+
+</code></pre>
+</div>
+
+<h4 id="新增ftp用户并为其设置密码">新增ftp用户并为其设置密码</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># useradd ftpuser -s /sbin/nologin
+# password ftpuser
+</code></pre>
+</div>
+
+<h4 id="编辑user_list文件给予用户访问ftp权限">编辑user_list文件，给予用户访问ftp权限</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>vi /etc/vsftpd/user_list
+</code></pre>
+</div>
+<p>在文件末尾加入ftpuser并保存</p>
+
+<h4 id="建立可访问目录并指定用户">建立可访问目录并指定用户</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># mkdir -p /data/ftpdata
+# chown -R ftpuser /data/ftpdata/ # 注意后面有个/
+# chmod -R 755 /data/ftpdata
+</code></pre>
+</div>
+
+<h4 id="使用vsftpd软件">使用vsftpd软件</h4>
+
+<p>主要包括如下几个命令：
+启动ftp命令</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#service vsftpd start
+
+# 如果报错提示：Redirecting to /bin/systemctl start vsftpd.service，请使用
+# systemctl start vsftpd.service
+</code></pre>
+</div>
+<p>停止ftp命令</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#service vsftpd stop
+</code></pre>
+</div>
+<p>重启ftp命令</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#service vsftpd restart
+</code></pre>
+</div>
+
+<h4 id="开机启动vsftpd服务">开机启动vsftpd服务</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># chkconfig vsftpd on
+</code></pre>
+</div>
+
+<h4 id="解决无法登录问题">解决无法登录问题</h4>
+<h5 id="错误信息如下">错误信息如下：</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>状态:     正在连接 XXX.XXX.XXX.XXX:21...
+状态:     连接建立，等待欢迎消息...
+命令:     USER root
+响应:     331 Please specify the password.
+命令:     PASS ***************
+响应:     530 Login incorrect.
+错误:     严重错误: 无法连接到服务器
+
+</code></pre>
+</div>
+<h5 id="错误原因及解决办法">错误原因及解决办法：</h5>
+
+<p>原因一：启用了PAM，解决办法，删除文件/etc/pam.d/vsftpd</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo rm /etc/pam.d/vsftpd
+</code></pre>
+</div>
+
+<p>原因二：密码错误</p>
+
+<h4 id="解决vsftpd-读取目录列表失败的问题">解决vsftpd 读取目录列表失败的问题</h4>
+<h5 id="错误信息如下-1">错误信息如下：</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>...
+
+状态:    已连接
+状态:    读取目录列表...
+命令:    PWD
+响应:    257 "/"
+命令:    TYPE I
+响应:    200 Switching to Binary mode.
+命令:    PASV
+响应:    227 Entering Passive Mode (192,168,1,6,23,8).
+命令:    LIST
+错误:    连接超时
+错误:    读取目录列表失败
+</code></pre>
+</div>
+
+<h5 id="错误原因">错误原因：</h5>
+<p>该错误是由iptables的配置引起的</p>
+
+<h5 id="解决办法">解决办法：</h5>
+
+<p>临时的解决方法是执行如下命令,但当你重新启动服务器则iptables规则失效，又会出现相同的情况：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># modprobe ip_nat_ftp
+</code></pre>
+</div>
+
+<p>永久解决方法，需要修改/etc/sysconfig/iptables-config文件：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># vi /etc/sysconfig/iptables-config
+
+......
+
+IPTABLES_MODULES="ip_nat_ftp"
+IPTABLES_MODULES_UNLOAD="yes"
+
+......
+
+</code></pre>
+</div>
+
+<blockquote>
+  <p>IPTABLES_MODULES_UNLOAD=”yes”的意义：每次iptables停止或者重启都会Unload modules
+IPTABLES_MODULES=”“的意义：每次防火墙规则应用以后加载的模块
+我们需要把IPTABLES_MODULES=”“修改为：IPTABLES_MODULES=”ip_nat_ftp”，这样重启服务器之后就不必再每次都执行mobprobe啦</p>
+</blockquote>
+
+<h4 id="vsftpd配置文件详解">vsftpd配置文件详解</h4>
+
+<p>1.默认配置：
+a.允许匿名用户和本地用户登陆。
+     anonymous_enable=YES
+     local_enable=YES
+b.匿名用户使用的登陆名为ftp或anonymous，口令为空；匿名用户不能离开匿名用户家目录/var/ftp,且只能下载不能上传。
+c.本地用户的登录名为本地用户名，口令为此本地用户的口令；本地用户可以在自 己家目录中进行读写操作；本地用户可以离开自家目录切换至有权限访问的其他目录，并在权限允许的情况下进行上传/下载。
+    write_enable=YES
+4&gt;写在文件/etc/vsftpd.ftpusers中的本地用户禁止登陆。</p>
+
+<p>2.配置文件格式：<br />
+vsftpd.conf 的内容非常单纯，每一行即为一项设定。若是空白行或是开头为#的一行，将会被忽略。内容的格式只有一种，如下所示
+option=value
+要注意的是，等号两边不能加空白。</p>
+
+<p>3.匿名用户（anonymous）设置
+anonymous_enable=YES/NO（YES）
+控制是否允许匿名用户登入，YES 为允许匿名登入，NO 为不允许。默认值为YES。
+write_enable=YES/NO（YES）
+是否允许登陆用户有写权限。属于全局设置，默认值为YES。
+no_anon_password=YES/NO（NO）
+若是启动这项功能，则使用匿名登入时，不会询问密码。默认值为NO。
+ftp_username=ftp
+定义匿名登入的使用者名称。默认值为ftp。
+anon_root=/var/ftp
+使用匿名登入时，所登入的目录。默认值为/var/ftp。注意ftp目录不能是777的权限属性，即匿名用户的家目录不能有777的权限。
+anon_upload_enable=YES/NO（NO）
+如果设为YES，则允许匿名登入者有上传文件（非目录）的权限，只有在write_enable=YES时，此项才有效。当然，匿名用户必须要有对上层目录的写入权。默认值为NO。
+anon_world_readable_only=YES/NO（YES）
+如果设为YES，则允许匿名登入者下载可阅读的档案（可以下载到本机阅读，不能直接在FTP服务器中打开阅读）。默认值为YES。
+anon_mkdir_write_enable=YES/NO（NO）
+如果设为YES，则允许匿名登入者有新增目录的权限，只有在write_enable=YES时，此项才有效。当然，匿名用户必须要有对上层目录的写入权。默认值为NO。
+anon_other_write_enable=YES/NO（NO）
+如果设为YES，则允许匿名登入者更多于上传或者建立目录之外的权限，譬如删除或者重命名。（如果anon_upload_enable=NO，则匿名用户不能上传文件，但可以删除或者重命名已经存在的文件；如果anon_mkdir_write_enable=NO，则匿名用户不能上传或者新建文件夹，但可以删除或者重命名已经存在的文件夹。）默认值为NO。
+chown_uploads=YES/NO（NO）
+设置是否改变匿名用户上传文件（非目录）的属主。默认值为NO。
+chown_username=username
+设置匿名用户上传文件（非目录）的属主名。建议不要设置为root。
+anon_umask=077
+设置匿名登入者新增或上传档案时的umask 值。默认值为077，则新建档案的对应权限为700。
+deny_email_enable=YES/NO（NO）
+若是启动这项功能，则必须提供一个档案/etc/vsftpd/banner_emails，内容为email address。若是使用匿名登入，则会要求输入email address，若输入的email address 在此档案内，则不允许进入。默认值为NO。
+banned_email_file=/etc/vsftpd/banner_emails
+此文件用来输入email address，只有在deny_email_enable=YES时，才会使用到此档案。若是使用匿名登入，则会要求输入email address，若输入的email address 在此档案内，则不允许进入。</p>
+
+<p>4.本地用户设置
+local_enable=YES/NO（YES）
+控制是否允许本地用户登入，YES 为允许本地用户登入，NO为不允许。默认值为YES。
+local_root=/home/username
+当本地用户登入时，将被更换到定义的目录下。默认值为各用户的家目录。
+write_enable=YES/NO（YES）
+是否允许登陆用户有写权限。属于全局设置，默认值为YES。
+local_umask=022
+本地用户新增档案时的umask 值。默认值为077。
+file_open_mode=0755
+本地用户上传档案后的档案权限，与chmod 所使用的数值相同。默认值为0666。</p>
+
+<p>5.欢迎语设置
+dirmessage_enable=YES/NO（YES）
+如果启动这个选项，那么使用者第一次进入一个目录时，会检查该目录下是否有.message这个档案，如果有，则会出现此档案的内容，通常这个档案会放置欢迎话语，或是对该目录的说明。默认值为开启。
+message_file=.message
+设置目录消息文件，可将要显示的信息写入该文件。默认值为.message。
+banner_file=/etc/vsftpd/banner
+当使用者登入时，会显示此设定所在的档案内容，通常为欢迎话语或是说明。默认值为无。如果欢迎信息较多，则使用该配置项。
+ftpd_banner=Welcome to BOB’s FTP server
+这里用来定义欢迎话语的字符串，banner_file是档案的形式，而ftpd_banner 则是字符串的形式。预设为无。</p>
+
+<p>6.控制用户是否允许切换到上级目录
+在默认配置下，本地用户登入FTP后可以使用cd命令切换到其他目录，这样会对系统带来安全隐患。可以通过以下三条配置文件来控制用户切换目录。
+chroot_list_enable=YES/NO（NO）
+设置是否启用chroot_list_file配置项指定的用户列表文件。默认值为NO。
+chroot_list_file=/etc/vsftpd.chroot_list
+用于指定用户列表文件，该文件用于控制哪些用户可以切换到用户家目录的上级目录。
+chroot_local_user=YES/NO（NO）
+用于指定用户列表文件中的用户是否允许切换到上级目录。默认值为NO。
+通过搭配能实现以下几种效果：
+①当chroot_list_enable=YES，chroot_local_user=YES时，在/etc/vsftpd.chroot_list文件中列出的用户，可以切换到其他目录；未在文件中列出的用户，不能切换到其他目录。
+②当chroot_list_enable=YES，chroot_local_user=NO时，在/etc/vsftpd.chroot_list文件中列出的用户，不能切换到其他目录；未在文件中列出的用户，可以切换到其他目录。
+③当chroot_list_enable=NO，chroot_local_user=YES时，所有的用户均不能切换到其他目录。
+④当chroot_list_enable=NO，chroot_local_user=NO时，所有的用户均可以切换到其他目录。</p>
+
+<p>7.数据传输模式设置
+FTP在传输数据时，可以使用二进制方式，也可以使用ASCII模式来上传或下载数据。
+ascii_upload_enable=YES/NO（NO）
+设置是否启用ASCII 模式上传数据。默认值为NO。
+ascii_download_enable=YES/NO（NO）
+设置是否启用ASCII 模式下载数据。默认值为NO。</p>
+
+<p>8.访问控制设置
+两种控制方式：一种控制主机访问，另一种控制用户访问。
+①控制主机访问：
+tcp_wrappers=YES/NO（YES）
+设置vsftpd是否与tcp wrapper相结合来进行主机的访问控制。默认值为YES。如果启用，则vsftpd服务器会检查/etc/hosts.allow 和/etc/hosts.deny 中的设置，来决定请求连接的主机，是否允许访问该FTP服务器。这两个文件可以起到简易的防火墙功能。
+比如：若要仅允许192.168.0.1—192.168.0.254的用户可以连接FTP服务器，则在/etc/hosts.allow文件中添加以下内容：
+vsftpd:192.168.0. :allow
+all:all :deny
+②控制用户访问：
+对于用户的访问控制可以通过/etc目录下的vsftpd.user_list和ftpusers文件来实现。
+userlist_file=/etc/vsftpd.user_list
+控制用户访问FTP的文件，里面写着用户名称。一个用户名称一行。
+userlist_enable=YES/NO（NO）
+是否启用vsftpd.user_list文件。
+userlist_deny=YES/NO（YES）
+决定vsftpd.user_list文件中的用户是否能够访问FTP服务器。若设置为YES，则vsftpd.user_list文件中的用户不允许访问FTP，若设置为NO，则只有vsftpd.user_list文件中的用户才能访问FTP。
+/etc/vsftpd/ftpusers文件专门用于定义不允许访问FTP服务器的用户列表（注意:如果userlist_enable=YES,userlist_deny=NO,此时如果在vsftpd.user_list和ftpusers中都有某个用户时，那么这个用户是不能够访问FTP的，即ftpusers的优先级要高）。默认情况下vsftpd.user_list和ftpusers，这两个文件已经预设置了一些不允许访问FTP服务器的系统内部账户。如果系统没有这两个文件，那么新建这两个文件，将用户添加进去即可。</p>
+
+<p>9.访问速率设置
+anon_max_rate=0
+设置匿名登入者使用的最大传输速度，单位为B/s，0 表示不限制速度。默认值为0。
+local_max_rate=0
+本地用户使用的最大传输速度，单位为B/s，0 表示不限制速度。预设值为0。</p>
+
+<p>10.超时时间设置
+accept_timeout=60
+设置建立FTP连接的超时时间，单位为秒。默认值为60。
+connect_timeout=60
+PORT 方式下建立数据连接的超时时间，单位为秒。默认值为60。
+data_connection_timeout=120
+设置建立FTP数据连接的超时时间，单位为秒。默认值为120。
+idle_session_timeout=300
+设置多长时间不对FTP服务器进行任何操作，则断开该FTP连接，单位为秒。默认值为300 。</p>
+
+<p>11.日志文件设置
+xferlog_enable= YES/NO（YES）
+是否启用上传/下载日志记录。如果启用，则上传与下载的信息将被完整纪录在xferlog_file 所定义的档案中。预设为开启。
+xferlog_file=/var/log/vsftpd.log
+设置日志文件名和路径，默认值为/var/log/vsftpd.log。
+xferlog_std_format=YES/NO（NO）
+如果启用，则日志文件将会写成xferlog的标准格式，如同wu-ftpd 一般。默认值为关闭。
+log_ftp_protocol=YES|NO（NO） 
+如果启用此选项，所有的FTP请求和响应都会被记录到日志中，默认日志文件在/var/log/vsftpd.log。启用此选项时，xferlog_std_format不能被激活。这个选项有助于调试。默认值为NO。</p>
+
+<p>12.定义用户配置文件
+在vsftpd中，可以通过定义用户配置文件来实现不同的用户使用不同的配置。
+user_config_dir=/etc/vsftpd/userconf
+设置用户配置文件所在的目录。当设置了该配置项后，用户登陆服务器后，系统就会到/etc/vsftpd/userconf目录下，读取与当前用户名相同的文件，并根据文件中的配置命令，对当前用户进行更进一步的配置。
+例如：定义user_config_dir=/etc/vsftpd/userconf，且主机上有使用者 test1,test2，那么我们就在user_config_dir 的目录新增文件名为test1和test2两个文件。若是test1 登入，则会读取user_config_dir 下的test1 这个档案内的设定。默认值为无。利用用户配置文件，可以实现对不同用户进行访问速度的控制，在各用户配置文件中定义local_max_rate=XX，即可。</p>
+
+<p>13.FTP的工作方式与端口设置
+FTP有两种工作方式：PORT FTP（主动模式）和PASV FTP（被动模式）
+listen_port=21
+设置FTP服务器建立连接所监听的端口，默认值为21。
+connect_from_port_20=YES/NO
+指定FTP使用20端口进行数据传输，默认值为YES。
+ftp_data_port=20
+设置在PORT方式下，FTP数据连接使用的端口，默认值为20。
+pasv_enable=YES/NO（YES）
+若设置为YES，则使用PASV工作模式；若设置为NO，则使用PORT模式。默认值为YES，即使用PASV工作模式。
+pasv_max_port=0
+在PASV工作模式下，数据连接可以使用的端口范围的最大端口，0 表示任意端口。默认值为0。
+pasv_min_port=0
+在PASV工作模式下，数据连接可以使用的端口范围的最小端口，0 表示任意端口。默认值为0。</p>
+
+<p>14.与连接相关的设置
+listen=YES/NO（YES）
+设置vsftpd服务器是否以standalone模式运行。以standalone模式运行是一种较好的方式，此时listen必须设置为YES，此为默认值。建议不要更改，有很多与服务器运行相关的配置命令，需要在此模式下才有效。若设置为NO，则vsftpd不是以独立的服务运行，要受到xinetd服务的管控，功能上会受到限制。
+max_clients=0
+设置vsftpd允许的最大连接数，默认值为0，表示不受限制。若设置为100时，则同时允许有100个连接，超出的将被拒绝。只有在standalone模式运行才有效。
+max_per_ip=0
+设置每个IP允许与FTP服务器同时建立连接的数目。默认值为0，表示不受限制。只有在standalone模式运行才有效。
+listen_address=IP地址
+设置FTP服务器在指定的IP地址上侦听用户的FTP请求。若不设置，则对服务器绑定的所有IP地址进行侦听。只有在standalone模式运行才有效。
+setproctitle_enable=YES/NO（NO）
+设置每个与FTP服务器的连接，是否以不同的进程表现出来。默认值为NO，此时使用ps aux |grep ftp只会有一个vsftpd的进程。若设置为YES，则每个连接都会有一个vsftpd的进程。</p>
+
+<p>15.虚拟用户设置
+虚拟用户使用PAM认证方式。
+pam_service_name=vsftpd
+设置PAM使用的名称，默认值为/etc/pam.d/vsftpd。
+guest_enable= YES/NO（NO）
+启用虚拟用户。默认值为NO。
+guest_username=ftp
+这里用来映射虚拟用户。默认值为ftp。
+virtual_use_local_privs=YES/NO（NO）
+当该参数激活（YES）时，虚拟用户使用与本地用户相同的权限。当此参数关闭（NO）时，虚拟用户使用与匿名用户相同的权限。默认情况下此参数是关闭的（NO）。</p>
+
+<p>16.其他设置
+text_userdb_names= YES/NO（NO）
+设置在执行ls –la之类的命令时，是显示UID、GID还是显示出具体的用户名和组名。默认值为NO，即以UID和GID方式显示。若希望显示用户名和组名，则设置为YES。
+ls_recurse_enable=YES/NO（NO）
+若是启用此功能，则允许登入者使用ls –R（可以查看当前目录下子目录中的文件）这个指令。默认值为NO。
+hide_ids=YES/NO（NO）
+如果启用此功能，所有档案的拥有者与群组都为ftp，也就是使用者登入使用ls -al之类的指令，所看到的档案拥有者跟群组均为ftp。默认值为关闭。
+download_enable=YES/NO（YES）
+如果设置为NO，所有的文件都不能下载到本地，文件夹不受影响。默认值为YES。</p>
+
+<p>关于ftpusers和user_list两个文件的说明
+问题一：ftpusers和user_list两个文件各自的用途是什么？有何关系？
+首先请明确一点：ftpusers不受任何配制项的影响，它总是有效，它是一个黑名单！
+而user_list则是和vsftpd.conf中的userlist_enable和userlist_deny两个配置项紧密相关的，它可以有效，也可以无效，有效时它可以是一个黑名单，也可以是一个白名单！</p>
+
+<p>问题二：vsftpd.conf中的userlist_enable和userlist_deny两个配置项各自起什么作用，两者如何搭配使用?
+1.userlist_enable和userlist_deny两个选项联合起来针对的是：本地全体用户（除去ftpusers中的用户）和出现在user_list文件中的用户以及不在在user_list文件中的用户这三类用户集合进行的设置。
+2.当且仅当userlist_enable=YES时：userlist_deny项的配置才有效，user_list文件才会被使用；当其为NO时，无论userlist_deny项为何值都是无效的，本地全体用户（除去ftpusers中的用户）都可以登入FTP
+3.当userlist_enable=YES时，userlist_deny=YES时：user_list是一个黑名单，即：所有出现在名单中的用户都会被拒绝登入；
+4.当userlist_enable=YES时，userlist_deny=NO时：user_list是一个白名单，即：只有出现在名单中的用户才会被准许登入(user_list之外的用户都被拒绝登入)；另外需要特别提醒的是：使用白名单后，匿名用户将无法登入！除非显式在user_list中加入一行：anonymous</p>
+
+
+
+  </section>
+</article>
+
+<section>
+
+            <div class="content-play">
+              <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">打赏一个呗</a></p>
+              <div class="hide_box-play"></div>
+              <div class="shang_box-play">
+                <a class="shang_close-play" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="/images/payimg/close.jpg" alt="取消" /></a>
+                <div class="shang_tit-play">
+                  <p>感谢您的支持，我会继续努力的!</p>
+                </div>
+                <div class="shang_payimg">
+                    <img src="/images/payimg/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+              <div class="shang_payimg">    
+                    <img src="/images/payimg/weipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+                <div class="pay_explain">扫码打赏</div>
+                <div class="shang_payselect">
+                  <div class="pay_item checked" data-id="alipay">
+                    <span class="pay_logo"><img src="/images/payimg/alipay.jpg" alt="支付宝" /></span>
+                  </div>
+                  <div class="pay_item" data-id="weipay">
+                    <span class="pay_logo"><img src="/images/payimg/wechat.jpg" alt="微信" /></span>
+                  </div>
+                </div>
+                <div class="shang_info-play">
+                  <p>打开<span id="shang_pay_txt">支付宝或微信</span>扫一扫，即可进行扫码打赏哦</p>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+            function dashangToggle(){
+              $(".hide_box-play").fadeToggle();
+              $(".shang_box-play").fadeToggle();
+            }
+            </script>
+
+            <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+
+            <style type="text/css">
+              .content-play{width:80%;margin-top: 20px;margin-bottom: 10px;height:40px;}
+              .hide_box-play{z-index:999;filter:alpha(opacity=50);background:#666;opacity: 0.5;-moz-opacity: 0.5;left:0;top:0;height:99%;width:100%;position:fixed;display:none;}
+              .shang_box-play{width:540px;height:540px;padding:10px;background-color:#fff;border-radius:10px;position:fixed;z-index:1000;left:50%;top:50%;margin-left:-280px;margin-top:-280px;border:1px dotted #dedede;display:none;}
+              .shang_box-play img{border:none;border-width:0;}
+              .dashang{display:block;width:100px;margin:5px auto;height:25px;line-height:25px;padding:10px;background-color:#E74851;color:#fff;text-align:center;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;}
+              .dashang:hover{opacity:0.8;padding:15px;font-size:18px;}
+              .shang_close-play{float:right;display:inline-block;
+                margin-right: 10px;margin-top: 20px;
+              }
+              .shang_logo{display:block;text-align:center;margin:20px auto;}
+              .shang_tit-play{width: 100%;height: 75px;text-align: center;line-height: 66px;color: #a3a3a3;font-size: 16px;background: url('/images/payimg/cy-reward-title-bg.jpg');font-family: 'Microsoft YaHei';margin-top: 7px;margin-right:2px;}
+              .shang_tit-play p{color:#a3a3a3;text-align:center;font-size:16px;}
+              .shang_payimg{width:140px;padding:10px;padding-left: 80px; /*border:6px solid #EA5F00;**/margin:0 auto;border-radius:3px;height:140px;display:inline-block;}
+              .shang_payimg img{display:inline-block;margin-right:10px;float:left;text-align:center;width:140px;height:140px; }
+              .pay_explain{text-align:center;margin:10px auto;font-size:12px;color:#545454;}
+              .shang_payselect{text-align:center;margin:0 auto;margin-top:40px;cursor:pointer;height:60px;width:500px;margin-left:110px;}
+              .shang_payselect .pay_item{display:inline-block;margin-right:140px;float:left;}
+              .shang_info-play{clear:both;}
+              .shang_info-play p,.shang_info-play a{color:#C3C3C3;text-align:center;font-size:12px;text-decoration:none;line-height:2em;}
+            </style>
+
+       <ul class="pager">
+        
+        <li class="previous">
+            <a href="/2017/11/tomcat_url_invalid_character/" data-toggle="tooltip" data-placement="top" title="Tomcat的URL中存在特殊符号报404错误">上一篇：  <span>Tomcat的URL中存在特殊符号报404错误</span>
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2018/07/linux_firewall/" data-toggle="tooltip" data-placement="top" title="Linux防火墙设置">下一篇：  <span>Linux防火墙设置</span>
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+<section class="post-comments">
+
+
+    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    <script>
+    var cloudTieConfig = {
+      url: document.location.href, 
+      sourceId: "",
+      productKey: "aa395cf7778f458492060f3f53301b7c",
+      target: "cloud-tie-wrapper"
+    };
+    var yunManualLoad = true;
+    Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+    </script>
+
+
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <div class = "footer_div">  
+        <nav class="cover-navigation navigation--social">
+          <ul class="navigation">
+
+          
+
+          
+          <!-- Github -->
+          <li class="navigation__item_social">
+            <a href="https://github.com/wanghengliang" title="@wanghengliang 的 Github" target="_blank">
+              <i class='social fa fa-github fa-2x'></i>
+              <span class="label">Github</span>
+            </a>
+          </li>
+          
+          
+          
+
+          
+
+          <!-- RSS -->
+          <li class="navigation__item_social">
+            <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+              <i class='social fa fa-rss fa-2x'></i>
+              <span class="label">RSS</span>
+            </a>
+          </li>
+
+          
+          <!-- Email -->
+          <li class="navigation__item_social">
+            <a href="mailto:wanghengliang@outlook.com" title="Contact me">
+              <i class='social fa fa-envelope fa-2x'></i>
+              <span class="label">Email</span>
+            </a>
+          </li>
+          
+
+          </ul>
+        </nav>
+
+        </div>
+
+        <div class = "footer_div">  
+           <p class="copyright text-muted">
+            Copyright &copy; hengliang 2018 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=wanghengliang&repo=wanghengliang.github.io&type=star&count=true" >
+            </iframe>
+            </p>
+        	<div align="right">
+    			<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+          <!-- 访问统计 -->
+          <span id="busuanzi_container_site_pv">
+            本站总访问量
+            <span id="busuanzi_value_site_pv"></span>次
+          </span>
+
+        </div>
+        <div>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+
+</html>

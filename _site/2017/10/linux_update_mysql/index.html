@@ -184,9 +184,21 @@
   <p>选择包含Boost的Generic Linux版本，应为每个版本对应的Boost版本有要求，直接选择包含Boost的版本不会出现版本不对应的情况</p>
 </blockquote>
 
+<h4 id="添加系统mysql组和mysql用户">添加系统mysql组和mysql用户</h4>
+
+<p>查看是否有mysql组和mysql用户，没有则添加</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># cat /etc/passwd
+# cat /etc/group
+# groupadd mysql
+# useradd -r -g mysql mysql
+</code></pre>
+</div>
+
 <h4 id="创建安装目录并修改目录拥有者">创建安装目录并修改目录拥有者</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># mkdir /data/mysql3308
+<div class="highlighter-rouge"><pre class="highlight"><code># mkdir /usr/local/mysql3308
+# mkdir /data/mysql3308
 # chown -R mysql:mysql /usr/local/mysql3308
 # chown -R mysql:mysql /data/mysql3308
 
@@ -195,7 +207,10 @@
 </div>
 
 <h4 id="备份mysql">备份MySQL</h4>
-<p>…</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/usr/local/mysql/bin/mysqldump -uroot -p db_name &gt; db_bak_db_name_20160822.sql
+</code></pre>
+</div>
 
 <h3 id="安装新版本mysql">安装新版本MySQL</h3>
 <p>然后解压并跳转到解压目录进行编译安装</p>
@@ -260,6 +275,7 @@
 </div>
 
 <p>修改/etc/init.d/mysql3308文件中的如下代码</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>basedir=/usr/local/mysql3308
 datadir=/data/mysql3308
 </code></pre>
@@ -291,6 +307,7 @@ mysql&gt; FLUSH PRIVILEGES;
 
 <h3 id="测试mysql">测试MySQL</h3>
 <p>重启并测试</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code># service mysql3308 restart
 ...
 
@@ -512,7 +529,7 @@ mysql-server-5.1.71-1.el6.x86_64
 
         <div class = "footer_div">  
            <p class="copyright text-muted">
-            Copyright &copy; hengliang 2017 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
+            Copyright &copy; hengliang 2018 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
             <iframe
                 style="margin-left: 2px; margin-bottom:-5px;"
                 frameborder="0" scrolling="0" width="91px" height="20px"
