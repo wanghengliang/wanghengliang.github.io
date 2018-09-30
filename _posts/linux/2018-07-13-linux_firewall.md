@@ -40,7 +40,7 @@ firewall-cmd --list-ports
 
 ```
 firewall-cmd --zone=public --add-port=80/tcp --permanent
-firewall-cmd --zone=public --add-port=30000-31000/tcp --permanent
+firewall-cmd --zone=public --add-port=30000-30010/tcp --permanent
 ```
 
 #### 启动防火墙

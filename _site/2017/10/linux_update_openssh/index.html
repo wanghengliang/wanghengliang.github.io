@@ -171,16 +171,45 @@
     <h3 id="安装telnet服务我本地安装的没有做这步操作">安装telnet服务（我本地安装的没有做这步操作）</h3>
 
 <h4 id="安装软件">安装软件</h4>
-<p>1 # yum -y install telnet-server* telnet</p>
+<ol>
+  <li>检查CentOS7.0是否已经安装 telnet-server xinetd</li>
+</ol>
 
-<p>2.启用telnet服务</p>
-<h1 id="vi-etcxinetddtelnet">vi /etc/xinetd.d/telnet</h1>
-<p>将其中disable字段的yes改为no以启用telnet服务</p>
-<h1 id="mv-etcsecuretty-etcsecurettyold----允许root用户通过telnet登录">mv /etc/securetty /etc/securetty.old    #允许root用户通过telnet登录</h1>
-<h1 id="service-xinetd-start--------------------启动telnet服务">service xinetd start                    #启动telnet服务</h1>
-<h1 id="chkconfig-xinetd-on--------------------使telnet服务开机启动避免升级过程中服务器意外重启后无法远程登录系统">chkconfig xinetd on                    #使telnet服务开机启动，避免升级过程中服务器意外重启后无法远程登录系统</h1>
+<div class="highlighter-rouge"><pre class="highlight"><code># rpm -qa telnet-server
+# rpm -qa xinetd
+</code></pre>
+</div>
 
-<p>3.测试telnet能否正常登入系统</p>
+<ol>
+  <li>安装telnet、xinetd</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># yum -y install telnet-server* telnet
+# yum install xinetd
+</code></pre>
+</div>
+
+<ol>
+  <li>将telnet、xinetd服务加入开机自启动</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>systemctl enable xinetd.service
+systemctl enable telnet.socket
+</code></pre>
+</div>
+
+<ol>
+  <li>启动telnet、xinetd两个服务</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>systemctl start telnet.socket
+systemctl start xinetd
+</code></pre>
+</div>
+
+<ol>
+  <li>测试telnet能否正常登入系统</li>
+</ol>
 
 <h3 id="卸载当前openssh">卸载当前openssh</h3>
 <h4 id="备份当前openssh">备份当前openssh</h4>

@@ -10,16 +10,36 @@ tags: CentOS 服务器架设
 ### 安装telnet服务（我本地安装的没有做这步操作）
 
 #### 安装软件
-1 # yum -y install telnet-server* telnet
+1. 检查CentOS7.0是否已经安装 telnet-server xinetd
 
-2.启用telnet服务
-# vi /etc/xinetd.d/telnet 
-将其中disable字段的yes改为no以启用telnet服务 
-# mv /etc/securetty /etc/securetty.old    #允许root用户通过telnet登录 
-# service xinetd start                    #启动telnet服务 
-# chkconfig xinetd on                    #使telnet服务开机启动，避免升级过程中服务器意外重启后无法远程登录系统
+```
+# rpm -qa telnet-server
+# rpm -qa xinetd
+```
 
-3.测试telnet能否正常登入系统
+2. 安装telnet、xinetd
+
+```
+# yum -y install telnet-server* telnet
+# yum install xinetd
+```
+
+3. 将telnet、xinetd服务加入开机自启动
+
+```
+systemctl enable xinetd.service
+systemctl enable telnet.socket
+```
+
+4. 启动telnet、xinetd两个服务
+
+```
+systemctl start telnet.socket
+systemctl start xinetd
+```
+
+5. 测试telnet能否正常登入系统
+
 
 ### 卸载当前openssh
 #### 备份当前openssh

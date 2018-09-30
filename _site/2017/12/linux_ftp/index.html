@@ -219,6 +219,9 @@ local_enable=YES
 # 仅在没有pam验证版本时有用,是否检查用户有一个有效的shell来登录
 check_shell=NO
 
+# 解决登陆验证缓慢问题,跳过域名解析
+reverse_lookup_enable=NO
+
 # 设置连接超时时间（单位秒）
 idle_session_timeout=600
 
@@ -230,7 +233,12 @@ ascii_upload_enable=YES
 ascii_download_enable=YES
 
 # 限制所有的本地用户只能访问自己的目录
+# 锁定用户目录（不需锁定的用户，写入chroot_list文件）
+chroot_list_enable=YES
 chroot_local_user=YES
+chroot_list_file=/etc/vsftpd/chroot_list
+
+allow_writeable_chroot=YES
 
 # 是否允许使用ls -R等命令
 ls_recurse_enable=YES
@@ -249,7 +257,7 @@ local_root=/data/ftpdata
 <h4 id="新增ftp用户并为其设置密码">新增ftp用户并为其设置密码</h4>
 
 <div class="highlighter-rouge"><pre class="highlight"><code># useradd ftpuser -s /sbin/nologin
-# password ftpuser
+# passwd ftpuser
 </code></pre>
 </div>
 
@@ -259,6 +267,14 @@ local_root=/data/ftpdata
 </code></pre>
 </div>
 <p>在文件末尾加入ftpuser并保存</p>
+
+<h4 id="指定用户ftp登陆后默认根文件夹">指定用户FTP登陆后默认根文件夹</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>vi /etc/passwd
+
+## 修改默认目录
+</code></pre>
+</div>
 
 <h4 id="建立可访问目录并指定用户">建立可访问目录并指定用户</h4>
 
@@ -378,7 +394,7 @@ a.允许匿名用户和本地用户登陆。
 b.匿名用户使用的登陆名为ftp或anonymous，口令为空；匿名用户不能离开匿名用户家目录/var/ftp,且只能下载不能上传。
 c.本地用户的登录名为本地用户名，口令为此本地用户的口令；本地用户可以在自 己家目录中进行读写操作；本地用户可以离开自家目录切换至有权限访问的其他目录，并在权限允许的情况下进行上传/下载。
     write_enable=YES
-4&gt;写在文件/etc/vsftpd.ftpusers中的本地用户禁止登陆。</p>
+4&gt;写在文件/etc/vsftpd/ftpusers中的本地用户禁止登陆。</p>
 
 <p>2.配置文件格式：<br />
 vsftpd.conf 的内容非常单纯，每一行即为一项设定。若是空白行或是开头为#的一行，将会被忽略。内容的格式只有一种，如下所示

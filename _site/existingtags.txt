@@ -16,7 +16,10 @@
 	gitbook
 	License
 	CentOS
-	FTP,服务器架设,CentOS
+	FTP
 	防火墙
+	网络
 	数据库
+	linux
+	Nginx
 

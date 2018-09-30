@@ -7,16 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <title>IntelliJ IDEA 创建多模块项目的正确姿势</title>
-  <meta name="description" content="  新建一个空文件夹workspace, 用idea作为项目打开  选中External Libraries, 在菜单: File –&gt; new –&gt; Modual… 新建立模块  新建好模块后, .idea文件夹里的modules.xml里会有两个模块(如果没有找到, 重启idea), 删除第一个同...">
+  <meta name="description" content="IntelliJ IDEA 创建多模块项目的正确姿势">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="IntelliJ IDEA 创建多模块项目的正确姿势">
-  <meta name="twitter:description" content="  新建一个空文件夹workspace, 用idea作为项目打开  选中External Libraries, 在菜单: File –&gt; new –&gt; Modual… 新建立模块  新建好模块后, .idea文件夹里的modules.xml里会有两个模块(如果没有找到, 重启idea), 删除第一个同...">
+  <meta name="twitter:description" content="IntelliJ IDEA 创建多模块项目的正确姿势">
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="IntelliJ IDEA 创建多模块项目的正确姿势">
-  <meta property="og:description" content="  新建一个空文件夹workspace, 用idea作为项目打开  选中External Libraries, 在菜单: File –&gt; new –&gt; Modual… 新建立模块  新建好模块后, .idea文件夹里的modules.xml里会有两个模块(如果没有找到, 重启idea), 删除第一个同...">
+  <meta property="og:description" content="IntelliJ IDEA 创建多模块项目的正确姿势">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -168,7 +168,9 @@
   </header>
 
   <section class="post">
-    <ol>
+    <h3 id="intellij-idea-创建多模块项目的正确姿势">IntelliJ IDEA 创建多模块项目的正确姿势</h3>
+
+<ol>
   <li>新建一个空文件夹workspace, 用idea作为项目打开</li>
   <li>选中External Libraries, 在菜单: File –&gt; new –&gt; Modual… 新建立模块</li>
   <li>新建好模块后, .idea文件夹里的modules.xml里会有两个模块(如果没有找到, 重启idea), 删除第一个同工程名相同的那个默认模块. 这时.idea文件夹会从idea里消失, 不过没关系, 以后我们可以到workspace/.idea文件夹里的修改相应的文件</li>
@@ -184,6 +186,15 @@
 </code></pre>
 </div>
 
+<h3 id="intellij-idea-同时打开多个项目">IntelliJ IDEA 同时打开多个项目</h3>
+
+<ol>
+  <li>依次点击IntelliJ IDEA -&gt; Preferences -&gt;Appearance&amp;Behavior -&gt; System Settings，设置Project Opening方式选择Open project in new window</li>
+</ol>
+
+<p><img src="/images/posts/tools/multi-project.png" alt="" /></p>
+
+<p><img src="/images/posts/tools/multi-project-show.png" alt="" /></p>
 
 
   </section>

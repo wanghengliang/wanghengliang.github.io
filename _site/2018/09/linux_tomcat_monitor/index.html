@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>MySQL备份</title>
-  <meta name="description" content="MySQL备份">
+  <title>Linux监测Tomcat运行情况</title>
+  <meta name="description" content="Linux监测Tomcat运行情况">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="MySQL备份">
-  <meta name="twitter:description" content="MySQL备份">
+  <meta name="twitter:title" content="Linux监测Tomcat运行情况">
+  <meta name="twitter:description" content="Linux监测Tomcat运行情况">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="MySQL备份">
-  <meta property="og:description" content="MySQL备份">
+  <meta property="og:title" content="Linux监测Tomcat运行情况">
+  <meta property="og:description" content="Linux监测Tomcat运行情况">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2018/07/mysql_backup/">
+  <link rel="canonical" href="http://localhost:4000/2018/09/linux_tomcat_monitor/">
   <link rel="alternate" type="application/rss+xml" title="hengliang" href="http://localhost:4000/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -157,10 +157,10 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title">MySQL备份</h1>
+    <h1 class="post-title">Linux监测Tomcat运行情况</h1>
     <div class="post-meta">
       <img src="/images/calendar.png" width="20px"/> 
-      <time datetime="2018-07-19 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-07-19</time>  
+      <time datetime="2018-09-04 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-09-04</time>  
          
       <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
     </p>
@@ -168,123 +168,55 @@
   </header>
 
   <section class="post">
-    <p>MySQL备份</p>
+    <p>Linux监测Tomcat运行情况</p>
 
-<h3 id="mysql-导出excel方法">mysql 导出excel方法</h3>
-<p>1.执行如下命令，可将执行结果导出到excel中：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>mysql iptv_pet -uroot -p -e "call SP_PET_STATISTICS(1)" &gt; /data/tj_20160819.xls
-</code></pre>
-</div>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>mysql iptv_pet -uroot -p -e "select user_id,code ,create_time from tbl_statistics_order where code like '%result_0' and TO_DAYS(NOW())-TO_DAYS(CREATE_TIME) = 1 order by create_time desc " &gt; /data/order_tj_20160822.xls
-</code></pre>
-</div>
-
-<p>2.因为office默认的是gb2312编码，服务器端生成的很有可能是utf-8编码，采用如下命令可将其转换为gb2312编码：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>iconv -futf8 -tgb2312 -otj_20160819_gb2312.xls tj_20160819.xls
-</code></pre>
-</div>
-
-<p>shell脚本如下：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
-
-<span class="nv">ctime</span><span class="o">=</span><span class="k">$(</span>date +%Y%m%d<span class="k">)</span>
-mysql iptv_pet -uroot -p<span class="k">******</span> -e <span class="s2">"call SP_PET_STATISTICS(1)"</span> &gt; /data/backup/tj_<span class="k">${</span><span class="nv">ctime</span><span class="k">}</span>.xls
-<span class="c">#mysql iptv_pet -uroot -p****** -e "select user_id,code ,create_time from tbl_statistics_order where code like '%result_0' and TO_DAYS(NOW())-TO_DAYS(CREATE_TIME) = 1 order by create_time desc " &gt; /data/backup/tj_order_${ctime}.xls</span>
-iconv -futf8 -tgb2312 -otj_<span class="k">${</span><span class="nv">ctime</span><span class="k">}</span>_gb2312.xls tj_<span class="k">${</span><span class="nv">ctime</span><span class="k">}</span>.xls
-<span class="c">#iconv -futf8 -tgb2312 -otj_order_${ctime}_gb2312.xls tj_order_${ctime}.xls</span>
-</code></pre>
-</div>
+<p>直接上shell代码，新建shell文件tomcatMonitor.sh，将以下内容加入其中，设置定时任务执行此shell即可</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 
-<span class="nv">ctime</span><span class="o">=</span><span class="k">$(</span>date +%Y%m%d<span class="k">)</span>
-mysql iptv_pet -uroot -p<span class="k">******</span> -e <span class="s2">"call SP_PET_STATISTICS(1)"</span> &gt; /data/backup/tj_<span class="k">${</span><span class="nv">ctime</span><span class="k">}</span>_utf8.xls
-<span class="c">#mysql iptv_pet -uroot -p****** -e "select user_id,code ,create_time from tbl_statistics_order where code like '%result_0' and TO_DAYS(NOW())-TO_DAYS(CREATE_TIME) = 1 order by create_time desc " &gt; /data/backup/tj_order_${ctime}_utf8.xls</span>
-sleep 1
-<span class="k">if</span> <span class="o">[</span> ! -f <span class="s2">"/data/backup/tj_</span><span class="k">${</span><span class="nv">ctime</span><span class="k">}</span><span class="s2">_utf8.xls"</span> <span class="o">]</span>; <span class="k">then
-</span>iconv -futf8 -tgb2312 -o/data/backup/tj_<span class="k">${</span><span class="nv">ctime</span><span class="k">}</span>.xls /data/backup/tj_<span class="k">${</span><span class="nv">ctime</span><span class="k">}</span>_utf8.xls
-<span class="k">fi</span>
-</code></pre>
-</div>
+<span class="c"># func:自动监控tomcat并且在异常时执行重启操作</span>
 
-<h3 id="mysql-备份">mysql 备份</h3>
-<h4 id="1导出数据库">1.导出数据库：</h4>
-<h5 id="11-执行如下命令可导出数据库所有表的数据">1.1 执行如下命令，可导出数据库所有表的数据：</h5>
-<div class="highlighter-rouge"><pre class="highlight"><code>/usr/local/mysql/bin/mysqldump -uroot -p iptv_pet &gt; db_bak_iptv_pet_20160822.sql
-</code></pre>
-</div>
-<h5 id="111-执行如下命令可导出数据库中某个表的数据">1.1.1 执行如下命令，可导出数据库中某个表的数据：</h5>
-<div class="highlighter-rouge"><pre class="highlight"><code>/usr/local/mysql/bin/mysqldump -uroot -p iptv_pet cms_channel &gt; db_bak_iptv_pet_cmschannel_20160822.sql
 
-/usr/local/mysql/bin/mysqldump -uroot -p iptv_pet cms_channel cms_document &gt; db_bak_iptv_pet_cmschannel_20160822.sql
+<span class="c"># 获取tomcat进程ID</span>
+<span class="nv">TomcatID</span><span class="o">=</span><span class="k">$(</span>ps -ef |grep tomcat |grep -w <span class="s1">'tomcat/server'</span>|grep -v <span class="s1">'grep'</span>|awk <span class="s1">'{print $2}'</span><span class="k">)</span>
 
-/usr/local/mysql/bin/mysqldump -uroot -p iptv_pet tbl_stat_order tbl_stat_click tbl_stat_click_manage &gt; db_bak_tbl_stat_20170301.sql
-</code></pre>
-</div>
+<span class="c"># tomcat启动程序</span>
+<span class="nv">StartTomcat</span><span class="o">=</span>/usr/local/tomcat/server/bin/startup.sh
 
-<h5 id="112-执行如下命令可导出数据库中某个表的部分数据">1.1.2 执行如下命令，可导出数据库中某个表的部分数据</h5>
-<div class="highlighter-rouge"><pre class="highlight"><code>/usr/local/mysql/bin/mysqldump -uroot -p iptv_pet tbl_statistics_player_201705 --where=" TO_DAYS(NOW()) - TO_DAYS(CREATE_TIME) = 1" &gt; db_bak_tbl_statistics_player_20170505.sql
-</code></pre>
-</div>
+<span class="c"># 定义要监控的页面地址 </span>
+<span class="nv">WebUrl</span><span class="o">=</span>http://localhost:8082/index.jsp
 
-<h5 id="12-执行如下命令可导出数据库存储过程">1.2 执行如下命令，可导出数据库存储过程：</h5>
-<p>注意：–events必须在数据库名称后面</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>/usr/local/mysql/bin/mysqldump -uroot -p -n -t -d -R --triggers=false iptv_pet --events &gt; db_bak_iptv_pet_sp_20160822.sql
-</code></pre>
-</div>
 
-<h4 id="2编写shell文件定时备份">2.编写shell文件，定时备份</h4>
-<h5 id="21-需求如下">2.1 需求如下：</h5>
-<p>2.1.1 每天4点备份mysql数据</p>
+<span class="c"># 日志输出</span>
+<span class="nv">GetPageInfo</span><span class="o">=</span>/data/wwwlogs/GetPageInfo.log
+<span class="nv">TomcatMonitorLog</span><span class="o">=</span>/data/wwwlogs/TomcatMonitor.log
 
-<p>2.1.2 为节省空间，删除超过3个月的所有备份数据；</p>
-
-<p>2.1.3 删除超过7天的备份数据，保留3个月里的 10号 20号 30号的备份数据；</p>
-
-<h5 id="22-实现方式如下">2.2 实现方式如下：</h5>
-<p>2.2.1 创建shell文件</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>vim backup_mysql.sh
-</code></pre>
-</div>
-<p>2.2.2 编辑shell文件，内容如下：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>mysqldump -uroot -p123456 --all-databases &gt; /data/dbdata/mysqlbak/`date +%Y%m%d`.sql
-find /data/dbdata/mysqlbak/ -mtime +7 -name '*[1-9].sql' -exec rm -rf {} \;
-find /data/dbdata/mysqlbak/ -mtime +92 -name '*.sql' -exec rm -rf {} \;
-</code></pre>
-</div>
-<p>2.2.3 创建定时任务</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>crontab –e
-0 4 * * * /data/dbdata/backup_mysql.sh
-</code></pre>
-</div>
-
-<h3 id="mysql-还原">mysql 还原</h3>
-<p>导入数据</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; source /home/qinglan/data/mysql/iptv_health.sql
-Query OK, 0 rows affected (0.00 sec)
-
-Query OK, 0 rows affected (0.00 sec)
-
-Query OK, 0 rows affected, 1 warning (0.00 sec)
+Monitor<span class="o">(){</span>
+	<span class="nb">echo</span> <span class="s2">"[info]开始监控tomcat...[</span><span class="k">$(</span>date +<span class="s1">'%F %H:%M:%S'</span><span class="k">)</span><span class="s2">]"</span>
+	<span class="k">if</span> <span class="o">[</span> <span class="nv">$TomcatID</span> <span class="o">]</span> ;<span class="k">then</span> <span class="c"># 这里判断TOMCAT进程是否存在</span>
+		<span class="nb">echo</span> <span class="s2">"[info]当前tomcat进程ID为:</span><span class="nv">$TomcatID</span><span class="s2">,继续检测页面..."</span>
+		<span class="c"># 检测是否启动成功(成功的话页面会返回状态"200")</span>
+		<span class="nv">TomcatServiceCode</span><span class="o">=</span><span class="k">$(</span>curl -s -o <span class="nv">$GetPageInfo</span> -m 10 --connect-timeout 10 <span class="nv">$WebUrl</span> -w %<span class="o">{</span>http_code<span class="o">}</span><span class="k">)</span>
+		<span class="k">if</span> <span class="o">[</span> <span class="nv">$TomcatServiceCode</span> -eq 200 <span class="o">]</span> ;<span class="k">then
+			</span><span class="nb">echo</span> <span class="s2">"[info]页面返回码为</span><span class="nv">$TomcatServiceCode</span><span class="s2">,tomcat启动成功,测试页面正常......"</span>
+		<span class="k">else
+			</span><span class="nb">echo</span> <span class="s2">"[error]tomcat页面出错,请注意......状态码为</span><span class="nv">$TomcatServiceCode</span><span class="s2">,错误日志已输出到</span><span class="nv">$GetPageInfo</span><span class="s2">"</span>
+			<span class="nb">echo</span> <span class="s2">"[error]页面访问出错,开始重启tomcat"</span>
+			<span class="nb">kill</span> -9 <span class="nv">$TomcatID</span>  <span class="c"># 杀掉原tomcat进程</span>
+			sleep 3
+			<span class="nv">$StartTomcat</span>
+		<span class="k">fi
+	else
+		</span><span class="nb">echo</span> <span class="s2">"[error]tomcat进程不存在!tomcat开始自动重启..."</span>
+		<span class="nb">echo</span> <span class="s2">"[info]</span><span class="nv">$StartTomcat</span><span class="s2">,请稍候......"</span>
+		<span class="nv">$StartTomcat</span>
+	<span class="k">fi
+	</span><span class="nb">echo</span> <span class="s2">"------------------------------"</span>
+<span class="o">}</span>
+Monitor&gt;&gt;<span class="nv">$TomcatMonitorLog</span>
 
 </code></pre>
 </div>
-
-<h3 id="日常操作语句归纳">日常操作语句归纳</h3>
-<p>mysql 添加表字段</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>alter table tbl_exp_card add activation_user varchar(50) NULL COMMENT '激活用户';
-</code></pre>
-</div>
-<p>mysql 取消timestamp列默认为设置成记录被更新时的时间戳</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>ALTER TABLE tbl_statistics_order CHANGE CREATE_TIME CREATE_TIME timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '统计时间';
-</code></pre>
-</div>
-
 
 
   </section>
@@ -354,13 +286,13 @@ Query OK, 0 rows affected, 1 warning (0.00 sec)
        <ul class="pager">
         
         <li class="previous">
-            <a href="/2018/07/linux_network/" data-toggle="tooltip" data-placement="top" title="Linux网络设置">上一篇：  <span>Linux网络设置</span>
+            <a href="/2018/07/mysql_debug/" data-toggle="tooltip" data-placement="top" title="MySQL调试技巧">上一篇：  <span>MySQL调试技巧</span>
             </a>
         </li>
         
         
         <li class="next">
-            <a href="/2018/07/mysql_debug/" data-toggle="tooltip" data-placement="top" title="MySQL调试技巧">下一篇：  <span>MySQL调试技巧</span>
+            <a href="/2018/09/linux_nginx/" data-toggle="tooltip" data-placement="top" title="linux服务器架设Nginx">下一篇：  <span>linux服务器架设Nginx</span>
             </a>
         </li>
         

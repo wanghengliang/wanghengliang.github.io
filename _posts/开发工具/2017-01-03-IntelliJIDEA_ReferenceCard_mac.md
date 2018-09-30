@@ -114,7 +114,7 @@ F12|Go back to previous tool window|
 ⎋|Go to editor (from tool window)|
 ⇧⎋|Hide active or last active window|
 ⌘⇧F4|Close active run/messages/find/... tab|
-⌘L|Go to line|
+⌘L|Go to line|跳转到指定行的指定列|
 ⌘E|Recent files popup|列出最近查看的文件列表
 ⌘⌥←/⌘⌥→|Navigate back/forward|
 ⌘⇧⌫|Navigate to last edit location|

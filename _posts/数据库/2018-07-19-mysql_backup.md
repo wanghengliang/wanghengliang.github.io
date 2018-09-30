@@ -68,6 +68,7 @@ fi
 /usr/local/mysql/bin/mysqldump -uroot -p iptv_pet tbl_statistics_player_201705 --where=" TO_DAYS(NOW()) - TO_DAYS(CREATE_TIME) = 1" > db_bak_tbl_statistics_player_20170505.sql
 ```
 
+
 ##### 1.2 执行如下命令，可导出数据库存储过程：
 注意：--events必须在数据库名称后面
 ```
@@ -113,7 +114,13 @@ Query OK, 0 rows affected, 1 warning (0.00 sec)
 
 ### 日常操作语句归纳
 mysql 添加表字段
+
 ```
 alter table tbl_exp_card add activation_user varchar(50) NULL COMMENT '激活用户';
+```
+mysql 取消timestamp列默认为设置成记录被更新时的时间戳
+
+```
+ALTER TABLE tbl_statistics_order CHANGE CREATE_TIME CREATE_TIME timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '统计时间';
 ```
 

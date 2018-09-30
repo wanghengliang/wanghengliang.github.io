@@ -8,7 +8,7 @@ tags: MySQL 服务器架设
 
 ### mysql 下载
 #### 下载地址:
-http://www.mysql.com/downloads/
+[MySQL](http://www.mysql.com/downloads/)
 
 #### 版本（mysql包括三个版本）
 
@@ -75,8 +75,8 @@ port=3306
 socket=/var/lib/mysql/mysql.sock
 
 basedir = /usr/local/mysql
-pid-file = /data/mysql/mysql.pid
 datadir = /data/mysql
+pid-file = /data/mysql/mysql.pid
 log_error = /data/mysql/mysql-error.log
 slow_query_log = 1
 long_query_time = 1
