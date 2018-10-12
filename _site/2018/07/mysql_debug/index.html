@@ -194,6 +194,7 @@ mysql&gt; SET GLOBAL general_log = 'ON';
 
 </code></pre>
 </div>
+
 <ol>
   <li>设置Log文件地址(所有Sql语句都会在general_log_file里)，采用默认则不设置</li>
 </ol>
@@ -205,6 +206,26 @@ mysql&gt; SET GLOBAL general_log = 'ON';
 <ol>
   <li>执行mysql命令然后查看设置的Log文件，也可用其他可视化工具进行查看。</li>
 </ol>
+
+<h3 id="mysql-查看连接数状态-最大并发数">Mysql 查看连接数,状态 最大并发数</h3>
+
+<p>Threads_connected 跟show processlist结果相同，表示当前连接数。准确的来说，Threads_running是代表当前并发数</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>show variables like '%max_connections%'; 查看最大连接数
+set global max_connections=1000 重新设置
+
+mysql&gt; show status like 'Threads%';
++-------------------+-------+
+| Variable_name     | Value |
++-------------------+-------+
+| Threads_cached    | 58    |
+| Threads_connected | 57    |   ###这个数值指的是打开的连接数
+| Threads_created   | 3676  |
+| Threads_running   | 4     |   ###这个数值指的是激活的连接数，这个数值一般远低于connected数值
++-------------------+-------+
+</code></pre>
+</div>
+
 
 
   </section>
@@ -218,7 +239,7 @@ mysql&gt; SET GLOBAL general_log = 'ON';
               <div class="shang_box-play">
                 <a class="shang_close-play" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="/images/payimg/close.jpg" alt="取消" /></a>
                 <div class="shang_tit-play">
-                  <p>感谢您的支持，我会继续努力的!</p>
+                  <p>感谢您的支持!!!</p>
                 </div>
                 <div class="shang_payimg">
                     <img src="/images/payimg/alipayimg.jpg" alt="扫码支持" title="扫一扫" />

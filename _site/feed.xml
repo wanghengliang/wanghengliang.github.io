@@ -5,9 +5,109 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 30 Sep 2018 10:26:31 +0800</pubDate>
-    <lastBuildDate>Sun, 30 Sep 2018 10:26:31 +0800</lastBuildDate>
+    <pubDate>Fri, 12 Oct 2018 17:52:56 +0800</pubDate>
+    <lastBuildDate>Fri, 12 Oct 2018 17:52:56 +0800</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>jmeter压力测试</title>
+        <description>&lt;p&gt;jmeter压力测试&lt;/p&gt;
+
+&lt;h3 id=&quot;下载及安装&quot;&gt;下载及安装&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;登录官网Jmeter下载，得到压缩包apache-jmeter-5.0.tgz，下载地址：http://jmeter.apache.org/download_jmeter.cgi&lt;/li&gt;
+  &lt;li&gt;将下载得到的压缩包apache-jmeter-5.0.tgz解压即可。
+&lt;img src=&quot;/images/posts/tools/jmeter01.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;运行&quot;&gt;运行&lt;/h3&gt;
+
+&lt;p&gt;执行bin/jmeter.bat或者bin/jmeter.sh运行，效果图如下
+&lt;img src=&quot;/images/posts/tools/jmeter02.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;一个简单的压测实例&quot;&gt;一个简单的压测实例&lt;/h3&gt;
+
+&lt;h4 id=&quot;新建一个线程组&quot;&gt;新建一个线程组&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter03.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;设置线程组参数&quot;&gt;设置线程组参数&lt;/h4&gt;
+&lt;p&gt;这里配置为：10个线程，同时启动，循环一次。这些配置元件用于指定运行的线程数和等候周期。每个线程模拟一个用户，而等候周期用于指定创建全部线程的时间。例如，线程数为5，等候时间为10秒，则创建每个线程之间的时间间隔为2秒。循环数定义了线程的运行时间。使用调度器，还可以设置运行的起始时间。
+&lt;img src=&quot;/images/posts/tools/jmeter04.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;新增http请求默认值&quot;&gt;新增http请求默认值&lt;/h4&gt;
+&lt;p&gt;在上一步创建的线程组上，新增http请求默认值，所有的请求都会使用设置的默认值，这设置协议为http，IP为127.0.0.1，端口为8080
+&lt;img src=&quot;/images/posts/tools/jmeter05.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/images/posts/tools/jmeter06.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;添加要压测的http请求&quot;&gt;添加要压测的http请求&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter07.png&quot; alt=&quot;&quot; /&gt;
+下图第一个红框内的协议、IP、端口不需要设置，会使用步骤c中设置的默认值，只需设置请求路径Path即可，这里填入/index.html
+&lt;img src=&quot;/images/posts/tools/jmeter08.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;新增监听器用于查看压测结果&quot;&gt;新增监听器，用于查看压测结果&lt;/h4&gt;
+&lt;p&gt;这里添加三种：聚合报告、图形结果、用表格查看结果，区别在于结果展现形式不同。
+&lt;img src=&quot;/images/posts/tools/jmeter09.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;点击运行按钮开始压测并查看结果&quot;&gt;点击运行按钮开始压测，并查看结果&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;jmeter结果分析&quot;&gt;jmeter结果分析&lt;/h3&gt;
+&lt;p&gt;采用Jmeter测试工具对web系统作的负载测试，得出的响应报表，数据比较难懂，现作一具体说明。&lt;/p&gt;
+
+&lt;h4 id=&quot;图形报表&quot;&gt;图形报表&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter11.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;图表底部参数的含义如下：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;样本数目是总共发送到服务器的请求数。&lt;/li&gt;
+  &lt;li&gt;最新样本是代表时间的数字,是服务器响应最后一个请求的时间。&lt;/li&gt;
+  &lt;li&gt;吞吐量是服务器每分钟处理的请求数。&lt;/li&gt;
+  &lt;li&gt;平均值是总运行时间除以发送到服务器的请求数。&lt;/li&gt;
+  &lt;li&gt;中间值是代表时间的数字，有一半的服务器响应时间低于该值而另一半高于该值。&lt;/li&gt;
+  &lt;li&gt;偏离表示服务器响应时间变化、离散程度测量值的大小，或者，换句话说，就是数据的分布。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;聚合报告&quot;&gt;聚合报告&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter12.png&quot; alt=&quot;&quot; /&gt;
+图表含义说明如下：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Label：说明是请求类型，如Http，FTP等请求。&lt;/li&gt;
+  &lt;li&gt;#Samples：也就是图形报表中的样本数目，总共发送到服务器的样本数目。&lt;/li&gt;
+  &lt;li&gt;Average：也就是图形报表中的平均值，是总运行时间除以发送到服务器的请求数。&lt;/li&gt;
+  &lt;li&gt;Median：也就是图形报表中的中间值，是代表时间的数字，有一半的服务器响应时间低于该值而另一半高于该值。&lt;/li&gt;
+  &lt;li&gt;90%line：是指90%请求的响应时间比所得数值还要小。&lt;/li&gt;
+  &lt;li&gt;Min：是代表时间的数字,是服务器响应的最短时间。&lt;/li&gt;
+  &lt;li&gt;Max: 是代表时间的数字,是服务器响应的最长时间。&lt;/li&gt;
+  &lt;li&gt;Error%:请求的错误百分比。&lt;/li&gt;
+  &lt;li&gt;Throughput:也就是图形报表中的吞吐量，这里是服务器每单位时间处理的请求数，注意查看是秒或是分钟。&lt;/li&gt;
+  &lt;li&gt;Received KB/sec 是每秒钟接收的字节数。&lt;/li&gt;
+  &lt;li&gt;Send KB/sec:是每秒钟请求的字节数。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;图中配置的所有数据写入文件test-jh.jtl，可通过命令模式将其数据生成html文档，命令如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# cd apache-jmeter-5.0
+# bin/jmeter.sh -g report/test-jh.jtl -e -o report/test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;生成结果图片如下：
+&lt;img src=&quot;/images/posts/tools/jmeter13.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;附jmeter命令行参数&quot;&gt;附：Jmeter命令行参数&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter_ps01.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 12 Oct 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/10/jmeter/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/10/jmeter/</guid>
+        
+        <category>压力测试</category>
+        
+        
+        <category>开发工具</category>
+        
+      </item>
     
       <item>
         <title>IntelliJ IDEA使用小技巧</title>
@@ -194,6 +294,7 @@ mysql&amp;gt; SET GLOBAL general_log = 'ON';
 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+
 &lt;ol&gt;
   &lt;li&gt;设置Log文件地址(所有Sql语句都会在general_log_file里)，采用默认则不设置&lt;/li&gt;
 &lt;/ol&gt;
@@ -205,6 +306,26 @@ mysql&amp;gt; SET GLOBAL general_log = 'ON';
 &lt;ol&gt;
   &lt;li&gt;执行mysql命令然后查看设置的Log文件，也可用其他可视化工具进行查看。&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;h3 id=&quot;mysql-查看连接数状态-最大并发数&quot;&gt;Mysql 查看连接数,状态 最大并发数&lt;/h3&gt;
+
+&lt;p&gt;Threads_connected 跟show processlist结果相同，表示当前连接数。准确的来说，Threads_running是代表当前并发数&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;show variables like '%max_connections%'; 查看最大连接数
+set global max_connections=1000 重新设置
+
+mysql&amp;gt; show status like 'Threads%';
++-------------------+-------+
+| Variable_name     | Value |
++-------------------+-------+
+| Threads_cached    | 58    |
+| Threads_connected | 57    |   ###这个数值指的是打开的连接数
+| Threads_created   | 3676  |
+| Threads_running   | 4     |   ###这个数值指的是激活的连接数，这个数值一般远低于connected数值
++-------------------+-------+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
 </description>
         <pubDate>Thu, 19 Jul 2018 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2018/07/mysql_debug/</link>
@@ -940,87 +1061,6 @@ java.lang.IllegalArgumentException: Invalid character found in the request targe
         
         
         <category>技术开发</category>
-        
-      </item>
-    
-      <item>
-        <title>CentOS 6.5升级OpenSSH步骤</title>
-        <description>&lt;h3 id=&quot;安装telnet服务我本地安装的没有做这步操作&quot;&gt;安装telnet服务（我本地安装的没有做这步操作）&lt;/h3&gt;
-
-&lt;h4 id=&quot;安装软件&quot;&gt;安装软件&lt;/h4&gt;
-&lt;ol&gt;
-  &lt;li&gt;检查CentOS7.0是否已经安装 telnet-server xinetd&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# rpm -qa telnet-server
-# rpm -qa xinetd
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;安装telnet、xinetd&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# yum -y install telnet-server* telnet
-# yum install xinetd
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;将telnet、xinetd服务加入开机自启动&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;systemctl enable xinetd.service
-systemctl enable telnet.socket
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;启动telnet、xinetd两个服务&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;systemctl start telnet.socket
-systemctl start xinetd
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;测试telnet能否正常登入系统&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;卸载当前openssh&quot;&gt;卸载当前openssh&lt;/h3&gt;
-&lt;h4 id=&quot;备份当前openssh&quot;&gt;备份当前openssh&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mv /etc/ssh /etc/ssh.old
-# mv /etc/init.d/sshd /etc/init.d/sshd.old
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;卸载当前openssh-1&quot;&gt;卸载当前openssh&lt;/h4&gt;
-
-&lt;h5 id=&quot;查看已安装的openssh&quot;&gt;查看已安装的openssh&lt;/h5&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# rpm -qa | grep openssh
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;删除&quot;&gt;删除&lt;/h5&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# rpm -qa |grep openssh|xargs -i rpm -e --nodeps {}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-        <pubDate>Thu, 19 Oct 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/10/linux_update_openssh/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/10/linux_update_openssh/</guid>
-        
-        <category>CentOS</category>
-        
-        <category>服务器架设</category>
-        
-        
-        <category>linux</category>
         
       </item>
     

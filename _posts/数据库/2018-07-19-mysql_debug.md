@@ -26,6 +26,7 @@ mysql> SHOW VARIABLES LIKE "general_log%";
 mysql> SET GLOBAL general_log = 'ON';
 
 ```
+
 3. 设置Log文件地址(所有Sql语句都会在general_log_file里)，采用默认则不设置
 
 ```
@@ -33,3 +34,25 @@ mysql> SET GLOBAL general_log_file = 'c:\mysql.log';
 ```
 
 4. 执行mysql命令然后查看设置的Log文件，也可用其他可视化工具进行查看。
+
+
+
+### Mysql 查看连接数,状态 最大并发数
+
+Threads_connected 跟show processlist结果相同，表示当前连接数。准确的来说，Threads_running是代表当前并发数
+
+```
+show variables like '%max_connections%'; 查看最大连接数
+set global max_connections=1000 重新设置
+
+mysql> show status like 'Threads%';
++-------------------+-------+
+| Variable_name     | Value |
++-------------------+-------+
+| Threads_cached    | 58    |
+| Threads_connected | 57    |   ###这个数值指的是打开的连接数
+| Threads_created   | 3676  |
+| Threads_running   | 4     |   ###这个数值指的是激活的连接数，这个数值一般远低于connected数值
++-------------------+-------+
+```
+

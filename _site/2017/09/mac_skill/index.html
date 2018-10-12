@@ -222,6 +222,27 @@
   <li>先选中简介中上面的小图标，⌘+v粘贴，图标显示已经更换，直接关掉简介就好了。</li>
 </ol>
 
+<h3 id="清理硬盘空间大小">清理硬盘空间大小</h3>
+
+<ol>
+  <li>删除所有系统日志——可以节省出100MB-2GB硬盘空间</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># cd /private/var/log 
+# ls /private/var/log //查看文件后自行考虑是否删除，删除哪些
+# sudo rm -rf /private/var/log/*
+</code></pre>
+</div>
+
+<ol>
+  <li>清除缓存文件——可以节省1GB-10GB硬盘空间</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># cd ~/Library/Caches/
+# ls ~/Library/Caches/ //查看文件后自行考虑是否删除，删除哪些
+# rm -rf ~/Library/Caches/*
+</code></pre>
+</div>
 
 
   </section>
@@ -235,7 +256,7 @@
               <div class="shang_box-play">
                 <a class="shang_close-play" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="/images/payimg/close.jpg" alt="取消" /></a>
                 <div class="shang_tit-play">
-                  <p>感谢您的支持，我会继续努力的!</p>
+                  <p>感谢您的支持!!!</p>
                 </div>
                 <div class="shang_payimg">
                     <img src="/images/payimg/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
