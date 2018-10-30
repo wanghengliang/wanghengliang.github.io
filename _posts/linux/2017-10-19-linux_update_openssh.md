@@ -64,3 +64,30 @@ systemctl start xinetd
 ```
 
 
+#### 安装新版本openssh
+
+```
+# yum install openssh*
+```
+
+#### 修改配置文件
+
+```
+useradd maihe
+passwd maihe
+```
+
+```
+vi /etc/ssh/sshd_config
+
+# Port 22
+# PermitRootLogin yes
+
+改为
+Port 22323
+PermitRootLogin no
+```
+
+```
+service sshd restart
+```

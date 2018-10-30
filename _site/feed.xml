@@ -5,9 +5,220 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 12 Oct 2018 17:52:56 +0800</pubDate>
-    <lastBuildDate>Fri, 12 Oct 2018 17:52:56 +0800</lastBuildDate>
+    <pubDate>Tue, 30 Oct 2018 16:12:14 +0800</pubDate>
+    <lastBuildDate>Tue, 30 Oct 2018 16:12:14 +0800</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>java位运算</title>
+        <description>&lt;p&gt;java位运算&lt;/p&gt;
+
+&lt;p&gt;位运算表达式由操作数和位运算符组成，实现对整数类型的二进制数进行位运算。位运算符可以分为逻辑运算符(包括&lt;code class=&quot;highlighter-rouge&quot;&gt;~&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;＆&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;^&lt;/code&gt;)及移位运算符(包括&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;)。&lt;/p&gt;
+
+&lt;h3 id=&quot;二进制表示&quot;&gt;二进制表示&lt;/h3&gt;
+
+&lt;p&gt;二进制第一位为符号位，0表示整数，1表示负数。&lt;/p&gt;
+
+&lt;h4 id=&quot;1正数表示例如整数类型5int用32位表示&quot;&gt;1.正数表示,例如:整数类型5(int用32位表示)&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;5 = 0000 0000 0000 0000 0000 0000 0000 0101
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;2负数表示例如整数类型-5&quot;&gt;2.负数表示,例如:整数类型-5&lt;/h4&gt;
+
+&lt;p&gt;首先来个整数5&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;5 = 0000 0000 0000 0000 0000 0000 0000 0101
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;这个就是原码，然后取反（0的变成1，1的变成0）&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;原码: 0000 0000 0000 0000 0000 0000 0000 0101
+反码: 1111 1111 1111 1111 1111 1111 1111 1010
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;反码进行加1得到补码&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;原码: 0000 0000 0000 0000 0000 0000 0000 0101
+反码: 1111 1111 1111 1111 1111 1111 1111 1010
+补码: 1111 1111 1111 1111 1111 1111 1111 1011
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;补码就是负数在计算机中的二进制表示方法&lt;/p&gt;
+
+&lt;h4 id=&quot;3二进制转换为十进制整数不讲略这里只说负数&quot;&gt;3.二进制转换为十进制，整数不讲略这里只说负数&lt;/h4&gt;
+
+&lt;p&gt;先随便来一个负数二进制&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;负数二进制: 1111 1111 1111 1111 1111 1111 1111 1011
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;负数二进制，减1&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;负数二进制: 1111 1111 1111 1111 1111 1111 1111 1011
+二进制减一: 1111 1111 1111 1111 1111 1111 1111 1010
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;取反&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;负数二进制: 1111 1111 1111 1111 1111 1111 1111 1011
+二进制减一: 1111 1111 1111 1111 1111 1111 1111 1010
+减一后取反: 0000 0000 0000 0000 0000 0000 0000 0101
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;然后计算得到结果为5，那么负数二进制就为-5&lt;/p&gt;
+
+&lt;h3 id=&quot;移位运算符&quot;&gt;移位运算符&lt;/h3&gt;
+
+&lt;h4 id=&quot;1非运算--取反&quot;&gt;1.非(&lt;code class=&quot;highlighter-rouge&quot;&gt;~&lt;/code&gt;)运算	: 取反&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(~5);// 结果为-6 
+
+5  = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
+~5 = 1111 1111 1111 1111 1111 1111 1111 1010 = -6
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;2与-运算--有0出0全1出1&quot;&gt;2.与 (&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt;)运算	: 有0出0;全1出1&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 &amp;amp; 3);// 结果为1
+
+5     = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
+3     = 0000 0000 0000 0000 0000 0000 0000 0011 = 3
+5 &amp;amp; 3 = 0000 0000 0000 0000 0000 0000 0000 0001 = 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;3或运算--有1出1全0出0&quot;&gt;3.或(&lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt;)运算	: 有1出1;全0出0&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 | 3);// 结果为7
+
+5     = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
+3     = 0000 0000 0000 0000 0000 0000 0000 0011 = 3
+5 | 3 = 0000 0000 0000 0000 0000 0000 0000 0111 = 7
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;4异或运算-相同得0相异得1&quot;&gt;4.异或(&lt;code class=&quot;highlighter-rouge&quot;&gt;^&lt;/code&gt;)运算: 相同得0;相异得1&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 ^ 3);//结果为6 
+
+5     = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
+3     = 0000 0000 0000 0000 0000 0000 0000 0011 = 3
+5 ^ 3 = 0000 0000 0000 0000 0000 0000 0000 0110 = 6
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;移位运算符-1&quot;&gt;移位运算符&lt;/h3&gt;
+
+&lt;h4 id=&quot;1左移位运算符能将运算符左边的运算对象向左移动运算符右侧指定的位数在低位补0&quot;&gt;1.左移位运算符（&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&lt;/code&gt;）能将运算符左边的运算对象向左移动运算符右侧指定的位数（在低位补0）。&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 &amp;lt;&amp;lt; 2);// 运行结果是20
+
+5      = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
+5 &amp;lt;&amp;lt; 2 = 0000 0000 0000 0000 0000 0000 0001 0100 = 20
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;2有符号右移位运算符则将运算符左边的运算对象向右移动运算符右侧指定的位数-有符号右移位运算符使用了符号扩展若值为正则在高位插入0若值为负则在高位插入1&quot;&gt;2.“有符号”右移位运算符（&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&lt;/code&gt;）则将运算符左边的运算对象向右移动运算符右侧指定的位数。 “有符号”右移位运算符使用了“符号扩展”：若值为正，则在高位插入0；若值为负，则在高位插入1。&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 &amp;gt;&amp;gt; 3);// 运行结果是0
+
+5      = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
+5 &amp;gt;&amp;gt; 3 = 0000 0000 0000 0000 0000 0000 0000 0000 = 0
+
+System.out.println(-5 &amp;gt;&amp;gt; 3);// 结果是-1
+
+-5      = 1111 1111 1111 1111 1111 1111 1111 1011 = -5
+-5 &amp;gt;&amp;gt; 2 = 1111 1111 1111 1111 1111 1111 1111 1110 = -1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;3java也添加了一种无符号右移位运算符它使用了零扩展无论正负都在高位插入0这一运算符是c或c没有的&quot;&gt;3.Java也添加了一种“无符号”右移位运算符（&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;），它使用了“零扩展”：无论正负，都在高位插入0。这一运算符是C或C++没有的。&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 &amp;gt;&amp;gt;&amp;gt; 3);// 结果是0
+
+5       = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
+5 &amp;gt;&amp;gt;&amp;gt; 3 = 0000 0000 0000 0000 0000 0000 0000 0000 = 0
+
+System.out.println(-5 &amp;gt;&amp;gt;&amp;gt; 3);// 结果是536870911
+
+-5       = 1111 1111 1111 1111 1111 1111 1111 1011 = -5
+-5 &amp;gt;&amp;gt;&amp;gt; 3 = 0001 1111 1111 1111 1111 1111 1111 1111 = 536870911
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Tue, 30 Oct 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/10/java_bit_operation/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/10/java_bit_operation/</guid>
+        
+        <category>JAVA</category>
+        
+        
+        <category>技术开发</category>
+        
+      </item>
+    
+      <item>
+        <title>Linux使用技巧</title>
+        <description>&lt;p&gt;Linux使用技巧&lt;/p&gt;
+
+&lt;h3 id=&quot;单用户登录模式&quot;&gt;单用户登录模式&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;重启服务器，在选择内核界面使用上下箭头移动&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;选择内核并按“e”&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;找到下面这行
+&lt;img src=&quot;/images/posts/linux/skill_01_01.png&quot; alt=&quot;&quot; /&gt;
+这里要删除掉rhgb quiet，如下图
+&lt;img src=&quot;/images/posts/linux/skill_01_02.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;使用“ctrl + x” 来重启服务器就可以了，重启后就会进入到单用户&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;退出单用户命令  exec /sbin/init&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;同步时间&quot;&gt;同步时间&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;安装ntp服务
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yum install ntp
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;2.加入crontab&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi /etc/crontab
+
+## 加入如下内容
+* */1 * * * root ntpdate 0.asia.pool.ntp.org
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Sat, 13 Oct 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/10/linux_skill/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/10/linux_skill/</guid>
+        
+        <category>linux</category>
+        
+        
+        <category>linux</category>
+        
+      </item>
     
       <item>
         <title>jmeter压力测试</title>
@@ -72,31 +283,138 @@
 &lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter12.png&quot; alt=&quot;&quot; /&gt;
 图表含义说明如下：&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;Label：说明是请求类型，如Http，FTP等请求。&lt;/li&gt;
-  &lt;li&gt;#Samples：也就是图形报表中的样本数目，总共发送到服务器的样本数目。&lt;/li&gt;
-  &lt;li&gt;Average：也就是图形报表中的平均值，是总运行时间除以发送到服务器的请求数。&lt;/li&gt;
-  &lt;li&gt;Median：也就是图形报表中的中间值，是代表时间的数字，有一半的服务器响应时间低于该值而另一半高于该值。&lt;/li&gt;
-  &lt;li&gt;90%line：是指90%请求的响应时间比所得数值还要小。&lt;/li&gt;
-  &lt;li&gt;Min：是代表时间的数字,是服务器响应的最短时间。&lt;/li&gt;
+  &lt;li&gt;Label: 说明是请求类型，如Http，FTP等请求。&lt;/li&gt;
+  &lt;li&gt;#Samples: 也就是图形报表中的样本数目，总共发送到服务器的样本数目。&lt;/li&gt;
+  &lt;li&gt;Average: 也就是图形报表中的平均值，是总运行时间除以发送到服务器的请求数。&lt;/li&gt;
+  &lt;li&gt;Median: 也就是图形报表中的中间值，是代表时间的数字，有一半的服务器响应时间低于该值而另一半高于该值。&lt;/li&gt;
+  &lt;li&gt;90%line: 是指90%请求的响应时间比所得数值还要小。&lt;/li&gt;
+  &lt;li&gt;Min:是代表时间的数字,是服务器响应的最短时间。&lt;/li&gt;
   &lt;li&gt;Max: 是代表时间的数字,是服务器响应的最长时间。&lt;/li&gt;
-  &lt;li&gt;Error%:请求的错误百分比。&lt;/li&gt;
-  &lt;li&gt;Throughput:也就是图形报表中的吞吐量，这里是服务器每单位时间处理的请求数，注意查看是秒或是分钟。&lt;/li&gt;
-  &lt;li&gt;Received KB/sec 是每秒钟接收的字节数。&lt;/li&gt;
-  &lt;li&gt;Send KB/sec:是每秒钟请求的字节数。&lt;/li&gt;
+  &lt;li&gt;Error%: 请求的错误百分比。&lt;/li&gt;
+  &lt;li&gt;Throughput: 也就是图形报表中的吞吐量，这里是服务器每单位时间处理的请求数，注意查看是秒或是分钟。&lt;/li&gt;
+  &lt;li&gt;Received KB/sec: 是每秒钟接收的字节数。&lt;/li&gt;
+  &lt;li&gt;Send KB/sec: 是每秒钟请求的字节数。&lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;h4 id=&quot;html报表报告&quot;&gt;HTML报表报告&lt;/h4&gt;
 &lt;p&gt;图中配置的所有数据写入文件test-jh.jtl，可通过命令模式将其数据生成html文档，命令如下：&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# cd apache-jmeter-5.0
 # bin/jmeter.sh -g report/test-jh.jtl -e -o report/test
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;生成结果图片如下：
-&lt;img src=&quot;/images/posts/tools/jmeter13.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;打开生成的html（report/test/index.html）,结果如下：&lt;/p&gt;
 
-&lt;h3 id=&quot;附jmeter命令行参数&quot;&gt;附：Jmeter命令行参数&lt;/h3&gt;
+&lt;h5 id=&quot;首页&quot;&gt;首页&lt;/h5&gt;
+&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter13.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;apdexapplication-performance-index&quot;&gt;APDEX(Application Performance Index）&lt;/h6&gt;
+&lt;p&gt;企业应用程序性能满意度标准，详见 &lt;a href=&quot;#apdex&quot;&gt;附录2 APDEX&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h6 id=&quot;requests-summary&quot;&gt;Requests Summary&lt;/h6&gt;
+&lt;p&gt;样本请求的成功、失败百分占比图表。&lt;/p&gt;
+
+&lt;h6 id=&quot;statistics&quot;&gt;Statistics&lt;/h6&gt;
+&lt;p&gt;此部分结果展示的是每个样本事务的一些常见的性能测试指标，跟我们通常看到的聚合报告的表格展示非常相近，多了成功与失败的占比。&lt;/p&gt;
+
+&lt;h6 id=&quot;errors&quot;&gt;Errors&lt;/h6&gt;
+&lt;p&gt;执行结果的错误情况，根据不同的错误类型进行展示。
+四列分别对应：发生错误的类型、错误数量、类型错误占比（相对于错误总数）、类型错误样本占比（相对于所有的请求样本数量）。&lt;/p&gt;
+
+&lt;h5 id=&quot;图表&quot;&gt;图表&lt;/h5&gt;
+
+&lt;h6 id=&quot;over-time&quot;&gt;Over Time&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter14.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Response Times Over Time
+随时间推移，样本请求响应时间的变化。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Response Time Percentiles Over Time (successful responses)
+随时间变化的响应时间百分比（成功响应）&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Active Threads Over Time
+活动线程随着时间的推移&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Bytes Throughput Over Time
+随时间的字节吞吐量&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Latencies Over Time
+随时间推移的延迟&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Connect Time Over Time
+连接时间&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h6 id=&quot;throughput吞吐量&quot;&gt;Throughput(吞吐量)&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter15.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Hits Per Second
+每秒点击次数&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Codes Per Second
+每秒代码数&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Transactions Per Second
+每秒事务数&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Total Transactions Per Second
+每秒总交易量&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Response Time Vs Request
+响应时间与请求&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Latency Vs Request
+延迟与请求&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h6 id=&quot;response-times响应时间&quot;&gt;Response Times(响应时间)&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter16.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Response Time Percentiles
+响应时间百分位数&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Response Time Overview
+响应时间概述&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Time Vs Threads
+时间与线程&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Response Time Distribution
+响应时间分布&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;附录&quot;&gt;附录：&lt;/h3&gt;
+
+&lt;h4 id=&quot;jmeter命令行参数&quot;&gt;Jmeter命令行参数&lt;/h4&gt;
 &lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter_ps01.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
+&lt;h4 id=&quot;apdex&quot;&gt;&lt;span id=&quot;apdex&quot;&gt;APDEX&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;是由 APDEX 公司推出的衡量企业应用程序性能满意度标准的计算方式。其将用户的满意度用数字衡量，范围在 0-1 之间。0表示所有用户均不满意，1表示所有用户都满意；随着满意度指数的增加，用户满意度逐步增加。设定请求样本目标响应时间为t，则可容忍的响应时间设定为目标响应时间t的4倍（即为4t）。公式定义为：（满意的样本数量 + 可容忍样本数量的一半） / 总样本数量。 计算公式如下：
+&lt;img src=&quot;/images/posts/tools/jmeter_ps11.png&quot; alt=&quot;&quot; /&gt;
+例如：总样本数量为 1000，目标时间t=3s，750个样本响应时间小于等于t，150个样本响应时间在3s-12s之间，100个样本响应时间超过12s，则用户满意度为：
+&lt;img src=&quot;/images/posts/tools/jmeter_ps12.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 12 Oct 2018 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2018/10/jmeter/</link>
@@ -589,478 +907,6 @@ systemctl disable firewalld.service #禁止firewall开机启动
         
         
         <category>linux</category>
-        
-      </item>
-    
-      <item>
-        <title>linux服务器架设FTP</title>
-        <description>&lt;p&gt;linux服务器架设FTP&lt;/p&gt;
-
-&lt;h3 id=&quot;准备工作&quot;&gt;准备工作&lt;/h3&gt;
-
-&lt;h4 id=&quot;下载新版本ftp&quot;&gt;下载新版本FTP&lt;/h4&gt;
-
-&lt;p&gt;下载地址：https://pkgs.org/download/vsftpd/&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;根据服务器选择相应版本，此处选择CentOS 6的版本&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;安装ftp&quot;&gt;安装FTP&lt;/h3&gt;
-
-&lt;h4 id=&quot;检查安装vsftpd软件&quot;&gt;检查安装vsftpd软件&lt;/h4&gt;
-&lt;p&gt;使用如下命令查询是否安装vsftpd软件&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#rpm -qa |grep vsftpd
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;安装vsftpd软件&quot;&gt;安装vsftpd软件&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rpm -ivh vsftpd-2.2.2-24.el6.i686.rpm
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;需要安装依赖包，且依赖包较多，有网络条件最好用yum安装。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yum -y install vsftpd
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;配置vsftpd&quot;&gt;配置vsftpd&lt;/h4&gt;
-&lt;p&gt;ftp的配置文件主要有三个，位于/etc/vsftpd/目录下，分别是：
-vsftpd.conf   vsftpd的主配置文件
-ftpusers    该文件用来指定那些用户不能访问ftp服务器。
-user_list   该文件用来指示的默认账户在默认情况下也不能访问ftp&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# vi /etc/vsftpd/vsftpd.conf
-
-
-# 是否允许匿名登录（将其禁止）
-anonymous_enable=NO
-local_enable=YES
-
-# 仅在没有pam验证版本时有用,是否检查用户有一个有效的shell来登录
-check_shell=NO
-
-# 解决登陆验证缓慢问题,跳过域名解析
-reverse_lookup_enable=NO
-
-# 设置连接超时时间（单位秒）
-idle_session_timeout=600
-
-# 数据传输超时时间（单位秒）
-data_connection_timeout=120
-
-# 是否允许上传/下载二进制文件
-ascii_upload_enable=YES
-ascii_download_enable=YES
-
-# 限制所有的本地用户只能访问自己的目录
-# 锁定用户目录（不需锁定的用户，写入chroot_list文件）
-chroot_list_enable=YES
-chroot_local_user=YES
-chroot_list_file=/etc/vsftpd/chroot_list
-
-allow_writeable_chroot=YES
-
-# 是否允许使用ls -R等命令
-ls_recurse_enable=YES
-
-# [新增]是否只允许userlist_file文件中的用户登录FTP服务器，userlist_enable为YES才生效
-# YES，默认值，禁止文件中的用户登录，同时也不向这些用户发出输入密码的提示。
-# NO，只允许在文件中的用户登录FTP服务器
-userlist_deny=NO
-
-# [新增]所有用户的根目录（对匿名用户无效）
-local_root=/data/ftpdata
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;新增ftp用户并为其设置密码&quot;&gt;新增ftp用户并为其设置密码&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# useradd ftpuser -s /sbin/nologin
-# passwd ftpuser
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;编辑user_list文件给予用户访问ftp权限&quot;&gt;编辑user_list文件，给予用户访问ftp权限&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi /etc/vsftpd/user_list
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;在文件末尾加入ftpuser并保存&lt;/p&gt;
-
-&lt;h4 id=&quot;指定用户ftp登陆后默认根文件夹&quot;&gt;指定用户FTP登陆后默认根文件夹&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi /etc/passwd
-
-## 修改默认目录
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;建立可访问目录并指定用户&quot;&gt;建立可访问目录并指定用户&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mkdir -p /data/ftpdata
-# chown -R ftpuser /data/ftpdata/ # 注意后面有个/
-# chmod -R 755 /data/ftpdata
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;使用vsftpd软件&quot;&gt;使用vsftpd软件&lt;/h4&gt;
-
-&lt;p&gt;主要包括如下几个命令：
-启动ftp命令&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#service vsftpd start
-
-# 如果报错提示：Redirecting to /bin/systemctl start vsftpd.service，请使用
-# systemctl start vsftpd.service
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;停止ftp命令&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#service vsftpd stop
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;重启ftp命令&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#service vsftpd restart
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;开机启动vsftpd服务&quot;&gt;开机启动vsftpd服务&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# chkconfig vsftpd on
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;解决无法登录问题&quot;&gt;解决无法登录问题&lt;/h4&gt;
-&lt;h5 id=&quot;错误信息如下&quot;&gt;错误信息如下：&lt;/h5&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;状态:     正在连接 XXX.XXX.XXX.XXX:21...
-状态:     连接建立，等待欢迎消息...
-命令:     USER root
-响应:     331 Please specify the password.
-命令:     PASS ***************
-响应:     530 Login incorrect.
-错误:     严重错误: 无法连接到服务器
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h5 id=&quot;错误原因及解决办法&quot;&gt;错误原因及解决办法：&lt;/h5&gt;
-
-&lt;p&gt;原因一：启用了PAM，解决办法，删除文件/etc/pam.d/vsftpd&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo rm /etc/pam.d/vsftpd
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;原因二：密码错误&lt;/p&gt;
-
-&lt;h4 id=&quot;解决vsftpd-读取目录列表失败的问题&quot;&gt;解决vsftpd 读取目录列表失败的问题&lt;/h4&gt;
-&lt;h5 id=&quot;错误信息如下-1&quot;&gt;错误信息如下：&lt;/h5&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;...
-
-状态:    已连接
-状态:    读取目录列表...
-命令:    PWD
-响应:    257 &quot;/&quot;
-命令:    TYPE I
-响应:    200 Switching to Binary mode.
-命令:    PASV
-响应:    227 Entering Passive Mode (192,168,1,6,23,8).
-命令:    LIST
-错误:    连接超时
-错误:    读取目录列表失败
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;错误原因&quot;&gt;错误原因：&lt;/h5&gt;
-&lt;p&gt;该错误是由iptables的配置引起的&lt;/p&gt;
-
-&lt;h5 id=&quot;解决办法&quot;&gt;解决办法：&lt;/h5&gt;
-
-&lt;p&gt;临时的解决方法是执行如下命令,但当你重新启动服务器则iptables规则失效，又会出现相同的情况：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# modprobe ip_nat_ftp
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;永久解决方法，需要修改/etc/sysconfig/iptables-config文件：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# vi /etc/sysconfig/iptables-config
-
-......
-
-IPTABLES_MODULES=&quot;ip_nat_ftp&quot;
-IPTABLES_MODULES_UNLOAD=&quot;yes&quot;
-
-......
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;IPTABLES_MODULES_UNLOAD=”yes”的意义：每次iptables停止或者重启都会Unload modules
-IPTABLES_MODULES=”“的意义：每次防火墙规则应用以后加载的模块
-我们需要把IPTABLES_MODULES=”“修改为：IPTABLES_MODULES=”ip_nat_ftp”，这样重启服务器之后就不必再每次都执行mobprobe啦&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;vsftpd配置文件详解&quot;&gt;vsftpd配置文件详解&lt;/h4&gt;
-
-&lt;p&gt;1.默认配置：
-a.允许匿名用户和本地用户登陆。
-     anonymous_enable=YES
-     local_enable=YES
-b.匿名用户使用的登陆名为ftp或anonymous，口令为空；匿名用户不能离开匿名用户家目录/var/ftp,且只能下载不能上传。
-c.本地用户的登录名为本地用户名，口令为此本地用户的口令；本地用户可以在自 己家目录中进行读写操作；本地用户可以离开自家目录切换至有权限访问的其他目录，并在权限允许的情况下进行上传/下载。
-    write_enable=YES
-4&amp;gt;写在文件/etc/vsftpd/ftpusers中的本地用户禁止登陆。&lt;/p&gt;
-
-&lt;p&gt;2.配置文件格式：&lt;br /&gt;
-vsftpd.conf 的内容非常单纯，每一行即为一项设定。若是空白行或是开头为#的一行，将会被忽略。内容的格式只有一种，如下所示
-option=value
-要注意的是，等号两边不能加空白。&lt;/p&gt;
-
-&lt;p&gt;3.匿名用户（anonymous）设置
-anonymous_enable=YES/NO（YES）
-控制是否允许匿名用户登入，YES 为允许匿名登入，NO 为不允许。默认值为YES。
-write_enable=YES/NO（YES）
-是否允许登陆用户有写权限。属于全局设置，默认值为YES。
-no_anon_password=YES/NO（NO）
-若是启动这项功能，则使用匿名登入时，不会询问密码。默认值为NO。
-ftp_username=ftp
-定义匿名登入的使用者名称。默认值为ftp。
-anon_root=/var/ftp
-使用匿名登入时，所登入的目录。默认值为/var/ftp。注意ftp目录不能是777的权限属性，即匿名用户的家目录不能有777的权限。
-anon_upload_enable=YES/NO（NO）
-如果设为YES，则允许匿名登入者有上传文件（非目录）的权限，只有在write_enable=YES时，此项才有效。当然，匿名用户必须要有对上层目录的写入权。默认值为NO。
-anon_world_readable_only=YES/NO（YES）
-如果设为YES，则允许匿名登入者下载可阅读的档案（可以下载到本机阅读，不能直接在FTP服务器中打开阅读）。默认值为YES。
-anon_mkdir_write_enable=YES/NO（NO）
-如果设为YES，则允许匿名登入者有新增目录的权限，只有在write_enable=YES时，此项才有效。当然，匿名用户必须要有对上层目录的写入权。默认值为NO。
-anon_other_write_enable=YES/NO（NO）
-如果设为YES，则允许匿名登入者更多于上传或者建立目录之外的权限，譬如删除或者重命名。（如果anon_upload_enable=NO，则匿名用户不能上传文件，但可以删除或者重命名已经存在的文件；如果anon_mkdir_write_enable=NO，则匿名用户不能上传或者新建文件夹，但可以删除或者重命名已经存在的文件夹。）默认值为NO。
-chown_uploads=YES/NO（NO）
-设置是否改变匿名用户上传文件（非目录）的属主。默认值为NO。
-chown_username=username
-设置匿名用户上传文件（非目录）的属主名。建议不要设置为root。
-anon_umask=077
-设置匿名登入者新增或上传档案时的umask 值。默认值为077，则新建档案的对应权限为700。
-deny_email_enable=YES/NO（NO）
-若是启动这项功能，则必须提供一个档案/etc/vsftpd/banner_emails，内容为email address。若是使用匿名登入，则会要求输入email address，若输入的email address 在此档案内，则不允许进入。默认值为NO。
-banned_email_file=/etc/vsftpd/banner_emails
-此文件用来输入email address，只有在deny_email_enable=YES时，才会使用到此档案。若是使用匿名登入，则会要求输入email address，若输入的email address 在此档案内，则不允许进入。&lt;/p&gt;
-
-&lt;p&gt;4.本地用户设置
-local_enable=YES/NO（YES）
-控制是否允许本地用户登入，YES 为允许本地用户登入，NO为不允许。默认值为YES。
-local_root=/home/username
-当本地用户登入时，将被更换到定义的目录下。默认值为各用户的家目录。
-write_enable=YES/NO（YES）
-是否允许登陆用户有写权限。属于全局设置，默认值为YES。
-local_umask=022
-本地用户新增档案时的umask 值。默认值为077。
-file_open_mode=0755
-本地用户上传档案后的档案权限，与chmod 所使用的数值相同。默认值为0666。&lt;/p&gt;
-
-&lt;p&gt;5.欢迎语设置
-dirmessage_enable=YES/NO（YES）
-如果启动这个选项，那么使用者第一次进入一个目录时，会检查该目录下是否有.message这个档案，如果有，则会出现此档案的内容，通常这个档案会放置欢迎话语，或是对该目录的说明。默认值为开启。
-message_file=.message
-设置目录消息文件，可将要显示的信息写入该文件。默认值为.message。
-banner_file=/etc/vsftpd/banner
-当使用者登入时，会显示此设定所在的档案内容，通常为欢迎话语或是说明。默认值为无。如果欢迎信息较多，则使用该配置项。
-ftpd_banner=Welcome to BOB’s FTP server
-这里用来定义欢迎话语的字符串，banner_file是档案的形式，而ftpd_banner 则是字符串的形式。预设为无。&lt;/p&gt;
-
-&lt;p&gt;6.控制用户是否允许切换到上级目录
-在默认配置下，本地用户登入FTP后可以使用cd命令切换到其他目录，这样会对系统带来安全隐患。可以通过以下三条配置文件来控制用户切换目录。
-chroot_list_enable=YES/NO（NO）
-设置是否启用chroot_list_file配置项指定的用户列表文件。默认值为NO。
-chroot_list_file=/etc/vsftpd.chroot_list
-用于指定用户列表文件，该文件用于控制哪些用户可以切换到用户家目录的上级目录。
-chroot_local_user=YES/NO（NO）
-用于指定用户列表文件中的用户是否允许切换到上级目录。默认值为NO。
-通过搭配能实现以下几种效果：
-①当chroot_list_enable=YES，chroot_local_user=YES时，在/etc/vsftpd.chroot_list文件中列出的用户，可以切换到其他目录；未在文件中列出的用户，不能切换到其他目录。
-②当chroot_list_enable=YES，chroot_local_user=NO时，在/etc/vsftpd.chroot_list文件中列出的用户，不能切换到其他目录；未在文件中列出的用户，可以切换到其他目录。
-③当chroot_list_enable=NO，chroot_local_user=YES时，所有的用户均不能切换到其他目录。
-④当chroot_list_enable=NO，chroot_local_user=NO时，所有的用户均可以切换到其他目录。&lt;/p&gt;
-
-&lt;p&gt;7.数据传输模式设置
-FTP在传输数据时，可以使用二进制方式，也可以使用ASCII模式来上传或下载数据。
-ascii_upload_enable=YES/NO（NO）
-设置是否启用ASCII 模式上传数据。默认值为NO。
-ascii_download_enable=YES/NO（NO）
-设置是否启用ASCII 模式下载数据。默认值为NO。&lt;/p&gt;
-
-&lt;p&gt;8.访问控制设置
-两种控制方式：一种控制主机访问，另一种控制用户访问。
-①控制主机访问：
-tcp_wrappers=YES/NO（YES）
-设置vsftpd是否与tcp wrapper相结合来进行主机的访问控制。默认值为YES。如果启用，则vsftpd服务器会检查/etc/hosts.allow 和/etc/hosts.deny 中的设置，来决定请求连接的主机，是否允许访问该FTP服务器。这两个文件可以起到简易的防火墙功能。
-比如：若要仅允许192.168.0.1—192.168.0.254的用户可以连接FTP服务器，则在/etc/hosts.allow文件中添加以下内容：
-vsftpd:192.168.0. :allow
-all:all :deny
-②控制用户访问：
-对于用户的访问控制可以通过/etc目录下的vsftpd.user_list和ftpusers文件来实现。
-userlist_file=/etc/vsftpd.user_list
-控制用户访问FTP的文件，里面写着用户名称。一个用户名称一行。
-userlist_enable=YES/NO（NO）
-是否启用vsftpd.user_list文件。
-userlist_deny=YES/NO（YES）
-决定vsftpd.user_list文件中的用户是否能够访问FTP服务器。若设置为YES，则vsftpd.user_list文件中的用户不允许访问FTP，若设置为NO，则只有vsftpd.user_list文件中的用户才能访问FTP。
-/etc/vsftpd/ftpusers文件专门用于定义不允许访问FTP服务器的用户列表（注意:如果userlist_enable=YES,userlist_deny=NO,此时如果在vsftpd.user_list和ftpusers中都有某个用户时，那么这个用户是不能够访问FTP的，即ftpusers的优先级要高）。默认情况下vsftpd.user_list和ftpusers，这两个文件已经预设置了一些不允许访问FTP服务器的系统内部账户。如果系统没有这两个文件，那么新建这两个文件，将用户添加进去即可。&lt;/p&gt;
-
-&lt;p&gt;9.访问速率设置
-anon_max_rate=0
-设置匿名登入者使用的最大传输速度，单位为B/s，0 表示不限制速度。默认值为0。
-local_max_rate=0
-本地用户使用的最大传输速度，单位为B/s，0 表示不限制速度。预设值为0。&lt;/p&gt;
-
-&lt;p&gt;10.超时时间设置
-accept_timeout=60
-设置建立FTP连接的超时时间，单位为秒。默认值为60。
-connect_timeout=60
-PORT 方式下建立数据连接的超时时间，单位为秒。默认值为60。
-data_connection_timeout=120
-设置建立FTP数据连接的超时时间，单位为秒。默认值为120。
-idle_session_timeout=300
-设置多长时间不对FTP服务器进行任何操作，则断开该FTP连接，单位为秒。默认值为300 。&lt;/p&gt;
-
-&lt;p&gt;11.日志文件设置
-xferlog_enable= YES/NO（YES）
-是否启用上传/下载日志记录。如果启用，则上传与下载的信息将被完整纪录在xferlog_file 所定义的档案中。预设为开启。
-xferlog_file=/var/log/vsftpd.log
-设置日志文件名和路径，默认值为/var/log/vsftpd.log。
-xferlog_std_format=YES/NO（NO）
-如果启用，则日志文件将会写成xferlog的标准格式，如同wu-ftpd 一般。默认值为关闭。
-log_ftp_protocol=YES|NO（NO） 
-如果启用此选项，所有的FTP请求和响应都会被记录到日志中，默认日志文件在/var/log/vsftpd.log。启用此选项时，xferlog_std_format不能被激活。这个选项有助于调试。默认值为NO。&lt;/p&gt;
-
-&lt;p&gt;12.定义用户配置文件
-在vsftpd中，可以通过定义用户配置文件来实现不同的用户使用不同的配置。
-user_config_dir=/etc/vsftpd/userconf
-设置用户配置文件所在的目录。当设置了该配置项后，用户登陆服务器后，系统就会到/etc/vsftpd/userconf目录下，读取与当前用户名相同的文件，并根据文件中的配置命令，对当前用户进行更进一步的配置。
-例如：定义user_config_dir=/etc/vsftpd/userconf，且主机上有使用者 test1,test2，那么我们就在user_config_dir 的目录新增文件名为test1和test2两个文件。若是test1 登入，则会读取user_config_dir 下的test1 这个档案内的设定。默认值为无。利用用户配置文件，可以实现对不同用户进行访问速度的控制，在各用户配置文件中定义local_max_rate=XX，即可。&lt;/p&gt;
-
-&lt;p&gt;13.FTP的工作方式与端口设置
-FTP有两种工作方式：PORT FTP（主动模式）和PASV FTP（被动模式）
-listen_port=21
-设置FTP服务器建立连接所监听的端口，默认值为21。
-connect_from_port_20=YES/NO
-指定FTP使用20端口进行数据传输，默认值为YES。
-ftp_data_port=20
-设置在PORT方式下，FTP数据连接使用的端口，默认值为20。
-pasv_enable=YES/NO（YES）
-若设置为YES，则使用PASV工作模式；若设置为NO，则使用PORT模式。默认值为YES，即使用PASV工作模式。
-pasv_max_port=0
-在PASV工作模式下，数据连接可以使用的端口范围的最大端口，0 表示任意端口。默认值为0。
-pasv_min_port=0
-在PASV工作模式下，数据连接可以使用的端口范围的最小端口，0 表示任意端口。默认值为0。&lt;/p&gt;
-
-&lt;p&gt;14.与连接相关的设置
-listen=YES/NO（YES）
-设置vsftpd服务器是否以standalone模式运行。以standalone模式运行是一种较好的方式，此时listen必须设置为YES，此为默认值。建议不要更改，有很多与服务器运行相关的配置命令，需要在此模式下才有效。若设置为NO，则vsftpd不是以独立的服务运行，要受到xinetd服务的管控，功能上会受到限制。
-max_clients=0
-设置vsftpd允许的最大连接数，默认值为0，表示不受限制。若设置为100时，则同时允许有100个连接，超出的将被拒绝。只有在standalone模式运行才有效。
-max_per_ip=0
-设置每个IP允许与FTP服务器同时建立连接的数目。默认值为0，表示不受限制。只有在standalone模式运行才有效。
-listen_address=IP地址
-设置FTP服务器在指定的IP地址上侦听用户的FTP请求。若不设置，则对服务器绑定的所有IP地址进行侦听。只有在standalone模式运行才有效。
-setproctitle_enable=YES/NO（NO）
-设置每个与FTP服务器的连接，是否以不同的进程表现出来。默认值为NO，此时使用ps aux |grep ftp只会有一个vsftpd的进程。若设置为YES，则每个连接都会有一个vsftpd的进程。&lt;/p&gt;
-
-&lt;p&gt;15.虚拟用户设置
-虚拟用户使用PAM认证方式。
-pam_service_name=vsftpd
-设置PAM使用的名称，默认值为/etc/pam.d/vsftpd。
-guest_enable= YES/NO（NO）
-启用虚拟用户。默认值为NO。
-guest_username=ftp
-这里用来映射虚拟用户。默认值为ftp。
-virtual_use_local_privs=YES/NO（NO）
-当该参数激活（YES）时，虚拟用户使用与本地用户相同的权限。当此参数关闭（NO）时，虚拟用户使用与匿名用户相同的权限。默认情况下此参数是关闭的（NO）。&lt;/p&gt;
-
-&lt;p&gt;16.其他设置
-text_userdb_names= YES/NO（NO）
-设置在执行ls –la之类的命令时，是显示UID、GID还是显示出具体的用户名和组名。默认值为NO，即以UID和GID方式显示。若希望显示用户名和组名，则设置为YES。
-ls_recurse_enable=YES/NO（NO）
-若是启用此功能，则允许登入者使用ls –R（可以查看当前目录下子目录中的文件）这个指令。默认值为NO。
-hide_ids=YES/NO（NO）
-如果启用此功能，所有档案的拥有者与群组都为ftp，也就是使用者登入使用ls -al之类的指令，所看到的档案拥有者跟群组均为ftp。默认值为关闭。
-download_enable=YES/NO（YES）
-如果设置为NO，所有的文件都不能下载到本地，文件夹不受影响。默认值为YES。&lt;/p&gt;
-
-&lt;p&gt;关于ftpusers和user_list两个文件的说明
-问题一：ftpusers和user_list两个文件各自的用途是什么？有何关系？
-首先请明确一点：ftpusers不受任何配制项的影响，它总是有效，它是一个黑名单！
-而user_list则是和vsftpd.conf中的userlist_enable和userlist_deny两个配置项紧密相关的，它可以有效，也可以无效，有效时它可以是一个黑名单，也可以是一个白名单！&lt;/p&gt;
-
-&lt;p&gt;问题二：vsftpd.conf中的userlist_enable和userlist_deny两个配置项各自起什么作用，两者如何搭配使用?
-1.userlist_enable和userlist_deny两个选项联合起来针对的是：本地全体用户（除去ftpusers中的用户）和出现在user_list文件中的用户以及不在在user_list文件中的用户这三类用户集合进行的设置。
-2.当且仅当userlist_enable=YES时：userlist_deny项的配置才有效，user_list文件才会被使用；当其为NO时，无论userlist_deny项为何值都是无效的，本地全体用户（除去ftpusers中的用户）都可以登入FTP
-3.当userlist_enable=YES时，userlist_deny=YES时：user_list是一个黑名单，即：所有出现在名单中的用户都会被拒绝登入；
-4.当userlist_enable=YES时，userlist_deny=NO时：user_list是一个白名单，即：只有出现在名单中的用户才会被准许登入(user_list之外的用户都被拒绝登入)；另外需要特别提醒的是：使用白名单后，匿名用户将无法登入！除非显式在user_list中加入一行：anonymous&lt;/p&gt;
-
-</description>
-        <pubDate>Wed, 06 Dec 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/12/linux_ftp/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/12/linux_ftp/</guid>
-        
-        <category>FTP</category>
-        
-        <category>服务器架设</category>
-        
-        <category>CentOS</category>
-        
-        
-        <category>linux</category>
-        
-      </item>
-    
-      <item>
-        <title>Tomcat的URL中存在特殊符号报404错误</title>
-        <description>&lt;p&gt;Tomcat的URL中存在特殊符号报404错误&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;当url中存在 \&lt;/td&gt;
-      &lt;td&gt;{ } 等字符串时，tomcat报404错误，后台报错信息如下：&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;信息: Error parsing HTTP request header
- Note: further occurrences of HTTP header parsing errors will be logged at DEBUG level.
-java.lang.IllegalArgumentException: Invalid character found in the request target. The valid characters are defined in RFC 7230 and RFC 3986
-        at org.apache.coyote.http11.InternalInputBuffer.parseRequestLine(InternalInputBuffer.java:192)
-        at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1028)
-        at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:637)
-        at org.apache.tomcat.util.net.JIoEndpoint$SocketProcessor.run(JIoEndpoint.java:318)
-        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-        at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-        at java.lang.Thread.run(Thread.java:745)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-        <pubDate>Fri, 24 Nov 2017 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2017/11/tomcat_url_invalid_character/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/11/tomcat_url_invalid_character/</guid>
-        
-        <category>Tomcat</category>
-        
-        
-        <category>技术开发</category>
         
       </item>
     

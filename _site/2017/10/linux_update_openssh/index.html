@@ -233,6 +233,33 @@ systemctl start xinetd
 </code></pre>
 </div>
 
+<h4 id="安装新版本openssh">安装新版本openssh</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># yum install openssh*
+</code></pre>
+</div>
+
+<h4 id="修改配置文件">修改配置文件</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>useradd maihe
+passwd maihe
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>vi /etc/ssh/sshd_config
+
+# Port 22
+# PermitRootLogin yes
+
+改为
+Port 22323
+PermitRootLogin no
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>service sshd restart
+</code></pre>
+</div>
 
 
   </section>

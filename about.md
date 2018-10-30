@@ -3,7 +3,7 @@ layout: page
 title: 关于我 
 ---
 
-一个 Java 开发者，最近在学习Android和iOS开发。喜欢研究一些新技术、打打炉石传说。
+一个 Java 开发者，最近在学习Android和iOS开发。喜欢研究一些新技术、打炉石、吃鸡。
 <p>
 
 

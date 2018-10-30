@@ -219,9 +219,6 @@ local_enable=YES
 # 仅在没有pam验证版本时有用,是否检查用户有一个有效的shell来登录
 check_shell=NO
 
-# 解决登陆验证缓慢问题,跳过域名解析
-reverse_lookup_enable=NO
-
 # 设置连接超时时间（单位秒）
 idle_session_timeout=600
 
@@ -251,6 +248,8 @@ userlist_deny=NO
 # [新增]所有用户的根目录（对匿名用户无效）
 local_root=/data/ftpdata
 
+# 解决登陆验证缓慢问题,跳过域名解析
+reverse_lookup_enable=NO
 </code></pre>
 </div>
 
