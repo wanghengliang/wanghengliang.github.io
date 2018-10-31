@@ -5,8 +5,8 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 30 Oct 2018 16:23:08 +0800</pubDate>
-    <lastBuildDate>Tue, 30 Oct 2018 16:23:08 +0800</lastBuildDate>
+    <pubDate>Wed, 31 Oct 2018 09:24:22 +0800</pubDate>
+    <lastBuildDate>Wed, 31 Oct 2018 09:24:22 +0800</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
     
       <item>
@@ -17,36 +17,36 @@
 
 &lt;h3 id=&quot;二进制表示&quot;&gt;二进制表示&lt;/h3&gt;
 
-&lt;p&gt;二进制第一位为符号位，0表示整数，1表示负数。&lt;/p&gt;
+&lt;p&gt;二进制第一位为符号位，0表示正数，1表示负数。&lt;/p&gt;
 
-&lt;h4 id=&quot;1正数表示例如整数类型5int用32位表示&quot;&gt;1.正数表示,例如:整数类型5(int用32位表示)&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;5 = 0000 0000 0000 0000 0000 0000 0000 0101
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;2负数表示例如整数类型-5&quot;&gt;2.负数表示,例如:整数类型-5&lt;/h4&gt;
-
-&lt;p&gt;首先来个整数5&lt;/p&gt;
+&lt;h4 id=&quot;1正数表示例如int类型值-5int用32位表示&quot;&gt;1.正数表示,例如:int类型值 &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt;(int用32位表示)&lt;/h4&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;5 = 0000 0000 0000 0000 0000 0000 0000 0101
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;这个就是原码，然后取反（0的变成1，1的变成0）&lt;/p&gt;
+
+&lt;h4 id=&quot;2负数表示例如int类型值--5&quot;&gt;2.负数表示,例如:int类型值 &lt;code class=&quot;highlighter-rouge&quot;&gt;-5&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;首先来个正数5&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;5 = 0000 0000 0000 0000 0000 0000 0000 0101
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;这个就是&lt;code class=&quot;highlighter-rouge&quot;&gt;原码&lt;/code&gt;，然后&lt;code class=&quot;highlighter-rouge&quot;&gt;原码&lt;/code&gt;取反（0的变成1，1的变成0），得到&lt;code class=&quot;highlighter-rouge&quot;&gt;反码&lt;/code&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;原码: 0000 0000 0000 0000 0000 0000 0000 0101
 反码: 1111 1111 1111 1111 1111 1111 1111 1010
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;反码进行加1得到补码&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;反码&lt;/code&gt;进行加1得到&lt;code class=&quot;highlighter-rouge&quot;&gt;补码&lt;/code&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;原码: 0000 0000 0000 0000 0000 0000 0000 0101
 反码: 1111 1111 1111 1111 1111 1111 1111 1010
 补码: 1111 1111 1111 1111 1111 1111 1111 1011
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;补码就是负数在计算机中的二进制表示方法&lt;/p&gt;
+&lt;p&gt;最终得到的&lt;code class=&quot;highlighter-rouge&quot;&gt;补码&lt;/code&gt;就是负数在计算机中的二进制表示方法&lt;/p&gt;
 
 &lt;h4 id=&quot;3二进制转换为十进制&quot;&gt;3.二进制转换为十进制&lt;/h4&gt;
 
@@ -70,7 +70,7 @@
 &lt;/div&gt;
 &lt;p&gt;然后计算得到结果为5，那么负数二进制就为-5&lt;/p&gt;
 
-&lt;h3 id=&quot;移位运算符&quot;&gt;移位运算符&lt;/h3&gt;
+&lt;h3 id=&quot;逻辑运算符&quot;&gt;逻辑运算符&lt;/h3&gt;
 
 &lt;h4 id=&quot;1非运算--取反&quot;&gt;1.非(&lt;code class=&quot;highlighter-rouge&quot;&gt;~&lt;/code&gt;)运算	: 取反&lt;/h4&gt;
 
@@ -88,6 +88,13 @@
 5     = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
 3     = 0000 0000 0000 0000 0000 0000 0000 0011 = 3
 5 &amp;amp; 3 = 0000 0000 0000 0000 0000 0000 0000 0001 = 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;应用&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;select * from as_component_task where status&amp;amp;2=2;
+select * from as_component_task where status&amp;amp;2=0;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -111,7 +118,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h3 id=&quot;移位运算符-1&quot;&gt;移位运算符&lt;/h3&gt;
+&lt;h3 id=&quot;移位运算符&quot;&gt;移位运算符&lt;/h3&gt;
 
 &lt;h4 id=&quot;1左移位运算符能将运算符左边的运算对象向左移动运算符右侧指定的位数在低位补0&quot;&gt;1.左移位运算符（&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&lt;/code&gt;）能将运算符左边的运算对象向左移动运算符右侧指定的位数（在低位补0）。&lt;/h4&gt;
 

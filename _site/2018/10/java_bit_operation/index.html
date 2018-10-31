@@ -174,36 +174,36 @@
 
 <h3 id="二进制表示">二进制表示</h3>
 
-<p>二进制第一位为符号位，0表示整数，1表示负数。</p>
+<p>二进制第一位为符号位，0表示正数，1表示负数。</p>
 
-<h4 id="1正数表示例如整数类型5int用32位表示">1.正数表示,例如:整数类型5(int用32位表示)</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>5 = 0000 0000 0000 0000 0000 0000 0000 0101
-</code></pre>
-</div>
-
-<h4 id="2负数表示例如整数类型-5">2.负数表示,例如:整数类型-5</h4>
-
-<p>首先来个整数5</p>
+<h4 id="1正数表示例如int类型值-5int用32位表示">1.正数表示,例如:int类型值 <code class="highlighter-rouge">5</code>(int用32位表示)</h4>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>5 = 0000 0000 0000 0000 0000 0000 0000 0101
 </code></pre>
 </div>
-<p>这个就是原码，然后取反（0的变成1，1的变成0）</p>
+
+<h4 id="2负数表示例如int类型值--5">2.负数表示,例如:int类型值 <code class="highlighter-rouge">-5</code></h4>
+
+<p>首先来个正数5</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>5 = 0000 0000 0000 0000 0000 0000 0000 0101
+</code></pre>
+</div>
+<p>这个就是<code class="highlighter-rouge">原码</code>，然后<code class="highlighter-rouge">原码</code>取反（0的变成1，1的变成0），得到<code class="highlighter-rouge">反码</code></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>原码: 0000 0000 0000 0000 0000 0000 0000 0101
 反码: 1111 1111 1111 1111 1111 1111 1111 1010
 </code></pre>
 </div>
 
-<p>反码进行加1得到补码</p>
+<p><code class="highlighter-rouge">反码</code>进行加1得到<code class="highlighter-rouge">补码</code></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>原码: 0000 0000 0000 0000 0000 0000 0000 0101
 反码: 1111 1111 1111 1111 1111 1111 1111 1010
 补码: 1111 1111 1111 1111 1111 1111 1111 1011
 </code></pre>
 </div>
-<p>补码就是负数在计算机中的二进制表示方法</p>
+<p>最终得到的<code class="highlighter-rouge">补码</code>就是负数在计算机中的二进制表示方法</p>
 
 <h4 id="3二进制转换为十进制">3.二进制转换为十进制</h4>
 
@@ -227,7 +227,7 @@
 </div>
 <p>然后计算得到结果为5，那么负数二进制就为-5</p>
 
-<h3 id="移位运算符">移位运算符</h3>
+<h3 id="逻辑运算符">逻辑运算符</h3>
 
 <h4 id="1非运算--取反">1.非(<code class="highlighter-rouge">~</code>)运算	: 取反</h4>
 
@@ -245,6 +245,13 @@
 5     = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
 3     = 0000 0000 0000 0000 0000 0000 0000 0011 = 3
 5 &amp; 3 = 0000 0000 0000 0000 0000 0000 0000 0001 = 1
+</code></pre>
+</div>
+
+<p>应用</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>select * from as_component_task where status&amp;2=2;
+select * from as_component_task where status&amp;2=0;
 </code></pre>
 </div>
 
@@ -268,7 +275,7 @@
 </code></pre>
 </div>
 
-<h3 id="移位运算符-1">移位运算符</h3>
+<h3 id="移位运算符">移位运算符</h3>
 
 <h4 id="1左移位运算符能将运算符左边的运算对象向左移动运算符右侧指定的位数在低位补0">1.左移位运算符（<code class="highlighter-rouge">&lt;&lt;</code>）能将运算符左边的运算对象向左移动运算符右侧指定的位数（在低位补0）。</h4>
 
