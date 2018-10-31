@@ -348,6 +348,9 @@ img::-moz-selection {
     background-color: #FFF;
     text-indent: 10px;
     color: #4F4F4F; 
+    word-wrap:break-word;
+    word-break:break-all;
+    overflow: hidden;
   }
 
   .intro {
@@ -807,9 +810,11 @@ img::-moz-selection {
     list-style-type: none;
     text-align: left; 
     display: inline-block;
+    width:100%;
   }
   .post-list li {
     margin: 0 0 2.2em 0;
+    width:100%;
     float: left;
 
     -moz-box-shadow:4px 4px 4px #efefef, 
