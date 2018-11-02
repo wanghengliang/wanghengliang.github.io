@@ -27,6 +27,8 @@
   <link rel="canonical" href="http://localhost:4000/">
   <link rel="alternate" type="application/rss+xml" title="hengliang" href="http://localhost:4000/feed.xml">
   
+  <link rel="dns-prefetch" href="//cdn.mathjax.org" />
+  
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
 
 <!-- 站点统计 -->
@@ -160,6 +162,48 @@
   <ol class="post-list">
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/11/java_exception/" title="访问 JAVA异常处理">JAVA异常处理</a></h2>
+      <p class="excerpt">JAVA异常处理要理解Java异常处理是如何工作的，你需要掌握以下三种类型的异常：检查性异常: 最具代表的检查性异常是用户错误或问题引起的异常，这是程序员无法预见的。例如要打开一个不存在文件时，一个异常就发生了，这些异常在编译时不能被简单地忽略。运行时异常: 运行时异常是可能被程序员避免的异常。与检查性异常相反，运行时异常可以在编译时被忽略。错误: 错误不是异常，而是脱离程序员控制的问题。错误在代码中通常被忽略。例如，当栈溢出时，一个错误就发生了，它们在编译也检查不到的。参考资料Java ...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2018-11-01 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2018-11-01</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">JAVA异常</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2018/11/java_exception/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/10/MathjaxJS/" title="访问 jekyll整合MathjaxJS插入数学公式">jekyll整合MathjaxJS插入数学公式</a></h2>
+      <p class="excerpt">jekyll整合MathjaxJS插入数学公式MathJax简介MathJax是一款运行在浏览器中的开源的数学符号渲染引擎，使用MathJax可以方便的在浏览器中显示数学公式，不需要使用图片。目前，MathJax可以解析Latex、MathML和ASCIIMathML的标记语言。(Wiki)先给几个效果看看引入MathJax在页脚处，引入官方的cdn,但这个js还是会调用到 cdn.mathjax.org 里的一些配置js文件，我们最好在head内加一个dns-prefetch，用于网页加...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2018-10-31 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2018-10-31</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">jekyllmathjaxJs</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2018/10/MathjaxJS/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2018/10/java_bit_operation/" title="访问 java位运算">java位运算</a></h2>
       <p class="excerpt">java位运算位运算表达式由操作数和位运算符组成，实现对整数类型的二进制数进行位运算。位运算符可以分为逻辑运算符(包括~、＆、|和^)及移位运算符(包括&gt;&gt;、&lt;&lt;和&gt;&gt;&gt;)。二进制表示二进制第一位为符号位，0表示正数，1表示负数。1.正数表示,例如:int类型值 5(int用32位表示)5 = 0000 0000 0000 0000 0000 0000 0000 01012.负数表示,例如:int类型值 -5首先来个正数55 = 0000 0000...&hellip;</p>
       <div class="post-list__meta">        
@@ -182,7 +226,7 @@
     
     <li>
       <h2 class="post-list__post-title post-title"><a href="/2018/10/linux_skill/" title="访问 Linux使用技巧">Linux使用技巧</a></h2>
-      <p class="excerpt">Linux使用技巧单用户登录模式      重启服务器，在选择内核界面使用上下箭头移动        选择内核并按“e”        找到下面这行这里要删除掉rhgb quiet，如下图        使用“ctrl + x” 来重启服务器就可以了，重启后就会进入到单用户        退出单用户命令  exec /sbin/init  同步时间  安装ntp服务    yum install ntp      2.加入crontabvi /etc/crontab## 加入如下内容* *...&hellip;</p>
+      <p class="excerpt">Linux使用技巧单用户登录模式      重启服务器，在选择内核界面使用上下箭头移动        选择内核并按“e”        找到下面这行这里要删除掉rhgb quiet，如下图        使用“ctrl + x” 来重启服务器就可以了，重启后就会进入到单用户        退出单用户命令  exec /sbin/init  同步时间  安装ntp服务yum install ntp2.加入crontabvi /etc/crontab## 加入如下内容* */1 * * * r...&hellip;</p>
       <div class="post-list__meta">        
         <time datetime="2018-10-13 00:00:00 +0800" class="post-list__meta--date date">
           <img src="/images/calendar.png" width="20px" /> 
@@ -537,48 +581,6 @@
       <hr class="post-list__divider" />
     </li>
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/09/IntelliJIDEA_Multi_Module/" title="访问 IntelliJ IDEA 创建多模块项目的正确姿势">IntelliJ IDEA 创建多模块项目的正确姿势</a></h2>
-      <p class="excerpt">IntelliJ IDEA 创建多模块项目的正确姿势  新建一个空文件夹workspace, 用idea作为项目打开  选中External Libraries, 在菜单: File –&gt; new –&gt; Modual… 新建立模块  新建好模块后, .idea文件夹里的modules.xml里会有两个模块(如果没有找到, 重启idea), 删除第一个同工程名相同的那个默认模块. 这时.idea文件夹会从idea里消失, 不过没关系, 以后我们可以到workspace/.idea...&hellip;</p>
-      <div class="post-list__meta">        
-        <time datetime="2017-09-07 00:00:00 +0800" class="post-list__meta--date date">
-          <img src="/images/calendar.png" width="20px" /> 
-          2017-09-07</time> 
-        <div class = "tag-img-icon">
-          <img src="/images/tag-icon.svg" width="20px" /> 
-        </div>
-        <a href="/tags">
-          <div class = "post-list-icon-mate">
-            <span class="post-list__meta--tags-right">IntelliJIDEA</span>
-          </div>
-          <div class = "post-list-small-mate">
-          <a class="btn-border-small" href=/2017/09/IntelliJIDEA_Multi_Module/>阅读全文 » </a>
-          </div>
-      </div>
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/09/jekyll_blog/" title="访问 Jekyll搭建个人博客过程记录">Jekyll搭建个人博客过程记录</a></h2>
-      <p class="excerpt">一直想搭建一个自己的博客系统，网上搜了一下发现了Hexo! 但是没有找到一个自己满意的模板，后来发现潘柏信的博客,非常喜欢这个模板，作者也愿意共享此模板并提供源码，但发现采用的不是Hexo而是Jekyll，了解了一下这两个Blog系统，发现Jekyll还有个优点就是所有的Markdown文档也是放到一起的，而用Hexo则需要将Markdown单独存放，如果想多端同步更新blog则需要建立两个Github项目进行存放，关于Hexo和Jekyll的优缺点自行对比，以上为个人关注的优缺点。最终决...&hellip;</p>
-      <div class="post-list__meta">        
-        <time datetime="2017-09-05 00:00:00 +0800" class="post-list__meta--date date">
-          <img src="/images/calendar.png" width="20px" /> 
-          2017-09-05</time> 
-        <div class = "tag-img-icon">
-          <img src="/images/tag-icon.svg" width="20px" /> 
-        </div>
-        <a href="/tags">
-          <div class = "post-list-icon-mate">
-            <span class="post-list__meta--tags-right">jekyllblog系统</span>
-          </div>
-          <div class = "post-list-small-mate">
-          <a class="btn-border-small" href=/2017/09/jekyll_blog/>阅读全文 » </a>
-          </div>
-      </div>
-      <hr class="post-list__divider" />
-    </li>
-    
   </ol>
 
   <hr class="post-list__divider " />
@@ -676,7 +678,26 @@
 <script type="text/javascript" src="/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    showProcessingMessages: false,
+    messageStyle: "none",
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath:  [ ["$", "$"] ],
+        displayMath: [ ["$$","$$"] ],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+        ignoreClass:"comment-content"
+    },
+    "HTML-CSS": {
+        availableFonts: ["STIX","TeX"],
+        showMathMenu: false
+    }
+});
+MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   </body>

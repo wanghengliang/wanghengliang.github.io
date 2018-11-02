@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>Linux使用技巧</title>
-  <meta name="description" content="Linux使用技巧">
+  <title>JAVA异常处理</title>
+  <meta name="description" content="JAVA异常处理">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Linux使用技巧">
-  <meta name="twitter:description" content="Linux使用技巧">
+  <meta name="twitter:title" content="JAVA异常处理">
+  <meta name="twitter:description" content="JAVA异常处理">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Linux使用技巧">
-  <meta property="og:description" content="Linux使用技巧">
+  <meta property="og:title" content="JAVA异常处理">
+  <meta property="og:description" content="JAVA异常处理">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2018/10/linux_skill/">
+  <link rel="canonical" href="http://localhost:4000/2018/11/java_exception/">
   <link rel="alternate" type="application/rss+xml" title="hengliang" href="http://localhost:4000/feed.xml">
   
   <link rel="dns-prefetch" href="//cdn.mathjax.org" />
@@ -159,10 +159,10 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title">Linux使用技巧</h1>
+    <h1 class="post-title">JAVA异常处理</h1>
     <div class="post-meta">
       <img src="/images/calendar.png" width="20px"/> 
-      <time datetime="2018-10-13 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-10-13</time>  
+      <time datetime="2018-11-01 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-11-01</time>  
          
       <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
     </p>
@@ -170,50 +170,19 @@
   </header>
 
   <section class="post">
-    <p>Linux使用技巧</p>
+    <p>JAVA异常处理</p>
 
-<h3 id="单用户登录模式">单用户登录模式</h3>
+<p>要理解Java异常处理是如何工作的，你需要掌握以下三种类型的异常：</p>
 
-<ol>
-  <li>
-    <p>重启服务器，在选择内核界面使用上下箭头移动</p>
-  </li>
-  <li>
-    <p>选择内核并按“e”</p>
-  </li>
-  <li>
-    <p>找到下面这行
-<img src="/images/posts/linux/skill_01_01.png" alt="" />
-这里要删除掉rhgb quiet，如下图
-<img src="/images/posts/linux/skill_01_02.png" alt="" /></p>
-  </li>
-  <li>
-    <p>使用“ctrl + x” 来重启服务器就可以了，重启后就会进入到单用户</p>
-  </li>
-  <li>
-    <p>退出单用户命令  exec /sbin/init</p>
-  </li>
-</ol>
+<p>检查性异常: 最具代表的检查性异常是用户错误或问题引起的异常，这是程序员无法预见的。例如要打开一个不存在文件时，一个异常就发生了，这些异常在编译时不能被简单地忽略。</p>
 
-<h3 id="同步时间">同步时间</h3>
+<p>运行时异常: 运行时异常是可能被程序员避免的异常。与检查性异常相反，运行时异常可以在编译时被忽略。</p>
 
-<ol>
-  <li>安装ntp服务</li>
-</ol>
+<p>错误: 错误不是异常，而是脱离程序员控制的问题。错误在代码中通常被忽略。例如，当栈溢出时，一个错误就发生了，它们在编译也检查不到的。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>yum install ntp
-</code></pre>
-</div>
+<h3 id="参考资料">参考资料</h3>
 
-<p>2.加入crontab</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>vi /etc/crontab
-
-## 加入如下内容
-* */1 * * * root ntpdate 0.asia.pool.ntp.org
-</code></pre>
-</div>
-
+<p><a href="http://www.runoob.com/java/java-exceptions.html">Java 异常处理</a></p>
 
 
   </section>
@@ -283,15 +252,10 @@
        <ul class="pager">
         
         <li class="previous">
-            <a href="/2018/10/jmeter/" data-toggle="tooltip" data-placement="top" title="jmeter压力测试">上一篇：  <span>jmeter压力测试</span>
+            <a href="/2018/10/MathjaxJS/" data-toggle="tooltip" data-placement="top" title="jekyll整合MathjaxJS插入数学公式">上一篇：  <span>jekyll整合MathjaxJS插入数学公式</span>
             </a>
         </li>
         
-        
-        <li class="next">
-            <a href="/2018/10/java_bit_operation/" data-toggle="tooltip" data-placement="top" title="java位运算">下一篇：  <span>java位运算</span>
-            </a>
-        </li>
         
     </ul>
 </section>

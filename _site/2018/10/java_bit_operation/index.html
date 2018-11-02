@@ -27,6 +27,8 @@
   <link rel="canonical" href="http://localhost:4000/2018/10/java_bit_operation/">
   <link rel="alternate" type="application/rss+xml" title="hengliang" href="http://localhost:4000/feed.xml">
   
+  <link rel="dns-prefetch" href="//cdn.mathjax.org" />
+  
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
 
 <!-- 站点统计 -->
@@ -250,8 +252,29 @@
 
 <p>应用</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>select * from as_component_task where status&amp;2=2;
-select * from as_component_task where status&amp;2=0;
+<p>一个数字标识位，表示多种逻辑,例如：一个任务可分成n个独立小任务，每个小任务之间不分先后顺序，当所有小任务完成则表示此任务完成。</p>
+
+<p>如果n=3，则将3个小任务分别用$2^0$,$2^1$,$2^2$即1,2,4表示</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>//更新当前任务完成第1个小任务
+update tbl_task set status = status|1 where id=1;
+//同理，更新当前任务完成第2个小任务
+update tbl_task set status = status|2 where id=1;
+//同理，更新当前任务完成第3个小任务
+update tbl_task set status = status|4 where id=1;
+//当status = 7时，则表示三个任务都完成;
+
+//查询第1个小任务未完成的所有任务
+select * from tbl_task where status&amp;1=0;
+//查询第1个小任务已完成的所有任务
+select * from tbl_task where status&amp;1=1;
+
+//同理，第2个小任务
+//查询第2个小任务未完成的所有任务
+select * from tbl_task where status&amp;2=0;
+//查询第2个小任务已完成的所有任务
+select * from tbl_task where status&amp;2=2;
+
 </code></pre>
 </div>
 
@@ -279,10 +302,10 @@ select * from as_component_task where status&amp;2=0;
 
 <h4 id="1左移位运算符能将运算符左边的运算对象向左移动运算符右侧指定的位数在低位补0">1.左移位运算符（<code class="highlighter-rouge">&lt;&lt;</code>）能将运算符左边的运算对象向左移动运算符右侧指定的位数（在低位补0）。</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>System.out.println(5 &lt;&lt; 2);// 运行结果是20
+<div class="highlighter-rouge"><pre class="highlight"><code>System.out.println(5 &lt;&lt; 3);// 运行结果是40
 
 5      = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
-5 &lt;&lt; 2 = 0000 0000 0000 0000 0000 0000 0001 0100 = 20
+5 &lt;&lt; 3 = 0000 0000 0000 0000 0000 0000 0010 1000 = 40
 </code></pre>
 </div>
 
@@ -296,7 +319,7 @@ select * from as_component_task where status&amp;2=0;
 System.out.println(-5 &gt;&gt; 3);// 结果是-1
 
 -5      = 1111 1111 1111 1111 1111 1111 1111 1011 = -5
--5 &gt;&gt; 2 = 1111 1111 1111 1111 1111 1111 1111 1110 = -1
+-5 &gt;&gt; 3 = 1111 1111 1111 1111 1111 1111 1111 1111 = -1
 </code></pre>
 </div>
 
@@ -387,6 +410,11 @@ System.out.println(-5 &gt;&gt;&gt; 3);// 结果是536870911
             </a>
         </li>
         
+        
+        <li class="next">
+            <a href="/2018/10/MathjaxJS/" data-toggle="tooltip" data-placement="top" title="jekyll整合MathjaxJS插入数学公式">下一篇：  <span>jekyll整合MathjaxJS插入数学公式</span>
+            </a>
+        </li>
         
     </ul>
 </section>
@@ -489,7 +517,26 @@ System.out.println(-5 &gt;&gt;&gt; 3);// 结果是536870911
 <script type="text/javascript" src="/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    showProcessingMessages: false,
+    messageStyle: "none",
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath:  [ ["$", "$"] ],
+        displayMath: [ ["$$","$$"] ],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+        ignoreClass:"comment-content"
+    },
+    "HTML-CSS": {
+        availableFonts: ["STIX","TeX"],
+        showMathMenu: false
+    }
+});
+MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   </body>

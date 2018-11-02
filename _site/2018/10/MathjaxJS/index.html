@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>Linux使用技巧</title>
-  <meta name="description" content="Linux使用技巧">
+  <title>jekyll整合MathjaxJS插入数学公式</title>
+  <meta name="description" content="jekyll整合MathjaxJS插入数学公式">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Linux使用技巧">
-  <meta name="twitter:description" content="Linux使用技巧">
+  <meta name="twitter:title" content="jekyll整合MathjaxJS插入数学公式">
+  <meta name="twitter:description" content="jekyll整合MathjaxJS插入数学公式">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Linux使用技巧">
-  <meta property="og:description" content="Linux使用技巧">
+  <meta property="og:title" content="jekyll整合MathjaxJS插入数学公式">
+  <meta property="og:description" content="jekyll整合MathjaxJS插入数学公式">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2018/10/linux_skill/">
+  <link rel="canonical" href="http://localhost:4000/2018/10/MathjaxJS/">
   <link rel="alternate" type="application/rss+xml" title="hengliang" href="http://localhost:4000/feed.xml">
   
   <link rel="dns-prefetch" href="//cdn.mathjax.org" />
@@ -159,10 +159,10 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title">Linux使用技巧</h1>
+    <h1 class="post-title">jekyll整合MathjaxJS插入数学公式</h1>
     <div class="post-meta">
       <img src="/images/calendar.png" width="20px"/> 
-      <time datetime="2018-10-13 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-10-13</time>  
+      <time datetime="2018-10-31 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2018-10-31</time>  
          
       <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
     </p>
@@ -170,50 +170,151 @@
   </header>
 
   <section class="post">
-    <p>Linux使用技巧</p>
+    <p>jekyll整合MathjaxJS插入数学公式</p>
 
-<h3 id="单用户登录模式">单用户登录模式</h3>
+<h3 id="mathjax简介">MathJax简介</h3>
 
-<ol>
-  <li>
-    <p>重启服务器，在选择内核界面使用上下箭头移动</p>
-  </li>
-  <li>
-    <p>选择内核并按“e”</p>
-  </li>
-  <li>
-    <p>找到下面这行
-<img src="/images/posts/linux/skill_01_01.png" alt="" />
-这里要删除掉rhgb quiet，如下图
-<img src="/images/posts/linux/skill_01_02.png" alt="" /></p>
-  </li>
-  <li>
-    <p>使用“ctrl + x” 来重启服务器就可以了，重启后就会进入到单用户</p>
-  </li>
-  <li>
-    <p>退出单用户命令  exec /sbin/init</p>
-  </li>
-</ol>
+<p>MathJax是一款运行在浏览器中的开源的数学符号渲染引擎，使用MathJax可以方便的在浏览器中显示数学公式，不需要使用图片。目前，MathJax可以解析Latex、MathML和ASCIIMathML的标记语言。(Wiki)</p>
 
-<h3 id="同步时间">同步时间</h3>
+<p>先给几个效果看看</p>
 
-<ol>
-  <li>安装ntp服务</li>
-</ol>
+<script type="math/tex; mode=display">x^{y^z}=(1+{\rm e}^x)^{-2xy^w}</script>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>yum install ntp
+<script type="math/tex; mode=display">\sideset{^1_2}{^3_4}\bigotimes</script>
+
+<script type="math/tex; mode=display">f(x,y,z) = 3y^2z \left( 3+\frac{7x+5}{1+y^2} \right)</script>
+
+<script type="math/tex; mode=display">f\left(
+   \left[ 
+     \frac{
+       1+\left\{x,y\right\}
+     }{
+       \left(
+          \frac{x}{y}+\frac{y}{x}
+       \right)
+       \left(u+1\right)
+     }+\sqrt{a} \quad
+   \right]^{3/2}
+\right)</script>
+
+<h3 id="引入mathjax">引入MathJax</h3>
+
+<p>在页脚处，引入官方的cdn,但这个js还是会调用到 cdn.mathjax.org 里的一些配置js文件，我们最好在head内加一个dns-prefetch，用于网页加速</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>//head中引入
+&lt;link rel="dns-prefetch" href="//cdn.mathjax.org" /&gt;
+
+//页脚处引入
+&lt;script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;&lt;/script&gt;
 </code></pre>
 </div>
 
-<p>2.加入crontab</p>
+<p>官方cdn的js在国内访问慢，所以我们一般引入的是国内的公共资源cdn提供的js</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>vi /etc/crontab
+<div class="highlighter-rouge"><pre class="highlight"><code>//head中引入
+&lt;link rel="dns-prefetch" href="//cdn.bootcss.com" /&gt;
 
-## 加入如下内容
-* */1 * * * root ntpdate 0.asia.pool.ntp.org
+//页脚处引入
+&lt;script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;&lt;/script&gt;
 </code></pre>
 </div>
 
+<p>jekyll中找到自己的模板中相应位置添加以上代码即可。</p>
+
+<h3 id="mathjax的config说明">MathJax的config说明</h3>
+
+<p>其config包括外联config和内联config。</p>
+
+<h4 id="外联config说明">外联config说明</h4>
+
+<p>我们引入MathJax，发现链接后面多了个?config=TeX-AMS-MML_HTMLorMML这个多出来的东西其实是告诉MathJax，我们要用到的叫TeX-AMS-MML_HTMLorMML.js的配置文件，其用来控制显示数学公式的HTMl显示输出。</p>
+
+<h4 id="内联config说明">内联config说明</h4>
+
+<p>与此同时，官方其实还提供了一个能让我们内联一个配置选项的功能，很简单就是使用<script></script>标签对，但注意的是需要声明类型type=”text/x-mathjax-config”。要想让这个内联配置生效就得放在MathJax.js之前，例子如下</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;script type="text/x-mathjax-config"&gt;
+MathJax.Hub.Config({
+});
+&lt;/script&gt;
+&lt;script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;&lt;/script&gt;
+</code></pre>
+</div>
+
+<p>其中MathJax.Hub.Config()里的配置选项很多，可以查看官网说明，这里不详细说明，只给出我用的，并给出一些说明</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;script type="text/x-mathjax-config"&gt;
+var mathId = document.getElementById("post-container");//选择公式识别范围
+MathJax.Hub.Config({
+    showProcessingMessages: false,//关闭js加载过程信息
+    messageStyle: "none",//不显示信息
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath:  [ ["$", "$"] ],//行内公式选择符
+        displayMath: [ ["$$","$$"] ],//段内公式选择符
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],//避开某些标签
+        ignoreClass:"comment-content" //避开含该Class的标签
+    },
+    "HTML-CSS": {
+        availableFonts: ["STIX","TeX"],//可选字体
+        showMathMenu: false //关闭右击菜单显示
+    }
+});
+MathJax.Hub.Queue(["Typeset",MathJax.Hub,mathId]);//选择公式识别范围
+&lt;/script&gt;
+</code></pre>
+</div>
+
+<h4 id="数学公式识别">数学公式识别</h4>
+<p>通过tex2jax中的inlineMath和displayMath进行数学公式识别，</p>
+
+<p>其中inlineMath识别的单行内的数学公式,我们可以通过$ … $或\( … \)去识别这种数学公式，</p>
+
+<p>displayMath就是识别整个独立段落的数学公式并且居中显示,我们可以通过<script type="math/tex">...</script>或\[ … \]去识别这种数学公式</p>
+
+<h4 id="约束识别范围">约束识别范围</h4>
+<p>默认情况下,MathJax.Hub.Queue([“Typeset”,MathJax.Hub])是对整个DOM树进行识别的，我们要约束识别范围，官方文档告诉我们MathJax.Hub.Queue的第三个参数就是识别范围，上面的代码就是告诉我们要在id为post-container的标签内去做公式识别</p>
+
+<h4 id="避开特殊标签和class">避开特殊标签和Class</h4>
+<p>其中skipTags用来避开一些特殊的标签内的内容，这里避开是script,noscript,style,textarea,pre,code,a标签</p>
+
+<p>ignoreClass用来避开标签内声明的CSS Class属性，这里避开的是带有class=”comment-content”的标签，如果我们不想让mathjax识别评论里的公式就可以用ignoreClass，如果有多个Class需要避开，我们可以通过 <code class="highlighter-rouge">|</code> 来区分，写成<code class="highlighter-rouge">ignoreClass: "class1|class2"</code>就可以了</p>
+
+<h3 id="公式使用">公式使用</h3>
+
+<h4 id="1-如果插入公式">1. 如果插入公式</h4>
+
+<h4 id="2-如何输入上下标">2. 如何输入上下标</h4>
+
+<h4 id="3-如何输入括号和分隔符">3. 如何输入括号和分隔符</h4>
+
+<h4 id="4-如何输入分数">4. 如何输入分数</h4>
+
+<h4 id="5-如何输入开方">5. 如何输入开方</h4>
+
+<h4 id="6-如何输入省略号">6. 如何输入省略号</h4>
+
+<h4 id="7-如何输入矢量">7. 如何输入矢量</h4>
+
+<h4 id="8-如何输入积分">8. 如何输入积分</h4>
+
+<h4 id="9如何输入极限运算">9.如何输入极限运算</h4>
+
+<h4 id="10如何输入累加累乘运算">10.如何输入累加、累乘运算</h4>
+
+<h4 id="11如何输入希腊字母">11.如何输入希腊字母</h4>
+
+<h4 id="12大括号和行标的使用">12.大括号和行标的使用</h4>
+
+<h3 id="参考内容">参考内容</h3>
+<p>本文内容参考一下网页内容</p>
+
+<p><a href="https://www.linpx.com/p/front-end-integration-mathjaxjs-configuration.html">前端整合MathjaxJS的配置笔记</a></p>
+
+<p><a href="https://www.cnblogs.com/q735613050/p/7253073.html">Markdown公式编辑学习笔记</a></p>
+
+<p><a href="http://www.cnblogs.com/q735613050/p/7474449.html">Markdown公式（二）</a></p>
 
 
   </section>
@@ -283,13 +384,13 @@
        <ul class="pager">
         
         <li class="previous">
-            <a href="/2018/10/jmeter/" data-toggle="tooltip" data-placement="top" title="jmeter压力测试">上一篇：  <span>jmeter压力测试</span>
+            <a href="/2018/10/java_bit_operation/" data-toggle="tooltip" data-placement="top" title="java位运算">上一篇：  <span>java位运算</span>
             </a>
         </li>
         
         
         <li class="next">
-            <a href="/2018/10/java_bit_operation/" data-toggle="tooltip" data-placement="top" title="java位运算">下一篇：  <span>java位运算</span>
+            <a href="/2018/11/java_exception/" data-toggle="tooltip" data-placement="top" title="JAVA异常处理">下一篇：  <span>JAVA异常处理</span>
             </a>
         </li>
         

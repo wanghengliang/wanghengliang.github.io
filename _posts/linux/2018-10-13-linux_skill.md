@@ -29,6 +29,7 @@ Linux使用技巧
 ### 同步时间
 
 1. 安装ntp服务
+
 ```
 yum install ntp
 ```

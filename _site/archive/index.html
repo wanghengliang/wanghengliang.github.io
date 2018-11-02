@@ -27,6 +27,8 @@
   <link rel="canonical" href="http://localhost:4000/archive/">
   <link rel="alternate" type="application/rss+xml" title="hengliang" href="http://localhost:4000/feed.xml">
   
+  <link rel="dns-prefetch" href="//cdn.mathjax.org" />
+  
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
 
 <!-- 站点统计 -->
@@ -187,6 +189,46 @@
       <div class="post_list">
       <ul>
       
+    
+  
+    <li>
+      <span>
+        2018-11-01
+      </span>
+       &raquo; 
+      <a href="/2018/11/java_exception/">JAVA异常处理</a>
+    </li>
+ 
+    
+          
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li>
+      <span>
+        2018-10-31
+      </span>
+       &raquo; 
+      <a href="/2018/10/MathjaxJS/">jekyll整合MathjaxJS插入数学公式</a>
+    </li>
+ 
+    
+          
+      
+    
+  
+    
+    
+    
+    
+  
     
   
     <li>
@@ -841,7 +883,26 @@
 <script type="text/javascript" src="/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    showProcessingMessages: false,
+    messageStyle: "none",
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath:  [ ["$", "$"] ],
+        displayMath: [ ["$$","$$"] ],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+        ignoreClass:"comment-content"
+    },
+    "HTML-CSS": {
+        availableFonts: ["STIX","TeX"],
+        showMathMenu: false
+    }
+});
+MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   </body>

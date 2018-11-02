@@ -5,9 +5,199 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 31 Oct 2018 10:34:52 +0800</pubDate>
-    <lastBuildDate>Wed, 31 Oct 2018 10:34:52 +0800</lastBuildDate>
+    <pubDate>Fri, 02 Nov 2018 14:44:54 +0800</pubDate>
+    <lastBuildDate>Fri, 02 Nov 2018 14:44:54 +0800</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>JAVA异常处理</title>
+        <description>&lt;p&gt;JAVA异常处理&lt;/p&gt;
+
+&lt;p&gt;要理解Java异常处理是如何工作的，你需要掌握以下三种类型的异常：&lt;/p&gt;
+
+&lt;p&gt;检查性异常: 最具代表的检查性异常是用户错误或问题引起的异常，这是程序员无法预见的。例如要打开一个不存在文件时，一个异常就发生了，这些异常在编译时不能被简单地忽略。&lt;/p&gt;
+
+&lt;p&gt;运行时异常: 运行时异常是可能被程序员避免的异常。与检查性异常相反，运行时异常可以在编译时被忽略。&lt;/p&gt;
+
+&lt;p&gt;错误: 错误不是异常，而是脱离程序员控制的问题。错误在代码中通常被忽略。例如，当栈溢出时，一个错误就发生了，它们在编译也检查不到的。&lt;/p&gt;
+
+&lt;h3 id=&quot;参考资料&quot;&gt;参考资料&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.runoob.com/java/java-exceptions.html&quot;&gt;Java 异常处理&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 01 Nov 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/11/java_exception/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/java_exception/</guid>
+        
+        <category>JAVA</category>
+        
+        <category>异常</category>
+        
+        
+        <category>技术开发</category>
+        
+      </item>
+    
+      <item>
+        <title>jekyll整合MathjaxJS插入数学公式</title>
+        <description>&lt;p&gt;jekyll整合MathjaxJS插入数学公式&lt;/p&gt;
+
+&lt;h3 id=&quot;mathjax简介&quot;&gt;MathJax简介&lt;/h3&gt;
+
+&lt;p&gt;MathJax是一款运行在浏览器中的开源的数学符号渲染引擎，使用MathJax可以方便的在浏览器中显示数学公式，不需要使用图片。目前，MathJax可以解析Latex、MathML和ASCIIMathML的标记语言。(Wiki)&lt;/p&gt;
+
+&lt;p&gt;先给几个效果看看&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;x^{y^z}=(1+{\rm e}^x)^{-2xy^w}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sideset{^1_2}{^3_4}\bigotimes&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(x,y,z) = 3y^2z \left( 3+\frac{7x+5}{1+y^2} \right)&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f\left(
+   \left[ 
+     \frac{
+       1+\left\{x,y\right\}
+     }{
+       \left(
+          \frac{x}{y}+\frac{y}{x}
+       \right)
+       \left(u+1\right)
+     }+\sqrt{a} \quad
+   \right]^{3/2}
+\right)&lt;/script&gt;
+
+&lt;h3 id=&quot;引入mathjax&quot;&gt;引入MathJax&lt;/h3&gt;
+
+&lt;p&gt;在页脚处，引入官方的cdn,但这个js还是会调用到 cdn.mathjax.org 里的一些配置js文件，我们最好在head内加一个dns-prefetch，用于网页加速&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//head中引入
+&amp;lt;link rel=&quot;dns-prefetch&quot; href=&quot;//cdn.mathjax.org&quot; /&amp;gt;
+
+//页脚处引入
+&amp;lt;script src=&quot;//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;官方cdn的js在国内访问慢，所以我们一般引入的是国内的公共资源cdn提供的js&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//head中引入
+&amp;lt;link rel=&quot;dns-prefetch&quot; href=&quot;//cdn.bootcss.com&quot; /&amp;gt;
+
+//页脚处引入
+&amp;lt;script src=&quot;//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;jekyll中找到自己的模板中相应位置添加以上代码即可。&lt;/p&gt;
+
+&lt;h3 id=&quot;mathjax的config说明&quot;&gt;MathJax的config说明&lt;/h3&gt;
+
+&lt;p&gt;其config包括外联config和内联config。&lt;/p&gt;
+
+&lt;h4 id=&quot;外联config说明&quot;&gt;外联config说明&lt;/h4&gt;
+
+&lt;p&gt;我们引入MathJax，发现链接后面多了个?config=TeX-AMS-MML_HTMLorMML这个多出来的东西其实是告诉MathJax，我们要用到的叫TeX-AMS-MML_HTMLorMML.js的配置文件，其用来控制显示数学公式的HTMl显示输出。&lt;/p&gt;
+
+&lt;h4 id=&quot;内联config说明&quot;&gt;内联config说明&lt;/h4&gt;
+
+&lt;p&gt;与此同时，官方其实还提供了一个能让我们内联一个配置选项的功能，很简单就是使用&lt;script&gt;&lt;/script&gt;标签对，但注意的是需要声明类型type=”text/x-mathjax-config”。要想让这个内联配置生效就得放在MathJax.js之前，例子如下&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;script type=&quot;text/x-mathjax-config&quot;&amp;gt;
+MathJax.Hub.Config({
+});
+&amp;lt;/script&amp;gt;
+&amp;lt;script src=&quot;//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;其中MathJax.Hub.Config()里的配置选项很多，可以查看官网说明，这里不详细说明，只给出我用的，并给出一些说明&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;script type=&quot;text/x-mathjax-config&quot;&amp;gt;
+var mathId = document.getElementById(&quot;post-container&quot;);//选择公式识别范围
+MathJax.Hub.Config({
+    showProcessingMessages: false,//关闭js加载过程信息
+    messageStyle: &quot;none&quot;,//不显示信息
+    extensions: [&quot;tex2jax.js&quot;],
+    jax: [&quot;input/TeX&quot;, &quot;output/HTML-CSS&quot;],
+    tex2jax: {
+        inlineMath:  [ [&quot;$&quot;, &quot;$&quot;] ],//行内公式选择符
+        displayMath: [ [&quot;$$&quot;,&quot;$$&quot;] ],//段内公式选择符
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],//避开某些标签
+        ignoreClass:&quot;comment-content&quot; //避开含该Class的标签
+    },
+    &quot;HTML-CSS&quot;: {
+        availableFonts: [&quot;STIX&quot;,&quot;TeX&quot;],//可选字体
+        showMathMenu: false //关闭右击菜单显示
+    }
+});
+MathJax.Hub.Queue([&quot;Typeset&quot;,MathJax.Hub,mathId]);//选择公式识别范围
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;数学公式识别&quot;&gt;数学公式识别&lt;/h4&gt;
+&lt;p&gt;通过tex2jax中的inlineMath和displayMath进行数学公式识别，&lt;/p&gt;
+
+&lt;p&gt;其中inlineMath识别的单行内的数学公式,我们可以通过$ … $或\( … \)去识别这种数学公式，&lt;/p&gt;
+
+&lt;p&gt;displayMath就是识别整个独立段落的数学公式并且居中显示,我们可以通过&lt;script type=&quot;math/tex&quot;&gt;...&lt;/script&gt;或\[ … \]去识别这种数学公式&lt;/p&gt;
+
+&lt;h4 id=&quot;约束识别范围&quot;&gt;约束识别范围&lt;/h4&gt;
+&lt;p&gt;默认情况下,MathJax.Hub.Queue([“Typeset”,MathJax.Hub])是对整个DOM树进行识别的，我们要约束识别范围，官方文档告诉我们MathJax.Hub.Queue的第三个参数就是识别范围，上面的代码就是告诉我们要在id为post-container的标签内去做公式识别&lt;/p&gt;
+
+&lt;h4 id=&quot;避开特殊标签和class&quot;&gt;避开特殊标签和Class&lt;/h4&gt;
+&lt;p&gt;其中skipTags用来避开一些特殊的标签内的内容，这里避开是script,noscript,style,textarea,pre,code,a标签&lt;/p&gt;
+
+&lt;p&gt;ignoreClass用来避开标签内声明的CSS Class属性，这里避开的是带有class=”comment-content”的标签，如果我们不想让mathjax识别评论里的公式就可以用ignoreClass，如果有多个Class需要避开，我们可以通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt; 来区分，写成&lt;code class=&quot;highlighter-rouge&quot;&gt;ignoreClass: &quot;class1|class2&quot;&lt;/code&gt;就可以了&lt;/p&gt;
+
+&lt;h3 id=&quot;公式使用&quot;&gt;公式使用&lt;/h3&gt;
+
+&lt;h4 id=&quot;1-如果插入公式&quot;&gt;1. 如果插入公式&lt;/h4&gt;
+
+&lt;h4 id=&quot;2-如何输入上下标&quot;&gt;2. 如何输入上下标&lt;/h4&gt;
+
+&lt;h4 id=&quot;3-如何输入括号和分隔符&quot;&gt;3. 如何输入括号和分隔符&lt;/h4&gt;
+
+&lt;h4 id=&quot;4-如何输入分数&quot;&gt;4. 如何输入分数&lt;/h4&gt;
+
+&lt;h4 id=&quot;5-如何输入开方&quot;&gt;5. 如何输入开方&lt;/h4&gt;
+
+&lt;h4 id=&quot;6-如何输入省略号&quot;&gt;6. 如何输入省略号&lt;/h4&gt;
+
+&lt;h4 id=&quot;7-如何输入矢量&quot;&gt;7. 如何输入矢量&lt;/h4&gt;
+
+&lt;h4 id=&quot;8-如何输入积分&quot;&gt;8. 如何输入积分&lt;/h4&gt;
+
+&lt;h4 id=&quot;9如何输入极限运算&quot;&gt;9.如何输入极限运算&lt;/h4&gt;
+
+&lt;h4 id=&quot;10如何输入累加累乘运算&quot;&gt;10.如何输入累加、累乘运算&lt;/h4&gt;
+
+&lt;h4 id=&quot;11如何输入希腊字母&quot;&gt;11.如何输入希腊字母&lt;/h4&gt;
+
+&lt;h4 id=&quot;12大括号和行标的使用&quot;&gt;12.大括号和行标的使用&lt;/h4&gt;
+
+&lt;h3 id=&quot;参考内容&quot;&gt;参考内容&lt;/h3&gt;
+&lt;p&gt;本文内容参考一下网页内容&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.linpx.com/p/front-end-integration-mathjaxjs-configuration.html&quot;&gt;前端整合MathjaxJS的配置笔记&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/q735613050/p/7253073.html&quot;&gt;Markdown公式编辑学习笔记&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/q735613050/p/7474449.html&quot;&gt;Markdown公式（二）&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 31 Oct 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/10/MathjaxJS/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/10/MathjaxJS/</guid>
+        
+        <category>jekyll</category>
+        
+        <category>mathjaxJs</category>
+        
+        
+        <category>技术开发</category>
+        
+      </item>
     
       <item>
         <title>java位运算</title>
@@ -93,8 +283,29 @@
 
 &lt;p&gt;应用&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;select * from as_component_task where status&amp;amp;2=2;
-select * from as_component_task where status&amp;amp;2=0;
+&lt;p&gt;一个数字标识位，表示多种逻辑,例如：一个任务可分成n个独立小任务，每个小任务之间不分先后顺序，当所有小任务完成则表示此任务完成。&lt;/p&gt;
+
+&lt;p&gt;如果n=3，则将3个小任务分别用$2^0$,$2^1$,$2^2$即1,2,4表示&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//更新当前任务完成第1个小任务
+update tbl_task set status = status|1 where id=1;
+//同理，更新当前任务完成第2个小任务
+update tbl_task set status = status|2 where id=1;
+//同理，更新当前任务完成第3个小任务
+update tbl_task set status = status|4 where id=1;
+//当status = 7时，则表示三个任务都完成;
+
+//查询第1个小任务未完成的所有任务
+select * from tbl_task where status&amp;amp;1=0;
+//查询第1个小任务已完成的所有任务
+select * from tbl_task where status&amp;amp;1=1;
+
+//同理，第2个小任务
+//查询第2个小任务未完成的所有任务
+select * from tbl_task where status&amp;amp;2=0;
+//查询第2个小任务已完成的所有任务
+select * from tbl_task where status&amp;amp;2=2;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -122,10 +333,10 @@ select * from as_component_task where status&amp;amp;2=0;
 
 &lt;h4 id=&quot;1左移位运算符能将运算符左边的运算对象向左移动运算符右侧指定的位数在低位补0&quot;&gt;1.左移位运算符（&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&lt;/code&gt;）能将运算符左边的运算对象向左移动运算符右侧指定的位数（在低位补0）。&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 &amp;lt;&amp;lt; 2);// 运行结果是20
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 &amp;lt;&amp;lt; 3);// 运行结果是40
 
 5      = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
-5 &amp;lt;&amp;lt; 2 = 0000 0000 0000 0000 0000 0000 0001 0100 = 20
+5 &amp;lt;&amp;lt; 3 = 0000 0000 0000 0000 0000 0000 0010 1000 = 40
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -139,7 +350,7 @@ select * from as_component_task where status&amp;amp;2=0;
 System.out.println(-5 &amp;gt;&amp;gt; 3);// 结果是-1
 
 -5      = 1111 1111 1111 1111 1111 1111 1111 1011 = -5
--5 &amp;gt;&amp;gt; 2 = 1111 1111 1111 1111 1111 1111 1111 1110 = -1
+-5 &amp;gt;&amp;gt; 3 = 1111 1111 1111 1111 1111 1111 1111 1111 = -1
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -199,12 +410,12 @@ System.out.println(-5 &amp;gt;&amp;gt;&amp;gt; 3);// 结果是536870911
 &lt;h3 id=&quot;同步时间&quot;&gt;同步时间&lt;/h3&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;安装ntp服务
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yum install ntp
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
+  &lt;li&gt;安装ntp服务&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yum install ntp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;2.加入crontab&lt;/p&gt;
 
@@ -795,125 +1006,6 @@ Query OK, 0 rows affected, 1 warning (0.00 sec)
         
         
         <category>数据库</category>
-        
-      </item>
-    
-      <item>
-        <title>Linux网络设置</title>
-        <description>&lt;p&gt;Linux网络设置&lt;/p&gt;
-
-&lt;h3 id=&quot;ip设置&quot;&gt;IP设置&lt;/h3&gt;
-
-&lt;h4 id=&quot;查看ip地址&quot;&gt;查看IP地址&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# ifconfig
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;网络接口配置文件修改配置&quot;&gt;网络接口配置文件修改配置&lt;/h4&gt;
-
-&lt;p&gt;文件路径是/etc/sysconfig/network-scripts/&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# vi /etc/sysconfig/network-scripts/ifcfg-网络接口名称
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;修改以下配置&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;TYPE=Ethernet
-BOOTPROTO=static
-HWADDR=00:0c:29:ce:3f:3c  #MAC地址
-IPADDR=192.168.1.104     #静态IP
-GATEWAY=192.168.1.2     #默认网关
-NETMASK=255.255.255.0    #子网掩码
-DNS1=192.168.1.2         #DNS配置
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;重启网络服务&quot;&gt;重启网络服务&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# service network restart
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Fri, 13 Jul 2018 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2018/07/linux_network/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/07/linux_network/</guid>
-        
-        <category>网络</category>
-        
-        
-        <category>linux</category>
-        
-      </item>
-    
-      <item>
-        <title>Linux防火墙设置</title>
-        <description>&lt;p&gt;Linux防火墙设置&lt;/p&gt;
-
-&lt;h3 id=&quot;centos-65&quot;&gt;CentOS 6.5&lt;/h3&gt;
-
-&lt;h4 id=&quot;查看防火墙的状态&quot;&gt;查看防火墙的状态&lt;/h4&gt;
-
-&lt;h4 id=&quot;查看已经开放的端口&quot;&gt;查看已经开放的端口&lt;/h4&gt;
-
-&lt;h4 id=&quot;开启端口&quot;&gt;开启端口&lt;/h4&gt;
-
-&lt;h4 id=&quot;启动防火墙&quot;&gt;启动防火墙&lt;/h4&gt;
-
-&lt;h4 id=&quot;关闭防火墙&quot;&gt;关闭防火墙&lt;/h4&gt;
-
-&lt;h4 id=&quot;重启防火墙&quot;&gt;重启防火墙&lt;/h4&gt;
-
-&lt;h3 id=&quot;centos-7&quot;&gt;CentOS 7&lt;/h3&gt;
-
-&lt;h4 id=&quot;查看防火墙的状态-1&quot;&gt;查看防火墙的状态&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# firewall-cmd --state
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;查看已经开放的端口-1&quot;&gt;查看已经开放的端口&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;firewall-cmd --list-ports
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;开启端口-1&quot;&gt;开启端口&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;firewall-cmd --zone=public --add-port=80/tcp --permanent
-firewall-cmd --zone=public --add-port=30000-30010/tcp --permanent
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;启动防火墙-1&quot;&gt;启动防火墙&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;关闭防火墙-1&quot;&gt;关闭防火墙&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;systemctl start firewalld.service #启动firewall
-systemctl stop firewalld.service #停止firewall
-systemctl disable firewalld.service #禁止firewall开机启动
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;重启防火墙-1&quot;&gt;重启防火墙&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;firewall-cmd --reload
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Fri, 13 Jul 2018 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2018/07/linux_firewall/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/07/linux_firewall/</guid>
-        
-        <category>防火墙</category>
-        
-        
-        <category>linux</category>
         
       </item>
     

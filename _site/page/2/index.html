@@ -27,6 +27,8 @@
   <link rel="canonical" href="http://localhost:4000/page/2/">
   <link rel="alternate" type="application/rss+xml" title="hengliang" href="http://localhost:4000/feed.xml">
   
+  <link rel="dns-prefetch" href="//cdn.mathjax.org" />
+  
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
 
 <!-- 站点统计 -->
@@ -158,6 +160,48 @@
             <div class="main-post-list hidden">
 
   <ol class="post-list">
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/09/IntelliJIDEA_Multi_Module/" title="访问 IntelliJ IDEA 创建多模块项目的正确姿势">IntelliJ IDEA 创建多模块项目的正确姿势</a></h2>
+      <p class="excerpt">IntelliJ IDEA 创建多模块项目的正确姿势  新建一个空文件夹workspace, 用idea作为项目打开  选中External Libraries, 在菜单: File –&gt; new –&gt; Modual… 新建立模块  新建好模块后, .idea文件夹里的modules.xml里会有两个模块(如果没有找到, 重启idea), 删除第一个同工程名相同的那个默认模块. 这时.idea文件夹会从idea里消失, 不过没关系, 以后我们可以到workspace/.idea...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-09-07 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-09-07</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">IntelliJIDEA</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/09/IntelliJIDEA_Multi_Module/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/09/jekyll_blog/" title="访问 Jekyll搭建个人博客过程记录">Jekyll搭建个人博客过程记录</a></h2>
+      <p class="excerpt">一直想搭建一个自己的博客系统，网上搜了一下发现了Hexo! 但是没有找到一个自己满意的模板，后来发现潘柏信的博客,非常喜欢这个模板，作者也愿意共享此模板并提供源码，但发现采用的不是Hexo而是Jekyll，了解了一下这两个Blog系统，发现Jekyll还有个优点就是所有的Markdown文档也是放到一起的，而用Hexo则需要将Markdown单独存放，如果想多端同步更新blog则需要建立两个Github项目进行存放，关于Hexo和Jekyll的优缺点自行对比，以上为个人关注的优缺点。最终决...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-09-05 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-09-05</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">jekyllblog系统</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/09/jekyll_blog/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
     
     <li>
       <h2 class="post-list__post-title post-title"><a href="/2017/09/rvm_install_ruby/" title="访问 Mac OS10.12采用rvm更新安装Ruby">Mac OS10.12采用rvm更新安装Ruby</a></h2>
@@ -424,7 +468,26 @@
 <script type="text/javascript" src="/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    showProcessingMessages: false,
+    messageStyle: "none",
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath:  [ ["$", "$"] ],
+        displayMath: [ ["$$","$$"] ],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+        ignoreClass:"comment-content"
+    },
+    "HTML-CSS": {
+        availableFonts: ["STIX","TeX"],
+        showMathMenu: false
+    }
+});
+MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   </body>
