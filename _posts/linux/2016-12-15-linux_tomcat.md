@@ -23,6 +23,13 @@ tags: Tomcat 服务器架设
 # ln -s apache-tomcat-7.0.54 server
 ```
 
+升级时候先删除原来的后重新生成新的
+
+```
+# rm -rf ./server
+# ln -s apache-tomcat-7.0.92 server
+```
+
 ### 配置Tomcat
 
 ##### 修改日志文件路径
@@ -137,5 +144,27 @@ CATALINA_OUT="$CATALINA_BASE"/logs/catalina.out; //此行内的"$CATALINA_BASE",
     <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" prefix="wwww.bbb.com_access_log." suffix=".txt" pattern="%h %l %u %t &quot;%r&quot; %s %b" />
 </Host>
 ```
+
+##### 一台机器安装多个Tomcat
+
+修改 <Server port="8005" shutdown="SHUTDOWN"> 
+为 <Server port="8006" shutdown="SHUTDOWN">
+
+修改 <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" />
+为 <Connector port="8086" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8446" />
+
+修改 <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
+为 <Connector port="8007" protocol="AJP/1.3" redirectPort="8446" />
+
+
+
+修改 <Server port="8005" shutdown="SHUTDOWN"> 
+为 <Server port="8008" shutdown="SHUTDOWN">
+
+修改 <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8446" />
+为 <Connector port="8088" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8448" />
+
+修改 <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
+为 <Connector port="8009" protocol="AJP/1.3" redirectPort="8448" />
 
 

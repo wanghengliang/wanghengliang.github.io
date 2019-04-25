@@ -29,8 +29,8 @@ MySQL Community Edition (GPL) MySQL社区版（GPL）
 
 1. RPM Bundle（是该版本所有包的集合）
 2. RPM PACKAGE（是某个特定的包，比如server,client,shared lib等）
-3. Compressed TAR Archive，是源码，必须用源码方式安装。
-> 如果没有Compressed TAR Archive，想采用源码安装，则在选择操作系统下拉框中选择Source Code，然后选择Generic Linux，带boost库的mysql下载。
+3. Compressed TAR Archive，是编译好的版本，解压可直接使用。
+4. 源码安装，选择操作系统下拉框中选择Source Code，然后选择Generic Linux，带boost库的mysql下载。
 
 这里下载RPM Bundle，然后解压并安装
 

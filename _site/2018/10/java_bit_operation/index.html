@@ -186,6 +186,12 @@
 
 <h4 id="2负数表示例如int类型值--5">2.负数表示,例如:int类型值 <code class="highlighter-rouge">-5</code></h4>
 
+<div class="highlighter-rouge"><pre class="highlight"><code>-5 = 1111 1111 1111 1111 1111 1111 1111 1011
+</code></pre>
+</div>
+
+<p>负数二进制表示方法如下：</p>
+
 <p>首先来个正数5</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>5 = 0000 0000 0000 0000 0000 0000 0000 0101
@@ -250,9 +256,29 @@
 </code></pre>
 </div>
 
-<p>应用</p>
+<h4 id="3或运算--有1出1全0出0">3.或(<code class="highlighter-rouge">|</code>)运算	: 有1出1;全0出0</h4>
 
-<p>一个数字标识位，表示多种逻辑,例如：一个任务可分成n个独立小任务，每个小任务之间不分先后顺序，当所有小任务完成则表示此任务完成。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>System.out.println(5 | 3);// 结果为7
+
+5     = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
+3     = 0000 0000 0000 0000 0000 0000 0000 0011 = 3
+5 | 3 = 0000 0000 0000 0000 0000 0000 0000 0111 = 7
+</code></pre>
+</div>
+
+<h4 id="4异或运算-相同得0相异得1">4.异或(<code class="highlighter-rouge">^</code>)运算: 相同得0;相异得1</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>System.out.println(5 ^ 3);//结果为6 
+
+5     = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
+3     = 0000 0000 0000 0000 0000 0000 0000 0011 = 3
+5 ^ 3 = 0000 0000 0000 0000 0000 0000 0000 0110 = 6
+</code></pre>
+</div>
+
+<h4 id="a小应用">A.小应用</h4>
+
+<p>一个数字标识位表示多种逻辑,例如：一个任务可分成n个独立小任务，每个小任务之间不分先后顺序，当所有小任务完成则表示此任务完成。</p>
 
 <p>如果n=3，则将3个小任务分别用$2^0$,$2^1$,$2^2$即1,2,4表示</p>
 
@@ -275,26 +301,6 @@ select * from tbl_task where status&amp;2=0;
 //查询第2个小任务已完成的所有任务
 select * from tbl_task where status&amp;2=2;
 
-</code></pre>
-</div>
-
-<h4 id="3或运算--有1出1全0出0">3.或(<code class="highlighter-rouge">|</code>)运算	: 有1出1;全0出0</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>System.out.println(5 | 3);// 结果为7
-
-5     = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
-3     = 0000 0000 0000 0000 0000 0000 0000 0011 = 3
-5 | 3 = 0000 0000 0000 0000 0000 0000 0000 0111 = 7
-</code></pre>
-</div>
-
-<h4 id="4异或运算-相同得0相异得1">4.异或(<code class="highlighter-rouge">^</code>)运算: 相同得0;相异得1</h4>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>System.out.println(5 ^ 3);//结果为6 
-
-5     = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
-3     = 0000 0000 0000 0000 0000 0000 0000 0011 = 3
-5 ^ 3 = 0000 0000 0000 0000 0000 0000 0000 0110 = 6
 </code></pre>
 </div>
 
@@ -487,7 +493,7 @@ System.out.println(-5 &gt;&gt;&gt; 3);// 结果是536870911
 
         <div class = "footer_div">  
            <p class="copyright text-muted">
-            Copyright &copy; hengliang 2018 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
+            Copyright &copy; hengliang 2019 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
             <iframe
                 style="margin-left: 2px; margin-bottom:-5px;"
                 frameborder="0" scrolling="0" width="91px" height="20px"

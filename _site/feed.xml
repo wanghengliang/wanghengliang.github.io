@@ -5,9 +5,534 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 02 Nov 2018 14:44:54 +0800</pubDate>
-    <lastBuildDate>Fri, 02 Nov 2018 14:44:54 +0800</lastBuildDate>
+    <pubDate>Mon, 07 Jan 2019 17:16:53 +0800</pubDate>
+    <lastBuildDate>Mon, 07 Jan 2019 17:16:53 +0800</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>Java_m</title>
+        <description>&lt;h3 id=&quot;选择题&quot;&gt;选择题&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;下面对JVM叙述不正确的是：（） &lt;br /&gt;
+A JVM的全称是Java Virtual Machine &lt;br /&gt;
+B JVM是一种计算机硬件技术，它是Java程序的运行平台 &lt;br /&gt;
+C JVM是在计算机硬件系统上用软件实现的一台假想机 &lt;br /&gt;
+D Java程序在执行时．JVM把Java字节码解释成机器码&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;以下代码执行的结果显示是多少（）？
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
+ public static void main(String args[]){
+     Demo inc = new Demo();
+     int i = 0;
+     inc.fermin(i);
+     i = i++;
+     System.out.println((i++)+&quot; &quot;+i);
+ }
+ void fermin(int i){
+     i++;
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;A、0 0    B、0 1    C、1 2    D、2 3&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;检查程序，是否存在问题，如果存在指出问题所在，如果不存在，说明输出结果（）
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
+ public static void main(String args[]){
+     int count = 0;
+     int num = 0;
+     for(int i=0;i&amp;lt;=100;i++){
+         num = num+i;
+         count = count++;
+     }
+     System.out.println(num*count);
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;A、505000    B、0    C、运行时错误     D、5050&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;关于下面的程序，哪一个选项是正确的输出结果（）
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
+ public static void main(String args[]){
+     String classFile = &quot;com.scmdkj.&quot;. replaceAll(&quot;.&quot;, &quot;/&quot;) + &quot;MyClass.class&quot;;
+     System.out.println(classFile);
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;A、///////////MyClass.class&lt;br /&gt;
+B、com.scmdkj&lt;br /&gt;
+C、com/scmdkj/MyClass/class&lt;br /&gt;
+D、com/scmdkj/MyClass.class&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;关于下面的程序，说法正确的是（）
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
+ static String x = &quot;1&quot;;
+ static int y = 1;
+ public static void main (String[] args) {
+     static int z= 2;
+     System.out.println(x+y+z);
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;A、3    B、112    C、13     D、程序有编译错误&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;有关下述Java代码描述正确的选项是（）
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
+ private static void testMethod(){
+     System.out.println(&quot;testMethod&quot;);
+ }
+ public static void main(String[] args) {
+     ((Demo)null).testMethod();
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;A、编译不通过&lt;br /&gt;
+B、编译通过，运行异常，报NullPointerException&lt;br /&gt;
+C、编译通过，运行异常，报NoSuchMethodException&lt;br /&gt;
+D、运行正常，输出testMethod&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;以下关于final关键字说法错误的是（）&lt;br /&gt;
+A、final是java中的修饰符，可以修饰类、接口、抽象类、方法和属性&lt;br /&gt;
+B、final修饰的类肯定不能被继承&lt;br /&gt;
+C、final修饰的方法不能被重载&lt;br /&gt;
+D、final修饰的变量不允许被再次赋值&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在使用super和this关键字时，以下描述正确的是（）&lt;br /&gt;
+A、在子类构造方法中使用super（）显示调用父类的构造方法，super（）必须写在子类构造方法的第一行，否则编译不通过&lt;br /&gt;
+B、super（）和this（）不一定要放在构造方法内第一行&lt;br /&gt;
+C、this（）和super（）可以同时出现在一个构造函数中&lt;br /&gt;
+D、this（）和super（）可以在static环境中使用，包括static方法和static语句块&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;对于如下代码段,可以放入到横线位置，使程序正确编译运行，而且不产生错误的选项是（ ）
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class A{
+ public A foo(){
+     return this;
+ }
+}
+class B extends A{
+ public A foo(){
+     return this;
+ }
+}
+class C extends B{
+ _______
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;A. public void foo(){} &lt;br /&gt;
+B. public int foo(){return 1;} &lt;br /&gt;
+C. public A foo(B b){return b;} &lt;br /&gt;
+D. public A foo(){return A;}&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;下列哪些针对代码运行结果的描述是正确的？
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Vehicle{
+ private final void run(){
+     System.out.println(&quot;Vehicle&quot;);
+ }
+}
+public class Car extends Vehicle{
+ public static void main (String[] args){
+     new Car().run();
+ }
+ private final void run(){
+     System.out.println (&quot;Car&quot;);
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;A. Car &lt;br /&gt;
+B. Vehicle &lt;br /&gt;
+C. Compiler error &lt;br /&gt;
+D. Exception thrown at runtime&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;下列程序执行后结果为( )
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class A {
+ public int func1(int a, int b) {
+     return a - b;
+ }
+}
+class B extends A {
+ public int func1(int a, int b) {
+     return a + b;
+ }
+}
+public class ChildClass {
+ public static void main(String[] args) {
+ A a = new B();
+ B b = new B();
+ System.out.println(&quot;Result=&quot; + a.func1(100, 50));
+ System.out.println(&quot;Result=&quot; + b.func1(100, 50));
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;A、 Result=150 Result=150 &lt;br /&gt;
+B、 Result=100 Result=100 &lt;br /&gt;
+C、 Result=100 Result=150 &lt;br /&gt;
+D、 Result=150 Result=100&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;下面哪段程序能够正确的实现了GBK编码字节流到UTF-8编码字节流的转换（）
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;byte[] src,dst;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;A dst=String.fromBytes(src，”GBK”).getBytes(“UTF-8”) &lt;br /&gt;
+B dst=new String(src，”GBK”).getBytes(“UTF-8”) &lt;br /&gt;
+C dst=new String(“GBK”，src).getBytes() &lt;br /&gt;
+D dst=String.encode(String.decode(src，”GBK”))，”UTF-8” )&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;下面输出顺序顺序的是（）
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class B extends Object{
+ static{
+     System.out.println(&quot;Load B&quot;);
+ }
+ public B(){
+     System.out.println(&quot;Create B&quot;);
+ }
+}
+class A extends B{
+ static{
+     System.out.println(&quot;Load A&quot;);
+ }
+ public A(){
+     System.out.println(&quot;Create A&quot;);
+ }
+}
+public class Testclass{
+ public static void main(String[] args){
+     new A();
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;A. Load B -&amp;gt;Create B-&amp;gt;Load A -&amp;gt; Create A &lt;br /&gt;
+B. Load B -&amp;gt; Load A -&amp;gt;Create B -&amp;gt;Create A &lt;br /&gt;
+C. Load B -&amp;gt; Create B-&amp;gt; Create A -&amp;gt; Load A &lt;br /&gt;
+D. Create B -&amp;gt;Create A -&amp;gt;Load B -&amp;gt;Load A&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;以下说法错误的是（） &lt;br /&gt;
+A 虚拟机中没有泛型，只有普通类和普通方法 &lt;br /&gt;
+B 所有泛型类的类型参数在编译时都会被擦除 &lt;br /&gt;
+C 创建泛型对象时请指明类型，让编译器尽早的做参数检查 &lt;br /&gt;
+D 泛型的类型擦除机制意味着不能在运行时动态获取List中T的实际类型&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;请问所有的异常类皆直接继承于哪一个类？（） &lt;br /&gt;
+A java.applet.Applet &lt;br /&gt;
+B java.lang.Throwable &lt;br /&gt;
+C java.lang.Exception &lt;br /&gt;
+D java.lang.Error&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;下面函数将返回（）&lt;br /&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public static int func (){
+ try{
+     return 1;
+ }catch (Exception e){
+     return 2;
+ }finally{
+     return 3;
+ }
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;A、1     B、2     C、3     D、编译错误&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;下列不属于WebService 涉及到的主要标准和技术的是___&lt;br /&gt;
+A、XML    B、SOAP    C、WSDL      D、JAVA&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;下列不属于WebService 特征的是___&lt;br /&gt;
+A. WebService具有良好的封装性&lt;br /&gt;
+B. WebService与使用者是松散耦合的&lt;br /&gt;
+C. WebService具有高度的可集成性&lt;br /&gt;
+D. WebService使用的协议非常简单，通常可以自行解析，不需要使用第三方的库&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;下面关于spring描述错误的是：（ ）&lt;br /&gt;
+A  Spring支持可插入的事务管理器，使事务划分更轻松，同时无需处理底层的问题。&lt;br /&gt;
+B  Spring事务管理的通用抽象层还包括JTA策略和一个JDBC DataSource。&lt;br /&gt;
+C  与JTA或EJB CMT一样，Spring的事务支持依赖于Java EE环境。&lt;br /&gt;
+D  Spring事务语义通过AOP应用于 POJO，通过XML或Java SE 5注释进行配置。&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;关于Spring MVC的核心控制器DispatcherServlet的作用，以下说法错误的是（  ）？&lt;br /&gt;
+A. 它负责接收HTTP请求&lt;br /&gt;
+B. 加载配置文件&lt;br /&gt;
+C. 实现业务操作&lt;br /&gt;
+D. 初始化上下应用对象ApplicationContext&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;多选题&quot;&gt;多选题&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;（多选题）true、false、null、sizeof、goto、synchronized 哪些是Java关键字（）&lt;br /&gt;
+A、true    B、false    C、null     D、sizeof      E、goto     F、synchronized&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;（多选题）类Parent和Child定义如下，对于如下代码段，可以放入到横线位置，使程序正确编译运行，而且不产生错误的选项是（ ）
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Parent{
+ public float aFun(float a, float b){return a+b;}
+}
+class Child extends Parent{
+ _______
+}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;A. float aFun(float a, float b){return a+b;} &lt;br /&gt;
+B. public int aFun(int a, int b){return a+b;} &lt;br /&gt;
+C. public float aFun(float a, float b){return a+b;} &lt;br /&gt;
+D. private int aFun(int a, int b){return a+b;}&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;（多选题）常用的servlet包的名称是？（） &lt;br /&gt;
+A java.servlet &lt;br /&gt;
+B javax.servlet &lt;br /&gt;
+C servlet.http &lt;br /&gt;
+D javax.servlet.http&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;（多选题）下面有关forward和redirect的描述，正确的是() ？ &lt;br /&gt;
+A forward是服务器将控制权转交给另外一个内部服务器对象，由新的对象来全权负责响应用户的请求 &lt;br /&gt;
+B 执行forward时，浏览器不知道服务器发送的内容是从何处来，浏览器地址栏中还是原来的地址 &lt;br /&gt;
+C 执行redirect时，服务器端告诉浏览器重新去请求地址 &lt;br /&gt;
+D forward是内部重定向，redirect是外部重定向 &lt;br /&gt;
+E redirect默认将产生301 Permanently moved的HTTP响应&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;（多选题）JAVA反射机制主要提供了以下哪些功能？（）&lt;br /&gt;
+A 在运行时判断一个对象所属的类 &lt;br /&gt;
+B 在运行时构造一个类的对象 &lt;br /&gt;
+C 在运行时判断一个类所具有的成员变量和方法 &lt;br /&gt;
+D 在运行时调用一个对象的方法&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;简述题&quot;&gt;简述题&lt;/h3&gt;
+
+&lt;p&gt;表结构&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CREATE TABLE `TBL_ORDER`(
+	`ID` INT(11) AUTO_INCREMENT,
+	`USER_ID` INT(11) COMMENT '用户',
+	`CODE` VARCHAR(32) COMMENT '订购结果编码 0-成功，999-失败，998-用户取消',
+	`CHANNEL_ID` INT(11) COMMENT '栏目id',
+	`CREATE_TIME` TIMESTAMP COMMENT '统计时间',
+	PRIMARY KEY(`ID`)
+)
+
+CREATE TABLE `TBL_USER`(
+	`ID` INT(11) AUTO_INCREMENT,
+	`USER_NAME` VARCHAR(32) COMMENT '用户登录名',
+	`TEL` VARCHAR(11) COMMENT '电话号码',
+	`USER_IP` VARCHAR(50) COMMENT '用户IP',
+	PRIMARY KEY(`ID`)
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;统计用户人数？
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;统计订购成功、订购失败、用户退出订购人数？
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;查询昨天订购成功的用户信息？
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;以下js代码会出现什么情况？在什么地方显示？显示结果是什么？
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;console.log(1 &amp;amp;&amp;amp; 2 || 0);
+console.log(0 || 2 &amp;amp;&amp;amp; 1);
+console.log(0 &amp;amp;&amp;amp; 2 || 1);
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;编写一个方法 去掉一个数组的重复元素
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;应用题&quot;&gt;应用题&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;用js写一个拼图游戏（3x3或可配置）,要求如下：&lt;br /&gt;
+1、通过键盘&lt;code class=&quot;highlighter-rouge&quot;&gt;方向键&lt;/code&gt;进行选择拼块&lt;code class=&quot;highlighter-rouge&quot;&gt;确定键&lt;/code&gt;进行移动，无法移动拼块进行&lt;code class=&quot;highlighter-rouge&quot;&gt;此拼块无法移动&lt;/code&gt;提示&lt;br /&gt;
+2、进入游戏后可观察3秒原图后自动打乱拼图&lt;br /&gt;
+3、拼图成功后可通过回调函数进行自定义成功后续操作&lt;br /&gt;
+4、加入倒计时，5分钟无法完成游戏给出&lt;code class=&quot;highlighter-rouge&quot;&gt;拼图失败&lt;/code&gt;提示&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <pubDate>Mon, 07 Jan 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/01/java_m/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/01/java_m/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>页面事件处理</title>
+        <description>&lt;p&gt;页面事件处理&lt;/p&gt;
+
+&lt;h3 id=&quot;关于keypress和keydown事件的区别和联系&quot;&gt;关于KeyPress和KeyDown事件的区别和联系&lt;/h3&gt;
+
+&lt;h4 id=&quot;keypress主要用来监听键盘输出的字符&quot;&gt;KeyPress主要用来监听键盘输出的「字符」&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;KeyPress在控件有焦点的情况下按下键时发生。&lt;/li&gt;
+  &lt;li&gt;KeyPress只能捕获单个字符。&lt;/li&gt;
+  &lt;li&gt;KeyPressKeyPress主要用来捕获数字(注意：包括Shift+数字的符号)、字母（注意：包括大小写）、ANSI字符（注意:只能捕获除了F1-12、SHIFT、Alt、Ctrl、Insert、Home、PgUp、Delete、End、PgDn、ScrollLock、Pause、NumLock、{菜单键}、{开始键}和方向键外的ANSI字符，如：&lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;}&lt;/code&gt;等）.&lt;/li&gt;
+  &lt;li&gt;KeyPress不显示键盘的物理状态（SHIFT键），而只是传递一个字符,KeyPress 将每个字符的大、小写形式作为不同的键代码解释，即作为两种不同的字符，（区分大小写）。&lt;/li&gt;
+  &lt;li&gt;KeyPress 不区分小键盘和主键盘的数字字符。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;keydown主要用来监听键盘输出的功能&quot;&gt;KeyDown主要用来监听键盘输出的「功能」&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;KeyDown在控件有焦点的情况下按下键时发生。&lt;/li&gt;
+  &lt;li&gt;KeyDown可以捕获组合键。&lt;/li&gt;
+  &lt;li&gt;KeyDown事件过程通常可以捕获键盘上除了PrScrn（在键盘右上角）之外的所有按键(这里不讨论特殊键盘的特殊键）&lt;/li&gt;
+  &lt;li&gt;KeyDown不能判断键值字母的大小写（可通过SHIFT键状态判断）。&lt;/li&gt;
+  &lt;li&gt;KeyDown区分小键盘和主键盘的数字字符。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;keyup主要用来监听键盘输出的功能&quot;&gt;KeyUp主要用来监听键盘输出的「功能」&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;KeyUp在控件有焦点的情况下释放键时发生。&lt;/li&gt;
+  &lt;li&gt;KeyUp可以捕获组合键。&lt;/li&gt;
+  &lt;li&gt;KeyUp事件过程通常可以捕获键盘上除了PrScrn（在键盘右上角）之外的所有按键(这里不讨论特殊键盘的特殊键）&lt;/li&gt;
+  &lt;li&gt;KeyUp不能判断键值字母的大小写（可通过SHIFT键状态判断）。&lt;/li&gt;
+  &lt;li&gt;KeyUp区分小键盘和主键盘的数字字符。&lt;/li&gt;
+  &lt;li&gt;要判断key修改后的状态必须用KeyUp（如：同步一个输入框内容到span中，keypress和keydown总是少最后一个字符，keyup才能完整同步）。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Fri, 23 Nov 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/11/js_event/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/js_event/</guid>
+        
+        <category>Javascript</category>
+        
+        <category>前端</category>
+        
+        
+        <category>技术开发</category>
+        
+      </item>
+    
+      <item>
+        <title>MacOS动态壁纸制作</title>
+        <description>&lt;p&gt;MacOS动态壁纸制作&lt;/p&gt;
+
+&lt;h3 id=&quot;介绍&quot;&gt;介绍&lt;/h3&gt;
+&lt;p&gt;macOS 10.14 (Mojave)的一项用户界面的新功能——动态桌面（dynamic desktop）受到的关注则少得多。这是一项默认关闭的功能，启用方法是打开「系统偏好设置 - 桌面与屏幕保护程序」，从「动态桌面」中选择系统自带的两套壁纸之一。&lt;/p&gt;
+
+&lt;p&gt;乍听起来，这确实并不稀奇，也没有任何技术门槛。随时间变化切换壁纸是很多桌面美化软件的基础功能，更别提十多年前的 Windows Vista 就已经原生支持 视频壁纸 了。&lt;/p&gt;
+
+&lt;p&gt;但问题实际上并不只是 「按时间切换图片」 这么简单。因为，晨昏变化的节奏并非一成不变，而是随着四季变换各有不同。除非生活在赤道或者极地，从夏到冬一定是昼渐短、夜渐长的。如果全年都按照一个节拍切换壁纸，其效果在绝大多数日子里都将跟真实景象不同步。&lt;/p&gt;
+
+&lt;p&gt;随着季节推移变化的不只是昼夜长度，还有 太阳高度 。显然，夏天的太阳比冬天的同一时间要「高」。太阳高度还与纬度有关。假如你生活在北京，而系统在中午时分给你换上了一张「阳光从头顶直射」的壁纸，你其实应该有一种违和感才对，因为北京根本不会有 90 度的日照。地处北纬 40 度的北京，太阳最高也只能达到 73.5 度，并且一年只有一次，时间是在夏至那天的（地方时）正午。&lt;/p&gt;
+
+&lt;p&gt;可见，要真正让桌面和窗外的光照 同步 变化，机械地踩着时间点换图片是远远不够的。理想情况下，同一组图片的切换节奏应当呼应太阳运动、在四季各不相同，并且根据用户的地理位置和日期，有选择地「跳过」一些不符合实际情况的照片。&lt;/p&gt;
+
+&lt;h3 id=&quot;动态桌面的实现机制&quot;&gt;动态桌面的实现机制&lt;/h3&gt;
+
+&lt;p&gt;macOS Mojave 的动态桌面充分考虑了上述问题。在苹果的实现方案中，壁纸的切换不是以时间为标准，而是以 太阳方位 为标准。具体而言：&lt;/p&gt;
+
+&lt;p&gt;每套壁纸包含 16 张静态图片（实验表明似乎可以更少，但不能更多）。
+每张静态图片都被标记了对应的太阳方位。定位的方式是所谓的 「地平坐标系」 ，即用高度角（Altitude，定义为太阳和地平线的夹角）和方位角（Azimuth，定义为太阳按顺时针方向偏离正北的角度）两个值确定太阳在天球中的位置。
+启用后，系统将会根据用户的位置和时间计算太阳的实时方位，并与每张壁纸所记载的信息进行比对，将其中与此时此地太阳位置最近似的那一张作为桌面背景。&lt;/p&gt;
+
+&lt;p&gt;地平面坐标系图示如下：&lt;/p&gt;
+
+&lt;p&gt;实际例子可能更有助于理解动态桌面的机制。我目前的所在地处于北纬 40 度，与北京基本相同。10 月 5 日的早上 6:30 尚未日出，此时的太阳高度为 -6.75 度，方位为 90.6 度。启用「沙丘」动态壁纸后，桌面显示为该系列中的第三张。根据壁纸的元信息（后文将说明方法），这张照片是在太阳高度 -4.25 度，方位 86.34 度的场景下拍摄的，与现实环境非常接近。如果将系统日期拨回三个月前的 7 月 5 日，会发现壁纸变成了系列中的第五张（太阳高度为 7 度）。的确，夏天的这一时刻，太阳应该已经升起了。&lt;/p&gt;
+
+&lt;p&gt;再将日期调回 10 月 5 日。这一天，太阳在下午 12:48 时达到最高位置。但如果试着慢慢将时钟调过这一时刻，会发现壁纸并没有切换为系列中最明亮的第八张，而是直接从第七张跳到了第九张。原因在于，秋天的太阳即使在正午也只能达到 45 度左右，而第八张壁纸是在太阳处于 53 度时拍摄的，因此不会被显示。相反，在 Mojave 刚刚开始公测的七月时，这张壁纸会从上午 10:40 左右开始持续显示约五个小时。&lt;/p&gt;
+
+&lt;p&gt;更有趣的是，在另一套动态壁纸 Solar Gradients 中，一张图片对应的太阳高度为 88.4 度。如上所述，由于北纬 40 度的太阳全年最高也只能达到 73.5 度，我将始终不会看到这张最亮的壁纸被用作桌面——它实际上成了热带地区用户的「会员特权」。&lt;/p&gt;
+
+&lt;h3 id=&quot;壁纸资源技术细节与自制方法&quot;&gt;壁纸资源、技术细节与自制方法&lt;/h3&gt;
+
+&lt;p&gt;将动态壁纸的配置信息转为可读模式，这样，苹果在 Mojave 的动态壁纸中设置的机关就展现出全貌了。可以看到，在 si 根键下，每张静态图片被都标记了 i 、 a 、 z 三个键值，分别对应照片的序号、拍摄时的太阳高度角和方位角。&lt;/p&gt;
+
+&lt;p&gt;此外，沙丘壁纸还有一个 ap 根键，其下的 l 和 d 两个值分别指定了在设置中启用亮暗两种「静态」选项时，要显示的图片序号。（太阳渐变壁纸没有 ap 根键，因此在设置中没有「静态」选项。）&lt;/p&gt;
+
+&lt;p&gt;至此，原理上的铺垫就全部完成了，最后要解决的就是如何据此自行制作动态壁纸。显然，这涉及到格式转换、信息编码等操作，全部手工完成会非常繁琐。好在，已经有开发者制作出了 &lt;a href=&quot;https://github.com/mczachurski/wallpapper&quot;&gt;命令行工具&lt;/a&gt; ，可以使用 Homebrew 安装：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ brew tap mczachurski/wallpapper &amp;amp;&amp;amp; brew install wallpapper
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这里简单介绍一下该工具的使用方法。首先，将想要制作成动态壁纸的图片文件按序号依次命名。然后在 同一目录 下创建一个 JSON 文件（如 config.json ），在其中逐行指定照片的参数：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[
+{&quot;fileName&quot;:&quot;1.png&quot;,&quot;isPrimary&quot;:false,&quot;isForLight&quot;:false,&quot;isForDark&quot;:false,&quot;altitude&quot;:-0.34275283875350282,&quot;azimuth&quot;:270.9334057827345},
+…
+{&quot;fileName&quot;:&quot;16.png&quot;,&quot;isPrimary&quot;:false,&quot;isForLight&quot;:false,&quot;isForDark&quot;:false,&quot;altitude&quot;:-38.04743388682423,&quot;azimuth&quot;:53.509085812513092}
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;其中， fileName 为文件名， isPrimary 表示是否将图片用作记录整套壁纸元信息的「首要图片」， isForLight 和 isForDark 分别指是否用作开启亮/暗两种「静态」选项时使用的图片， altitude 和 azimuth 则是照片对应的高度角和方位角。&lt;/p&gt;
+
+&lt;p&gt;准备完毕后，在终端执行 wallpapper -i config.json 即可获得打包好的 HEIC 格式动态壁纸。&lt;/p&gt;
+
+&lt;p&gt;想要省事的读者也可以使用此 &lt;a href=&quot;https://cl.ly/1b0449fdfb89/dynwp-config-sample.json&quot;&gt;模板配置文件&lt;/a&gt; ，其内容原样复制了系统自带的沙丘壁纸中图片的参数，只需找 16 张光线情况与该套壁纸类似的图片，依次命名为 1.png 到 16.png ，并用上述工具制作即可。&lt;/p&gt;
+
+&lt;h3 id=&quot;参考资料&quot;&gt;参考资料&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://sspai.com/post/47390&quot;&gt;macOS Mojave 的动态桌面，可不只是「定时换壁纸」这么简单&lt;/a&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 06 Nov 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/11/macos_wallpapper/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/macos_wallpapper/</guid>
+        
+        <category>MacOS</category>
+        
+        
+        <category>MacOS</category>
+        
+      </item>
     
       <item>
         <title>JAVA异常处理</title>
@@ -217,6 +742,12 @@ MathJax.Hub.Queue([&quot;Typeset&quot;,MathJax.Hub,mathId]);//选择公式识别
 
 &lt;h4 id=&quot;2负数表示例如int类型值--5&quot;&gt;2.负数表示,例如:int类型值 &lt;code class=&quot;highlighter-rouge&quot;&gt;-5&lt;/code&gt;&lt;/h4&gt;
 
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-5 = 1111 1111 1111 1111 1111 1111 1111 1011
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;负数二进制表示方法如下：&lt;/p&gt;
+
 &lt;p&gt;首先来个正数5&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;5 = 0000 0000 0000 0000 0000 0000 0000 0101
@@ -281,9 +812,29 @@ MathJax.Hub.Queue([&quot;Typeset&quot;,MathJax.Hub,mathId]);//选择公式识别
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;应用&lt;/p&gt;
+&lt;h4 id=&quot;3或运算--有1出1全0出0&quot;&gt;3.或(&lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt;)运算	: 有1出1;全0出0&lt;/h4&gt;
 
-&lt;p&gt;一个数字标识位，表示多种逻辑,例如：一个任务可分成n个独立小任务，每个小任务之间不分先后顺序，当所有小任务完成则表示此任务完成。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 | 3);// 结果为7
+
+5     = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
+3     = 0000 0000 0000 0000 0000 0000 0000 0011 = 3
+5 | 3 = 0000 0000 0000 0000 0000 0000 0000 0111 = 7
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;4异或运算-相同得0相异得1&quot;&gt;4.异或(&lt;code class=&quot;highlighter-rouge&quot;&gt;^&lt;/code&gt;)运算: 相同得0;相异得1&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 ^ 3);//结果为6 
+
+5     = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
+3     = 0000 0000 0000 0000 0000 0000 0000 0011 = 3
+5 ^ 3 = 0000 0000 0000 0000 0000 0000 0000 0110 = 6
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;a小应用&quot;&gt;A.小应用&lt;/h4&gt;
+
+&lt;p&gt;一个数字标识位表示多种逻辑,例如：一个任务可分成n个独立小任务，每个小任务之间不分先后顺序，当所有小任务完成则表示此任务完成。&lt;/p&gt;
 
 &lt;p&gt;如果n=3，则将3个小任务分别用$2^0$,$2^1$,$2^2$即1,2,4表示&lt;/p&gt;
 
@@ -306,26 +857,6 @@ select * from tbl_task where status&amp;amp;2=0;
 //查询第2个小任务已完成的所有任务
 select * from tbl_task where status&amp;amp;2=2;
 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;3或运算--有1出1全0出0&quot;&gt;3.或(&lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt;)运算	: 有1出1;全0出0&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 | 3);// 结果为7
-
-5     = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
-3     = 0000 0000 0000 0000 0000 0000 0000 0011 = 3
-5 | 3 = 0000 0000 0000 0000 0000 0000 0000 0111 = 7
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;4异或运算-相同得0相异得1&quot;&gt;4.异或(&lt;code class=&quot;highlighter-rouge&quot;&gt;^&lt;/code&gt;)运算: 相同得0;相异得1&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 ^ 3);//结果为6 
-
-5     = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
-3     = 0000 0000 0000 0000 0000 0000 0000 0011 = 3
-5 ^ 3 = 0000 0000 0000 0000 0000 0000 0000 0110 = 6
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -736,276 +1267,6 @@ sudo systemctl enable nginx.service
         
         
         <category>linux</category>
-        
-      </item>
-    
-      <item>
-        <title>Linux监测Tomcat运行情况</title>
-        <description>&lt;p&gt;Linux监测Tomcat运行情况&lt;/p&gt;
-
-&lt;p&gt;直接上shell代码，新建shell文件tomcatMonitor.sh，将以下内容加入其中，设置定时任务执行此shell即可&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# func:自动监控tomcat并且在异常时执行重启操作&lt;/span&gt;
-
-
-&lt;span class=&quot;c&quot;&gt;# 获取tomcat进程ID&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;TomcatID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;ps -ef |grep tomcat |grep -w &lt;span class=&quot;s1&quot;&gt;'tomcat/server'&lt;/span&gt;|grep -v &lt;span class=&quot;s1&quot;&gt;'grep'&lt;/span&gt;|awk &lt;span class=&quot;s1&quot;&gt;'{print $2}'&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# tomcat启动程序&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;StartTomcat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/tomcat/server/bin/startup.sh
-
-&lt;span class=&quot;c&quot;&gt;# 定义要监控的页面地址 &lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;WebUrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;http://localhost:8082/index.jsp
-
-
-&lt;span class=&quot;c&quot;&gt;# 日志输出&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;GetPageInfo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/data/wwwlogs/GetPageInfo.log
-&lt;span class=&quot;nv&quot;&gt;TomcatMonitorLog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/data/wwwlogs/TomcatMonitor.log
-
-Monitor&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-	&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[info]开始监控tomcat...[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;date +&lt;span class=&quot;s1&quot;&gt;'%F %H:%M:%S'&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]&quot;&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$TomcatID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; ;&lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 这里判断TOMCAT进程是否存在&lt;/span&gt;
-		&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[info]当前tomcat进程ID为:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$TomcatID&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;,继续检测页面...&quot;&lt;/span&gt;
-		&lt;span class=&quot;c&quot;&gt;# 检测是否启动成功(成功的话页面会返回状态&quot;200&quot;)&lt;/span&gt;
-		&lt;span class=&quot;nv&quot;&gt;TomcatServiceCode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;curl -s -o &lt;span class=&quot;nv&quot;&gt;$GetPageInfo&lt;/span&gt; -m 10 --connect-timeout 10 &lt;span class=&quot;nv&quot;&gt;$WebUrl&lt;/span&gt; -w %&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;http_code&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$TomcatServiceCode&lt;/span&gt; -eq 200 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; ;&lt;span class=&quot;k&quot;&gt;then
-			&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[info]页面返回码为&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$TomcatServiceCode&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;,tomcat启动成功,测试页面正常......&quot;&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;else
-			&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[error]tomcat页面出错,请注意......状态码为&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$TomcatServiceCode&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;,错误日志已输出到&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$GetPageInfo&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-			&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[error]页面访问出错,开始重启tomcat&quot;&lt;/span&gt;
-			&lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt; -9 &lt;span class=&quot;nv&quot;&gt;$TomcatID&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 杀掉原tomcat进程&lt;/span&gt;
-			sleep 3
-			&lt;span class=&quot;nv&quot;&gt;$StartTomcat&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;fi
-	else
-		&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[error]tomcat进程不存在!tomcat开始自动重启...&quot;&lt;/span&gt;
-		&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[info]&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$StartTomcat&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;,请稍候......&quot;&lt;/span&gt;
-		&lt;span class=&quot;nv&quot;&gt;$StartTomcat&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;fi
-	&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;------------------------------&quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-Monitor&amp;gt;&amp;gt;&lt;span class=&quot;nv&quot;&gt;$TomcatMonitorLog&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Tue, 04 Sep 2018 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2018/09/linux_tomcat_monitor/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/09/linux_tomcat_monitor/</guid>
-        
-        <category>Tomcat</category>
-        
-        
-        <category>linux</category>
-        
-      </item>
-    
-      <item>
-        <title>MySQL调试技巧</title>
-        <description>&lt;p&gt;MySQL调试技巧&lt;/p&gt;
-
-&lt;h3 id=&quot;mysql查询最近执行sql&quot;&gt;MySQL查询最近执行SQL&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;进入MySQL,略&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;启用Log功能&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 查询是否启用Log功能
-mysql&amp;gt; SHOW VARIABLES LIKE &quot;general_log%&quot;;
-+--------------------+--------------------------------------------------+
-| Variable_name      |    Value                                         |
-+--------------------+--------------------------------------------------+
-| general_log        | OFF                                              |
-| general_log_file   | /usr/local/mysql/data/MacBook-Pro.log            |
-+--------------------+--------------------------------------------------+
-# 启用Log功能
-mysql&amp;gt; SET GLOBAL general_log = 'ON';
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;设置Log文件地址(所有Sql语句都会在general_log_file里)，采用默认则不设置&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; SET GLOBAL general_log_file = 'c:\mysql.log';
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;执行mysql命令然后查看设置的Log文件，也可用其他可视化工具进行查看。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;mysql-查看连接数状态-最大并发数&quot;&gt;Mysql 查看连接数,状态 最大并发数&lt;/h3&gt;
-
-&lt;p&gt;Threads_connected 跟show processlist结果相同，表示当前连接数。准确的来说，Threads_running是代表当前并发数&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;show variables like '%max_connections%'; 查看最大连接数
-set global max_connections=1000 重新设置
-
-mysql&amp;gt; show status like 'Threads%';
-+-------------------+-------+
-| Variable_name     | Value |
-+-------------------+-------+
-| Threads_cached    | 58    |
-| Threads_connected | 57    |   ###这个数值指的是打开的连接数
-| Threads_created   | 3676  |
-| Threads_running   | 4     |   ###这个数值指的是激活的连接数，这个数值一般远低于connected数值
-+-------------------+-------+
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-        <pubDate>Thu, 19 Jul 2018 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2018/07/mysql_debug/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/07/mysql_debug/</guid>
-        
-        <category>数据库</category>
-        
-        <category>MySQL</category>
-        
-        
-        <category>数据库</category>
-        
-      </item>
-    
-      <item>
-        <title>MySQL备份</title>
-        <description>&lt;p&gt;MySQL备份&lt;/p&gt;
-
-&lt;h3 id=&quot;mysql-导出excel方法&quot;&gt;mysql 导出excel方法&lt;/h3&gt;
-&lt;p&gt;1.执行如下命令，可将执行结果导出到excel中：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql iptv_pet -uroot -p -e &quot;call SP_PET_STATISTICS(1)&quot; &amp;gt; /data/tj_20160819.xls
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql iptv_pet -uroot -p -e &quot;select user_id,code ,create_time from tbl_statistics_order where code like '%result_0' and TO_DAYS(NOW())-TO_DAYS(CREATE_TIME) = 1 order by create_time desc &quot; &amp;gt; /data/order_tj_20160822.xls
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;2.因为office默认的是gb2312编码，服务器端生成的很有可能是utf-8编码，采用如下命令可将其转换为gb2312编码：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;iconv -futf8 -tgb2312 -otj_20160819_gb2312.xls tj_20160819.xls
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;shell脚本如下：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;date +%Y%m%d&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-mysql iptv_pet -uroot -p&lt;span class=&quot;k&quot;&gt;******&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&quot;call SP_PET_STATISTICS(1)&quot;&lt;/span&gt; &amp;gt; /data/backup/tj_&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;.xls
-&lt;span class=&quot;c&quot;&gt;#mysql iptv_pet -uroot -p****** -e &quot;select user_id,code ,create_time from tbl_statistics_order where code like '%result_0' and TO_DAYS(NOW())-TO_DAYS(CREATE_TIME) = 1 order by create_time desc &quot; &amp;gt; /data/backup/tj_order_${ctime}.xls&lt;/span&gt;
-iconv -futf8 -tgb2312 -otj_&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;_gb2312.xls tj_&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;.xls
-&lt;span class=&quot;c&quot;&gt;#iconv -futf8 -tgb2312 -otj_order_${ctime}_gb2312.xls tj_order_${ctime}.xls&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;date +%Y%m%d&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-mysql iptv_pet -uroot -p&lt;span class=&quot;k&quot;&gt;******&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&quot;call SP_PET_STATISTICS(1)&quot;&lt;/span&gt; &amp;gt; /data/backup/tj_&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;_utf8.xls
-&lt;span class=&quot;c&quot;&gt;#mysql iptv_pet -uroot -p****** -e &quot;select user_id,code ,create_time from tbl_statistics_order where code like '%result_0' and TO_DAYS(NOW())-TO_DAYS(CREATE_TIME) = 1 order by create_time desc &quot; &amp;gt; /data/backup/tj_order_${ctime}_utf8.xls&lt;/span&gt;
-sleep 1
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; ! -f &lt;span class=&quot;s2&quot;&gt;&quot;/data/backup/tj_&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;_utf8.xls&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
-&lt;/span&gt;iconv -futf8 -tgb2312 -o/data/backup/tj_&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;.xls /data/backup/tj_&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ctime&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;_utf8.xls
-&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;mysql-备份&quot;&gt;mysql 备份&lt;/h3&gt;
-&lt;h4 id=&quot;1导出数据库&quot;&gt;1.导出数据库：&lt;/h4&gt;
-&lt;h5 id=&quot;11-执行如下命令可导出数据库所有表的数据&quot;&gt;1.1 执行如下命令，可导出数据库所有表的数据：&lt;/h5&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/local/mysql/bin/mysqldump -uroot -p iptv_pet &amp;gt; db_bak_iptv_pet_20160822.sql
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h5 id=&quot;111-执行如下命令可导出数据库中某个表的数据&quot;&gt;1.1.1 执行如下命令，可导出数据库中某个表的数据：&lt;/h5&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/local/mysql/bin/mysqldump -uroot -p iptv_pet cms_channel &amp;gt; db_bak_iptv_pet_cmschannel_20160822.sql
-
-/usr/local/mysql/bin/mysqldump -uroot -p iptv_pet cms_channel cms_document &amp;gt; db_bak_iptv_pet_cmschannel_20160822.sql
-
-/usr/local/mysql/bin/mysqldump -uroot -p iptv_pet tbl_stat_order tbl_stat_click tbl_stat_click_manage &amp;gt; db_bak_tbl_stat_20170301.sql
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;112-执行如下命令可导出数据库中某个表的部分数据&quot;&gt;1.1.2 执行如下命令，可导出数据库中某个表的部分数据&lt;/h5&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/local/mysql/bin/mysqldump -uroot -p iptv_pet tbl_statistics_player_201705 --where=&quot; TO_DAYS(NOW()) - TO_DAYS(CREATE_TIME) = 1&quot; &amp;gt; db_bak_tbl_statistics_player_20170505.sql
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;12-执行如下命令可导出数据库存储过程&quot;&gt;1.2 执行如下命令，可导出数据库存储过程：&lt;/h5&gt;
-&lt;p&gt;注意：–events必须在数据库名称后面&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/local/mysql/bin/mysqldump -uroot -p -n -t -d -R --triggers=false iptv_pet --events &amp;gt; db_bak_iptv_pet_sp_20160822.sql
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;2编写shell文件定时备份&quot;&gt;2.编写shell文件，定时备份&lt;/h4&gt;
-&lt;h5 id=&quot;21-需求如下&quot;&gt;2.1 需求如下：&lt;/h5&gt;
-&lt;p&gt;2.1.1 每天4点备份mysql数据&lt;/p&gt;
-
-&lt;p&gt;2.1.2 为节省空间，删除超过3个月的所有备份数据；&lt;/p&gt;
-
-&lt;p&gt;2.1.3 删除超过7天的备份数据，保留3个月里的 10号 20号 30号的备份数据；&lt;/p&gt;
-
-&lt;h5 id=&quot;22-实现方式如下&quot;&gt;2.2 实现方式如下：&lt;/h5&gt;
-&lt;p&gt;2.2.1 创建shell文件&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim backup_mysql.sh
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;2.2.2 编辑shell文件，内容如下：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysqldump -uroot -p123456 --all-databases &amp;gt; /data/dbdata/mysqlbak/`date +%Y%m%d`.sql
-find /data/dbdata/mysqlbak/ -mtime +7 -name '*[1-9].sql' -exec rm -rf {} \;
-find /data/dbdata/mysqlbak/ -mtime +92 -name '*.sql' -exec rm -rf {} \;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;2.2.3 创建定时任务&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;crontab –e
-0 4 * * * /data/dbdata/backup_mysql.sh
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;mysql-还原&quot;&gt;mysql 还原&lt;/h3&gt;
-&lt;p&gt;导入数据&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql&amp;gt; source /home/qinglan/data/mysql/iptv_health.sql
-Query OK, 0 rows affected (0.00 sec)
-
-Query OK, 0 rows affected (0.00 sec)
-
-Query OK, 0 rows affected, 1 warning (0.00 sec)
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;日常操作语句归纳&quot;&gt;日常操作语句归纳&lt;/h3&gt;
-&lt;p&gt;mysql 添加表字段&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;alter table tbl_exp_card add activation_user varchar(50) NULL COMMENT '激活用户';
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;mysql 取消timestamp列默认为设置成记录被更新时的时间戳&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ALTER TABLE tbl_statistics_order CHANGE CREATE_TIME CREATE_TIME timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '统计时间';
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-        <pubDate>Thu, 19 Jul 2018 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2018/07/mysql_backup/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/07/mysql_backup/</guid>
-        
-        <category>数据库</category>
-        
-        <category>MySQL</category>
-        
-        
-        <category>数据库</category>
         
       </item>
     

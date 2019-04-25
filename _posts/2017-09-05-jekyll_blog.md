@@ -161,9 +161,9 @@ jekyll 3.1.1 | Error:  jekyll-sitemap
 
 解决方法有两个
 
-> 1、打开当前目录下的 _config.yml 文件，把 gems: [jekyll-paginate,jekyll-sitemap] 换成 gems: [jekyll-paginate] ，也就是去掉jekyll-sitemap。
-
+> 1、打开当前目录下的 `_config.yml` 文件,把 gems: [jekyll-paginate,jekyll-sitemap] 换成 gems: [jekyll-paginate],也就是去掉jekyll-sitemap.
 > 2、升级 jekyll 版本。
+
 
 修改完成后保存配置，再次执行
 
