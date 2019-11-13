@@ -206,19 +206,17 @@ FOR /F [“options”] %%i IN (file) DO command</p>
 
 <p>for也可以完成同样的命令：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>for /f %%i in (a.txt) do echo %%i
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for /f %%i in (a.txt) do echo %%i
 
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>还是先从括号执行，因为含有参数/f,所以for会先打开a.txt，然后读出a.txt里面的所有内容，把它作为一个集合，并且以每一行作为一个元素，所以会产生这样的集合，</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="err">“第1行第1列</span><span class="w"> </span><span class="err">第1行第2列</span><span class="w"> </span><span class="err">第1行第3列”，</span><span class="w"> </span><span class="err">//第一个元素</span><span class="w">
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{“第1行第1列 第1行第2列 第1行第3列”， //第一个元素
 
-</span><span class="err">“第2行第1列</span><span class="w"> </span><span class="err">第2行第2列</span><span class="w"> </span><span class="err">第2行第3列”，</span><span class="w"> </span><span class="err">//第二个元素</span><span class="w">
+“第2行第1列 第2行第2列 第2行第3列”， //第二个元素
 
-</span><span class="err">“第3行第1列</span><span class="w"> </span><span class="err">第3行第2列</span><span class="w"> </span><span class="err">第3行第3列”</span><span class="p">}</span><span class="w">   </span><span class="err">//第三个元素</span><span class="w">
-</span></code></pre>
-</div>
+“第3行第1列 第3行第2列 第3行第3列”}   //第三个元素
+</code></pre></div></div>
 
 <p>集合中只有3个元素，同样用%%i依次代替每个元素，然后执行do后面的命令。</p>
 
@@ -232,11 +230,10 @@ FOR /F [“options”] %%i IN (file) DO command</p>
 
 <p>为了加强理解/f的作用，请执行一下两个命令，对比即可明白：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>for /f %%i in (a.txt) do echo %%i //这个会显示a.txt里面的内容，因为/f的作用，会读出a.txt中的内容。
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for /f %%i in (a.txt) do echo %%i //这个会显示a.txt里面的内容，因为/f的作用，会读出a.txt中的内容。
 
 for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不会读取其中的内容。
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>通过上面的学习，我们发现for /f会默认以每一行来作为一个元素，但是如果我们还想把每一行再分解更小的内容，该怎么办呢？不用担心，for命令还为我们提供了更详细的参数，使我们将每一行分为更小的元素成为可能。</p>
 
@@ -246,17 +243,15 @@ for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不
 
 <p>比如，还是上面的文件，我们执行下面的命令：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>for /f "delims= " %%i in (a.txt) do echo %%i
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for /f "delims= " %%i in (a.txt) do echo %%i
+</code></pre></div></div>
 
 <p>显示的结果是：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>第1行第1列
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>第1行第1列
 第2行第1列
 第3行第1列
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>为什么是这样的呢。因为这里有了delims这个参数，=后面有一个空格，意思是再将每个元素以空格分割，默认是只取分割之后的第一个元素。</p>
 
@@ -272,17 +267,15 @@ for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不
 
 <p>还是上面的例子，执行如下命令：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>for /f "tokens=2 delims= " %%i in (a.txt) do echo %%i
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for /f "tokens=2 delims= " %%i in (a.txt) do echo %%i
+</code></pre></div></div>
 
 <p>执行结果：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>第1行第2列
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>第1行第2列
 第2行第2列
 第3行第2列
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>如果要显示第三列，那就换成tokens=3。</p>
 
@@ -292,9 +285,8 @@ for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不
 
 <p>此时的命令为：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>for /f "tokens=2,3 delims= " %%i in (a.txt) do echo %%i %%j
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for /f "tokens=2,3 delims= " %%i in (a.txt) do echo %%i %%j
+</code></pre></div></div>
 
 <p>怎么多出一个%%j？</p>
 
@@ -312,33 +304,29 @@ for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不
 
 <p>比如：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>for /f "tokens=* delims= " %%i in (a.txt) do echo %%i
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for /f "tokens=* delims= " %%i in (a.txt) do echo %%i
+</code></pre></div></div>
 
 <p>执行结果为：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>第1行第1列 第1行第2列 第1行第3列
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>第1行第1列 第1行第2列 第1行第3列
 第2行第1列 第2行第2列 第2行第3列
 第3行第1列 第3行第2列 第3行第3列
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>其实就跟for /f %%i in (a.txt) do echo %%i的执行结果是一样的。</p>
 
 <p>再如：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>for /f "tokens=2,* delims= " %%i in (a.txt) do echo %%i %%j
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for /f "tokens=2,* delims= " %%i in (a.txt) do echo %%i %%j
+</code></pre></div></div>
 
 <p>执行结果为：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>第1行第2列 第1行第3列
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>第1行第2列 第1行第3列
 第2行第2列 第2行第3列
 第3行第2列 第3行第3列
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>用%%i代替第二列，用%%j代替剩余的所有</p>
 
@@ -346,14 +334,12 @@ for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不
 
 <p>比如：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>for /f "skip=2 tokens=*" %%i in (a.txt) do echo %%i
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for /f "skip=2 tokens=*" %%i in (a.txt) do echo %%i
+</code></pre></div></div>
 <p>结果为:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>第3行第1列 第3行第2列 第3行第3列
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>第3行第1列 第3行第2列 第3行第3列
+</code></pre></div></div>
 
 <p>用skip来告诉for跳过前两行。</p>
 
@@ -370,15 +356,13 @@ for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不
 第3行第1列 第3行第2列 第3行第3列</p>
 
 <p>执行</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>for /f "eol=. tokens=*" %%i in (a.txt) do echo %%i
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for /f "eol=. tokens=*" %%i in (a.txt) do echo %%i
+</code></pre></div></div>
 
 <p>结果是：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>第3行第1列 第3行第2列 第3行第3列
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>第3行第1列 第3行第2列 第3行第3列
+</code></pre></div></div>
 
 <p>用eol来告诉for忽略以“.”开头的行。</p>
 

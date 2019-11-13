@@ -187,23 +187,20 @@
 <h4 id="检查安装vsftpd软件">检查安装vsftpd软件</h4>
 <p>使用如下命令查询是否安装vsftpd软件</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>#rpm -qa |grep vsftpd
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#rpm -qa |grep vsftpd
+</code></pre></div></div>
 
 <h4 id="安装vsftpd软件">安装vsftpd软件</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>rpm -ivh vsftpd-2.2.2-24.el6.i686.rpm
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rpm -ivh vsftpd-2.2.2-24.el6.i686.rpm
+</code></pre></div></div>
 
 <blockquote>
   <p>需要安装依赖包，且依赖包较多，有网络条件最好用yum安装。</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>yum -y install vsftpd
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum -y install vsftpd
+</code></pre></div></div>
 
 <h4 id="配置vsftpd">配置vsftpd</h4>
 <p>ftp的配置文件主要有三个，位于/etc/vsftpd/目录下，分别是：
@@ -211,7 +208,7 @@ vsftpd.conf   vsftpd的主配置文件
 ftpusers    该文件用来指定那些用户不能访问ftp服务器。
 user_list   该文件用来指示的默认账户在默认情况下也不能访问ftp</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># vi /etc/vsftpd/vsftpd.conf
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># vi /etc/vsftpd/vsftpd.conf
 
 
 # 是否允许匿名登录（将其禁止）
@@ -258,72 +255,63 @@ pasv_enable=YES
 pasv_promiscuous=YES
 pasv_min_port=30000
 pasv_max_port=30010
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="新增ftp用户并为其设置密码">新增ftp用户并为其设置密码</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># useradd ftpuser -s /sbin/nologin
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># useradd ftpuser -s /sbin/nologin
 # passwd ftpuser
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="编辑user_list文件给予用户访问ftp权限">编辑user_list文件，给予用户访问ftp权限</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>vi /etc/vsftpd/user_list
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/vsftpd/user_list
+</code></pre></div></div>
 <p>在文件末尾加入ftpuser并保存</p>
 
 <h4 id="指定用户ftp登陆后默认根文件夹">指定用户FTP登陆后默认根文件夹</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>vi /etc/passwd
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/passwd
 
 ## 修改默认目录
 ftpuser:x:1003:1003::/data/ftpdata:/sbin/nologin
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="建立可访问目录并指定用户">建立可访问目录并指定用户</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># mkdir -p /data/ftpdata
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># mkdir -p /data/ftpdata
 # chown -R ftpuser /data/ftpdata/ # 注意后面有个/
 # chmod -R 755 /data/ftpdata
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="使用vsftpd软件">使用vsftpd软件</h4>
 
 <p>主要包括如下几个命令：
 启动ftp命令</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>#service vsftpd start
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#service vsftpd start
 
 # 如果报错提示：Redirecting to /bin/systemctl start vsftpd.service，请使用
 # systemctl start vsftpd.service
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>停止ftp命令</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>#service vsftpd stop
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#service vsftpd stop
+</code></pre></div></div>
 <p>重启ftp命令</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>#service vsftpd restart
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#service vsftpd restart
+</code></pre></div></div>
 
 <h4 id="开机启动vsftpd服务">开机启动vsftpd服务</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># chkconfig vsftpd on
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># chkconfig vsftpd on
+</code></pre></div></div>
 
 <h4 id="解决无法登录问题">解决无法登录问题</h4>
 <h5 id="错误信息如下">错误信息如下：</h5>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>状态:     正在连接 XXX.XXX.XXX.XXX:21...
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>状态:     正在连接 XXX.XXX.XXX.XXX:21...
 状态:     连接建立，等待欢迎消息...
 命令:     USER root
 响应:     331 Please specify the password.
@@ -331,22 +319,20 @@ ftpuser:x:1003:1003::/data/ftpdata:/sbin/nologin
 响应:     530 Login incorrect.
 错误:     严重错误: 无法连接到服务器
 
-</code></pre>
-</div>
+</code></pre></div></div>
 <h5 id="错误原因及解决办法">错误原因及解决办法：</h5>
 
 <p>原因一：启用了PAM，解决办法，删除文件/etc/pam.d/vsftpd</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo rm /etc/pam.d/vsftpd
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo rm /etc/pam.d/vsftpd
+</code></pre></div></div>
 
 <p>原因二：密码错误</p>
 
 <h4 id="解决vsftpd-读取目录列表失败的问题">解决vsftpd 读取目录列表失败的问题</h4>
 <h5 id="错误信息如下-1">错误信息如下：</h5>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>...
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
 
 状态:    已连接
 状态:    读取目录列表...
@@ -359,8 +345,7 @@ ftpuser:x:1003:1003::/data/ftpdata:/sbin/nologin
 命令:    LIST
 错误:    连接超时
 错误:    读取目录列表失败
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h5 id="错误原因">错误原因：</h5>
 <p>该错误是由iptables的配置引起的</p>
@@ -369,13 +354,12 @@ ftpuser:x:1003:1003::/data/ftpdata:/sbin/nologin
 
 <p>临时的解决方法是执行如下命令,但当你重新启动服务器则iptables规则失效，又会出现相同的情况：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># modprobe ip_nat_ftp
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># modprobe ip_nat_ftp
+</code></pre></div></div>
 
 <p>永久解决方法，需要修改/etc/sysconfig/iptables-config文件：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># vi /etc/sysconfig/iptables-config
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># vi /etc/sysconfig/iptables-config
 
 ......
 
@@ -384,8 +368,7 @@ IPTABLES_MODULES_UNLOAD="yes"
 
 ......
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <blockquote>
   <p>IPTABLES_MODULES_UNLOAD=”yes”的意义：每次iptables停止或者重启都会Unload modules

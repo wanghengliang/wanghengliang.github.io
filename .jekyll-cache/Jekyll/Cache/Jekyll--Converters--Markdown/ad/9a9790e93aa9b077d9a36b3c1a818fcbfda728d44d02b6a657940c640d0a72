@@ -1,0 +1,193 @@
+I"� <p>jmeter压力测试</p>
+
+<h3 id="下载及安装">下载及安装</h3>
+
+<ol>
+  <li>登录官网Jmeter下载，得到压缩包apache-jmeter-5.0.tgz，下载地址：http://jmeter.apache.org/download_jmeter.cgi</li>
+  <li>将下载得到的压缩包apache-jmeter-5.0.tgz解压即可。
+<img src="/images/posts/tools/jmeter01.png" alt="" /></li>
+</ol>
+
+<h3 id="运行">运行</h3>
+
+<p>执行bin/jmeter.bat或者bin/jmeter.sh运行，效果图如下
+<img src="/images/posts/tools/jmeter02.png" alt="" /></p>
+
+<h3 id="一个简单的压测实例">一个简单的压测实例</h3>
+
+<h4 id="新建一个线程组">新建一个线程组</h4>
+<p><img src="/images/posts/tools/jmeter03.png" alt="" /></p>
+
+<h4 id="设置线程组参数">设置线程组参数</h4>
+<p>这里配置为：10个线程，同时启动，循环一次。这些配置元件用于指定运行的线程数和等候周期。每个线程模拟一个用户，而等候周期用于指定创建全部线程的时间。例如，线程数为5，等候时间为10秒，则创建每个线程之间的时间间隔为2秒。循环数定义了线程的运行时间。使用调度器，还可以设置运行的起始时间。
+<img src="/images/posts/tools/jmeter04.png" alt="" /></p>
+
+<h4 id="新增http请求默认值">新增http请求默认值</h4>
+<p>在上一步创建的线程组上，新增http请求默认值，所有的请求都会使用设置的默认值，这设置协议为http，IP为127.0.0.1，端口为8080
+<img src="/images/posts/tools/jmeter05.png" alt="" />
+<img src="/images/posts/tools/jmeter06.png" alt="" /></p>
+
+<h4 id="添加要压测的http请求">添加要压测的http请求</h4>
+<p><img src="/images/posts/tools/jmeter07.png" alt="" />
+下图第一个红框内的协议、IP、端口不需要设置，会使用步骤c中设置的默认值，只需设置请求路径Path即可，这里填入/index.html
+<img src="/images/posts/tools/jmeter08.png" alt="" /></p>
+
+<h4 id="新增监听器用于查看压测结果">新增监听器，用于查看压测结果</h4>
+<p>这里添加三种：聚合报告、图形结果、用表格查看结果，区别在于结果展现形式不同。
+<img src="/images/posts/tools/jmeter09.png" alt="" /></p>
+
+<h4 id="点击运行按钮开始压测并查看结果">点击运行按钮开始压测，并查看结果</h4>
+<p><img src="/images/posts/tools/jmeter10.png" alt="" /></p>
+
+<h3 id="jmeter结果分析">jmeter结果分析</h3>
+<p>采用Jmeter测试工具对web系统作的负载测试，得出的响应报表，数据比较难懂，现作一具体说明。</p>
+
+<h4 id="图形报表">图形报表</h4>
+<p><img src="/images/posts/tools/jmeter11.png" alt="" /></p>
+
+<p>图表底部参数的含义如下：</p>
+<ol>
+  <li>样本数目是总共发送到服务器的请求数。</li>
+  <li>最新样本是代表时间的数字,是服务器响应最后一个请求的时间。</li>
+  <li>吞吐量是服务器每分钟处理的请求数。</li>
+  <li>平均值是总运行时间除以发送到服务器的请求数。</li>
+  <li>中间值是代表时间的数字，有一半的服务器响应时间低于该值而另一半高于该值。</li>
+  <li>偏离表示服务器响应时间变化、离散程度测量值的大小，或者，换句话说，就是数据的分布。</li>
+</ol>
+
+<h4 id="聚合报告">聚合报告</h4>
+<p><img src="/images/posts/tools/jmeter12.png" alt="" />
+图表含义说明如下：</p>
+<ol>
+  <li>Label: 说明是请求类型，如Http，FTP等请求。</li>
+  <li>#Samples: 也就是图形报表中的样本数目，总共发送到服务器的样本数目。</li>
+  <li>Average: 也就是图形报表中的平均值，是总运行时间除以发送到服务器的请求数。</li>
+  <li>Median: 也就是图形报表中的中间值，是代表时间的数字，有一半的服务器响应时间低于该值而另一半高于该值。</li>
+  <li>90%line: 是指90%请求的响应时间比所得数值还要小。</li>
+  <li>Min:是代表时间的数字,是服务器响应的最短时间。</li>
+  <li>Max: 是代表时间的数字,是服务器响应的最长时间。</li>
+  <li>Error%: 请求的错误百分比。</li>
+  <li>Throughput: 也就是图形报表中的吞吐量，这里是服务器每单位时间处理的请求数，注意查看是秒或是分钟。</li>
+  <li>Received KB/sec: 是每秒钟接收的字节数。</li>
+  <li>Send KB/sec: 是每秒钟请求的字节数。</li>
+</ol>
+
+<h4 id="html报表报告">HTML报表报告</h4>
+<p>图中配置的所有数据写入文件test-jh.jtl，可通过命令模式将其数据生成html文档，命令如下：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># cd apache-jmeter-5.0
+# bin/jmeter.sh -g report/test-jh.jtl -e -o report/test
+</code></pre></div></div>
+<p>打开生成的html（report/test/index.html）,结果如下：</p>
+
+<h5 id="首页">首页</h5>
+<p><img src="/images/posts/tools/jmeter13.png" alt="" /></p>
+
+<h6 id="apdexapplication-performance-index">APDEX(Application Performance Index）</h6>
+<p>企业应用程序性能满意度标准，详见 <a href="#apdex">附录2 APDEX</a>。</p>
+
+<h6 id="requests-summary">Requests Summary</h6>
+<p>样本请求的成功、失败百分占比图表。</p>
+
+<h6 id="statistics">Statistics</h6>
+<p>此部分结果展示的是每个样本事务的一些常见的性能测试指标，跟我们通常看到的聚合报告的表格展示非常相近，多了成功与失败的占比。</p>
+
+<h6 id="errors">Errors</h6>
+<p>执行结果的错误情况，根据不同的错误类型进行展示。
+四列分别对应：发生错误的类型、错误数量、类型错误占比（相对于错误总数）、类型错误样本占比（相对于所有的请求样本数量）。</p>
+
+<h5 id="图表">图表</h5>
+
+<h6 id="over-time">Over Time</h6>
+<p><img src="/images/posts/tools/jmeter14.png" alt="" /></p>
+
+<ol>
+  <li>
+    <p>Response Times Over Time
+随时间推移，样本请求响应时间的变化。</p>
+  </li>
+  <li>
+    <p>Response Time Percentiles Over Time (successful responses)
+随时间变化的响应时间百分比（成功响应）</p>
+  </li>
+  <li>
+    <p>Active Threads Over Time
+活动线程随着时间的推移</p>
+  </li>
+  <li>
+    <p>Bytes Throughput Over Time
+随时间的字节吞吐量</p>
+  </li>
+  <li>
+    <p>Latencies Over Time
+随时间推移的延迟</p>
+  </li>
+  <li>
+    <p>Connect Time Over Time
+连接时间</p>
+  </li>
+</ol>
+
+<h6 id="throughput吞吐量">Throughput(吞吐量)</h6>
+<p><img src="/images/posts/tools/jmeter15.png" alt="" /></p>
+
+<ol>
+  <li>
+    <p>Hits Per Second
+每秒点击次数</p>
+  </li>
+  <li>
+    <p>Codes Per Second
+每秒代码数</p>
+  </li>
+  <li>
+    <p>Transactions Per Second
+每秒事务数</p>
+  </li>
+  <li>
+    <p>Total Transactions Per Second
+每秒总交易量</p>
+  </li>
+  <li>
+    <p>Response Time Vs Request
+响应时间与请求</p>
+  </li>
+  <li>
+    <p>Latency Vs Request
+延迟与请求</p>
+  </li>
+</ol>
+
+<h6 id="response-times响应时间">Response Times(响应时间)</h6>
+<p><img src="/images/posts/tools/jmeter16.png" alt="" /></p>
+
+<ol>
+  <li>
+    <p>Response Time Percentiles
+响应时间百分位数</p>
+  </li>
+  <li>
+    <p>Response Time Overview
+响应时间概述</p>
+  </li>
+  <li>
+    <p>Time Vs Threads
+时间与线程</p>
+  </li>
+  <li>
+    <p>Response Time Distribution
+响应时间分布</p>
+  </li>
+</ol>
+
+<h3 id="附录">附录：</h3>
+
+<h4 id="jmeter命令行参数">Jmeter命令行参数</h4>
+<p><img src="/images/posts/tools/jmeter_ps01.png" alt="" /></p>
+
+<h4 id="apdex"><span id="apdex">APDEX</span></h4>
+<p>是由 APDEX 公司推出的衡量企业应用程序性能满意度标准的计算方式。其将用户的满意度用数字衡量，范围在 0-1 之间。0表示所有用户均不满意，1表示所有用户都满意；随着满意度指数的增加，用户满意度逐步增加。设定请求样本目标响应时间为t，则可容忍的响应时间设定为目标响应时间t的4倍（即为4t）。公式定义为：（满意的样本数量 + 可容忍样本数量的一半） / 总样本数量。 计算公式如下：
+<img src="/images/posts/tools/jmeter_ps11.png" alt="" />
+例如：总样本数量为 1000，目标时间t=3s，750个样本响应时间小于等于t，150个样本响应时间在3s-12s之间，100个样本响应时间超过12s，则用户满意度为：
+<img src="/images/posts/tools/jmeter_ps12.png" alt="" /></p>
+:ET

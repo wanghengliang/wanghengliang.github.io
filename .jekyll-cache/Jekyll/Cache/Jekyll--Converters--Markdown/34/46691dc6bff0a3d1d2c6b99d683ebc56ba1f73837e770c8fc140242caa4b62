@@ -1,0 +1,84 @@
+I"<p>因为很多软件需要Ruby高版本支持，但Mac默认安装的版本为2.0，故需要升级Ruby，升级步骤如下：</p>
+
+<p>注意事项：升级osx 10.11后，brew在使用的时候就会直接报错了，会影响以下操作，因为从10.11开始，对几个重要目录的权限苹果有了新的限制，特别是/usr目录，解决办法：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo chown -R $(whoami):admin /usr/local
+</code></pre></div></div>
+
+<h2 id="第一步安装rvm">第一步：安装rvm</h2>
+<p>rvm是什么？为什么要安装rvm呢，因为rvm可以让你拥有多个版本的Ruby，并且可以在多个版本之间自由切换。</p>
+
+<p>安装命令：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ curl -L get.rvm.io | bash -s stable
+$ source ~/.rvm/scripts/rvm
+</code></pre></div></div>
+<p>检查是否安装成功：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rvm -v
+</code></pre></div></div>
+<p>如果能显示版本好则安装成功了</p>
+
+<p>如果以前安装过,可通过此命令升级rvm</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rvm get stable --auto-dotfiles
+</code></pre></div></div>
+
+<h2 id="第二步安装ruby">第二步：安装ruby</h2>
+<p>列出ruby可安装的版本信息</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rvm list known
+</code></pre></div></div>
+
+<p>安装一个ruby版本</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rvm install 2.3.3
+</code></pre></div></div>
+
+<p>设置默认版本</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rvm use 2.3.3 --default
+</code></pre></div></div>
+
+<p>查看已安装的ruby</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rvm list
+</code></pre></div></div>
+
+<p>卸载一个已安装ruby版本</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rvm remove 2.3.3
+</code></pre></div></div>
+
+<p>ps:安装过程中会下载ruby安装包,如果无法下载,可手动下载,查看安装信息找到下载路径</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Checking fallback: https://ftp.ruby-lang.org/pub/ruby/2.4/ruby-2.4.6.tar.bz2
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+ 98 12.0M   98 11.8M    0     0   6905      0  0:30:28  0:30:00  0:00:28  3856
+</code></pre></div></div>
+<p>手动下载后拷贝到rvm文件夹下的archives文件夹中,默认路径为用户下的.rvm目录<code class="highlighter-rouge">/Users/xxx/.rvm/archives</code></p>
+
+<h2 id="第三步更换源">第三步：更换源</h2>
+<p>查看已有的源</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem source -l
+*** CURRENT SOURCES ***
+
+https://rubygems.org/
+</code></pre></div></div>
+<p>然后我们需要来修改更换源（由于国内被墙）所以要把源切换至国内镜像服务器 在终端执行以下命令</p>
+
+<p>以下命令酌情执行，我未执行也成功</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gem update --system
+$ gem uninstall ruby gems -update
+</code></pre></div></div>
+
+<p>以下命令必须执行，并确保最终输出结果只有 gems.ruby-china.org</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
+$ gem sources -l
+*** CURRENT SOURCES ***
+
+https://gems.ruby-china.org
+</code></pre></div></div>
+:ET

@@ -5,9 +5,85 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Nov 2019 14:01:01 +0800</pubDate>
-    <lastBuildDate>Wed, 13 Nov 2019 14:01:01 +0800</lastBuildDate>
-    <generator>Jekyll v3.5.2</generator>
+    <pubDate>Wed, 13 Nov 2019 17:09:08 +0800</pubDate>
+    <lastBuildDate>Wed, 13 Nov 2019 17:09:08 +0800</lastBuildDate>
+    <generator>Jekyll v4.0.0</generator>
+    
+      <item>
+        <title>执行brew install命令长时间卡在 Updating Homebrew 的解决方法</title>
+        <description>&lt;p&gt;执行brew install命令长时间卡在 Updating Homebrew 的解决方法&lt;/p&gt;
+
+&lt;p&gt;在国内的网络环境下使用 Homebrew 安装软件的过程中可能会长时间卡在 Updating Homebrew 这个步骤。&lt;/p&gt;
+
+&lt;h3 id=&quot;解决方法一&quot;&gt;解决方法一&lt;/h3&gt;
+&lt;p&gt;方法 1：按住 control + c 取消本次更新操作,这个方法是临时的、一次性的&lt;/p&gt;
+
+&lt;p&gt;按住 control + c 之后命令行会显示 ^C，就代表已经取消了 Updating Homebrew 操作,大概不到 1 秒钟之后就会去执行我们真正需要的安装操作了&lt;/p&gt;
+
+&lt;h3 id=&quot;解决方法二&quot;&gt;解决方法二&lt;/h3&gt;
+&lt;p&gt;方法 2：国内镜像源进行加速&lt;/p&gt;
+
+&lt;p&gt;平时我们执行 brew 命令安装软件的时候，跟以下 4 个仓库地址有关：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;brew.git&lt;/li&gt;
+  &lt;li&gt;homebrew-core.git&lt;/li&gt;
+  &lt;li&gt;homebrew-cask.git&lt;/li&gt;
+  &lt;li&gt;homebrew-bottles&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;通过以下操作将这 4 个仓库地址全部替换为国内镜像源&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 替换成阿里巴巴的 brew.git 仓库地址:
+cd &quot;$(brew --repo)&quot;
+git remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git
+
+# 替换成阿里巴巴的 homebrew-core.git 仓库地址:
+cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;
+git remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git
+
+# 替换成中国科学技术大学的 homebrew-cask 仓库地址：
+cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-cask&quot;
+git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+
+# 替换 homebrew-bottles 访问 URL:
+echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles' &amp;gt;&amp;gt; ~/.bash_profile
+source ~/.bash_profile
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;还原官方镜像源&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 还原为官方提供的 brew.git 仓库地址
+cd &quot;$(brew --repo)&quot;
+git remote set-url origin https://github.com/Homebrew/brew.git
+
+# 还原为官方提供的 homebrew-core.git 仓库地址
+cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;
+git remote set-url origin https://github.com/Homebrew/homebrew-core.git
+
+# 还原为官方提供的 homebrew-cask.git 仓库地址
+cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-cask&quot;
+git remote set-url origin https://github.com/Homebrew/homebrew-cask.git
+
+# 还原为官方提供的 homebrew-bottles 访问地址
+vi ~/.bash_profile
+# 然后，删除 HOMEBREW_BOTTLE_DOMAIN 这一行配置
+source ~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Wed, 13 Nov 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/11/brew_update/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/11/brew_update/</guid>
+        
+        <category>MacOS</category>
+        
+        <category>brew</category>
+        
+        
+        <category>MacOS</category>
+        
+      </item>
     
       <item>
         <title>MacBook安装使用redis</title>
@@ -17,38 +93,34 @@
 
 &lt;h4 id=&quot;采用docker安装redis&quot;&gt;采用Docker安装redis&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker search redis
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker search redis
 $ docker pull redis
 $ docker images
 $ docker images redis
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;编辑脚本&lt;code class=&quot;highlighter-rouge&quot;&gt;redis-server.sh&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# -p 6379:6379 : 将容器的6379端口映射到主机的6379端口&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# -v ~/software/redis/data:/data : 将主机中/Users/xxx/software/redis/data挂载到容器的/data&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# redis-server --appendonly yes : 在容器执行redis-server启动命令，并打开redis持久化配置&lt;/span&gt;
-docker run -p 6379:6379 -v /Users/xxx/software/redis/data:/data  -d redis:latest redis-server --appendonly yes
+docker run &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 6379:6379 &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /Users/xxx/software/redis/data:/data  &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; redis:latest redis-server &lt;span class=&quot;nt&quot;&gt;--appendonly&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;yes&lt;/span&gt;
 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;提供快捷命令&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo ln -s ~/software/redis/redis-server.sh ~/bin/redis-server
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo ln -s ~/software/redis/redis-server.sh ~/bin/redis-server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;注意:需将 &lt;code class=&quot;highlighter-rouge&quot;&gt;~/bin&lt;/code&gt;添加到环境变量中&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vi ~/.bash_profile
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vi ~/.bash_profile
    export PATH=&quot;~/bin:$PATH&quot;
 
 $ source ~/.bash_profile
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;然后就可以通过redis-server启动redis服务了&lt;/p&gt;
 
@@ -78,15 +150,14 @@ $ source ~/.bash_profile
 
 &lt;h3 id=&quot;生成ssh-key&quot;&gt;生成ssh-key&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-keygen -t rsa -C “wanghengliang@outlook.com”
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-keygen -t rsa -C “wanghengliang@outlook.com”
 提示输入文件名称：github_rsa，或者直接回车则采用默认为id_rsa
 提示输入密码：直接回车采用空密码
 提示再次输入密码：直接回车采用空密码
 然后就会生成两个文件
 私钥：github_rsa
 公钥：github_rsa.pub
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;本地多个ssh-key的问题&quot;&gt;本地多个ssh-key的问题&lt;/h3&gt;
 
@@ -94,14 +165,13 @@ $ source ~/.bash_profile
 
 &lt;p&gt;2.新建配置文件，并修改权限&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;touch ~/.ssh/config
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;touch ~/.ssh/config
 chmod 600 ~/.ssh/config
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;3.编辑配置文件，这样在登陆的时候，ssh会根据登陆不同的域来读取相应的私钥文件，内容如下：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi ~/.ssh/config
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi ~/.ssh/config
 
 # #######该配置用于个人gitee上#######
 Host gitee.com
@@ -116,8 +186,7 @@ Host github.com
  PreferredAuthentications publickey
  User wanghengliang@outlook.com
  IdentityFile ~/.ssh/github_rsa
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Thu, 08 Aug 2019 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2019/08/git_skill/</link>
@@ -137,44 +206,38 @@ Host github.com
 &lt;h3 id=&quot;安装环境准备&quot;&gt;安装环境准备&lt;/h3&gt;
 &lt;p&gt;1.Docker 要求 CentOS 系统的内核版本高于 3.10 ，验证你的CentOS 版本是否支持 Docker,通过 uname -r 命令查看你当前的内核版本&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ uname -r
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ uname -r
 3.10.0-957.21.3.el7.x86_64
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;2.确保 yum 包更新到最新&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum update
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum update
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;3.卸载旧版本(未安装可跳过)&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum remove docker  docker-common docker-selinux docker-engine
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum remove docker  docker-common docker-selinux docker-engine
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;docker安装&quot;&gt;docker安装&lt;/h3&gt;
 
 &lt;p&gt;1.安装需要的软件包， yum-utils 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;2.设置yum源&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;或者&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;3.查看所有仓库中所有docker版本，并选择特定版本安装&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ yum list docker-ce --showduplicates | sort -r
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ yum list docker-ce --showduplicates | sort -r
 Loading mirror speeds from cached hostfile
 Loaded plugins: fastestmirror
 docker-ce.x86_64            3:19.03.1-3.el7                     docker-ce-stable
@@ -206,29 +269,25 @@ docker-ce.x86_64            17.03.2.ce-1.el7.centos             docker-ce-stable
 docker-ce.x86_64            17.03.1.ce-1.el7.centos             docker-ce-stable
 docker-ce.x86_64            17.03.0.ce-1.el7.centos             docker-ce-stable
 Available Packages
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;4.安装docker&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum install docker-ce  #由于repo中默认只开启stable仓库，故这里安装的是最新稳定版19.03.1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum install docker-ce  #由于repo中默认只开启stable仓库，故这里安装的是最新稳定版19.03.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;或者&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum install &amp;lt;FQPN&amp;gt;  # 例如：sudo yum install docker-ce-19.03.1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum install &amp;lt;FQPN&amp;gt;  # 例如：sudo yum install docker-ce-19.03.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;5.启动并加入开机启动&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo systemctl start docker
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo systemctl start docker
 $ sudo systemctl enable docker
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;6.验证安装是否成功(有client和service两部分表示docker安装启动都成功了)&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker version
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker version
 Client: Docker Engine - Community
  Version:           19.03.1
  API version:       1.40
@@ -256,20 +315,18 @@ Server: Docker Engine - Community
  docker-init:
   Version:          0.18.0
   GitCommit:        fec3683
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 
-docker run -name&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;aosun-website -p 80:80&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
--v /data/aosunsoft/nginx/nginx.conf:/etc/nginx/nginx.conf&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
--v /data/aosunsoft/nginx/conf.d:/etc/nginx/conf.d&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
--v /data/aosunsoft/nginx/logs:/var/log/nginx&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
--v /data/aosunsoft/wwwroot:/usr/share/nginx/html&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
--d nginx
+docker run &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;aosun-website &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 80:80&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /data/aosunsoft/nginx/nginx.conf:/etc/nginx/nginx.conf&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /data/aosunsoft/nginx/conf.d:/etc/nginx/conf.d&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /data/aosunsoft/nginx/logs:/var/log/nginx&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /data/aosunsoft/wwwroot:/usr/share/nginx/html&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; nginx
 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Wed, 07 Aug 2019 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2019/08/linux_docker/</link>
@@ -322,19 +379,17 @@ FOR /F [“options”] %%i IN (file) DO command&lt;/p&gt;
 
 &lt;p&gt;for也可以完成同样的命令：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f %%i in (a.txt) do echo %%i
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f %%i in (a.txt) do echo %%i
 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;还是先从括号执行，因为含有参数/f,所以for会先打开a.txt，然后读出a.txt里面的所有内容，把它作为一个集合，并且以每一行作为一个元素，所以会产生这样的集合，&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;“第1行第1列&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;第1行第2列&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;第1行第3列”，&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//第一个元素&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{“第1行第1列 第1行第2列 第1行第3列”， //第一个元素
 
-&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;“第2行第1列&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;第2行第2列&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;第2行第3列”，&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//第二个元素&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+“第2行第1列 第2行第2列 第2行第3列”， //第二个元素
 
-&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;“第3行第1列&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;第3行第2列&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;第3行第3列”&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//第三个元素&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+“第3行第1列 第3行第2列 第3行第3列”}   //第三个元素
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;集合中只有3个元素，同样用%%i依次代替每个元素，然后执行do后面的命令。&lt;/p&gt;
 
@@ -348,11 +403,10 @@ FOR /F [“options”] %%i IN (file) DO command&lt;/p&gt;
 
 &lt;p&gt;为了加强理解/f的作用，请执行一下两个命令，对比即可明白：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f %%i in (a.txt) do echo %%i //这个会显示a.txt里面的内容，因为/f的作用，会读出a.txt中的内容。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f %%i in (a.txt) do echo %%i //这个会显示a.txt里面的内容，因为/f的作用，会读出a.txt中的内容。
 
 for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不会读取其中的内容。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;通过上面的学习，我们发现for /f会默认以每一行来作为一个元素，但是如果我们还想把每一行再分解更小的内容，该怎么办呢？不用担心，for命令还为我们提供了更详细的参数，使我们将每一行分为更小的元素成为可能。&lt;/p&gt;
 
@@ -362,17 +416,15 @@ for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不
 
 &lt;p&gt;比如，还是上面的文件，我们执行下面的命令：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;delims= &quot; %%i in (a.txt) do echo %%i
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;delims= &quot; %%i in (a.txt) do echo %%i
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;显示的结果是：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第1行第1列
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第1行第1列
 第2行第1列
 第3行第1列
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;为什么是这样的呢。因为这里有了delims这个参数，=后面有一个空格，意思是再将每个元素以空格分割，默认是只取分割之后的第一个元素。&lt;/p&gt;
 
@@ -388,17 +440,15 @@ for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不
 
 &lt;p&gt;还是上面的例子，执行如下命令：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;tokens=2 delims= &quot; %%i in (a.txt) do echo %%i
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;tokens=2 delims= &quot; %%i in (a.txt) do echo %%i
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;执行结果：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第1行第2列
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第1行第2列
 第2行第2列
 第3行第2列
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;如果要显示第三列，那就换成tokens=3。&lt;/p&gt;
 
@@ -408,9 +458,8 @@ for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不
 
 &lt;p&gt;此时的命令为：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;tokens=2,3 delims= &quot; %%i in (a.txt) do echo %%i %%j
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;tokens=2,3 delims= &quot; %%i in (a.txt) do echo %%i %%j
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;怎么多出一个%%j？&lt;/p&gt;
 
@@ -428,33 +477,29 @@ for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不
 
 &lt;p&gt;比如：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;tokens=* delims= &quot; %%i in (a.txt) do echo %%i
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;tokens=* delims= &quot; %%i in (a.txt) do echo %%i
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;执行结果为：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第1行第1列 第1行第2列 第1行第3列
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第1行第1列 第1行第2列 第1行第3列
 第2行第1列 第2行第2列 第2行第3列
 第3行第1列 第3行第2列 第3行第3列
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;其实就跟for /f %%i in (a.txt) do echo %%i的执行结果是一样的。&lt;/p&gt;
 
 &lt;p&gt;再如：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;tokens=2,* delims= &quot; %%i in (a.txt) do echo %%i %%j
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;tokens=2,* delims= &quot; %%i in (a.txt) do echo %%i %%j
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;执行结果为：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第1行第2列 第1行第3列
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第1行第2列 第1行第3列
 第2行第2列 第2行第3列
 第3行第2列 第3行第3列
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;用%%i代替第二列，用%%j代替剩余的所有&lt;/p&gt;
 
@@ -462,14 +507,12 @@ for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不
 
 &lt;p&gt;比如：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;skip=2 tokens=*&quot; %%i in (a.txt) do echo %%i
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;skip=2 tokens=*&quot; %%i in (a.txt) do echo %%i
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;结果为:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第3行第1列 第3行第2列 第3行第3列
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第3行第1列 第3行第2列 第3行第3列
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;用skip来告诉for跳过前两行。&lt;/p&gt;
 
@@ -486,15 +529,13 @@ for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不
 第3行第1列 第3行第2列 第3行第3列&lt;/p&gt;
 
 &lt;p&gt;执行&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;eol=. tokens=*&quot; %%i in (a.txt) do echo %%i
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;eol=. tokens=*&quot; %%i in (a.txt) do echo %%i
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;结果是：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第3行第1列 第3行第2列 第3行第3列
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第3行第1列 第3行第2列 第3行第3列
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;用eol来告诉for忽略以“.”开头的行。&lt;/p&gt;
 
@@ -507,7 +548,7 @@ for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不
         <category>bat</category>
         
         
-        <category>bat</category>
+        <category>技术开发</category>
         
       </item>
     
@@ -703,7 +744,7 @@ iptables-restore &amp;lt; /etc/sysconfig/iptables.2
 
 &lt;h3 id=&quot;第一种方式&quot;&gt;第一种方式&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MYSQL_PING=`/usr/local/mysql/bin/mysqladmin -u root -p123123 ping`
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MYSQL_PING=`/usr/local/mysql/bin/mysqladmin -u root -p123123 ping`
 MYSQL_OK=&quot;mysqld is alive&quot;
 
 if [[ &quot;$MYSQL_PING&quot; != &quot;$MYSQL_OK&quot; ]]
@@ -713,12 +754,11 @@ if [[ &quot;$MYSQL_PING&quot; != &quot;$MYSQL_OK&quot; ]]
     else
         echo &quot;mysql is ok&quot;
 fi
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;第二种方式&quot;&gt;第二种方式&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PORT=&quot;0&quot;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PORT=&quot;0&quot;
 PORT=`netstat -lnt | grep 3306 | wc -l `
 echo $PORT
 if [ $PORT -eq 1 ]
@@ -731,8 +771,7 @@ echo &quot;progrome reeady to start mysql&quot;
 sudo service mysql start
 ./check_mysql.sh
 fi
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Mon, 14 Jan 2019 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2019/01/linux_mysql_monitor/</link>
@@ -758,7 +797,7 @@ C JVM是在计算机硬件系统上用软件实现的一台假想机 &lt;br /&gt
 D Java程序在执行时．JVM把Java字节码解释成机器码&lt;br /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;以下代码执行的结果显示是多少（）？
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
  public static void main(String args[]){
      Demo inc = new Demo();
      int i = 0;
@@ -770,12 +809,11 @@ D Java程序在执行时．JVM把Java字节码解释成机器码&lt;br /&gt;&lt;
      i++;
  }
 }
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;p&gt;A、0 0    B、0 1    C、1 2    D、2 3&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;检查程序，是否存在问题，如果存在指出问题所在，如果不存在，说明输出结果（）
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
  public static void main(String args[]){
      int count = 0;
      int num = 0;
@@ -786,26 +824,24 @@ D Java程序在执行时．JVM把Java字节码解释成机器码&lt;br /&gt;&lt;
      System.out.println(num*count);
  }
 }
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;p&gt;A、505000    B、0    C、运行时错误     D、5050&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;关于下面的程序，哪一个选项是正确的输出结果（）
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
  public static void main(String args[]){
      String classFile = &quot;com.scmdkj.&quot;. replaceAll(&quot;.&quot;, &quot;/&quot;) + &quot;MyClass.class&quot;;
      System.out.println(classFile);
  }
 }
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;p&gt;A、///////////MyClass.class&lt;br /&gt;
 B、com.scmdkj&lt;br /&gt;
 C、com/scmdkj/MyClass/class&lt;br /&gt;
 D、com/scmdkj/MyClass.class&lt;br /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;关于下面的程序，说法正确的是（）
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
  static String x = &quot;1&quot;;
  static int y = 1;
  public static void main (String[] args) {
@@ -813,12 +849,11 @@ D、com/scmdkj/MyClass.class&lt;br /&gt;&lt;/p&gt;
      System.out.println(x+y+z);
  }
 }
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;p&gt;A、3    B、112    C、13     D、程序有编译错误&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;有关下述Java代码描述正确的选项是（）
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
  private static void testMethod(){
      System.out.println(&quot;testMethod&quot;);
  }
@@ -826,8 +861,7 @@ D、com/scmdkj/MyClass.class&lt;br /&gt;&lt;/p&gt;
      ((Demo)null).testMethod();
  }
 }
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;p&gt;A、编译不通过&lt;br /&gt;
 B、编译通过，运行异常，报NullPointerException&lt;br /&gt;
 C、编译通过，运行异常，报NoSuchMethodException&lt;br /&gt;
@@ -848,7 +882,7 @@ C、this（）和super（）可以同时出现在一个构造函数中&lt;br /&g
 D、this（）和super（）可以在static环境中使用，包括static方法和static语句块&lt;br /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;对于如下代码段,可以放入到横线位置，使程序正确编译运行，而且不产生错误的选项是（ ）
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class A{
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class A{
  public A foo(){
      return this;
  }
@@ -861,15 +895,14 @@ class B extends A{
 class C extends B{
  _______
 }
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;p&gt;A. public void foo(){} &lt;br /&gt;
 B. public int foo(){return 1;} &lt;br /&gt;
 C. public A foo(B b){return b;} &lt;br /&gt;
 D. public A foo(){return A;}&lt;br /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;下列哪些针对代码运行结果的描述是正确的？
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Vehicle{
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Vehicle{
  private final void run(){
      System.out.println(&quot;Vehicle&quot;);
  }
@@ -882,15 +915,14 @@ public class Car extends Vehicle{
      System.out.println (&quot;Car&quot;);
  }
 }
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;p&gt;A. Car &lt;br /&gt;
 B. Vehicle &lt;br /&gt;
 C. Compiler error &lt;br /&gt;
 D. Exception thrown at runtime&lt;br /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;下列程序执行后结果为( )
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class A {
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class A {
  public int func1(int a, int b) {
      return a - b;
  }
@@ -908,24 +940,22 @@ public class ChildClass {
  System.out.println(&quot;Result=&quot; + b.func1(100, 50));
  }
 }
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;p&gt;A、 Result=150 Result=150 &lt;br /&gt;
 B、 Result=100 Result=100 &lt;br /&gt;
 C、 Result=100 Result=150 &lt;br /&gt;
 D、 Result=150 Result=100&lt;br /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;下面哪段程序能够正确的实现了GBK编码字节流到UTF-8编码字节流的转换（）
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;byte[] src,dst;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;byte[] src,dst;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;p&gt;A dst=String.fromBytes(src，”GBK”).getBytes(“UTF-8”) &lt;br /&gt;
 B dst=new String(src，”GBK”).getBytes(“UTF-8”) &lt;br /&gt;
 C dst=new String(“GBK”，src).getBytes() &lt;br /&gt;
 D dst=String.encode(String.decode(src，”GBK”))，”UTF-8” )&lt;br /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;下面输出顺序顺序的是（）
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class B extends Object{
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class B extends Object{
  static{
      System.out.println(&quot;Load B&quot;);
  }
@@ -946,8 +976,7 @@ public class Testclass{
      new A();
  }
 }
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;p&gt;A. Load B -&amp;gt;Create B-&amp;gt;Load A -&amp;gt; Create A &lt;br /&gt;
 B. Load B -&amp;gt; Load A -&amp;gt;Create B -&amp;gt;Create A &lt;br /&gt;
 C. Load B -&amp;gt; Create B-&amp;gt; Create A -&amp;gt; Load A &lt;br /&gt;
@@ -968,7 +997,7 @@ C java.lang.Exception &lt;br /&gt;
 D java.lang.Error&lt;br /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;下面函数将返回（）&lt;br /&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public static int func (){
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public static int func (){
  try{
      return 1;
  }catch (Exception e){
@@ -977,8 +1006,7 @@ D java.lang.Error&lt;br /&gt;&lt;/p&gt;
      return 3;
  }
 }
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;p&gt;A、1     B、2     C、3     D、编译错误&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
@@ -1014,14 +1042,13 @@ D. 初始化上下应用对象ApplicationContext&lt;br /&gt;&lt;/li&gt;
 A、true    B、false    C、null     D、sizeof      E、goto     F、synchronized&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;（多选题）类Parent和Child定义如下，对于如下代码段，可以放入到横线位置，使程序正确编译运行，而且不产生错误的选项是（ ）
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Parent{
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Parent{
  public float aFun(float a, float b){return a+b;}
 }
 class Child extends Parent{
  _______
 }
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;p&gt;A. float aFun(float a, float b){return a+b;} &lt;br /&gt;
 B. public int aFun(int a, int b){return a+b;} &lt;br /&gt;
 C. public float aFun(float a, float b){return a+b;} &lt;br /&gt;
@@ -1052,7 +1079,7 @@ D 在运行时调用一个对象的方法&lt;br /&gt;&lt;/li&gt;
 &lt;h3 id=&quot;简述题&quot;&gt;简述题&lt;/h3&gt;
 
 &lt;p&gt;表结构&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CREATE TABLE `TBL_ORDER`(
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CREATE TABLE `TBL_ORDER`(
 	`ID` INT(11) AUTO_INCREMENT,
 	`USER_ID` INT(11) COMMENT '用户',
 	`CODE` VARCHAR(32) COMMENT '订购结果编码 0-成功，999-失败，998-用户取消',
@@ -1068,8 +1095,7 @@ CREATE TABLE `TBL_USER`(
 	`USER_IP` VARCHAR(50) COMMENT '用户IP',
 	PRIMARY KEY(`ID`)
 )
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;ol&gt;
   &lt;li&gt;
     &lt;p&gt;统计用户人数？
@@ -1094,11 +1120,10 @@ CREATE TABLE `TBL_USER`(
 &lt;br /&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;以下js代码会出现什么情况？在什么地方显示？显示结果是什么？
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;console.log(1 &amp;amp;&amp;amp; 2 || 0);
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;console.log(1 &amp;amp;&amp;amp; 2 || 0);
 console.log(0 || 2 &amp;amp;&amp;amp; 1);
 console.log(0 &amp;amp;&amp;amp; 2 || 1);
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
     &lt;p&gt;&lt;br /&gt;
 &lt;br /&gt;
 &lt;br /&gt;
@@ -1156,7 +1181,7 @@ console.log(0 &amp;amp;&amp;amp; 2 || 1);
 &lt;ol&gt;
   &lt;li&gt;KeyPress在控件有焦点的情况下按下键时发生。&lt;/li&gt;
   &lt;li&gt;KeyPress只能捕获单个字符。&lt;/li&gt;
-  &lt;li&gt;KeyPressKeyPress主要用来捕获数字(注意：包括Shift+数字的符号)、字母（注意：包括大小写）、ANSI字符（注意:只能捕获除了F1-12、SHIFT、Alt、Ctrl、Insert、Home、PgUp、Delete、End、PgDn、ScrollLock、Pause、NumLock、{菜单键}、{开始键}和方向键外的ANSI字符，如：&lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;}&lt;/code&gt;等）.&lt;/li&gt;
+  &lt;li&gt;KeyPressKeyPress主要用来捕获数字(注意：包括Shift+数字的符号)、字母（注意：包括大小写）、ANSI字符（注意:只能捕获除了F1-12、SHIFT、Alt、Ctrl、Insert、Home、PgUp、Delete、End、PgDn、ScrollLock、Pause、NumLock、{菜单键}、{开始键}和方向键外的ANSI字符，如：&lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;{&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;}&lt;/code&gt;等）.&lt;/li&gt;
   &lt;li&gt;KeyPress不显示键盘的物理状态（SHIFT键），而只是传递一个字符,KeyPress 将每个字符的大、小写形式作为不同的键代码解释，即作为两种不同的字符，（区分大小写）。&lt;/li&gt;
   &lt;li&gt;KeyPress 不区分小键盘和主键盘的数字字符。&lt;/li&gt;
 &lt;/ol&gt;
@@ -1234,19 +1259,17 @@ console.log(0 &amp;amp;&amp;amp; 2 || 1);
 
 &lt;p&gt;至此，原理上的铺垫就全部完成了，最后要解决的就是如何据此自行制作动态壁纸。显然，这涉及到格式转换、信息编码等操作，全部手工完成会非常繁琐。好在，已经有开发者制作出了 &lt;a href=&quot;https://github.com/mczachurski/wallpapper&quot;&gt;命令行工具&lt;/a&gt; ，可以使用 Homebrew 安装：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ brew tap mczachurski/wallpapper &amp;amp;&amp;amp; brew install wallpapper
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ brew tap mczachurski/wallpapper &amp;amp;&amp;amp; brew install wallpapper
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;这里简单介绍一下该工具的使用方法。首先，将想要制作成动态壁纸的图片文件按序号依次命名。然后在 同一目录 下创建一个 JSON 文件（如 config.json ），在其中逐行指定照片的参数：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[
 {&quot;fileName&quot;:&quot;1.png&quot;,&quot;isPrimary&quot;:false,&quot;isForLight&quot;:false,&quot;isForDark&quot;:false,&quot;altitude&quot;:-0.34275283875350282,&quot;azimuth&quot;:270.9334057827345},
 …
 {&quot;fileName&quot;:&quot;16.png&quot;,&quot;isPrimary&quot;:false,&quot;isForLight&quot;:false,&quot;isForDark&quot;:false,&quot;altitude&quot;:-38.04743388682423,&quot;azimuth&quot;:53.509085812513092}
 ]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;其中， fileName 为文件名， isPrimary 表示是否将图片用作记录整套壁纸元信息的「首要图片」， isForLight 和 isForDark 分别指是否用作开启亮/暗两种「静态」选项时使用的图片， altitude 和 azimuth 则是照片对应的高度角和方位角。&lt;/p&gt;
 
@@ -1267,35 +1290,6 @@ console.log(0 &amp;amp;&amp;amp; 2 || 1);
         
         
         <category>MacOS</category>
-        
-      </item>
-    
-      <item>
-        <title>JAVA异常处理</title>
-        <description>&lt;p&gt;JAVA异常处理&lt;/p&gt;
-
-&lt;p&gt;要理解Java异常处理是如何工作的，你需要掌握以下三种类型的异常：&lt;/p&gt;
-
-&lt;p&gt;检查性异常: 最具代表的检查性异常是用户错误或问题引起的异常，这是程序员无法预见的。例如要打开一个不存在文件时，一个异常就发生了，这些异常在编译时不能被简单地忽略。&lt;/p&gt;
-
-&lt;p&gt;运行时异常: 运行时异常是可能被程序员避免的异常。与检查性异常相反，运行时异常可以在编译时被忽略。&lt;/p&gt;
-
-&lt;p&gt;错误: 错误不是异常，而是脱离程序员控制的问题。错误在代码中通常被忽略。例如，当栈溢出时，一个错误就发生了，它们在编译也检查不到的。&lt;/p&gt;
-
-&lt;h3 id=&quot;参考资料&quot;&gt;参考资料&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.runoob.com/java/java-exceptions.html&quot;&gt;Java 异常处理&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 01 Nov 2018 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2018/11/java_exception/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/11/java_exception/</guid>
-        
-        <category>JAVA</category>
-        
-        <category>异常</category>
-        
-        
-        <category>技术开发</category>
         
       </item>
     

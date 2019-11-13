@@ -175,24 +175,21 @@
 
 <h3 id="安装tomcat">安装Tomcat</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># mkdir /usr/local/tomcat
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># mkdir /usr/local/tomcat
 # cd /usr/local/tomcat
 # tar -zxvf /opt/apache-tomcat-7.0.54.tar.gz
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>生成链接以便版本升级</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># ln -s apache-tomcat-7.0.54 server
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># ln -s apache-tomcat-7.0.54 server
+</code></pre></div></div>
 
 <p>升级时候先删除原来的后重新生成新的</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># rm -rf ./server
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># rm -rf ./server
 # ln -s apache-tomcat-7.0.92 server
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="配置tomcat">配置Tomcat</h3>
 
@@ -211,35 +208,32 @@ CATALINA_OUT="$CATALINA_BASE"/logs/catalina.out; //此行内的"$CATALINA_BASE",
 <p>修改localhost、catalina、manager、host-manager日志路径
 打开Tomcat目录conf/logging.properties，修改</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># vi /usr/local/tomcat/server/conf/logging.properties
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># vi /usr/local/tomcat/server/conf/logging.properties
 //分别修改其路径，将${catalina.base}更改为想要更换的目录
 1catalina.org.apache.juli.AsyncFileHandler.directory = ${catalina.base}/logs
 2localhost.org.apache.juli.AsyncFileHandler.directory = ${catalina.base}/logs
 3manager.org.apache.juli.AsyncFileHandler.directory = ${catalina.base}/logs
 4host-manager.org.apache.juli.AsyncFileHandler.directory = ${catalina.base}/logs
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>修改localhost_access_log日志路径
 打开Tomcat目录conf/server.xml,修改</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># vi /usr/local/tomcat/server/conf/server.xml
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># vi /usr/local/tomcat/server/conf/server.xml
 //修改directory为想要更换的目录
 &lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="/usr/local/tomcats/logs" ...&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h5 id="删除自带的项目">删除自带的项目</h5>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># cd /usr/local/tomcat/server/webapps
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># cd /usr/local/tomcat/server/webapps
 # rm -rf *
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h5 id="配置虚拟主机">配置虚拟主机</h5>
 <h6 id="方法1直接配置confserverxml配置虚拟主机">方法1，直接配置conf/server.xml配置虚拟主机</h6>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;Engine name="Catalina" defaultHost="wwww.aaa.com"&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Engine name="Catalina" defaultHost="wwww.aaa.com"&gt;
     &lt;Host name="www.aaa.com" appBase="webapps_1" autoDeploy="true" unpackWARs="true" xmlNamespaceAware="false" xmlValidation="false"&gt;
         &lt;Alias&gt;aaa.com&lt;/Alias&gt;
         &lt;Context path="/" docBase="./war/aaa.war" reloadable="true" /&gt;
@@ -251,23 +245,21 @@ CATALINA_OUT="$CATALINA_BASE"/logs/catalina.out; //此行内的"$CATALINA_BASE",
         &lt;Context path="/" docBase="./war/ccc.war" reloadable="true" /&gt;
     &lt;/Host&gt;
 &lt;/Engine&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h6 id="方法2confserverxml引入子文件配置虚拟主机">方法2，conf/server.xml引入子文件配置虚拟主机</h6>
 <p>在<server>元素前添加如下格式：</server></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE server-xml [
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE server-xml [
   &lt;!ENTITY localhost-vhost SYSTEM "file:///usr/local/tomcat/conf/vhost/localhost.xml"&gt;</span>
 ]&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>并在<Engine>...</Engine>引用它（localhost-vhost，注：不能以数字开头）即可。</p>
 
 <p>完整代码如下：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="cp">&lt;!DOCTYPE server-xml [
 &lt;!ENTITY vhost-wwww.aaa.com SYSTEM "file:///usr/local/tomcat/conf/vhost/wwww.aaa.com.xml"&gt;</span>
 <span class="cp">&lt;!ENTITY vhost-wwww.bbb.com SYSTEM "file:///usr/local/tomcat/conf/vhost/wwww.bbb.com.xml"&gt;</span>
@@ -284,28 +276,25 @@ CATALINA_OUT="$CATALINA_BASE"/logs/catalina.out; //此行内的"$CATALINA_BASE",
     <span class="nt">&lt;/Engine&gt;</span>
   <span class="nt">&lt;/Service&gt;</span>
 <span class="nt">&lt;/Server&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>每个单独虚拟主机文件内容如下:
 /usr/local/tomcat/conf/vhost/www.aaa.com.xml</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;Host name="wwww.aaa.com" appBase="webapps" unpackWARs="true" autoDeploy="true"&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Host name="wwww.aaa.com" appBase="webapps" unpackWARs="true" autoDeploy="true"&gt;
     &lt;Alias&gt;www.aaa.cn&lt;/Alias&gt;
     &lt;Context path="" docBase="/data/wwwroot/aaa" debug="0" reloadable="false" crossContext="true"/&gt;
     &lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" prefix="wwww.aaa.com_access_log." suffix=".txt" pattern="%h %l %u %t &amp;quot;%r&amp;quot; %s %b" /&gt;
 &lt;/Host&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>/usr/local/tomcat/conf/vhost/www.bbb.com.xml</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;Host name="wwww.bbb.com" appBase="webapps" unpackWARs="true" autoDeploy="true"&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Host name="wwww.bbb.com" appBase="webapps" unpackWARs="true" autoDeploy="true"&gt;
     &lt;Context path="" docBase="/data/wwwroot/bbb" debug="0" reloadable="false" crossContext="true"/&gt;
     &lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" prefix="wwww.bbb.com_access_log." suffix=".txt" pattern="%h %l %u %t &amp;quot;%r&amp;quot; %s %b" /&gt;
 &lt;/Host&gt;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h5 id="一台机器安装多个tomcat">一台机器安装多个Tomcat</h5>
 

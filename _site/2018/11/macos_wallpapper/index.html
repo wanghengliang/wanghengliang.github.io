@@ -207,19 +207,17 @@
 
 <p>至此，原理上的铺垫就全部完成了，最后要解决的就是如何据此自行制作动态壁纸。显然，这涉及到格式转换、信息编码等操作，全部手工完成会非常繁琐。好在，已经有开发者制作出了 <a href="https://github.com/mczachurski/wallpapper">命令行工具</a> ，可以使用 Homebrew 安装：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ brew tap mczachurski/wallpapper &amp;&amp; brew install wallpapper
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew tap mczachurski/wallpapper &amp;&amp; brew install wallpapper
+</code></pre></div></div>
 
 <p>这里简单介绍一下该工具的使用方法。首先，将想要制作成动态壁纸的图片文件按序号依次命名。然后在 同一目录 下创建一个 JSON 文件（如 config.json ），在其中逐行指定照片的参数：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[
 {"fileName":"1.png","isPrimary":false,"isForLight":false,"isForDark":false,"altitude":-0.34275283875350282,"azimuth":270.9334057827345},
 …
 {"fileName":"16.png","isPrimary":false,"isForLight":false,"isForDark":false,"altitude":-38.04743388682423,"azimuth":53.509085812513092}
 ]
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>其中， fileName 为文件名， isPrimary 表示是否将图片用作记录整套壁纸元信息的「首要图片」， isForLight 和 isForDark 分别指是否用作开启亮/暗两种「静态」选项时使用的图片， altitude 和 azimuth 则是照片对应的高度角和方位角。</p>
 

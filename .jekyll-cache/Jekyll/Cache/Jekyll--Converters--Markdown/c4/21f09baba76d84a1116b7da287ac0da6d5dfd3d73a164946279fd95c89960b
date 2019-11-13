@@ -1,0 +1,377 @@
+I"}3<h3 id="选择题">选择题</h3>
+
+<ol>
+  <li>
+    <p>下面对JVM叙述不正确的是：（） <br />
+A JVM的全称是Java Virtual Machine <br />
+B JVM是一种计算机硬件技术，它是Java程序的运行平台 <br />
+C JVM是在计算机硬件系统上用软件实现的一台假想机 <br />
+D Java程序在执行时．JVM把Java字节码解释成机器码<br /></p>
+  </li>
+  <li>以下代码执行的结果显示是多少（）？
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class Demo {
+ public static void main(String args[]){
+     Demo inc = new Demo();
+     int i = 0;
+     inc.fermin(i);
+     i = i++;
+     System.out.println((i++)+" "+i);
+ }
+ void fermin(int i){
+     i++;
+ }
+}
+</code></pre></div>    </div>
+    <p>A、0 0    B、0 1    C、1 2    D、2 3</p>
+  </li>
+  <li>检查程序，是否存在问题，如果存在指出问题所在，如果不存在，说明输出结果（）
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class Demo {
+ public static void main(String args[]){
+     int count = 0;
+     int num = 0;
+     for(int i=0;i&lt;=100;i++){
+         num = num+i;
+         count = count++;
+     }
+     System.out.println(num*count);
+ }
+}
+</code></pre></div>    </div>
+    <p>A、505000    B、0    C、运行时错误     D、5050</p>
+  </li>
+  <li>关于下面的程序，哪一个选项是正确的输出结果（）
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class Demo {
+ public static void main(String args[]){
+     String classFile = "com.scmdkj.". replaceAll(".", "/") + "MyClass.class";
+     System.out.println(classFile);
+ }
+}
+</code></pre></div>    </div>
+    <p>A、///////////MyClass.class<br />
+B、com.scmdkj<br />
+C、com/scmdkj/MyClass/class<br />
+D、com/scmdkj/MyClass.class<br /></p>
+  </li>
+  <li>关于下面的程序，说法正确的是（）
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class Demo {
+ static String x = "1";
+ static int y = 1;
+ public static void main (String[] args) {
+     static int z= 2;
+     System.out.println(x+y+z);
+ }
+}
+</code></pre></div>    </div>
+    <p>A、3    B、112    C、13     D、程序有编译错误</p>
+  </li>
+  <li>有关下述Java代码描述正确的选项是（）
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class Demo {
+ private static void testMethod(){
+     System.out.println("testMethod");
+ }
+ public static void main(String[] args) {
+     ((Demo)null).testMethod();
+ }
+}
+</code></pre></div>    </div>
+    <p>A、编译不通过<br />
+B、编译通过，运行异常，报NullPointerException<br />
+C、编译通过，运行异常，报NoSuchMethodException<br />
+D、运行正常，输出testMethod<br /></p>
+  </li>
+  <li>
+    <p>以下关于final关键字说法错误的是（）<br />
+A、final是java中的修饰符，可以修饰类、接口、抽象类、方法和属性<br />
+B、final修饰的类肯定不能被继承<br />
+C、final修饰的方法不能被重载<br />
+D、final修饰的变量不允许被再次赋值<br /></p>
+  </li>
+  <li>
+    <p>在使用super和this关键字时，以下描述正确的是（）<br />
+A、在子类构造方法中使用super（）显示调用父类的构造方法，super（）必须写在子类构造方法的第一行，否则编译不通过<br />
+B、super（）和this（）不一定要放在构造方法内第一行<br />
+C、this（）和super（）可以同时出现在一个构造函数中<br />
+D、this（）和super（）可以在static环境中使用，包括static方法和static语句块<br /></p>
+  </li>
+  <li>对于如下代码段,可以放入到横线位置，使程序正确编译运行，而且不产生错误的选项是（ ）
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class A{
+ public A foo(){
+     return this;
+ }
+}
+class B extends A{
+ public A foo(){
+     return this;
+ }
+}
+class C extends B{
+ _______
+}
+</code></pre></div>    </div>
+    <p>A. public void foo(){} <br />
+B. public int foo(){return 1;} <br />
+C. public A foo(B b){return b;} <br />
+D. public A foo(){return A;}<br /></p>
+  </li>
+  <li>下列哪些针对代码运行结果的描述是正确的？
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Vehicle{
+ private final void run(){
+     System.out.println("Vehicle");
+ }
+}
+public class Car extends Vehicle{
+ public static void main (String[] args){
+     new Car().run();
+ }
+ private final void run(){
+     System.out.println ("Car");
+ }
+}
+</code></pre></div>    </div>
+    <p>A. Car <br />
+B. Vehicle <br />
+C. Compiler error <br />
+D. Exception thrown at runtime<br /></p>
+  </li>
+  <li>下列程序执行后结果为( )
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class A {
+ public int func1(int a, int b) {
+     return a - b;
+ }
+}
+class B extends A {
+ public int func1(int a, int b) {
+     return a + b;
+ }
+}
+public class ChildClass {
+ public static void main(String[] args) {
+ A a = new B();
+ B b = new B();
+ System.out.println("Result=" + a.func1(100, 50));
+ System.out.println("Result=" + b.func1(100, 50));
+ }
+}
+</code></pre></div>    </div>
+    <p>A、 Result=150 Result=150 <br />
+B、 Result=100 Result=100 <br />
+C、 Result=100 Result=150 <br />
+D、 Result=150 Result=100<br /></p>
+  </li>
+  <li>下面哪段程序能够正确的实现了GBK编码字节流到UTF-8编码字节流的转换（）
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>byte[] src,dst;
+</code></pre></div>    </div>
+    <p>A dst=String.fromBytes(src，”GBK”).getBytes(“UTF-8”) <br />
+B dst=new String(src，”GBK”).getBytes(“UTF-8”) <br />
+C dst=new String(“GBK”，src).getBytes() <br />
+D dst=String.encode(String.decode(src，”GBK”))，”UTF-8” )<br /></p>
+  </li>
+  <li>下面输出顺序顺序的是（）
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class B extends Object{
+ static{
+     System.out.println("Load B");
+ }
+ public B(){
+     System.out.println("Create B");
+ }
+}
+class A extends B{
+ static{
+     System.out.println("Load A");
+ }
+ public A(){
+     System.out.println("Create A");
+ }
+}
+public class Testclass{
+ public static void main(String[] args){
+     new A();
+ }
+}
+</code></pre></div>    </div>
+    <p>A. Load B -&gt;Create B-&gt;Load A -&gt; Create A <br />
+B. Load B -&gt; Load A -&gt;Create B -&gt;Create A <br />
+C. Load B -&gt; Create B-&gt; Create A -&gt; Load A <br />
+D. Create B -&gt;Create A -&gt;Load B -&gt;Load A<br /></p>
+  </li>
+  <li>
+    <p>以下说法错误的是（） <br />
+A 虚拟机中没有泛型，只有普通类和普通方法 <br />
+B 所有泛型类的类型参数在编译时都会被擦除 <br />
+C 创建泛型对象时请指明类型，让编译器尽早的做参数检查 <br />
+D 泛型的类型擦除机制意味着不能在运行时动态获取List中T的实际类型<br /></p>
+  </li>
+  <li>
+    <p>请问所有的异常类皆直接继承于哪一个类？（） <br />
+A java.applet.Applet <br />
+B java.lang.Throwable <br />
+C java.lang.Exception <br />
+D java.lang.Error<br /></p>
+  </li>
+  <li>下面函数将返回（）<br />
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public static int func (){
+ try{
+     return 1;
+ }catch (Exception e){
+     return 2;
+ }finally{
+     return 3;
+ }
+}
+</code></pre></div>    </div>
+    <p>A、1     B、2     C、3     D、编译错误</p>
+  </li>
+  <li>
+    <p>下列不属于WebService 涉及到的主要标准和技术的是___<br />
+A、XML    B、SOAP    C、WSDL      D、JAVA</p>
+  </li>
+  <li>
+    <p>下列不属于WebService 特征的是___<br />
+A. WebService具有良好的封装性<br />
+B. WebService与使用者是松散耦合的<br />
+C. WebService具有高度的可集成性<br />
+D. WebService使用的协议非常简单，通常可以自行解析，不需要使用第三方的库<br /></p>
+  </li>
+  <li>
+    <p>下面关于spring描述错误的是：（ ）<br />
+A  Spring支持可插入的事务管理器，使事务划分更轻松，同时无需处理底层的问题。<br />
+B  Spring事务管理的通用抽象层还包括JTA策略和一个JDBC DataSource。<br />
+C  与JTA或EJB CMT一样，Spring的事务支持依赖于Java EE环境。<br />
+D  Spring事务语义通过AOP应用于 POJO，通过XML或Java SE 5注释进行配置。<br /></p>
+  </li>
+  <li>关于Spring MVC的核心控制器DispatcherServlet的作用，以下说法错误的是（  ）？<br />
+A. 它负责接收HTTP请求<br />
+B. 加载配置文件<br />
+C. 实现业务操作<br />
+D. 初始化上下应用对象ApplicationContext<br /></li>
+</ol>
+
+<h3 id="多选题">多选题</h3>
+
+<ol>
+  <li>
+    <p>（多选题）true、false、null、sizeof、goto、synchronized 哪些是Java关键字（）<br />
+A、true    B、false    C、null     D、sizeof      E、goto     F、synchronized</p>
+  </li>
+  <li>（多选题）类Parent和Child定义如下，对于如下代码段，可以放入到横线位置，使程序正确编译运行，而且不产生错误的选项是（ ）
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Parent{
+ public float aFun(float a, float b){return a+b;}
+}
+class Child extends Parent{
+ _______
+}
+</code></pre></div>    </div>
+    <p>A. float aFun(float a, float b){return a+b;} <br />
+B. public int aFun(int a, int b){return a+b;} <br />
+C. public float aFun(float a, float b){return a+b;} <br />
+D. private int aFun(int a, int b){return a+b;}<br /></p>
+  </li>
+  <li>
+    <p>（多选题）常用的servlet包的名称是？（） <br />
+A java.servlet <br />
+B javax.servlet <br />
+C servlet.http <br />
+D javax.servlet.http<br /></p>
+  </li>
+  <li>
+    <p>（多选题）下面有关forward和redirect的描述，正确的是() ？ <br />
+A forward是服务器将控制权转交给另外一个内部服务器对象，由新的对象来全权负责响应用户的请求 <br />
+B 执行forward时，浏览器不知道服务器发送的内容是从何处来，浏览器地址栏中还是原来的地址 <br />
+C 执行redirect时，服务器端告诉浏览器重新去请求地址 <br />
+D forward是内部重定向，redirect是外部重定向 <br />
+E redirect默认将产生301 Permanently moved的HTTP响应<br /></p>
+  </li>
+  <li>（多选题）JAVA反射机制主要提供了以下哪些功能？（）<br />
+A 在运行时判断一个对象所属的类 <br />
+B 在运行时构造一个类的对象 <br />
+C 在运行时判断一个类所具有的成员变量和方法 <br />
+D 在运行时调用一个对象的方法<br /></li>
+</ol>
+
+<h3 id="简述题">简述题</h3>
+
+<p>表结构</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE `TBL_ORDER`(
+	`ID` INT(11) AUTO_INCREMENT,
+	`USER_ID` INT(11) COMMENT '用户',
+	`CODE` VARCHAR(32) COMMENT '订购结果编码 0-成功，999-失败，998-用户取消',
+	`CHANNEL_ID` INT(11) COMMENT '栏目id',
+	`CREATE_TIME` TIMESTAMP COMMENT '统计时间',
+	PRIMARY KEY(`ID`)
+)
+
+CREATE TABLE `TBL_USER`(
+	`ID` INT(11) AUTO_INCREMENT,
+	`USER_NAME` VARCHAR(32) COMMENT '用户登录名',
+	`TEL` VARCHAR(11) COMMENT '电话号码',
+	`USER_IP` VARCHAR(50) COMMENT '用户IP',
+	PRIMARY KEY(`ID`)
+)
+</code></pre></div></div>
+<ol>
+  <li>
+    <p>统计用户人数？
+<br />
+<br />
+<br />
+<br /></p>
+  </li>
+  <li>
+    <p>统计订购成功、订购失败、用户退出订购人数？
+<br />
+<br />
+<br />
+<br /></p>
+  </li>
+  <li>
+    <p>查询昨天订购成功的用户信息？
+<br />
+<br />
+<br />
+<br />
+<br /></p>
+  </li>
+  <li>以下js代码会出现什么情况？在什么地方显示？显示结果是什么？
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>console.log(1 &amp;&amp; 2 || 0);
+console.log(0 || 2 &amp;&amp; 1);
+console.log(0 &amp;&amp; 2 || 1);
+</code></pre></div>    </div>
+    <p><br />
+<br />
+<br />
+<br /></p>
+  </li>
+  <li>编写一个方法 去掉一个数组的重复元素
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br /></li>
+</ol>
+
+<h3 id="应用题">应用题</h3>
+
+<ol>
+  <li>用js写一个拼图游戏（3x3或可配置）,要求如下：<br />
+1、通过键盘<code class="highlighter-rouge">方向键</code>进行选择拼块<code class="highlighter-rouge">确定键</code>进行移动，无法移动拼块进行<code class="highlighter-rouge">此拼块无法移动</code>提示<br />
+2、进入游戏后可观察3秒原图后自动打乱拼图<br />
+3、拼图成功后可通过回调函数进行自定义成功后续操作<br />
+4、加入倒计时，5分钟无法完成游戏给出<code class="highlighter-rouge">拼图失败</code>提示<br /><br /></li>
+</ol>
+
+:ET

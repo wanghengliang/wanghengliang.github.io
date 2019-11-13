@@ -1,0 +1,71 @@
+I"$<p>MacOS使用小技巧整理，持续更新</p>
+
+<h3 id="finder始终显示用户资料库">Finder始终显示用户「资料库」</h3>
+
+<ol>
+  <li>打开终端，运行以下命令：</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chflags nohidden ~/Library/
+</code></pre></div></div>
+
+<h3 id="macos-sierra-如何打开任何来源">macOS Sierra 如何打开任何来源</h3>
+
+<ol>
+  <li>打开终端，运行以下命令：</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo spctl --master-disable
+</code></pre></div></div>
+
+<ol>
+  <li>打开应用程序-系统偏好设置-安全性和隐私-通用，消失的任何来源终于出现了（默认应该勾选了）；</li>
+</ol>
+
+<blockquote>
+  <p>如果你不喜欢用终端输入命令的方式打开任何来源选项，你也可以通过另一种方法来打开第三方应用程序： 按住Control键并点按或右键点按该app的图标，点击打开即可出现“打开”选项，是不是也很方便？大家按照自己的喜欢选择这两种方法即可在macOS Sierra下打开第三方应用。</p>
+</blockquote>
+
+<h3 id="mac-os-x的升级或其他原因可能会导致ｍysql启动或开机自动运行失败">Mac OS X的升级或其他原因可能会导致ＭySQL启动或开机自动运行失败</h3>
+
+<p>在ＭySQL操作面板上会提示 <em>Warning:The /usr/local/mysql/data directory is not owned by the ‘mysql‘ or ‘_mysql‘</em></p>
+
+<p>只需要运行如下命令即可</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo chown -R mysql /usr/local/mysql/data
+</code></pre></div></div>
+
+<h3 id="finder里排序如何让文件夹优先">Finder里排序如何让文件夹优先</h3>
+
+<p>打开Finder，选择「偏好设置」- 选择高级选项 - 勾选<code class="highlighter-rouge">按名称排序时保持文件夹在顶部</code></p>
+
+<p><img src="/images/posts/macos/finder_settings.png" alt="" /></p>
+
+<h3 id="替换mac1012-finder图标">替换mac10.12 finder图标</h3>
+
+<ol>
+  <li>准备图标文件，用图片工具打开，⌘+A全选，⌘+c复制图片</li>
+  <li>邮件要修改文件夹，选择显示简介。</li>
+  <li>先选中简介中上面的小图标，⌘+v粘贴，图标显示已经更换，直接关掉简介就好了。</li>
+</ol>
+
+<h3 id="清理硬盘空间大小">清理硬盘空间大小</h3>
+
+<ol>
+  <li>删除所有系统日志——可以节省出100MB-2GB硬盘空间</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># cd /private/var/log 
+# ls /private/var/log //查看文件后自行考虑是否删除，删除哪些
+# sudo rm -rf /private/var/log/*
+</code></pre></div></div>
+
+<ol>
+  <li>清除缓存文件——可以节省1GB-10GB硬盘空间</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># cd ~/Library/Caches/
+# ls ~/Library/Caches/ //查看文件后自行考虑是否删除，删除哪些
+# rm -rf ~/Library/Caches/*
+</code></pre></div></div>
+:ET

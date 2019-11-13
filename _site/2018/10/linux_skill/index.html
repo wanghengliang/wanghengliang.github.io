@@ -196,9 +196,8 @@
 </ol>
 
 <h3 id="图形界面切换命令行界面">图形界面切换命令行界面</h3>
-<div class="highlighter-rouge"><pre class="highlight"><code>ctrl+alt+F2
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ctrl+alt+F2
+</code></pre></div></div>
 
 <h3 id="同步时间">同步时间</h3>
 
@@ -206,24 +205,22 @@
   <li>安装ntp服务</li>
 </ol>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>yum install ntp
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum install ntp
+</code></pre></div></div>
 
 <ol>
   <li>加入crontab</li>
 </ol>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>vi /etc/crontab
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/crontab
 
 ## 加入如下内容
 * */1 * * * root ntpdate 0.asia.pool.ntp.org
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="linux下对一个文件设置多个组的权限">linux下对一个文件设置多个组的权限</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>//获得文件的访问控制列表
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//获得文件的访问控制列表
 [user1@localhost dir]$ getfacl dir001
 # file: dir001
 # owner: user1
@@ -257,8 +254,7 @@ group:user1:rw-
 mask::rw-
 other::r--
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="升级zlib步骤顺序错误导致误删zlib后果很严重">升级zlib步骤(顺序错误导致误删zlib后果很严重)</h3>
 
@@ -271,21 +267,19 @@ other::r--
   </li>
 </ol>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># tar -zxvf zlib-1.2.11.tar.gz
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># tar -zxvf zlib-1.2.11.tar.gz
 # cd zlib-1.2.11
 # ./configure
 # make &amp;&amp; make install
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>编译是可能报错</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Compiler error reporting is too harsh for ./configure (perhaps remove -Werror).
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Compiler error reporting is too harsh for ./configure (perhaps remove -Werror).
+</code></pre></div></div>
 
 <p>解决办法是，打开configure文件删除以下行</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>echo "Checking for obsessive-compulsive compiler options..." &gt;&gt; configure.log
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "Checking for obsessive-compulsive compiler options..." &gt;&gt; configure.log
 
 if try $CC -c $CFLAGS $test.c; then
   :
@@ -293,8 +287,7 @@ else
   echo "Compiler error reporting is too harsh for $0 (perhaps remove -Werror)." | tee -a configure.log
   leave 1
 fi
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <ol>
   <li>不用执行卸载zlib命令，误删后基本上所有的命令都执行不了</li>
@@ -305,34 +298,30 @@ a，尝试利用ext3grep进行找回/lib 和/usr/lib下的库文件（可能是/
 b，从其他机子或者u盘拷贝回来libz.so.1.y.z文件
 c，从新安装新版本(可能无法编译，可能需要旧版本的zlib)</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ln -s /usr/lib/libz.so.1.y.z /usr/lib/libz.so.1
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ln -s /usr/lib/libz.so.1.y.z /usr/lib/libz.so.1
 ln -s /usr/lib/libz.so.1.y.z /usr/lib/libz.so
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="修改主机名">修改主机名</h3>
 <p>1.centos6修改方法</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ vi /etc/sysconfig/network
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ vi /etc/sysconfig/network
 $ vi /etc/hosts
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>2.centos7修改方法</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ vi /etc/hostname
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ vi /etc/hostname
 $ vi /etc/hosts
 $ reboot
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="常用软件安装">常用软件安装</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ yum install lrzsz
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ yum install lrzsz
 
 $ yum install -y unzip zip
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="其他">其他</h3>
 
@@ -340,21 +329,18 @@ $ yum install -y unzip zip
 
 <p>查看当前目录下的文件数量（不包含子目录中的文件）</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ls -l|grep "^-"| wc -l
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls -l|grep "^-"| wc -l
+</code></pre></div></div>
 
 <p>查看当前目录下的文件数量（包含子目录中的文件）</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ls -lR|grep "^-"| wc -l
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls -lR|grep "^-"| wc -l
+</code></pre></div></div>
 
 <p>查看当前目录下的文件夹目录个数（不包含子目录中的目录）</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ls -l|grep "^d"| wc -l
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ls -l|grep "^d"| wc -l
+</code></pre></div></div>
 
 
 

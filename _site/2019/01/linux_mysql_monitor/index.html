@@ -176,7 +176,7 @@
 
 <h3 id="第一种方式">第一种方式</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>MYSQL_PING=`/usr/local/mysql/bin/mysqladmin -u root -p123123 ping`
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MYSQL_PING=`/usr/local/mysql/bin/mysqladmin -u root -p123123 ping`
 MYSQL_OK="mysqld is alive"
 
 if [[ "$MYSQL_PING" != "$MYSQL_OK" ]]
@@ -186,12 +186,11 @@ if [[ "$MYSQL_PING" != "$MYSQL_OK" ]]
     else
         echo "mysql is ok"
 fi
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="第二种方式">第二种方式</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>PORT="0"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PORT="0"
 PORT=`netstat -lnt | grep 3306 | wc -l `
 echo $PORT
 if [ $PORT -eq 1 ]
@@ -204,8 +203,7 @@ echo "progrome reeady to start mysql"
 sudo service mysql start
 ./check_mysql.sh
 fi
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
   </section>

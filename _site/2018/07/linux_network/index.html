@@ -176,35 +176,31 @@
 
 <h4 id="查看ip地址">查看IP地址</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># ifconfig
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># ifconfig
+</code></pre></div></div>
 
 <h4 id="网络接口配置文件修改配置">网络接口配置文件修改配置</h4>
 
 <p>文件路径是/etc/sysconfig/network-scripts/</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># vi /etc/sysconfig/network-scripts/ifcfg-网络接口名称
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># vi /etc/sysconfig/network-scripts/ifcfg-网络接口名称
+</code></pre></div></div>
 
 <p>修改以下配置</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>TYPE=Ethernet
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TYPE=Ethernet
 BOOTPROTO=static
 HWADDR=00:0c:29:ce:3f:3c  #MAC地址
 IPADDR=192.168.1.104     #静态IP
 GATEWAY=192.168.1.2     #默认网关
 NETMASK=255.255.255.0    #子网掩码
 DNS1=192.168.1.2         #DNS配置
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="重启网络服务">重启网络服务</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># service network restart
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># service network restart
+</code></pre></div></div>
 
 
   </section>

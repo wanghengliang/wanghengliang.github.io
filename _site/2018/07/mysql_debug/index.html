@@ -183,7 +183,7 @@
   </li>
 </ol>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># 查询是否启用Log功能
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 查询是否启用Log功能
 mysql&gt; SHOW VARIABLES LIKE "general_log%";
 +--------------------+--------------------------------------------------+
 | Variable_name      |    Value                                         |
@@ -194,16 +194,14 @@ mysql&gt; SHOW VARIABLES LIKE "general_log%";
 # 启用Log功能
 mysql&gt; SET GLOBAL general_log = 'ON';
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <ol>
   <li>设置Log文件地址(所有Sql语句都会在general_log_file里)，采用默认则不设置</li>
 </ol>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; SET GLOBAL general_log_file = 'c:\mysql.log';
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; SET GLOBAL general_log_file = 'c:\mysql.log';
+</code></pre></div></div>
 
 <ol>
   <li>执行mysql命令然后查看设置的Log文件，也可用其他可视化工具进行查看。</li>
@@ -213,7 +211,7 @@ mysql&gt; SET GLOBAL general_log = 'ON';
 
 <p>Threads_connected 跟show processlist结果相同，表示当前连接数。准确的来说，Threads_running是代表当前并发数</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>show variables like '%max_connections%'; 查看最大连接数
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show variables like '%max_connections%'; 查看最大连接数
 set global max_connections=1000 重新设置
 
 mysql&gt; show status like 'Threads%';
@@ -225,30 +223,26 @@ mysql&gt; show status like 'Threads%';
 | Threads_created   | 3676  |
 | Threads_running   | 4     |   ###这个数值指的是激活的连接数，这个数值一般远低于connected数值
 +-------------------+-------+
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="mysql-查询视图定义语句">Mysql 查询视图定义语句</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>SELECT table_name,table_schema,view_definition,check_option,is_updatable 
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT table_name,table_schema,view_definition,check_option,is_updatable 
 FROM information_schema.views
 WHERE table_name = 'view_name';
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="查询数据库中的存储过程和函数">查询数据库中的存储过程和函数</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>show procedure status;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show procedure status;
 show function status;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="查看存储过程或函数的创建代码">查看存储过程或函数的创建代码</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>show create procedure proc_name;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show create procedure proc_name;
 show create function func_name;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
   </section>

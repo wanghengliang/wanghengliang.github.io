@@ -29,6 +29,12 @@ rvm -v
 ```
 如果能显示版本好则安装成功了
 
+如果以前安装过,可通过此命令升级rvm
+
+```
+rvm get stable --auto-dotfiles
+```
+
 ## 第二步：安装ruby
 列出ruby可安装的版本信息
 
@@ -59,6 +65,16 @@ rvm list
 ```
 rvm remove 2.3.3
 ```
+
+ps:安装过程中会下载ruby安装包,如果无法下载,可手动下载,查看安装信息找到下载路径
+```
+Checking fallback: https://ftp.ruby-lang.org/pub/ruby/2.4/ruby-2.4.6.tar.bz2
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+ 98 12.0M   98 11.8M    0     0   6905      0  0:30:28  0:30:00  0:00:28  3856
+```
+手动下载后拷贝到rvm文件夹下的archives文件夹中,默认路径为用户下的.rvm目录`/Users/xxx/.rvm/archives`
+
 
 ## 第三步：更换源
 查看已有的源

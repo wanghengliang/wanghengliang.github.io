@@ -181,7 +181,7 @@ C JVM是在计算机硬件系统上用软件实现的一台假想机 <br />
 D Java程序在执行时．JVM把Java字节码解释成机器码<br /></p>
   </li>
   <li>以下代码执行的结果显示是多少（）？
-    <div class="highlighter-rouge"><pre class="highlight"><code>public class Demo {
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class Demo {
  public static void main(String args[]){
      Demo inc = new Demo();
      int i = 0;
@@ -193,12 +193,11 @@ D Java程序在执行时．JVM把Java字节码解释成机器码<br /></p>
      i++;
  }
 }
-</code></pre>
-    </div>
+</code></pre></div>    </div>
     <p>A、0 0    B、0 1    C、1 2    D、2 3</p>
   </li>
   <li>检查程序，是否存在问题，如果存在指出问题所在，如果不存在，说明输出结果（）
-    <div class="highlighter-rouge"><pre class="highlight"><code>public class Demo {
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class Demo {
  public static void main(String args[]){
      int count = 0;
      int num = 0;
@@ -209,26 +208,24 @@ D Java程序在执行时．JVM把Java字节码解释成机器码<br /></p>
      System.out.println(num*count);
  }
 }
-</code></pre>
-    </div>
+</code></pre></div>    </div>
     <p>A、505000    B、0    C、运行时错误     D、5050</p>
   </li>
   <li>关于下面的程序，哪一个选项是正确的输出结果（）
-    <div class="highlighter-rouge"><pre class="highlight"><code>public class Demo {
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class Demo {
  public static void main(String args[]){
      String classFile = "com.scmdkj.". replaceAll(".", "/") + "MyClass.class";
      System.out.println(classFile);
  }
 }
-</code></pre>
-    </div>
+</code></pre></div>    </div>
     <p>A、///////////MyClass.class<br />
 B、com.scmdkj<br />
 C、com/scmdkj/MyClass/class<br />
 D、com/scmdkj/MyClass.class<br /></p>
   </li>
   <li>关于下面的程序，说法正确的是（）
-    <div class="highlighter-rouge"><pre class="highlight"><code>public class Demo {
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class Demo {
  static String x = "1";
  static int y = 1;
  public static void main (String[] args) {
@@ -236,12 +233,11 @@ D、com/scmdkj/MyClass.class<br /></p>
      System.out.println(x+y+z);
  }
 }
-</code></pre>
-    </div>
+</code></pre></div>    </div>
     <p>A、3    B、112    C、13     D、程序有编译错误</p>
   </li>
   <li>有关下述Java代码描述正确的选项是（）
-    <div class="highlighter-rouge"><pre class="highlight"><code>public class Demo {
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class Demo {
  private static void testMethod(){
      System.out.println("testMethod");
  }
@@ -249,8 +245,7 @@ D、com/scmdkj/MyClass.class<br /></p>
      ((Demo)null).testMethod();
  }
 }
-</code></pre>
-    </div>
+</code></pre></div>    </div>
     <p>A、编译不通过<br />
 B、编译通过，运行异常，报NullPointerException<br />
 C、编译通过，运行异常，报NoSuchMethodException<br />
@@ -271,7 +266,7 @@ C、this（）和super（）可以同时出现在一个构造函数中<br />
 D、this（）和super（）可以在static环境中使用，包括static方法和static语句块<br /></p>
   </li>
   <li>对于如下代码段,可以放入到横线位置，使程序正确编译运行，而且不产生错误的选项是（ ）
-    <div class="highlighter-rouge"><pre class="highlight"><code>class A{
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class A{
  public A foo(){
      return this;
  }
@@ -284,15 +279,14 @@ class B extends A{
 class C extends B{
  _______
 }
-</code></pre>
-    </div>
+</code></pre></div>    </div>
     <p>A. public void foo(){} <br />
 B. public int foo(){return 1;} <br />
 C. public A foo(B b){return b;} <br />
 D. public A foo(){return A;}<br /></p>
   </li>
   <li>下列哪些针对代码运行结果的描述是正确的？
-    <div class="highlighter-rouge"><pre class="highlight"><code>class Vehicle{
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Vehicle{
  private final void run(){
      System.out.println("Vehicle");
  }
@@ -305,15 +299,14 @@ public class Car extends Vehicle{
      System.out.println ("Car");
  }
 }
-</code></pre>
-    </div>
+</code></pre></div>    </div>
     <p>A. Car <br />
 B. Vehicle <br />
 C. Compiler error <br />
 D. Exception thrown at runtime<br /></p>
   </li>
   <li>下列程序执行后结果为( )
-    <div class="highlighter-rouge"><pre class="highlight"><code>class A {
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class A {
  public int func1(int a, int b) {
      return a - b;
  }
@@ -331,24 +324,22 @@ public class ChildClass {
  System.out.println("Result=" + b.func1(100, 50));
  }
 }
-</code></pre>
-    </div>
+</code></pre></div>    </div>
     <p>A、 Result=150 Result=150 <br />
 B、 Result=100 Result=100 <br />
 C、 Result=100 Result=150 <br />
 D、 Result=150 Result=100<br /></p>
   </li>
   <li>下面哪段程序能够正确的实现了GBK编码字节流到UTF-8编码字节流的转换（）
-    <div class="highlighter-rouge"><pre class="highlight"><code>byte[] src,dst;
-</code></pre>
-    </div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>byte[] src,dst;
+</code></pre></div>    </div>
     <p>A dst=String.fromBytes(src，”GBK”).getBytes(“UTF-8”) <br />
 B dst=new String(src，”GBK”).getBytes(“UTF-8”) <br />
 C dst=new String(“GBK”，src).getBytes() <br />
 D dst=String.encode(String.decode(src，”GBK”))，”UTF-8” )<br /></p>
   </li>
   <li>下面输出顺序顺序的是（）
-    <div class="highlighter-rouge"><pre class="highlight"><code>class B extends Object{
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class B extends Object{
  static{
      System.out.println("Load B");
  }
@@ -369,8 +360,7 @@ public class Testclass{
      new A();
  }
 }
-</code></pre>
-    </div>
+</code></pre></div>    </div>
     <p>A. Load B -&gt;Create B-&gt;Load A -&gt; Create A <br />
 B. Load B -&gt; Load A -&gt;Create B -&gt;Create A <br />
 C. Load B -&gt; Create B-&gt; Create A -&gt; Load A <br />
@@ -391,7 +381,7 @@ C java.lang.Exception <br />
 D java.lang.Error<br /></p>
   </li>
   <li>下面函数将返回（）<br />
-    <div class="highlighter-rouge"><pre class="highlight"><code>public static int func (){
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public static int func (){
  try{
      return 1;
  }catch (Exception e){
@@ -400,8 +390,7 @@ D java.lang.Error<br /></p>
      return 3;
  }
 }
-</code></pre>
-    </div>
+</code></pre></div>    </div>
     <p>A、1     B、2     C、3     D、编译错误</p>
   </li>
   <li>
@@ -437,14 +426,13 @@ D. 初始化上下应用对象ApplicationContext<br /></li>
 A、true    B、false    C、null     D、sizeof      E、goto     F、synchronized</p>
   </li>
   <li>（多选题）类Parent和Child定义如下，对于如下代码段，可以放入到横线位置，使程序正确编译运行，而且不产生错误的选项是（ ）
-    <div class="highlighter-rouge"><pre class="highlight"><code>class Parent{
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Parent{
  public float aFun(float a, float b){return a+b;}
 }
 class Child extends Parent{
  _______
 }
-</code></pre>
-    </div>
+</code></pre></div>    </div>
     <p>A. float aFun(float a, float b){return a+b;} <br />
 B. public int aFun(int a, int b){return a+b;} <br />
 C. public float aFun(float a, float b){return a+b;} <br />
@@ -475,7 +463,7 @@ D 在运行时调用一个对象的方法<br /></li>
 <h3 id="简述题">简述题</h3>
 
 <p>表结构</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>CREATE TABLE `TBL_ORDER`(
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE `TBL_ORDER`(
 	`ID` INT(11) AUTO_INCREMENT,
 	`USER_ID` INT(11) COMMENT '用户',
 	`CODE` VARCHAR(32) COMMENT '订购结果编码 0-成功，999-失败，998-用户取消',
@@ -491,8 +479,7 @@ CREATE TABLE `TBL_USER`(
 	`USER_IP` VARCHAR(50) COMMENT '用户IP',
 	PRIMARY KEY(`ID`)
 )
-</code></pre>
-</div>
+</code></pre></div></div>
 <ol>
   <li>
     <p>统计用户人数？
@@ -517,11 +504,10 @@ CREATE TABLE `TBL_USER`(
 <br /></p>
   </li>
   <li>以下js代码会出现什么情况？在什么地方显示？显示结果是什么？
-    <div class="highlighter-rouge"><pre class="highlight"><code>console.log(1 &amp;&amp; 2 || 0);
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>console.log(1 &amp;&amp; 2 || 0);
 console.log(0 || 2 &amp;&amp; 1);
 console.log(0 &amp;&amp; 2 || 1);
-</code></pre>
-    </div>
+</code></pre></div>    </div>
     <p><br />
 <br />
 <br />

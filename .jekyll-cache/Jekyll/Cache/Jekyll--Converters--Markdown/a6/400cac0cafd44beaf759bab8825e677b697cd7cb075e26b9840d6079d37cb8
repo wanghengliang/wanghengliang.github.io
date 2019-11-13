@@ -1,0 +1,812 @@
+I"GD<p>IntelliJ IDEA Mac OS X 快捷键</p>
+
+<p>备注：⌘ command,⌥ option,^ control,⇧ shift，⎋ esc，⇥ tab，↩ return/enter</p>
+
+<h3 id="editing-编辑">Editing 编辑</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>^ Space</td>
+      <td>Basic code completion (the name of any class, method or variable)</td>
+      <td>？基本的代码补全</td>
+    </tr>
+    <tr>
+      <td>^ ⇧ Space</td>
+      <td>Smart code completion ( lters the list of methods and variables by expected type)</td>
+      <td>？智能代码补全</td>
+    </tr>
+    <tr>
+      <td>⌘⇧↩</td>
+      <td>Complete statement</td>
+      <td>自动补全语法错误部分，比如自动补全<code class="highlighter-rouge">;</code>、<code class="highlighter-rouge">)</code>等，特别是对于多重<code class="highlighter-rouge">)</code>不匹配等错误进行自动补全比较方便，好像只支持单行的，不支持多行代码块</td>
+    </tr>
+    <tr>
+      <td>⌘P</td>
+      <td>Parameter info (within method call arguments)</td>
+      <td>显示方法有哪些参数，类型是什么等信息</td>
+    </tr>
+    <tr>
+      <td>^J , Mid. button click</td>
+      <td>Quick documentation lookup</td>
+      <td>快速文档查询，可快速查看类、接口、方法等的说明信息，（我的电脑可直接按F1，功能相同），按⎋关闭说明信息</td>
+    </tr>
+    <tr>
+      <td>⇧F1</td>
+      <td>External Doc</td>
+      <td>？外部文档</td>
+    </tr>
+    <tr>
+      <td>⌘+ mouse over code</td>
+      <td>Brief Info</td>
+      <td>？简要信息显示</td>
+    </tr>
+    <tr>
+      <td>⌘F1</td>
+      <td>Show descriptions of error or warning at caret</td>
+      <td>显示错误或警告的说明</td>
+    </tr>
+    <tr>
+      <td>⌘N,^↩,^N</td>
+      <td>Generate code… (Getters, Setters, Constructors, hashCode/equals, toString)</td>
+      <td>生成getter and setters 和构造函数等</td>
+    </tr>
+    <tr>
+      <td>^O</td>
+      <td>Override methods</td>
+      <td>重写父类方法</td>
+    </tr>
+    <tr>
+      <td>^I</td>
+      <td>Implement methods</td>
+      <td>添加接口实现方法</td>
+    </tr>
+    <tr>
+      <td>⌘⌥T</td>
+      <td>Surround with… (if..else, try..catch, for, synchronized, etc.)</td>
+      <td>快速添加if..else,try..catch,for等代码块</td>
+    </tr>
+    <tr>
+      <td>⌘/</td>
+      <td>Comment/uncomment with line comment</td>
+      <td>单行注释</td>
+    </tr>
+    <tr>
+      <td>⌘⌥/</td>
+      <td>Comment/uncomment with block comment</td>
+      <td>多行注释</td>
+    </tr>
+    <tr>
+      <td>⌥↑</td>
+      <td>Select successively increasing code blocks</td>
+      <td>逐步增大选择代码块</td>
+    </tr>
+    <tr>
+      <td>⌥↓</td>
+      <td>Decrease current selection to previous state</td>
+      <td>逐步缩小当前选中代码块</td>
+    </tr>
+    <tr>
+      <td>^⇧Q</td>
+      <td>Context info</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌥↩</td>
+      <td>Show intention actions and quick-fixes</td>
+      <td>显示建议的代码和快速修复</td>
+    </tr>
+    <tr>
+      <td>⌘⌥L</td>
+      <td>Reformat code</td>
+      <td>代码格式化</td>
+    </tr>
+    <tr>
+      <td>^⌥O</td>
+      <td>Optimize imports</td>
+      <td>导包并删除多余的import</td>
+    </tr>
+    <tr>
+      <td>^⌥I</td>
+      <td>Auto-indent line(s)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⇥/⇧⇥</td>
+      <td>Indent/unindent selected lines</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘X</td>
+      <td>Cut current line or selected block to clipboard</td>
+      <td>剪切文本到剪贴板(剪切当前行或选中文本)</td>
+    </tr>
+    <tr>
+      <td>⌘C</td>
+      <td>Copy current line or selected block to clipboard</td>
+      <td>拷贝文本到剪贴板</td>
+    </tr>
+    <tr>
+      <td>⌘V</td>
+      <td>Paste from clipboard</td>
+      <td>从剪贴板粘贴文本</td>
+    </tr>
+    <tr>
+      <td>⌘⇧V</td>
+      <td>Paste from recent buffers…</td>
+      <td>从缓冲区(最近复制文本列表)粘贴文本</td>
+    </tr>
+    <tr>
+      <td>⌘D</td>
+      <td>Duplicate current line or selected block</td>
+      <td>重复当前行或者重复选择内容块</td>
+    </tr>
+    <tr>
+      <td>⌘⌫</td>
+      <td>Delete line at caret</td>
+      <td>删除整行</td>
+    </tr>
+    <tr>
+      <td>^⇧J</td>
+      <td>Smart line join</td>
+      <td>将下面一行内容和本行合并，加到本行后边</td>
+    </tr>
+    <tr>
+      <td>⌘↩</td>
+      <td>Smart line split</td>
+      <td>光标处换行，和直接↩区别是光标保持在当前位置</td>
+    </tr>
+    <tr>
+      <td>⇧↩</td>
+      <td>Start new line</td>
+      <td>开始新行，和直接↩区别是光标可以不在行末</td>
+    </tr>
+    <tr>
+      <td>⌘⇧U</td>
+      <td>Toggle case for word at caret or selected block</td>
+      <td>选中内容字符大小写切换</td>
+    </tr>
+    <tr>
+      <td>⌘⇧]/⌘⇧[</td>
+      <td>Select till code block end/start</td>
+      <td>我的测试结果为多个tab页切换</td>
+    </tr>
+    <tr>
+      <td>⌥⌦</td>
+      <td>Delete to word end</td>
+      <td>（⌥+Fn+⌫）删除光标到当前单词结束位置的内容</td>
+    </tr>
+    <tr>
+      <td>⌥⌫</td>
+      <td>Delete to word start</td>
+      <td>删除光标到当前单词开始位置的内容</td>
+    </tr>
+    <tr>
+      <td>⌘+/⌘-</td>
+      <td>Expand/collapse code block</td>
+      <td>展开/折叠当前方法代码块</td>
+    </tr>
+    <tr>
+      <td>⌘⇧+</td>
+      <td>Expand all</td>
+      <td>展开当前类所有方法代码块</td>
+    </tr>
+    <tr>
+      <td>⌘⇧-</td>
+      <td>Collapse all</td>
+      <td>折叠当前类所有方法代码块</td>
+    </tr>
+    <tr>
+      <td>⌘W</td>
+      <td>Close active editor tab</td>
+      <td>关闭当前编辑文件</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="searchreplace">Search/Replace</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Double⇧</td>
+      <td>Search everywhere</td>
+      <td>全局搜索</td>
+    </tr>
+    <tr>
+      <td>⌘F</td>
+      <td>Find</td>
+      <td>搜索文本</td>
+    </tr>
+    <tr>
+      <td>⌘G</td>
+      <td>Find next</td>
+      <td>跳转到下一个搜索结果</td>
+    </tr>
+    <tr>
+      <td>⌘⇧G</td>
+      <td>Find previous</td>
+      <td>跳转到上一个搜索结果</td>
+    </tr>
+    <tr>
+      <td>⌘R</td>
+      <td>Replace</td>
+      <td>替换文本</td>
+    </tr>
+    <tr>
+      <td>⌘⇧F</td>
+      <td>Find in path</td>
+      <td>指定路径、文件类型等搜索</td>
+    </tr>
+    <tr>
+      <td>⌘⇧R</td>
+      <td>Replace in path</td>
+      <td>指定路径、文件类型等搜索并替换</td>
+    </tr>
+    <tr>
+      <td>⌘⇧S</td>
+      <td>Search structurally (Ultimate Edition only)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⇧M</td>
+      <td>Replace structurally (Ultimate Edition only)</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="usage-search">Usage Search</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>⌥F7/⌘F7</td>
+      <td>Find usages / Find usages in file</td>
+      <td>搜索对象在当前文件被引用的地方,搜索对象被引用的地方</td>
+    </tr>
+    <tr>
+      <td>⌘⇧F7</td>
+      <td>Highlight usages in file</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥F7</td>
+      <td>Show usages</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="compile-and-run">Compile and Run</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>⌘F9</td>
+      <td>Make project (compile modifed and dependent)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⇧F9</td>
+      <td>Compile selected  le, package or module</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^⌥R</td>
+      <td>Select con guration and run</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^⌥D</td>
+      <td>Select con guration and debug</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^R</td>
+      <td>Run</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^D</td>
+      <td>Debug</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^⇧R,^⇧D</td>
+      <td>Run context con guration from editor</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="debugging">Debugging</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>F8</td>
+      <td>Step over</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>F7</td>
+      <td>Step into</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⇧F7</td>
+      <td>Smart step into</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⇧F8</td>
+      <td>Step out</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌥F9</td>
+      <td>Run to cursor</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌥F8</td>
+      <td>Evaluate expression</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥R</td>
+      <td>Resume program</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘F8</td>
+      <td>Toggle breakpoint</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⇧F8</td>
+      <td>View breakpoints</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="navigation">Navigation</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>⌘O</td>
+      <td>Go to class</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⇧O</td>
+      <td>Go to file</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥O</td>
+      <td>Go to symbol</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^←/^→</td>
+      <td>Go to next/previous editor tab</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>F12</td>
+      <td>Go back to previous tool window</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⎋</td>
+      <td>Go to editor (from tool window)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⇧⎋</td>
+      <td>Hide active or last active window</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⇧F4</td>
+      <td>Close active run/messages/find/… tab</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘L</td>
+      <td>Go to line</td>
+      <td>跳转到指定行的指定列</td>
+    </tr>
+    <tr>
+      <td>⌘E</td>
+      <td>Recent files popup</td>
+      <td>列出最近查看的文件列表</td>
+    </tr>
+    <tr>
+      <td>⌘⌥←/⌘⌥→</td>
+      <td>Navigate back/forward</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⇧⌫</td>
+      <td>Navigate to last edit location</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌥F1</td>
+      <td>Select current file or symbol in any view</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘B,⌘click</td>
+      <td>Go to declaration</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥B</td>
+      <td>Go to implementation(s)</td>
+      <td>跳转到实现类</td>
+    </tr>
+    <tr>
+      <td>⌥space，⌘Y</td>
+      <td>Open quick de nition lookup</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^⇧B</td>
+      <td>Go to type declaration</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘U</td>
+      <td>Go to super-method/super-class</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^↑/^↓</td>
+      <td>Go to previous/next method</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘]/⌘[</td>
+      <td>Move to code block end/start</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘F12</td>
+      <td>File structure popup</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^H</td>
+      <td>Type hierarchy</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⇧H</td>
+      <td>Method hierarchy</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^⌥H</td>
+      <td>Call hierarchy</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>F2/⇧F2</td>
+      <td>Next/previous highlighted error</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>F4/⌘↓</td>
+      <td>Edit source / View source</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌥Home</td>
+      <td>Show navigation bar</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>F3</td>
+      <td>Toggle bookmark</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌥F3</td>
+      <td>Toggle bookmark with mnemonic</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^0…^9</td>
+      <td>Go to numbered bookmark</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘F3</td>
+      <td>Show bookmarks</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="refactoring">Refactoring</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>F5</td>
+      <td>Copy</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>F6</td>
+      <td>Move</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘Delete</td>
+      <td>Safe Delete</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⇧F6</td>
+      <td>Rename</td>
+      <td>修改变量名</td>
+    </tr>
+    <tr>
+      <td>⌘F6</td>
+      <td>Change Signature</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥N</td>
+      <td>Inline</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥M</td>
+      <td>Extract Method</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥V</td>
+      <td>Extract Variable</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥F</td>
+      <td>Extract Field</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥C</td>
+      <td>Extract Constant</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥P</td>
+      <td>Extract Parameter</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="vcslocal-history">VCS/Local History</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>⌘K</td>
+      <td>Commit project to VCS</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘T</td>
+      <td>Update project from VCS</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌥⇧C</td>
+      <td>View recent changes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^C</td>
+      <td>‘VCS’ quick popup</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="live-templates">Live Templates</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>⌘⌥J</td>
+      <td>Surround with Live Template</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘J</td>
+      <td>Insert Live Template</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="general">General</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>⌘0…⌘9</td>
+      <td>Open corresponding tool window</td>
+      <td>切换对应视图区域(各个视图对应不同数字)</td>
+    </tr>
+    <tr>
+      <td>⌘S</td>
+      <td>Save all</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⌥Y</td>
+      <td>Synchronize</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^⌘F</td>
+      <td>Toggle full screen mode</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘⇧F12</td>
+      <td>Toggle maximizing editor</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌥⇧F</td>
+      <td>Add to Favorites</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌥⇧I</td>
+      <td>Inspect current file with current profile</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^§，^`</td>
+      <td>Quick switch current scheme</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘,</td>
+      <td>Open Settings dialog</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⌘;</td>
+      <td>Open Project Structure dialog</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>⇧⌘A</td>
+      <td>Find Action</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^⇥</td>
+      <td>Switch between tabs and tool window</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="other">Other</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>⇧⌘E</td>
+      <td> </td>
+      <td>最近修改文件列表</td>
+    </tr>
+    <tr>
+      <td>⇧⌘8</td>
+      <td> </td>
+      <td>列编辑模式</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="其他">其他</h3>
+<ul>
+  <li>在project中，按下ctrl + shift + f(r) 即是在当前目前下递归查找或替换,搜索出来后，要全部替换，按下alt + a</li>
+  <li>shift + cmd + n  查找文件</li>
+  <li>idea自动引入包, Editor-&gt;General-&gt;auto Import, 勾选Add unambiguous imports on the fly后, 可以实现自动导入</li>
+  <li>如果idea不刷新依赖, 可以在pom右键, 找到maven-&gt;reimport重新导入</li>
+</ul>
+
+:ET
