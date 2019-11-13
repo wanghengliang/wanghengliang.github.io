@@ -27,8 +27,8 @@ tags: CentOS 服务器架设
 3. 将telnet、xinetd服务加入开机自启动
 
 ```
-systemctl enable xinetd.service
-systemctl enable telnet.socket
+systemctl enable xinetd.service  ## systemctl  disable xinetd.service
+systemctl enable telnet.socket  ## systemctl disable telnet.socket
 ```
 
 4. 启动telnet、xinetd两个服务
@@ -55,13 +55,48 @@ telnet 192.168.0.111
 
 telnet 112.18.251.41
 
+### 更新openssl
+#### 检查当前openssl版本 
+```
+# openssl version
+OpenSSL 1.0.2k-fips  26 Jan 2017
+```
+
+#### 备份现在版本
+```
+# mv /usr/bin/openssl /usr/bin/openssl_bak
+# mv /usr/include/openssl /usr/include/openssl_bak
+```
+
+#### 编译安装新版本的openssl
+尽量更新到最新版本（最新版有两个openssl-1.1.1d.tar.gz、openssl-1.0.2t.tar.gz），我们安装openssl-1.0.2t.tar.gz
+
+```
+# tar xfz openssl-1.0.2t.tar.gz
+# cd openssl-1.0.2t/
+# ./config shared && make && make install
+# echo $?  //查看下最后的make install是否有报错，0表示没有问题
+0
+# ln -s /usr/local/ssl/bin/openssl /usr/bin/openssl
+# ln -s /usr/local/ssl/include/openssl /usr/include/openssl
+## 命令行执行下面2个命令加载新配置
+# echo "/usr/local/ssl/lib" >> /etc/ld.so.conf
+# /sbin/ldconfig
+```
+
+查看确认版本
+
+```
+# openssl version
+OpenSSL 1.0.2t-fips  26 Jan 2017
+```
 
 ### 卸载当前openssh
 #### 备份当前openssh
 
 ```
-# mv /etc/ssh /etc/ssh.old
-# mv /etc/init.d/sshd /etc/init.d/sshd.old
+# cp /etc/ssh /etc/ssh.old
+# cp /etc/init.d/sshd /etc/init.d/sshd.old
 ```
 
 #### 卸载当前openssh
@@ -71,7 +106,7 @@ telnet 112.18.251.41
 ```
 # rpm -qa | grep openssh
 ```
- 
+
 ##### 删除
 
 ```
@@ -92,8 +127,6 @@ telnet 112.18.251.41
 ```
 wget https://cloudflare.cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.9p1.tar.gz
 
-
-
 ```
 
 ##### 编译安装
@@ -101,9 +134,10 @@ wget https://cloudflare.cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.9
 ```
 tar -zxvf openssh-7.9p1.tar.gz
 cd openssh-7.9p1
-./configure --prefix=/usr --sysconfdir=/etc/ssh --with-md5-passwords--with-pam --with-tcp-wrappers  --with-ssl-dir=/usr/local/ssl --without-hardening
+./configure --prefix=/usr --sysconfdir=/etc/ssh --with-md5-passwords --with-pam --with-tcp-wrappers  --with-ssl-dir=/usr/local/ssl --without-hardening
 rm -rf /etc/ssh
 make && make install
+echo $?  //查看下最后的make install是否有报错，0表示没有问题
 
 ```
 

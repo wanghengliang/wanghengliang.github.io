@@ -76,7 +76,7 @@ make install
 升级openssl环境至openssl-1.0.1g
 
 1、查看源版本
-[root@zj ~]# openssl version -a
+[root@zj ]# openssl version -a
 
 OpenSSL 0.9.8e-fips-rhel5 01 Jul 2008
 
@@ -97,6 +97,6 @@ ln -s /usr/local/ssl/include/openssl /usr/include/openssl
 echo “/usr/local/ssl/lib” >> /etc/ld.so.conf
 ldconfig -v
 5、查看是否升级成功
-[root@zj ~]# openssl version -a
+[root@zj ]# openssl version -a
 
 OpenSSL 1.0.1g 7 Apr 2014

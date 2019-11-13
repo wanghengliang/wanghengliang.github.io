@@ -37,9 +37,9 @@ tags: Tomcat 服务器架设
 修改catalina.out路径日志
 tomcat/bin目录下修改catalina.sh改变catalina.out的目录
 
-```
+```/data/wwwlogs/tomcat-web
 # vi /usr/local/tomcat/server/bin/catalina.sh
-//命令模式下输入/CATALINA_OUT查找,按n查找下一个
+//命令模式下输入/CATALINA_OUT 查找,按n查找下一个
 
 CATALINA_OUT="$CATALINA_BASE"/logs/catalina.out; //此行内的"$CATALINA_BASE",更改为想要更换的目录如：CATALINA_OUT=/data/wwwlogs/catalina.out
 

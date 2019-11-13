@@ -56,3 +56,25 @@ mysql> show status like 'Threads%';
 +-------------------+-------+
 ```
 
+
+### Mysql 查询视图定义语句
+
+```
+SELECT table_name,table_schema,view_definition,check_option,is_updatable 
+FROM information_schema.views
+WHERE table_name = 'view_name';
+```
+
+### 查询数据库中的存储过程和函数
+
+```
+show procedure status;
+show function status;
+```
+
+### 查看存储过程或函数的创建代码
+
+```
+show create procedure proc_name;
+show create function func_name;
+```

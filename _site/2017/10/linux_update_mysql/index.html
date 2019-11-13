@@ -199,12 +199,15 @@
 
 <h4 id="创建安装目录并修改目录拥有者">创建安装目录并修改目录拥有者</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># mkdir /usr/local/mysql3308
-# mkdir /data/mysql3308
-# chown -R mysql:mysql /usr/local/mysql3308
-# chown -R mysql:mysql /data/mysql3308
+<div class="highlighter-rouge"><pre class="highlight"><code># mkdir /usr/local/mysql5727
+# mkdir /data/mysql5727
+# 小版本更新可以直接复制原来版本的数据文件
+# cp -r /data/mysql5726 /data/mysql5726bak    安装好新版本后重命名 mv /data/mysql5726 /data/mysql5727
+# 
+# chown -R mysql:mysql /usr/local/mysql5727
+# chown -R mysql:mysql /data/mysql5727
 
-# mkdir /etc/mysql3308
+# mkdir /etc/mysql5727
 </code></pre>
 </div>
 
@@ -214,18 +217,29 @@
 </code></pre>
 </div>
 
+<h3 id="安装cmake">安装cmake</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># wget https://cmake.org/files/v3.13/cmake-3.13.3.tar.gz
+# tar -xzvf cmake-3.13.3.tar.gz
+# cd cmake-3.13.3
+./bootstrap
+gmake &amp;&amp; gmake install
+</code></pre>
+</div>
+
 <h3 id="安装新版本mysql">安装新版本MySQL</h3>
 <p>然后解压并跳转到解压目录进行编译安装</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># tar -xzvf mysql-boost-5.7.19.tar.gz
-# cd mysql-boost-5.7.19
+<div class="highlighter-rouge"><pre class="highlight"><code># tar -xzvf mysql-boost-5.7.27.tar.gz
+# cd mysql-boost-5.7.27
 
-# cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql3308 \
--DMYSQL_DATADIR=/data/mysql3308 \
--DMYSQL_UNIX_ADDR=/data/mysql3308/mysql.sock \
--DSYSCONFDIR=/etc/mysql3308 \
+# cmake . \
+-DCMAKE_INSTALL_PREFIX=/usr/local/mysql5727 \
+-DMYSQL_DATADIR=/data/mysql5727 \
+-DMYSQL_UNIX_ADDR=/data/mysql5727/mysql.sock \
+-DSYSCONFDIR=/etc/mysql5727 \
 -DMYSQL_USER=mysql \
--DMYSQL_TCP_PORT=3308 \
+-DMYSQL_TCP_PORT=3306 \
 -DDEFAULT_CHARSET=utf8mb4 \
 -DDEFAULT_COLLATION=utf8mb4_general_ci \
 -DEXTRA_CHARSETS=all \
@@ -252,9 +266,84 @@
   <p>DSYSCONFDIR参数为配置文件my.cnf存放路径</p>
 </blockquote>
 
-<p>初始化mysqld</p>
+<p>添加mysql配置文件</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql3308 --datadir=/data/mysql3308
+<div class="highlighter-rouge"><pre class="highlight"><code># vi /etc/mysql5727/my.cnf
+...
+</code></pre>
+</div>
+
+<p>添加启动项配置并删除原来的启动项</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># cd /usr/local/mysql5727/support-files
+# cp mysql.server /etc/init.d/mysql5727
+# mv /etc/init.d/mysql5726 /data/db_bak/
+</code></pre>
+</div>
+
+<p>修改/etc/init.d/mysql5727文件中的如下代码</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># vi /etc/init.d/mysql5727
+
+
+basedir=/usr/local/mysql5727
+datadir=/data/mysql5727
+</code></pre>
+</div>
+
+<p>设置为系统服务并删除原来的服务</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># chkconfig --add mysql5727
+# chkconfig --del mysql5726
+</code></pre>
+</div>
+
+<p>修改alias重新指定mysql启动程序</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># vi ~ /.bash_profile
+
+alias mysql="/usr/local/mysql5727/bin/mysql"
+alias mysqldump="/usr/local/mysql5727/bin/mysqldump"
+
+
+# source ~ /.bash_profile
+</code></pre>
+</div>
+
+<h4 id="小版本升级">小版本升级</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## 停止老版本
+# service mysql5726 stop
+
+## 拷贝数据文件(保留原版本数据)
+# cp -r /data/mysql5726 /data/mysql5727
+# chown -R mysql:mysql /usr/local/mysql5727
+# chown -R mysql:mysql /data/mysql5727
+
+## 启动新版本
+# service mysql5727 start
+
+## 更新信息
+# cd /usr/local/mysql5727/bin
+# ./mysqld_safe --user=mysql --socket=/data/mysql5727/mysql.sock -p --skip-grant-tables  --datadir=/data/mysql5727/data
+# ./mysql_upgrade -uroot -p -S /data/mysql5727/mysql.sock
+## 重启新版本
+# service mysql5727 restart
+...
+
+## 因为用的原来数据,密码还是原来的密码
+# /usr/local/mysql5727/bin/mysql -uroot -p
+Enter password: 
+...
+mysql&gt;
+
+</code></pre>
+</div>
+
+<h4 id="大版本升级">大版本升级</h4>
+
+<p>初始化mysqld</p>
+<div class="highlighter-rouge"><pre class="highlight"><code># bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql5725 --datadir=/data/mysql5725
 </code></pre>
 </div>
 
@@ -262,44 +351,12 @@
   <p>初始化后会生成默认临时密码，记住密码一会儿登录时需要：A temporary password is generated for root@localhost: ET#&amp;dQs_p22%</p>
 </blockquote>
 
-<p>添加mysql配置文件</p>
+<p>启动新版本</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># vi /etc/mysql3308/my.cnf
-...
+<div class="highlighter-rouge"><pre class="highlight"><code>service mysql5726 start
 </code></pre>
 </div>
 
-<p>添加启动项配置</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># cd /usr/local/mysql3308/support-files
-# cp mysql.server /etc/init.d/mysql3308
-</code></pre>
-</div>
-
-<p>修改/etc/init.d/mysql3308文件中的如下代码</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>basedir=/usr/local/mysql3308
-datadir=/data/mysql3308
-</code></pre>
-</div>
-
-<p>设置为系统服务</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># chkconfig --add mysql3308
-</code></pre>
-</div>
-
-<p>启动服务</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># service mysql3308 restart
-...
-
-# /usr/local/mysql3308/bin/mysql -uroot -p
-Enter password: 
-...
-mysql&gt;
-</code></pre>
-</div>
 <p>输入之前初始化时候的密码进入，首次使用会有提示修改密码</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; ALTER USER 'root'@'localhost' IDENTIFIED BY 'abc1';
@@ -310,10 +367,10 @@ mysql&gt; FLUSH PRIVILEGES;
 <h3 id="测试mysql">测试MySQL</h3>
 <p>重启并测试</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># service mysql3308 restart
+<div class="highlighter-rouge"><pre class="highlight"><code># service mysql5726 restart
 ...
 
-# /usr/local/mysql3308/bin/mysql -uroot -p     
+# /usr/local/mysql5726/bin/mysql -uroot -p     
 Enter password: 
 ...
 mysql&gt; show databases;
@@ -379,6 +436,25 @@ mysql-server-5.1.71-1.el6.x86_64
 # rpm -e mysql-libs-5.1.71-1.el6.x86_64
 # rpm -e mysql-5.1.71-1.el6.x86_64
 # rpm -e mysql-server-5.1.71-1.el6.x86_64
+</code></pre>
+</div>
+
+<p>//登陆mysql
+mysql -uroot -p
+-bash: mysql: command not found
+//原因:这是由于系统默认会查找/usr/bin下的命令，如果这个命令不在这个目录下，当然会找不到命令，我们需要做的就是映射一个链接到/usr/bin目录下，相当于建立一个链接文件。
+ln -s /data/db/mysql/bin/mysql /usr/bin</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mysql&gt; ALTER USER 'root'@'localhost' IDENTIFIED BY 'abc1';
+mysql&gt; FLUSH PRIVILEGES;
+</code></pre>
+</div>
+
+<p>逐一卸载</p>
+<div class="highlighter-rouge"><pre class="highlight"><code># rpm -e mysql-community-server-5.7.22-1.el7.x86_64
+# rpm -e mysql-community-client-5.7.22-1.el7.x86_64
+# rpm -e mysql-community-libs-5.7.22-1.el7.x86_64
+# rpm -e mysql-community-common-5.7.22-1.el7.x86_64
 </code></pre>
 </div>
 

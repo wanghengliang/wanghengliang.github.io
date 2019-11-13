@@ -42,10 +42,10 @@ firewall-cmd --list-all
 
 ```
 firewall-cmd --zone=public --add-port=80/tcp --permanent
-firewall-cmd --zone=public --add-port=30000-30010/tcp --permanent
+firewall-cmd --zone=public --add-port=30000-30100/tcp --permanent
 firewall-cmd --zone=public --add-service=smtp --permanent
 
-firewall-cmd --permanent --add-rich-rule="rule family="ipv4" source address="192.168.142.166" port protocol="tcp" port="5432" accept"
+firewall-cmd --permanent --add-rich-rule="rule family='ipv4' source address='192.168.142.166' port protocol='tcp' port="5432" accept"
 firewall-cmd --permanent --zone=public --add-rich-rule="rule family='ipv4' source address='192.168.142.166' service name='ssh' accept"
 
 ```

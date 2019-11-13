@@ -228,6 +228,27 @@ mysql&gt; show status like 'Threads%';
 </code></pre>
 </div>
 
+<h3 id="mysql-查询视图定义语句">Mysql 查询视图定义语句</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>SELECT table_name,table_schema,view_definition,check_option,is_updatable 
+FROM information_schema.views
+WHERE table_name = 'view_name';
+</code></pre>
+</div>
+
+<h3 id="查询数据库中的存储过程和函数">查询数据库中的存储过程和函数</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>show procedure status;
+show function status;
+</code></pre>
+</div>
+
+<h3 id="查看存储过程或函数的创建代码">查看存储过程或函数的创建代码</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>show create procedure proc_name;
+show create function func_name;
+</code></pre>
+</div>
 
 
   </section>

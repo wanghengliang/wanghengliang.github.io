@@ -124,18 +124,37 @@ a，尝试利用ext3grep进行找回/lib 和/usr/lib下的库文件（可能是/
 b，从其他机子或者u盘拷贝回来libz.so.1.y.z文件
 c，从新安装新版本(可能无法编译，可能需要旧版本的zlib)
 
-
 ```
 ln -s /usr/lib/libz.so.1.y.z /usr/lib/libz.so.1
 ln -s /usr/lib/libz.so.1.y.z /usr/lib/libz.so
 ```
 
 
-rpm -qa|grep zlib
+### 修改主机名
+1.centos6修改方法
 
-fdisk -l
-mount  /dev/sda   /mnt/usb_disk
-umount /mnt/usb
+```
+$ vi /etc/sysconfig/network
+$ vi /etc/hosts
+```
+
+2.centos7修改方法
+
+```
+$ vi /etc/hostname
+$ vi /etc/hosts
+$ reboot
+```
+
+### 常用软件安装
+
+```
+$ yum install lrzsz
+
+$ yum install -y unzip zip
+```
+
+### 其他
 
 
 traceroute命令（路由跟踪）

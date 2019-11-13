@@ -172,7 +172,7 @@
   <section class="post">
     <p>linux服务器架设Nginx</p>
 
-<h3 id="安装nginx服务">安装Nginx服务</h3>
+<h3 id="yum安装nginx服务">yum安装Nginx服务</h3>
 
 <ol>
   <li>添加源：默认情况Centos7中无Nginx的源，但是Nginx官网提供了Centos的源地址。因此可以如下执行命令添加源：</li>
@@ -199,13 +199,68 @@ sudo systemctl enable nginx.service
 </code></pre>
 </div>
 
-<h3 id="配置nginx">配置Nginx</h3>
+<ol>
+  <li>配置Nginx</li>
+</ol>
 
 <p>Nginx全局配置 /etc/nginx/nginx.conf
 自定义Nginx站点配置文件存放目录 /etc/nginx/conf.d/</p>
 
 <p>网站文件存放默认目录 /usr/share/nginx/html
 网站默认站点配置 /etc/nginx/conf.d/default.conf</p>
+
+<h3 id="源码安装nginx服务">源码安装Nginx服务</h3>
+
+<h4 id="安装所需环境">安装所需环境</h4>
+<h5 id="一-gcc-安装">一. gcc 安装</h5>
+<p>安装 nginx 需要先将官网下载的源码进行编译，编译依赖 gcc 环境，如果没有 gcc 环境，则需要安装：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>yum install gcc-c++
+</code></pre>
+</div>
+
+<h5 id="二-pcre-pcre-devel-安装">二. PCRE pcre-devel 安装</h5>
+<p>PCRE(Perl Compatible Regular Expressions) 是一个Perl库，包括 perl 兼容的正则表达式库。nginx 的 http 模块使用 pcre 来解析正则表达式，所以需要在 linux 上安装 pcre 库，pcre-devel 是使用 pcre 开发的一个二次开发库。nginx也需要此库。命令：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>yum install -y pcre pcre-devel
+</code></pre>
+</div>
+
+<h5 id="三-zlib-安装">三. zlib 安装</h5>
+<p>zlib 库提供了很多种压缩和解压缩的方式， nginx 使用 zlib 对 http 包的内容进行 gzip ，所以需要在 Centos 上安装 zlib 库。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>yum install -y zlib zlib-devel
+</code></pre>
+</div>
+
+<h5 id="四-openssl-安装">四. OpenSSL 安装</h5>
+<p>OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及 SSL 协议，并提供丰富的应用程序供测试或其它目的使用。</p>
+
+<p>nginx 不仅支持 http 协议，还支持 https（即在ssl协议上传输http），所以需要在 Centos 安装 OpenSSL 库。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>yum install -y openssl openssl-devel
+</code></pre>
+</div>
+
+<h4 id="官网下载">官网下载</h4>
+
+<p>直接下载.tar.gz安装包，地址：https://nginx.org/en/download.html</p>
+
+<p>Nginx官网提供了三个类型的版本,</p>
+
+<p>Mainline version：Mainline 是 Nginx 目前主力在做的版本，可以说是开发版</p>
+
+<p>Stable version：最新稳定版，生产环境上建议使用的版本</p>
+
+<p>Legacy versions：遗留的老版本的稳定版</p>
+
+<h4 id="编译安装">编译安装</h4>
+<p>tar -zxvf nginx-1.14.2.tar.gz
+cd nginx-1.14.2
+./configure
+make &amp;&amp; make install</p>
+
+<h3 id="nginx服务命令">nginx服务命令</h3>
 
 <h4 id="nginx启动">Nginx启动</h4>
 

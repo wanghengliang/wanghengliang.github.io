@@ -5,9 +5,745 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 07 Jan 2019 17:16:53 +0800</pubDate>
-    <lastBuildDate>Mon, 07 Jan 2019 17:16:53 +0800</lastBuildDate>
+    <pubDate>Wed, 13 Nov 2019 14:01:01 +0800</pubDate>
+    <lastBuildDate>Wed, 13 Nov 2019 14:01:01 +0800</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>MacBook安装使用redis</title>
+        <description>&lt;p&gt;MacBook安装使用redis&lt;/p&gt;
+
+&lt;h3 id=&quot;安装redis服务器&quot;&gt;安装redis服务器&lt;/h3&gt;
+
+&lt;h4 id=&quot;采用docker安装redis&quot;&gt;采用Docker安装redis&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker search redis
+$ docker pull redis
+$ docker images
+$ docker images redis
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;编辑脚本&lt;code class=&quot;highlighter-rouge&quot;&gt;redis-server.sh&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# -p 6379:6379 : 将容器的6379端口映射到主机的6379端口&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# -v ~/software/redis/data:/data : 将主机中/Users/xxx/software/redis/data挂载到容器的/data&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# redis-server --appendonly yes : 在容器执行redis-server启动命令，并打开redis持久化配置&lt;/span&gt;
+docker run -p 6379:6379 -v /Users/xxx/software/redis/data:/data  -d redis:latest redis-server --appendonly yes
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;提供快捷命令&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo ln -s ~/software/redis/redis-server.sh ~/bin/redis-server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;注意:需将 &lt;code class=&quot;highlighter-rouge&quot;&gt;~/bin&lt;/code&gt;添加到环境变量中&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vi ~/.bash_profile
+   export PATH=&quot;~/bin:$PATH&quot;
+
+$ source ~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;然后就可以通过redis-server启动redis服务了&lt;/p&gt;
+
+&lt;h4 id=&quot;下载安装&quot;&gt;下载安装&lt;/h4&gt;
+
+&lt;p&gt;https://redis.io/download&lt;/p&gt;
+
+&lt;h3 id=&quot;安装redis客户端&quot;&gt;安装redis客户端&lt;/h3&gt;
+
+&lt;p&gt;redis客户端在官网是要&lt;code class=&quot;highlighter-rouge&quot;&gt;收费&lt;/code&gt;的，好在作者开源了项目，可以去&lt;a href=&quot;https://github.com/uglide/RedisDesktopManager/releases&quot;&gt;github&lt;/a&gt;上下载测试版。ps：测试版需要自己编译，不想麻烦的可以在网上找别人编译好的&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 12 Nov 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/11/mac_redis/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/11/mac_redis/</guid>
+        
+        <category>Redis</category>
+        
+        
+        <category>技术开发</category>
+        
+      </item>
+    
+      <item>
+        <title>git使用小技巧</title>
+        <description>&lt;p&gt;git使用小技巧&lt;/p&gt;
+
+&lt;h3 id=&quot;生成ssh-key&quot;&gt;生成ssh-key&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-keygen -t rsa -C “wanghengliang@outlook.com”
+提示输入文件名称：github_rsa，或者直接回车则采用默认为id_rsa
+提示输入密码：直接回车采用空密码
+提示再次输入密码：直接回车采用空密码
+然后就会生成两个文件
+私钥：github_rsa
+公钥：github_rsa.pub
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;本地多个ssh-key的问题&quot;&gt;本地多个ssh-key的问题&lt;/h3&gt;
+
+&lt;p&gt;1.生成多个ssh-key键值对，参考生成ssh-key,生成多个文件&lt;/p&gt;
+
+&lt;p&gt;2.新建配置文件，并修改权限&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;touch ~/.ssh/config
+chmod 600 ~/.ssh/config
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;3.编辑配置文件，这样在登陆的时候，ssh会根据登陆不同的域来读取相应的私钥文件，内容如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi ~/.ssh/config
+
+# #######该配置用于个人gitee上#######
+Host gitee.com
+ HostName gitee.com
+ PreferredAuthentications publickey
+ User wanghengliang@outlook.com
+ IdentityFile ~/.ssh/gitee_rsa
+
+# #######该配置用于个人github上#######
+Host github.com
+ HostName github.com
+ PreferredAuthentications publickey
+ User wanghengliang@outlook.com
+ IdentityFile ~/.ssh/github_rsa
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 08 Aug 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/08/git_skill/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/08/git_skill/</guid>
+        
+        <category>git</category>
+        
+        
+        <category>技术开发</category>
+        
+      </item>
+    
+      <item>
+        <title>docker安装</title>
+        <description>&lt;p&gt;docker安装&lt;/p&gt;
+
+&lt;h3 id=&quot;安装环境准备&quot;&gt;安装环境准备&lt;/h3&gt;
+&lt;p&gt;1.Docker 要求 CentOS 系统的内核版本高于 3.10 ，验证你的CentOS 版本是否支持 Docker,通过 uname -r 命令查看你当前的内核版本&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ uname -r
+3.10.0-957.21.3.el7.x86_64
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;2.确保 yum 包更新到最新&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;3.卸载旧版本(未安装可跳过)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum remove docker  docker-common docker-selinux docker-engine
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;docker安装&quot;&gt;docker安装&lt;/h3&gt;
+
+&lt;p&gt;1.安装需要的软件包， yum-utils 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;2.设置yum源&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;或者&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;3.查看所有仓库中所有docker版本，并选择特定版本安装&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ yum list docker-ce --showduplicates | sort -r
+Loading mirror speeds from cached hostfile
+Loaded plugins: fastestmirror
+docker-ce.x86_64            3:19.03.1-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.0-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.8-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.7-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.6-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.5-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.4-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.3-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.2-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.1-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.0-3.el7                     docker-ce-stable
+docker-ce.x86_64            18.06.3.ce-3.el7                    docker-ce-stable
+docker-ce.x86_64            18.06.2.ce-3.el7                    docker-ce-stable
+docker-ce.x86_64            18.06.1.ce-3.el7                    docker-ce-stable
+docker-ce.x86_64            18.06.0.ce-3.el7                    docker-ce-stable
+docker-ce.x86_64            18.03.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            18.03.0.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.12.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.12.0.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.09.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.09.0.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.06.2.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.06.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.06.0.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.03.3.ce-1.el7                    docker-ce-stable
+docker-ce.x86_64            17.03.2.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.03.1.ce-1.el7.centos             docker-ce-stable
+docker-ce.x86_64            17.03.0.ce-1.el7.centos             docker-ce-stable
+Available Packages
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;4.安装docker&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum install docker-ce  #由于repo中默认只开启stable仓库，故这里安装的是最新稳定版19.03.1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;或者&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum install &amp;lt;FQPN&amp;gt;  # 例如：sudo yum install docker-ce-19.03.1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;5.启动并加入开机启动&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo systemctl start docker
+$ sudo systemctl enable docker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;6.验证安装是否成功(有client和service两部分表示docker安装启动都成功了)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker version
+Client: Docker Engine - Community
+ Version:           19.03.1
+ API version:       1.40
+ Go version:        go1.12.5
+ Git commit:        74b1e89
+ Built:             Thu Jul 25 21:21:07 2019
+ OS/Arch:           linux/amd64
+ Experimental:      false
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          19.03.1
+  API version:      1.40 (minimum version 1.12)
+  Go version:       go1.12.5
+  Git commit:       74b1e89
+  Built:            Thu Jul 25 21:19:36 2019
+  OS/Arch:          linux/amd64
+  Experimental:     false
+ containerd:
+  Version:          1.2.6
+  GitCommit:        894b81a4b802e4eb2a91d1ce216b8817763c29fb
+ runc:
+  Version:          1.0.0-rc8
+  GitCommit:        425e105d5a03fabd737a126ad93d62a9eeede87f
+ docker-init:
+  Version:          0.18.0
+  GitCommit:        fec3683
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+docker run -name&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;aosun-website -p 80:80&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+-v /data/aosunsoft/nginx/nginx.conf:/etc/nginx/nginx.conf&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+-v /data/aosunsoft/nginx/conf.d:/etc/nginx/conf.d&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+-v /data/aosunsoft/nginx/logs:/var/log/nginx&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+-v /data/aosunsoft/wwwroot:/usr/share/nginx/html&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+-d nginx
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Wed, 07 Aug 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/08/linux_docker/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/08/linux_docker/</guid>
+        
+        <category>linux</category>
+        
+        <category>docker</category>
+        
+        
+        <category>linux</category>
+        
+      </item>
+    
+      <item>
+        <title>bat使用小技巧</title>
+        <description>&lt;p&gt;bat使用小技巧&lt;/p&gt;
+
+&lt;h3 id=&quot;bat-批处理之-forf-详解&quot;&gt;Bat 批处理之 for/f 详解&lt;/h3&gt;
+
+&lt;p&gt;含有/F的for
+格式：
+FOR /F [“options”] %%i IN (file) DO command&lt;/p&gt;
+
+&lt;p&gt;FOR /F [“options”] %%i IN (“string”) DO command&lt;/p&gt;
+
+&lt;p&gt;FOR /F [“options”] %%i IN (‘command’) DO command&lt;/p&gt;
+
+&lt;p&gt;这个可能是最常用的，也是最强的命令，主要用来处理文件和一些命令的输出结果。&lt;/p&gt;
+
+&lt;p&gt;file代表一个或多个文件&lt;/p&gt;
+
+&lt;p&gt;string 代表字符串&lt;/p&gt;
+
+&lt;p&gt;command代表命令&lt;/p&gt;
+
+&lt;p&gt;[“options”] 可选&lt;/p&gt;
+
+&lt;p&gt;对于FOR /F %%i IN (file) DO command&lt;/p&gt;
+
+&lt;p&gt;file为文件名，按照官方的说法是，for会依次将file中的文件打开，并且在进行到下一个文件之前将每个文件读取到内存，按照每一行分成一个一个的元素，忽略空白的行，看个例子。&lt;/p&gt;
+
+&lt;p&gt;假如文件a.txt中有如下内容：&lt;/p&gt;
+
+&lt;p&gt;第1行第1列 第1行第2列 第1行第3列
+第2行第1列 第2行第2列 第2行第3列
+第3行第1列 第3行第2列 第3行第3列&lt;/p&gt;
+
+&lt;p&gt;你想显示a.txt中的内容，会用什么命令呢？当然是type，type a.txt&lt;/p&gt;
+
+&lt;p&gt;for也可以完成同样的命令：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f %%i in (a.txt) do echo %%i
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;还是先从括号执行，因为含有参数/f,所以for会先打开a.txt，然后读出a.txt里面的所有内容，把它作为一个集合，并且以每一行作为一个元素，所以会产生这样的集合，&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;“第1行第1列&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;第1行第2列&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;第1行第3列”，&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//第一个元素&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;“第2行第1列&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;第2行第2列&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;第2行第3列”，&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//第二个元素&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;“第3行第1列&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;第3行第2列&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;第3行第3列”&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;   &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//第三个元素&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;集合中只有3个元素，同样用%%i依次代替每个元素，然后执行do后面的命令。&lt;/p&gt;
+
+&lt;p&gt;具体过程：&lt;/p&gt;
+
+&lt;p&gt;用%%i代替“第1行第1列 第1行第2列 第1行第3列”，执行do后面的echo %%i，显示“第1行第1列 第1行第2列 第1行第3列”，&lt;/p&gt;
+
+&lt;p&gt;用%%i代替“第2行第1列 第2行第2列 第2行第3列”，执行echo %%i，显示“第2行第1列 第2行第2列 第2行第3列”，&lt;/p&gt;
+
+&lt;p&gt;依次，直到每个元素都代替完为止。&lt;/p&gt;
+
+&lt;p&gt;为了加强理解/f的作用，请执行一下两个命令，对比即可明白：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f %%i in (a.txt) do echo %%i //这个会显示a.txt里面的内容，因为/f的作用，会读出a.txt中的内容。
+
+for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不会读取其中的内容。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;通过上面的学习，我们发现for /f会默认以每一行来作为一个元素，但是如果我们还想把每一行再分解更小的内容，该怎么办呢？不用担心，for命令还为我们提供了更详细的参数，使我们将每一行分为更小的元素成为可能。&lt;/p&gt;
+
+&lt;p&gt;它们就是：delims和tokens&lt;/p&gt;
+
+&lt;p&gt;delims 用来告诉for每一行应该拿什么作为分隔符，默认的分隔符是空格和tab键&lt;/p&gt;
+
+&lt;p&gt;比如，还是上面的文件，我们执行下面的命令：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;delims= &quot; %%i in (a.txt) do echo %%i
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;显示的结果是：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第1行第1列
+第2行第1列
+第3行第1列
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;为什么是这样的呢。因为这里有了delims这个参数，=后面有一个空格，意思是再将每个元素以空格分割，默认是只取分割之后的第一个元素。&lt;/p&gt;
+
+&lt;p&gt;执行过程是：&lt;/p&gt;
+
+&lt;p&gt;将第一个元素“第1行第1列 第1行第2列 第1行第3列”分成三个元素：“第1行第1列” “第1行第2列” “第1行第3列”，它默认只取第一个，即“第1行第1列”，然后执行do后面的命令，依次类推。&lt;/p&gt;
+
+&lt;p&gt;但是这样还是有局限的，如果我们想要每一行的第二列元素，那又如何呢？&lt;/p&gt;
+
+&lt;p&gt;这时候，tokens跳出来说，我能做到。&lt;/p&gt;
+
+&lt;p&gt;它的作用就是当你通过delims将每一行分为更小的元素时，由它来控制要取哪一个或哪几个。&lt;/p&gt;
+
+&lt;p&gt;还是上面的例子，执行如下命令：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;tokens=2 delims= &quot; %%i in (a.txt) do echo %%i
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;执行结果：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第1行第2列
+第2行第2列
+第3行第2列
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;如果要显示第三列，那就换成tokens=3。&lt;/p&gt;
+
+&lt;p&gt;同时tokens支持通配符&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;，以及限定范围。&lt;/p&gt;
+
+&lt;p&gt;如果要显示第二列和第三列，则换成tokens=2,3或tokens=2-3,如果还有更多的则为：tokens=2-10之类的。&lt;/p&gt;
+
+&lt;p&gt;此时的命令为：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;tokens=2,3 delims= &quot; %%i in (a.txt) do echo %%i %%j
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;怎么多出一个%%j？&lt;/p&gt;
+
+&lt;p&gt;这是因为你的tokens后面要取每一行的两列，用%%i来替换第二列，用%%j来替换第三列。&lt;/p&gt;
+
+&lt;p&gt;并且必须是按照英文字母顺序排列的，%%j不能换成%%k，因为i后面是j&lt;/p&gt;
+
+&lt;p&gt;执行结果为：&lt;/p&gt;
+
+&lt;p&gt;第1行第2列 第1行第3列
+第2行第2列 第2行第3列
+第3行第2列 第3行第3列&lt;/p&gt;
+
+&lt;p&gt;对以通配符&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;，就是把这一行全部或者这一行的剩余部分当作一个元素了。&lt;/p&gt;
+
+&lt;p&gt;比如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;tokens=* delims= &quot; %%i in (a.txt) do echo %%i
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;执行结果为：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第1行第1列 第1行第2列 第1行第3列
+第2行第1列 第2行第2列 第2行第3列
+第3行第1列 第3行第2列 第3行第3列
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;其实就跟for /f %%i in (a.txt) do echo %%i的执行结果是一样的。&lt;/p&gt;
+
+&lt;p&gt;再如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;tokens=2,* delims= &quot; %%i in (a.txt) do echo %%i %%j
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;执行结果为：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第1行第2列 第1行第3列
+第2行第2列 第2行第3列
+第3行第2列 第3行第3列
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;用%%i代替第二列，用%%j代替剩余的所有&lt;/p&gt;
+
+&lt;p&gt;最后还有skip合eol，这俩个简单，skip就是要忽略文件的前多少行，而eol用来指定当一行以什么符号开始时，就忽略它。&lt;/p&gt;
+
+&lt;p&gt;比如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;skip=2 tokens=*&quot; %%i in (a.txt) do echo %%i
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;结果为:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第3行第1列 第3行第2列 第3行第3列
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;用skip来告诉for跳过前两行。&lt;/p&gt;
+
+&lt;p&gt;如果不加&lt;code class=&quot;highlighter-rouge&quot;&gt;tokens=*&lt;/code&gt;的话，执行结果为：&lt;/p&gt;
+
+&lt;p&gt;第3行第1列&lt;/p&gt;
+
+&lt;p&gt;不知道怎么回事。&lt;/p&gt;
+
+&lt;p&gt;再如，当a.txt内容变成：&lt;/p&gt;
+
+&lt;p&gt;.第1行第1列 第1行第2列 第1行第3列
+.第2行第1列 第2行第2列 第2行第3列
+第3行第1列 第3行第2列 第3行第3列&lt;/p&gt;
+
+&lt;p&gt;执行&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;eol=. tokens=*&quot; %%i in (a.txt) do echo %%i
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;结果是：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第3行第1列 第3行第2列 第3行第3列
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;用eol来告诉for忽略以“.”开头的行。&lt;/p&gt;
+
+&lt;p&gt;同样也必须加&lt;code class=&quot;highlighter-rouge&quot;&gt;tokens=*&lt;/code&gt;，否则只会显示“第3行第1列”&lt;/p&gt;
+</description>
+        <pubDate>Mon, 17 Jun 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/06/bat_skill/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/06/bat_skill/</guid>
+        
+        <category>bat</category>
+        
+        
+        <category>bat</category>
+        
+      </item>
+    
+      <item>
+        <title>Linux防火墙设置</title>
+        <description>&lt;p&gt;Linux防火墙设置&lt;/p&gt;
+
+&lt;p&gt;https://blog.csdn.net/slovyz/article/details/79900082&lt;/p&gt;
+
+&lt;p&gt;iptables 的历史以及工作原理
+1.iptables的发展:
+iptables的前身叫ipfirewall （内核1.x时代）,这是一个作者从freeBSD上移植过来的，能够工作在内核当中的，对数据包进行检测的一款简易访问控制工具。但是ipfirewall工作功能极其有限(它需要将所有的规则都放进内核当中，这样规则才能够运行起来，而放进内核，这个做法一般是极其困难的)。当内核发展到2.x系列的时候，软件更名为ipchains，它可以定义多条规则，将他们串起来，共同发挥作用，而现在，它叫做iptables，可以将规则组成一个列表，实现绝对详细的访问控制功能。
+他们都是工作在用户空间中，定义规则的工具，本身并不算是防火墙。它们定义的规则，可以让在内核空间当中的netfilter来读取，并且实现让防火墙工作。而放入内核的地方必须要是特定的位置，必须是tcp/ip的协议栈经过的地方。而这个tcp/ip协议栈必须经过的地方，可以实现读取规则的地方就叫做 netfilter.(网络过滤器)
+作者一共在内核空间中选择了5个位置，
+1.内核空间中：从一个网络接口进来，到另一个网络接口去的
+2.数据包从内核流入用户空间的
+3.数据包从用户空间流出的
+4.进入/离开本机的外网接口
+5.进入/离开本机的内网接口
+2.iptables的工作机制
+从上面的发展我们知道了作者选择了5个位置，来作为控制的地方，但是你有没有发现，其实前三个位置已经基本上能将路径彻底封锁了，但是为什么已经在进出的口设置了关卡之后还要在内部卡呢？ 由于数据包尚未进行路由决策，还不知道数据要走向哪里，所以在进出口是没办法实现数据过滤的。所以要在内核空间里设置转发的关卡，进入用户空间的关卡，从用户空间出去的关卡。那么，既然他们没什么用，那我们为什么还要放置他们呢？因为我们在做NAT和DNAT的时候，目标地址转换必须在路由之前转换。所以我们必须在外网而后内网的接口处进行设置关卡。
+这五个位置也被称为五个钩子函数（hook functions）,也叫五个规则链。
+1.PREROUTING (路由前)
+2.INPUT (数据包流入口)
+3.FORWARD (转发管卡)
+4.OUTPUT(数据包出口)
+5.POSTROUTING（路由后）
+这是NetFilter规定的五个规则链，任何一个数据包，只要经过本机，必将经过这五个链中的其中一个链。
+3.防火墙的策略
+防火墙策略一般分为两种，一种叫“通”策略，一种叫“堵”策略，通策略，默认门是关着的，必须要定义谁能进。堵策略则是，大门是洞开的，但是你必须有身份认证，否则不能进。所以我们要定义，让进来的进来，让出去的出去，所以通，是要全通，而堵，则是要选择。当我们定义的策略的时候，要分别定义多条功能，其中：定义数据包中允许或者不允许的策略，filter过滤的功能，而定义地址转换的功能的则是nat选项。为了让这些功能交替工作，我们制定出了“表”这个定义，来定义、区分各种不同的工作功能和处理方式。
+我们现在用的比较多个功能有3个：
+1.filter 定义允许或者不允许的
+2.nat 定义地址转换的
+3.mangle功能:修改报文原数据
+我们修改报文原数据就是来修改TTL的。能够实现将数据包的元数据拆开，在里面做标记/修改内容的。而防火墙标记，其实就是靠mangle来实现的。
+小扩展:
+对于filter来讲一般只能做在3个链上：INPUT ，FORWARD ，OUTPUT
+对于nat来讲一般也只能做在3个链上：PREROUTING ，OUTPUT ，POSTROUTING
+而mangle则是5个链都可以做：PREROUTING，INPUT，FORWARD，OUTPUT，POSTROUTING
+iptables/netfilter（这款软件）是工作在用户空间的，它可以让规则进行生效的，本身不是一种服务，而且规则是立即生效的。而我们iptables现在被做成了一个服务，可以进行启动，停止的。启动，则将规则直接生效，停止，则将规则撤销。
+iptables还支持自己定义链。但是自己定义的链，必须是跟某种特定的链关联起来的。在一个关卡设定，指定当有数据的时候专门去找某个特定的链来处理，当那个链处理完之后，再返回。接着在特定的链中继续检查。
+注意：规则的次序非常关键，谁的规则越严格，应该放的越靠前，而检查规则的时候，是按照从上往下的方式进行检查的。
+三．规则的写法:
+iptables定义规则的方式比较复杂:
+格式：iptables [-t table] COMMAND chain CRETIRIA -j ACTION
+-t table ：3个filter nat mangle
+COMMAND：定义如何对规则进行管理
+chain：指定你接下来的规则到底是在哪个链上操作的，当定义策略的时候，是可以省略的
+CRETIRIA:指定匹配标准
+-j ACTION :指定如何进行处理
+比如：不允许172.16.0.0/24的进行访问。
+iptables -t filter -A INPUT -s 172.16.0.0/16 -p udp –dport 53 -j DROP
+当然你如果想拒绝的更彻底：
+iptables -t filter -R INPUT 1 -s 172.16.0.0/16 -p udp –dport 53 -j REJECT
+iptables -L -n -v	#查看定义规则的详细信息
+四：详解COMMAND:
+1.链管理命令（这都是立即生效的）
+-P :设置默认策略的（设定默认门是关着的还是开着的）
+默认策略一般只有两种
+iptables -P INPUT (DROP|ACCEPT) 默认是关的/默认是开的
+比如：
+iptables -P INPUT DROP 这就把默认规则给拒绝了。并且没有定义哪个动作，所以关于外界连接的所有规则包括Xshell连接之类的，远程连接都被拒绝了。
+-F: FLASH，清空规则链的(注意每个链的管理权限)
+iptables -t nat -F PREROUTING
+iptables -t nat -F 清空nat表的所有链
+-N:NEW 支持用户新建一个链
+iptables -N inbound_tcp_web 表示附在tcp表上用于检查web的。
+-X: 用于删除用户自定义的空链
+使用方法跟-N相同，但是在删除之前必须要将里面的链给清空昂了
+-E：用来Rename chain主要是用来给用户自定义的链重命名
+-E oldname newname
+-Z：清空链，及链中默认规则的计数器的（有两个计数器，被匹配到多少个数据包，多少个字节）
+iptables -Z :清空
+2.规则管理命令
+-A：追加，在当前链的最后新增一个规则
+-I num : 插入，把当前规则插入为第几条。
+-I 3 :插入为第三条
+-R num：Replays替换/修改第几条规则
+格式：iptables -R 3 …………
+-D num：删除，明确指定删除第几条规则
+3.查看管理命令 “-L”
+附加子命令
+-n：以数字的方式显示ip，它会将ip直接显示出来，如果不加-n，则会将ip反向解析成主机名。
+-v：显示详细信息
+-vv
+-vvv :越多越详细
+-x：在计数器上显示精确值，不做单位换算
+–line-numbers : 显示规则的行号
+-t nat：显示所有的关卡的信息
+五：详解匹配标准
+1.通用匹配：源地址目标地址的匹配
+-s：指定作为源地址匹配，这里不能指定主机名称，必须是IP
+IP | IP/MASK | 0.0.0.0/0.0.0.0
+而且地址可以取反，加一个“!”表示除了哪个IP之外
+-d：表示匹配目标地址
+-p：用于匹配协议的（这里的协议通常有3种，TCP/UDP/ICMP）
+-i eth0：从这块网卡流入的数据
+流入一般用在INPUT和PREROUTING上
+-o eth0：从这块网卡流出的数据
+流出一般在OUTPUT和POSTROUTING上
+2.扩展匹配
+2.1隐含扩展：对协议的扩展
+-p tcp :TCP协议的扩展。一般有三种扩展
+–dport XX-XX：指定目标端口,不能指定多个非连续端口,只能指定单个端口，比如
+–dport 21 或者 –dport 21-23 (此时表示21,22,23)
+–sport：指定源端口
+–tcp-fiags：TCP的标志位（SYN,ACK，FIN,PSH，RST,URG）
+对于它，一般要跟两个参数：
+1.检查的标志位
+2.必须为1的标志位
+–tcpflags syn,ack,fin,rst syn = –syn
+表示检查这4个位，这4个位中syn必须为1，其他的必须为0。所以这个意思就是用于检测三次握手的第一次包的。对于这种专门匹配第一包的SYN为1的包，还有一种简写方式，叫做–syn
+-p udp：UDP协议的扩展
+–dport
+–sport
+-p icmp：icmp数据报文的扩展
+–icmp-type：
+echo-request(请求回显)，一般用8 来表示
+所以 –icmp-type 8 匹配请求回显数据包
+echo-reply （响应的数据包）一般用0来表示
+2.2显式扩展（-m）
+扩展各种模块
+-m multiport：表示启用多端口扩展
+之后我们就可以启用比如 –dports 21,23,80
+六：详解-j ACTION
+常用的ACTION：
+DROP：悄悄丢弃
+一般我们多用DROP来隐藏我们的身份，以及隐藏我们的链表
+REJECT：明示拒绝
+ACCEPT：接受
+custom_chain：转向一个自定义的链
+DNAT
+SNAT
+MASQUERADE：源地址伪装
+REDIRECT：重定向：主要用于实现端口重定向
+MARK：打防火墙标记的
+RETURN：返回
+在自定义链执行完毕后使用返回，来返回原规则链。
+七：状态检测：
+是一种显式扩展，用于检测会话之间的连接关系的，有了检测我们可以实现会话间功能的扩展
+什么是状态检测？对于整个TCP协议来讲，它是一个有连接的协议，三次握手中，第一次握手，我们就叫NEW连接，而从第二次握手以后的，ack都为1，这是正常的数据传输，和tcp的第二次第三次握手，叫做已建立的连接（ESTABLISHED）,还有一种状态，比较诡异的，比如：SYN=1 ACK=1 RST=1,对于这种我们无法识别的，我们都称之为INVALID无法识别的。还有第四种，FTP这种古老的拥有的特征，每个端口都是独立的，21号和20号端口都是一去一回，他们之间是有关系的，这种关系我们称之为RELATED。
+所以我们的状态一共有四种：
+NEW
+ESTABLISHED
+RELATED
+INVALID
+八：SNAT和DNAT的实现
+由于我们现在IP地址十分紧俏，已经分配完了，这就导致我们必须要进行地址转换，来节约我们仅剩的一点IP资源。那么通过iptables如何实现NAT的地址转换呢？
+1.SNAT基于原地址的转换
+基于原地址的转换一般用在我们的许多内网用户通过一个外网的口上网的时候，这时我们将我们内网的地址转换为一个外网的IP，我们就可以实现连接其他外网IP的功能。
+所以我们在iptables中就要定义到底如何转换：
+定义的样式：
+比如我们现在要将所有192.168.10.0网段的IP在经过的时候全都转换成172.16.100.1这个假设出来的外网地址：
+iptables -t nat -A POSTROUTING -s 192.168.10.0/24 -j SNAT –to-source 172.16.100.1
+这样，只要是来自本地网络的试图通过网卡访问网络的，都会被统统转换成172.16.100.1这个IP.
+那么，如果172.16.100.1不是固定的怎么办？
+我们都知道当我们使用联通或者电信上网的时候，一般它都会在每次你开机的时候随机生成一个外网的IP，意思就是外网地址是动态变换的。这时我们就要将外网地址换成 MASQUERADE(动态伪装):它可以实现自动寻找到外网地址，而自动将其改为正确的外网地址。所以，我们就需要这样设置：
+iptables -t nat -A POSTROUTING -s 192.168.10.0/24 -j MASQUERADE
+这里要注意：地址伪装并不适用于所有的地方。
+2.DNAT目标地址转换
+对于目标地址转换，数据流向是从外向内的，外面的是客户端，里面的是服务器端通过目标地址转换，我们可以让外面的ip通过我们对外的外网ip来访问我们服务器不同的服务器，而我们的服务却放在内网服务器的不同的服务器上。
+如何做目标地址转换呢？：
+iptables -t nat -A PREROUTING -d 192.168.10.18 -p tcp –dport 80 -j DNAT –todestination 172.16.100.2
+目标地址转换要做在到达网卡之前进行转换,所以要做在PREROUTING这个位置上
+九：控制规则的存放以及开启
+注意：你所定义的所有内容，当你重启的时候都会失效，要想我们能够生效，需要使用一个命令将它保存起来
+1.service iptables save 命令
+它会保存在/etc/sysconfig/iptables这个文件中
+2.iptables-save 命令
+iptables-save &amp;gt; /etc/sysconfig/iptables
+3.iptables-restore 命令
+开机的时候，它会自动加载/etc/sysconfig/iptabels
+如果开机不能加载或者没有加载，而你想让一个自己写的配置文件（假设为iptables.2）手动生效的话：
+iptables-restore &amp;lt; /etc/sysconfig/iptables.2
+则完成了将iptables中定义的规则手动生效&lt;/p&gt;
+</description>
+        <pubDate>Fri, 31 May 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/05/linux_iptables/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/05/linux_iptables/</guid>
+        
+        <category>防火墙</category>
+        
+        
+        <category>linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Linux监测MySQL运行情况</title>
+        <description>&lt;p&gt;Linux监测MySQL运行情况&lt;/p&gt;
+
+&lt;p&gt;有两种方式实现，直接上shell代码，新建shell文件mysqlMonitor.sh，将以下内容加入其中，设置定时任务执行此shell即可（具体代码暂未来得及测试，思路和原理已测试可行）&lt;/p&gt;
+
+&lt;h3 id=&quot;第一种方式&quot;&gt;第一种方式&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MYSQL_PING=`/usr/local/mysql/bin/mysqladmin -u root -p123123 ping`
+MYSQL_OK=&quot;mysqld is alive&quot;
+
+if [[ &quot;$MYSQL_PING&quot; != &quot;$MYSQL_OK&quot; ]]
+    then
+        echo &quot;mysql not ok&quot;
+        service mysqld restart
+    else
+        echo &quot;mysql is ok&quot;
+fi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;第二种方式&quot;&gt;第二种方式&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PORT=&quot;0&quot;
+PORT=`netstat -lnt | grep 3306 | wc -l `
+echo $PORT
+if [ $PORT -eq 1 ]
+ then
+echo &quot;mysql is running&quot;
+else
+echo &quot;mysql is not running&quot;
+echo &quot;progrome reeady to start mysql&quot;
+
+sudo service mysql start
+./check_mysql.sh
+fi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Mon, 14 Jan 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/01/linux_mysql_monitor/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/01/linux_mysql_monitor/</guid>
+        
+        <category>MySQL</category>
+        
+        
+        <category>linux</category>
+        
+      </item>
     
       <item>
         <title>Java_m</title>
@@ -560,713 +1296,6 @@ console.log(0 &amp;amp;&amp;amp; 2 || 1);
         
         
         <category>技术开发</category>
-        
-      </item>
-    
-      <item>
-        <title>jekyll整合MathjaxJS插入数学公式</title>
-        <description>&lt;p&gt;jekyll整合MathjaxJS插入数学公式&lt;/p&gt;
-
-&lt;h3 id=&quot;mathjax简介&quot;&gt;MathJax简介&lt;/h3&gt;
-
-&lt;p&gt;MathJax是一款运行在浏览器中的开源的数学符号渲染引擎，使用MathJax可以方便的在浏览器中显示数学公式，不需要使用图片。目前，MathJax可以解析Latex、MathML和ASCIIMathML的标记语言。(Wiki)&lt;/p&gt;
-
-&lt;p&gt;先给几个效果看看&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;x^{y^z}=(1+{\rm e}^x)^{-2xy^w}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sideset{^1_2}{^3_4}\bigotimes&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(x,y,z) = 3y^2z \left( 3+\frac{7x+5}{1+y^2} \right)&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;f\left(
-   \left[ 
-     \frac{
-       1+\left\{x,y\right\}
-     }{
-       \left(
-          \frac{x}{y}+\frac{y}{x}
-       \right)
-       \left(u+1\right)
-     }+\sqrt{a} \quad
-   \right]^{3/2}
-\right)&lt;/script&gt;
-
-&lt;h3 id=&quot;引入mathjax&quot;&gt;引入MathJax&lt;/h3&gt;
-
-&lt;p&gt;在页脚处，引入官方的cdn,但这个js还是会调用到 cdn.mathjax.org 里的一些配置js文件，我们最好在head内加一个dns-prefetch，用于网页加速&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//head中引入
-&amp;lt;link rel=&quot;dns-prefetch&quot; href=&quot;//cdn.mathjax.org&quot; /&amp;gt;
-
-//页脚处引入
-&amp;lt;script src=&quot;//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&amp;gt;&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;官方cdn的js在国内访问慢，所以我们一般引入的是国内的公共资源cdn提供的js&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//head中引入
-&amp;lt;link rel=&quot;dns-prefetch&quot; href=&quot;//cdn.bootcss.com&quot; /&amp;gt;
-
-//页脚处引入
-&amp;lt;script src=&quot;//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&amp;gt;&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;jekyll中找到自己的模板中相应位置添加以上代码即可。&lt;/p&gt;
-
-&lt;h3 id=&quot;mathjax的config说明&quot;&gt;MathJax的config说明&lt;/h3&gt;
-
-&lt;p&gt;其config包括外联config和内联config。&lt;/p&gt;
-
-&lt;h4 id=&quot;外联config说明&quot;&gt;外联config说明&lt;/h4&gt;
-
-&lt;p&gt;我们引入MathJax，发现链接后面多了个?config=TeX-AMS-MML_HTMLorMML这个多出来的东西其实是告诉MathJax，我们要用到的叫TeX-AMS-MML_HTMLorMML.js的配置文件，其用来控制显示数学公式的HTMl显示输出。&lt;/p&gt;
-
-&lt;h4 id=&quot;内联config说明&quot;&gt;内联config说明&lt;/h4&gt;
-
-&lt;p&gt;与此同时，官方其实还提供了一个能让我们内联一个配置选项的功能，很简单就是使用&lt;script&gt;&lt;/script&gt;标签对，但注意的是需要声明类型type=”text/x-mathjax-config”。要想让这个内联配置生效就得放在MathJax.js之前，例子如下&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;script type=&quot;text/x-mathjax-config&quot;&amp;gt;
-MathJax.Hub.Config({
-});
-&amp;lt;/script&amp;gt;
-&amp;lt;script src=&quot;//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&amp;gt;&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;其中MathJax.Hub.Config()里的配置选项很多，可以查看官网说明，这里不详细说明，只给出我用的，并给出一些说明&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;script type=&quot;text/x-mathjax-config&quot;&amp;gt;
-var mathId = document.getElementById(&quot;post-container&quot;);//选择公式识别范围
-MathJax.Hub.Config({
-    showProcessingMessages: false,//关闭js加载过程信息
-    messageStyle: &quot;none&quot;,//不显示信息
-    extensions: [&quot;tex2jax.js&quot;],
-    jax: [&quot;input/TeX&quot;, &quot;output/HTML-CSS&quot;],
-    tex2jax: {
-        inlineMath:  [ [&quot;$&quot;, &quot;$&quot;] ],//行内公式选择符
-        displayMath: [ [&quot;$$&quot;,&quot;$$&quot;] ],//段内公式选择符
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],//避开某些标签
-        ignoreClass:&quot;comment-content&quot; //避开含该Class的标签
-    },
-    &quot;HTML-CSS&quot;: {
-        availableFonts: [&quot;STIX&quot;,&quot;TeX&quot;],//可选字体
-        showMathMenu: false //关闭右击菜单显示
-    }
-});
-MathJax.Hub.Queue([&quot;Typeset&quot;,MathJax.Hub,mathId]);//选择公式识别范围
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;数学公式识别&quot;&gt;数学公式识别&lt;/h4&gt;
-&lt;p&gt;通过tex2jax中的inlineMath和displayMath进行数学公式识别，&lt;/p&gt;
-
-&lt;p&gt;其中inlineMath识别的单行内的数学公式,我们可以通过$ … $或\( … \)去识别这种数学公式，&lt;/p&gt;
-
-&lt;p&gt;displayMath就是识别整个独立段落的数学公式并且居中显示,我们可以通过&lt;script type=&quot;math/tex&quot;&gt;...&lt;/script&gt;或\[ … \]去识别这种数学公式&lt;/p&gt;
-
-&lt;h4 id=&quot;约束识别范围&quot;&gt;约束识别范围&lt;/h4&gt;
-&lt;p&gt;默认情况下,MathJax.Hub.Queue([“Typeset”,MathJax.Hub])是对整个DOM树进行识别的，我们要约束识别范围，官方文档告诉我们MathJax.Hub.Queue的第三个参数就是识别范围，上面的代码就是告诉我们要在id为post-container的标签内去做公式识别&lt;/p&gt;
-
-&lt;h4 id=&quot;避开特殊标签和class&quot;&gt;避开特殊标签和Class&lt;/h4&gt;
-&lt;p&gt;其中skipTags用来避开一些特殊的标签内的内容，这里避开是script,noscript,style,textarea,pre,code,a标签&lt;/p&gt;
-
-&lt;p&gt;ignoreClass用来避开标签内声明的CSS Class属性，这里避开的是带有class=”comment-content”的标签，如果我们不想让mathjax识别评论里的公式就可以用ignoreClass，如果有多个Class需要避开，我们可以通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt; 来区分，写成&lt;code class=&quot;highlighter-rouge&quot;&gt;ignoreClass: &quot;class1|class2&quot;&lt;/code&gt;就可以了&lt;/p&gt;
-
-&lt;h3 id=&quot;公式使用&quot;&gt;公式使用&lt;/h3&gt;
-
-&lt;h4 id=&quot;1-如果插入公式&quot;&gt;1. 如果插入公式&lt;/h4&gt;
-
-&lt;h4 id=&quot;2-如何输入上下标&quot;&gt;2. 如何输入上下标&lt;/h4&gt;
-
-&lt;h4 id=&quot;3-如何输入括号和分隔符&quot;&gt;3. 如何输入括号和分隔符&lt;/h4&gt;
-
-&lt;h4 id=&quot;4-如何输入分数&quot;&gt;4. 如何输入分数&lt;/h4&gt;
-
-&lt;h4 id=&quot;5-如何输入开方&quot;&gt;5. 如何输入开方&lt;/h4&gt;
-
-&lt;h4 id=&quot;6-如何输入省略号&quot;&gt;6. 如何输入省略号&lt;/h4&gt;
-
-&lt;h4 id=&quot;7-如何输入矢量&quot;&gt;7. 如何输入矢量&lt;/h4&gt;
-
-&lt;h4 id=&quot;8-如何输入积分&quot;&gt;8. 如何输入积分&lt;/h4&gt;
-
-&lt;h4 id=&quot;9如何输入极限运算&quot;&gt;9.如何输入极限运算&lt;/h4&gt;
-
-&lt;h4 id=&quot;10如何输入累加累乘运算&quot;&gt;10.如何输入累加、累乘运算&lt;/h4&gt;
-
-&lt;h4 id=&quot;11如何输入希腊字母&quot;&gt;11.如何输入希腊字母&lt;/h4&gt;
-
-&lt;h4 id=&quot;12大括号和行标的使用&quot;&gt;12.大括号和行标的使用&lt;/h4&gt;
-
-&lt;h3 id=&quot;参考内容&quot;&gt;参考内容&lt;/h3&gt;
-&lt;p&gt;本文内容参考一下网页内容&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.linpx.com/p/front-end-integration-mathjaxjs-configuration.html&quot;&gt;前端整合MathjaxJS的配置笔记&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/q735613050/p/7253073.html&quot;&gt;Markdown公式编辑学习笔记&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/q735613050/p/7474449.html&quot;&gt;Markdown公式（二）&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 31 Oct 2018 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2018/10/MathjaxJS/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/10/MathjaxJS/</guid>
-        
-        <category>jekyll</category>
-        
-        <category>mathjaxJs</category>
-        
-        
-        <category>技术开发</category>
-        
-      </item>
-    
-      <item>
-        <title>java位运算</title>
-        <description>&lt;p&gt;java位运算&lt;/p&gt;
-
-&lt;p&gt;位运算表达式由操作数和位运算符组成，实现对整数类型的二进制数进行位运算。位运算符可以分为逻辑运算符(包括&lt;code class=&quot;highlighter-rouge&quot;&gt;~&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;＆&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;^&lt;/code&gt;)及移位运算符(包括&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;)。&lt;/p&gt;
-
-&lt;h3 id=&quot;二进制表示&quot;&gt;二进制表示&lt;/h3&gt;
-
-&lt;p&gt;二进制第一位为符号位，0表示正数，1表示负数。&lt;/p&gt;
-
-&lt;h4 id=&quot;1正数表示例如int类型值-5int用32位表示&quot;&gt;1.正数表示,例如:int类型值 &lt;code class=&quot;highlighter-rouge&quot;&gt;5&lt;/code&gt;(int用32位表示)&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;5 = 0000 0000 0000 0000 0000 0000 0000 0101
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;2负数表示例如int类型值--5&quot;&gt;2.负数表示,例如:int类型值 &lt;code class=&quot;highlighter-rouge&quot;&gt;-5&lt;/code&gt;&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-5 = 1111 1111 1111 1111 1111 1111 1111 1011
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;负数二进制表示方法如下：&lt;/p&gt;
-
-&lt;p&gt;首先来个正数5&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;5 = 0000 0000 0000 0000 0000 0000 0000 0101
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;这个就是&lt;code class=&quot;highlighter-rouge&quot;&gt;原码&lt;/code&gt;，然后&lt;code class=&quot;highlighter-rouge&quot;&gt;原码&lt;/code&gt;取反（0的变成1，1的变成0），得到&lt;code class=&quot;highlighter-rouge&quot;&gt;反码&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;原码: 0000 0000 0000 0000 0000 0000 0000 0101
-反码: 1111 1111 1111 1111 1111 1111 1111 1010
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;反码&lt;/code&gt;进行加1得到&lt;code class=&quot;highlighter-rouge&quot;&gt;补码&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;原码: 0000 0000 0000 0000 0000 0000 0000 0101
-反码: 1111 1111 1111 1111 1111 1111 1111 1010
-补码: 1111 1111 1111 1111 1111 1111 1111 1011
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;最终得到的&lt;code class=&quot;highlighter-rouge&quot;&gt;补码&lt;/code&gt;就是负数在计算机中的二进制表示方法&lt;/p&gt;
-
-&lt;h4 id=&quot;3二进制转换为十进制&quot;&gt;3.二进制转换为十进制&lt;/h4&gt;
-
-&lt;p&gt;正数不讲,略…, 这里只说负数，先随便来一个负数二进制&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;负数二进制: 1111 1111 1111 1111 1111 1111 1111 1011
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;负数二进制，减1&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;负数二进制: 1111 1111 1111 1111 1111 1111 1111 1011
-二进制减一: 1111 1111 1111 1111 1111 1111 1111 1010
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;取反&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;负数二进制: 1111 1111 1111 1111 1111 1111 1111 1011
-二进制减一: 1111 1111 1111 1111 1111 1111 1111 1010
-减一后取反: 0000 0000 0000 0000 0000 0000 0000 0101
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;然后计算得到结果为5，那么负数二进制就为-5&lt;/p&gt;
-
-&lt;h3 id=&quot;逻辑运算符&quot;&gt;逻辑运算符&lt;/h3&gt;
-
-&lt;h4 id=&quot;1非运算--取反&quot;&gt;1.非(&lt;code class=&quot;highlighter-rouge&quot;&gt;~&lt;/code&gt;)运算	: 取反&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(~5);// 结果为-6 
-
-5  = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
-~5 = 1111 1111 1111 1111 1111 1111 1111 1010 = -6
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;2与-运算--有0出0全1出1&quot;&gt;2.与 (&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt;)运算	: 有0出0;全1出1&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 &amp;amp; 3);// 结果为1
-
-5     = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
-3     = 0000 0000 0000 0000 0000 0000 0000 0011 = 3
-5 &amp;amp; 3 = 0000 0000 0000 0000 0000 0000 0000 0001 = 1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;3或运算--有1出1全0出0&quot;&gt;3.或(&lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt;)运算	: 有1出1;全0出0&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 | 3);// 结果为7
-
-5     = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
-3     = 0000 0000 0000 0000 0000 0000 0000 0011 = 3
-5 | 3 = 0000 0000 0000 0000 0000 0000 0000 0111 = 7
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;4异或运算-相同得0相异得1&quot;&gt;4.异或(&lt;code class=&quot;highlighter-rouge&quot;&gt;^&lt;/code&gt;)运算: 相同得0;相异得1&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 ^ 3);//结果为6 
-
-5     = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
-3     = 0000 0000 0000 0000 0000 0000 0000 0011 = 3
-5 ^ 3 = 0000 0000 0000 0000 0000 0000 0000 0110 = 6
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;a小应用&quot;&gt;A.小应用&lt;/h4&gt;
-
-&lt;p&gt;一个数字标识位表示多种逻辑,例如：一个任务可分成n个独立小任务，每个小任务之间不分先后顺序，当所有小任务完成则表示此任务完成。&lt;/p&gt;
-
-&lt;p&gt;如果n=3，则将3个小任务分别用$2^0$,$2^1$,$2^2$即1,2,4表示&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//更新当前任务完成第1个小任务
-update tbl_task set status = status|1 where id=1;
-//同理，更新当前任务完成第2个小任务
-update tbl_task set status = status|2 where id=1;
-//同理，更新当前任务完成第3个小任务
-update tbl_task set status = status|4 where id=1;
-//当status = 7时，则表示三个任务都完成;
-
-//查询第1个小任务未完成的所有任务
-select * from tbl_task where status&amp;amp;1=0;
-//查询第1个小任务已完成的所有任务
-select * from tbl_task where status&amp;amp;1=1;
-
-//同理，第2个小任务
-//查询第2个小任务未完成的所有任务
-select * from tbl_task where status&amp;amp;2=0;
-//查询第2个小任务已完成的所有任务
-select * from tbl_task where status&amp;amp;2=2;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;移位运算符&quot;&gt;移位运算符&lt;/h3&gt;
-
-&lt;h4 id=&quot;1左移位运算符能将运算符左边的运算对象向左移动运算符右侧指定的位数在低位补0&quot;&gt;1.左移位运算符（&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&lt;/code&gt;）能将运算符左边的运算对象向左移动运算符右侧指定的位数（在低位补0）。&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 &amp;lt;&amp;lt; 3);// 运行结果是40
-
-5      = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
-5 &amp;lt;&amp;lt; 3 = 0000 0000 0000 0000 0000 0000 0010 1000 = 40
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;2有符号右移位运算符则将运算符左边的运算对象向右移动运算符右侧指定的位数-有符号右移位运算符使用了符号扩展若值为正则在高位插入0若值为负则在高位插入1&quot;&gt;2.“有符号”右移位运算符（&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&lt;/code&gt;）则将运算符左边的运算对象向右移动运算符右侧指定的位数。 “有符号”右移位运算符使用了“符号扩展”：若值为正，则在高位插入0；若值为负，则在高位插入1。&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 &amp;gt;&amp;gt; 3);// 运行结果是0
-
-5      = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
-5 &amp;gt;&amp;gt; 3 = 0000 0000 0000 0000 0000 0000 0000 0000 = 0
-
-System.out.println(-5 &amp;gt;&amp;gt; 3);// 结果是-1
-
--5      = 1111 1111 1111 1111 1111 1111 1111 1011 = -5
--5 &amp;gt;&amp;gt; 3 = 1111 1111 1111 1111 1111 1111 1111 1111 = -1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;3java也添加了一种无符号右移位运算符它使用了零扩展无论正负都在高位插入0这一运算符是c或c没有的&quot;&gt;3.Java也添加了一种“无符号”右移位运算符（&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;），它使用了“零扩展”：无论正负，都在高位插入0。这一运算符是C或C++没有的。&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.out.println(5 &amp;gt;&amp;gt;&amp;gt; 3);// 结果是0
-
-5       = 0000 0000 0000 0000 0000 0000 0000 0101 = 5
-5 &amp;gt;&amp;gt;&amp;gt; 3 = 0000 0000 0000 0000 0000 0000 0000 0000 = 0
-
-System.out.println(-5 &amp;gt;&amp;gt;&amp;gt; 3);// 结果是536870911
-
--5       = 1111 1111 1111 1111 1111 1111 1111 1011 = -5
--5 &amp;gt;&amp;gt;&amp;gt; 3 = 0001 1111 1111 1111 1111 1111 1111 1111 = 536870911
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-        <pubDate>Tue, 30 Oct 2018 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2018/10/java_bit_operation/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/10/java_bit_operation/</guid>
-        
-        <category>JAVA</category>
-        
-        
-        <category>技术开发</category>
-        
-      </item>
-    
-      <item>
-        <title>Linux使用技巧</title>
-        <description>&lt;p&gt;Linux使用技巧&lt;/p&gt;
-
-&lt;h3 id=&quot;单用户登录模式&quot;&gt;单用户登录模式&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;重启服务器，在选择内核界面使用上下箭头移动&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;选择内核并按“e”&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;找到下面这行
-&lt;img src=&quot;/images/posts/linux/skill_01_01.png&quot; alt=&quot;&quot; /&gt;
-这里要删除掉rhgb quiet，如下图
-&lt;img src=&quot;/images/posts/linux/skill_01_02.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;使用“ctrl + x” 来重启服务器就可以了，重启后就会进入到单用户&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;退出单用户命令  exec /sbin/init&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;同步时间&quot;&gt;同步时间&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;安装ntp服务&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yum install ntp
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;2.加入crontab&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi /etc/crontab
-
-## 加入如下内容
-* */1 * * * root ntpdate 0.asia.pool.ntp.org
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-</description>
-        <pubDate>Sat, 13 Oct 2018 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2018/10/linux_skill/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/10/linux_skill/</guid>
-        
-        <category>linux</category>
-        
-        
-        <category>linux</category>
-        
-      </item>
-    
-      <item>
-        <title>jmeter压力测试</title>
-        <description>&lt;p&gt;jmeter压力测试&lt;/p&gt;
-
-&lt;h3 id=&quot;下载及安装&quot;&gt;下载及安装&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;登录官网Jmeter下载，得到压缩包apache-jmeter-5.0.tgz，下载地址：http://jmeter.apache.org/download_jmeter.cgi&lt;/li&gt;
-  &lt;li&gt;将下载得到的压缩包apache-jmeter-5.0.tgz解压即可。
-&lt;img src=&quot;/images/posts/tools/jmeter01.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;运行&quot;&gt;运行&lt;/h3&gt;
-
-&lt;p&gt;执行bin/jmeter.bat或者bin/jmeter.sh运行，效果图如下
-&lt;img src=&quot;/images/posts/tools/jmeter02.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;一个简单的压测实例&quot;&gt;一个简单的压测实例&lt;/h3&gt;
-
-&lt;h4 id=&quot;新建一个线程组&quot;&gt;新建一个线程组&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter03.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;设置线程组参数&quot;&gt;设置线程组参数&lt;/h4&gt;
-&lt;p&gt;这里配置为：10个线程，同时启动，循环一次。这些配置元件用于指定运行的线程数和等候周期。每个线程模拟一个用户，而等候周期用于指定创建全部线程的时间。例如，线程数为5，等候时间为10秒，则创建每个线程之间的时间间隔为2秒。循环数定义了线程的运行时间。使用调度器，还可以设置运行的起始时间。
-&lt;img src=&quot;/images/posts/tools/jmeter04.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;新增http请求默认值&quot;&gt;新增http请求默认值&lt;/h4&gt;
-&lt;p&gt;在上一步创建的线程组上，新增http请求默认值，所有的请求都会使用设置的默认值，这设置协议为http，IP为127.0.0.1，端口为8080
-&lt;img src=&quot;/images/posts/tools/jmeter05.png&quot; alt=&quot;&quot; /&gt;
-&lt;img src=&quot;/images/posts/tools/jmeter06.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;添加要压测的http请求&quot;&gt;添加要压测的http请求&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter07.png&quot; alt=&quot;&quot; /&gt;
-下图第一个红框内的协议、IP、端口不需要设置，会使用步骤c中设置的默认值，只需设置请求路径Path即可，这里填入/index.html
-&lt;img src=&quot;/images/posts/tools/jmeter08.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;新增监听器用于查看压测结果&quot;&gt;新增监听器，用于查看压测结果&lt;/h4&gt;
-&lt;p&gt;这里添加三种：聚合报告、图形结果、用表格查看结果，区别在于结果展现形式不同。
-&lt;img src=&quot;/images/posts/tools/jmeter09.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;点击运行按钮开始压测并查看结果&quot;&gt;点击运行按钮开始压测，并查看结果&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;jmeter结果分析&quot;&gt;jmeter结果分析&lt;/h3&gt;
-&lt;p&gt;采用Jmeter测试工具对web系统作的负载测试，得出的响应报表，数据比较难懂，现作一具体说明。&lt;/p&gt;
-
-&lt;h4 id=&quot;图形报表&quot;&gt;图形报表&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter11.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;图表底部参数的含义如下：&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;样本数目是总共发送到服务器的请求数。&lt;/li&gt;
-  &lt;li&gt;最新样本是代表时间的数字,是服务器响应最后一个请求的时间。&lt;/li&gt;
-  &lt;li&gt;吞吐量是服务器每分钟处理的请求数。&lt;/li&gt;
-  &lt;li&gt;平均值是总运行时间除以发送到服务器的请求数。&lt;/li&gt;
-  &lt;li&gt;中间值是代表时间的数字，有一半的服务器响应时间低于该值而另一半高于该值。&lt;/li&gt;
-  &lt;li&gt;偏离表示服务器响应时间变化、离散程度测量值的大小，或者，换句话说，就是数据的分布。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;聚合报告&quot;&gt;聚合报告&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter12.png&quot; alt=&quot;&quot; /&gt;
-图表含义说明如下：&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Label: 说明是请求类型，如Http，FTP等请求。&lt;/li&gt;
-  &lt;li&gt;#Samples: 也就是图形报表中的样本数目，总共发送到服务器的样本数目。&lt;/li&gt;
-  &lt;li&gt;Average: 也就是图形报表中的平均值，是总运行时间除以发送到服务器的请求数。&lt;/li&gt;
-  &lt;li&gt;Median: 也就是图形报表中的中间值，是代表时间的数字，有一半的服务器响应时间低于该值而另一半高于该值。&lt;/li&gt;
-  &lt;li&gt;90%line: 是指90%请求的响应时间比所得数值还要小。&lt;/li&gt;
-  &lt;li&gt;Min:是代表时间的数字,是服务器响应的最短时间。&lt;/li&gt;
-  &lt;li&gt;Max: 是代表时间的数字,是服务器响应的最长时间。&lt;/li&gt;
-  &lt;li&gt;Error%: 请求的错误百分比。&lt;/li&gt;
-  &lt;li&gt;Throughput: 也就是图形报表中的吞吐量，这里是服务器每单位时间处理的请求数，注意查看是秒或是分钟。&lt;/li&gt;
-  &lt;li&gt;Received KB/sec: 是每秒钟接收的字节数。&lt;/li&gt;
-  &lt;li&gt;Send KB/sec: 是每秒钟请求的字节数。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;html报表报告&quot;&gt;HTML报表报告&lt;/h4&gt;
-&lt;p&gt;图中配置的所有数据写入文件test-jh.jtl，可通过命令模式将其数据生成html文档，命令如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# cd apache-jmeter-5.0
-# bin/jmeter.sh -g report/test-jh.jtl -e -o report/test
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;打开生成的html（report/test/index.html）,结果如下：&lt;/p&gt;
-
-&lt;h5 id=&quot;首页&quot;&gt;首页&lt;/h5&gt;
-&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter13.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h6 id=&quot;apdexapplication-performance-index&quot;&gt;APDEX(Application Performance Index）&lt;/h6&gt;
-&lt;p&gt;企业应用程序性能满意度标准，详见 &lt;a href=&quot;#apdex&quot;&gt;附录2 APDEX&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h6 id=&quot;requests-summary&quot;&gt;Requests Summary&lt;/h6&gt;
-&lt;p&gt;样本请求的成功、失败百分占比图表。&lt;/p&gt;
-
-&lt;h6 id=&quot;statistics&quot;&gt;Statistics&lt;/h6&gt;
-&lt;p&gt;此部分结果展示的是每个样本事务的一些常见的性能测试指标，跟我们通常看到的聚合报告的表格展示非常相近，多了成功与失败的占比。&lt;/p&gt;
-
-&lt;h6 id=&quot;errors&quot;&gt;Errors&lt;/h6&gt;
-&lt;p&gt;执行结果的错误情况，根据不同的错误类型进行展示。
-四列分别对应：发生错误的类型、错误数量、类型错误占比（相对于错误总数）、类型错误样本占比（相对于所有的请求样本数量）。&lt;/p&gt;
-
-&lt;h5 id=&quot;图表&quot;&gt;图表&lt;/h5&gt;
-
-&lt;h6 id=&quot;over-time&quot;&gt;Over Time&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter14.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Response Times Over Time
-随时间推移，样本请求响应时间的变化。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Response Time Percentiles Over Time (successful responses)
-随时间变化的响应时间百分比（成功响应）&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Active Threads Over Time
-活动线程随着时间的推移&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Bytes Throughput Over Time
-随时间的字节吞吐量&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Latencies Over Time
-随时间推移的延迟&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Connect Time Over Time
-连接时间&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h6 id=&quot;throughput吞吐量&quot;&gt;Throughput(吞吐量)&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter15.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Hits Per Second
-每秒点击次数&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Codes Per Second
-每秒代码数&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Transactions Per Second
-每秒事务数&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Total Transactions Per Second
-每秒总交易量&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Response Time Vs Request
-响应时间与请求&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Latency Vs Request
-延迟与请求&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h6 id=&quot;response-times响应时间&quot;&gt;Response Times(响应时间)&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter16.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Response Time Percentiles
-响应时间百分位数&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Response Time Overview
-响应时间概述&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Time Vs Threads
-时间与线程&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Response Time Distribution
-响应时间分布&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;附录&quot;&gt;附录：&lt;/h3&gt;
-
-&lt;h4 id=&quot;jmeter命令行参数&quot;&gt;Jmeter命令行参数&lt;/h4&gt;
-&lt;p&gt;&lt;img src=&quot;/images/posts/tools/jmeter_ps01.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;apdex&quot;&gt;&lt;span id=&quot;apdex&quot;&gt;APDEX&lt;/span&gt;&lt;/h4&gt;
-&lt;p&gt;是由 APDEX 公司推出的衡量企业应用程序性能满意度标准的计算方式。其将用户的满意度用数字衡量，范围在 0-1 之间。0表示所有用户均不满意，1表示所有用户都满意；随着满意度指数的增加，用户满意度逐步增加。设定请求样本目标响应时间为t，则可容忍的响应时间设定为目标响应时间t的4倍（即为4t）。公式定义为：（满意的样本数量 + 可容忍样本数量的一半） / 总样本数量。 计算公式如下：
-&lt;img src=&quot;/images/posts/tools/jmeter_ps11.png&quot; alt=&quot;&quot; /&gt;
-例如：总样本数量为 1000，目标时间t=3s，750个样本响应时间小于等于t，150个样本响应时间在3s-12s之间，100个样本响应时间超过12s，则用户满意度为：
-&lt;img src=&quot;/images/posts/tools/jmeter_ps12.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 12 Oct 2018 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2018/10/jmeter/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/10/jmeter/</guid>
-        
-        <category>压力测试</category>
-        
-        
-        <category>开发工具</category>
-        
-      </item>
-    
-      <item>
-        <title>IntelliJ IDEA使用小技巧</title>
-        <description>&lt;p&gt;IntelliJ IDEA使用小技巧&lt;/p&gt;
-
-&lt;h3 id=&quot;解决idea工具下tomcat中文乱码问题&quot;&gt;解决idea工具下tomcat中文乱码问题&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;在运行/调试 配置对话框的Startup/Connection面板中，勾选Pass environment variables
-并添加一个environment variable，Name填 JAVA_TOOL_OPTIONS, Value填 -Dfile.encoding=UTF-8&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/tools/idea-tomcat.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 28 Sep 2018 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2018/09/idea_skill/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/09/idea_skill/</guid>
-        
-        <category>IntelliJIDEA</category>
-        
-        
-        <category>开发工具</category>
-        
-      </item>
-    
-      <item>
-        <title>linux服务器架设Nginx</title>
-        <description>&lt;p&gt;linux服务器架设Nginx&lt;/p&gt;
-
-&lt;h3 id=&quot;安装nginx服务&quot;&gt;安装Nginx服务&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;添加源：默认情况Centos7中无Nginx的源，但是Nginx官网提供了Centos的源地址。因此可以如下执行命令添加源：&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;安装Nginx&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yum install -y nginx
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;启动Nginx并设置开机自动运行&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo systemctl start nginx.service
-sudo systemctl enable nginx.service
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;配置nginx&quot;&gt;配置Nginx&lt;/h3&gt;
-
-&lt;p&gt;Nginx全局配置 /etc/nginx/nginx.conf
-自定义Nginx站点配置文件存放目录 /etc/nginx/conf.d/&lt;/p&gt;
-
-&lt;p&gt;网站文件存放默认目录 /usr/share/nginx/html
-网站默认站点配置 /etc/nginx/conf.d/default.conf&lt;/p&gt;
-
-&lt;h4 id=&quot;nginx启动&quot;&gt;Nginx启动&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nginx
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;nginx重启&quot;&gt;Nginx重启&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nginx -s reload
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;nginx检查配置文件&quot;&gt;Nginx检查配置文件&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nginx -t
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-</description>
-        <pubDate>Tue, 18 Sep 2018 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2018/09/linux_nginx/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/09/linux_nginx/</guid>
-        
-        <category>linux</category>
-        
-        <category>Nginx</category>
-        
-        
-        <category>linux</category>
         
       </item>
     
