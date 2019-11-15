@@ -5,8 +5,8 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Nov 2019 17:09:08 +0800</pubDate>
-    <lastBuildDate>Wed, 13 Nov 2019 17:09:08 +0800</lastBuildDate>
+    <pubDate>Fri, 15 Nov 2019 09:35:47 +0800</pubDate>
+    <lastBuildDate>Fri, 15 Nov 2019 09:35:47 +0800</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
@@ -131,6 +131,94 @@ $ source ~/.bash_profile
 &lt;h3 id=&quot;安装redis客户端&quot;&gt;安装redis客户端&lt;/h3&gt;
 
 &lt;p&gt;redis客户端在官网是要&lt;code class=&quot;highlighter-rouge&quot;&gt;收费&lt;/code&gt;的，好在作者开源了项目，可以去&lt;a href=&quot;https://github.com/uglide/RedisDesktopManager/releases&quot;&gt;github&lt;/a&gt;上下载测试版。ps：测试版需要自己编译，不想麻烦的可以在网上找别人编译好的&lt;/p&gt;
+
+&lt;h4 id=&quot;下载源码&quot;&gt;下载源码&lt;/h4&gt;
+&lt;p&gt;这里要注意下载的源码是有第三方依赖的,所以git的时候要加–recursive,要保证第三方依赖包也下载下来&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone --recursive https://github.com/uglide/RedisDesktopManager rdm &amp;amp;&amp;amp; cd ./rdm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;安装qt&quot;&gt;安装QT&lt;/h4&gt;
+&lt;p&gt;编译需要安装qt软件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install qt
+brew cask install qt-creator
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;然后在 Qt Creator 里改一下 Qt Versions的坑&lt;/p&gt;
+
+&lt;p&gt;1.偏好设置-Kits-Qt Versions&lt;/p&gt;
+
+&lt;p&gt;添加路径/usr/local/Cellar/qt/5.13.2/bin/qmake&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/dev/qt_setting1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2.偏好设置-Kits-构建套件(Kit)&lt;/p&gt;
+
+&lt;p&gt;Qt版本-设置为Qt 5.13.2,把编译器C和C++全部改为Clang&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/dev/qt_setting2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;安装python依赖，并复制Info.plist&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install python3
+pip3 install -r src/py/requirements.txt
+cp ./src/resources/Info.plist.sample ./src/resources/Info.plist
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;安装python3时候可能提示下面错误&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Error: An unexpected error occurred during the `brew link` step
+The formula built, but is not symlinked into /usr/local
+Permission denied @ dir_s_mkdir - /usr/local/Frameworks
+Error: Permission denied @ dir_s_mkdir - /usr/local/Frameworks
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;解决：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo mkdir /usr/local/Frameworks
+$ sudo chown $(whoami):admin /usr/local/Frameworks
+$ brew link python
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;启动-qt&quot;&gt;启动 QT&lt;/h4&gt;
+
+&lt;p&gt;双击打开 src 下的rdm.pro&lt;/p&gt;
+
+&lt;p&gt;选择项目展开 desktop-&amp;gt;build 选择 release 等待运行的三角变绿,点击运行工程&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/dev/qt_build.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;编译后会直接启动RedisDesktopManager应用,但是不会生成app文件,只在bin/osx/debug下生成了一个可执行程序&lt;code class=&quot;highlighter-rouge&quot;&gt;Redis Desktop Manager&lt;/code&gt;,此时需要手动修改src/rdm.pro的配置&lt;/p&gt;
+
+&lt;p&gt;用文本编辑器打开rdm.pro文件,找到debug: CONFIG-=app_bundle并注释他,在加入一下内容&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#debug: CONFIG-=app_bundle
+
+CONFIG += static release
+CONFIG -= debug
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;再次执行编译，编译成功后,可以在bin/osx/release下找到&lt;code class=&quot;highlighter-rouge&quot;&gt;Redis Desktop Manager.app&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;打包dmg&quot;&gt;打包dmg&lt;/h4&gt;
+&lt;p&gt;为了更方便给别人使用我们将 app 打包成 dmg 安装包。在桌面新建一个文件夹，取名&lt;code class=&quot;highlighter-rouge&quot;&gt;rdm&lt;/code&gt;吧，将app文件放进去。为了实现拖拽到Application的效果，需要在这个文件夹里放一个Application的替身。具体做法是cd到这个目录，建立一个软链接&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd /Users/xxxxx/Desktop/rdm
+ln -s /Applications/  Applications
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;接下来,用macos自带的磁盘工具打包成dmg安装包,打开&lt;code class=&quot;highlighter-rouge&quot;&gt;磁盘工具&lt;/code&gt;选择文件-新建映像-来自文件夹的映像…,再选择桌面的rdm目录….&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/dev/rdm_dmg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;至此打包完成!!!&lt;/p&gt;
+
+&lt;h4 id=&quot;其他问题&quot;&gt;其他问题&lt;/h4&gt;
+
+&lt;h5 id=&quot;关闭quickstart弹框&quot;&gt;关闭QuickStart弹框&lt;/h5&gt;
+&lt;p&gt;程序每次运行都会弹出更新和QuickStart弹框，为了解决该问题，直接找到对应文件(app.qml中)注释掉以下代码：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Component.onCompleted: {
+
+    if (connectionsManager.size() == 0)
+
+        quickStartDialog.open()
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 </description>
         <pubDate>Tue, 12 Nov 2019 00:00:00 +0800</pubDate>
@@ -785,392 +873,6 @@ fi
       </item>
     
       <item>
-        <title>Java_m</title>
-        <description>&lt;h3 id=&quot;选择题&quot;&gt;选择题&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;下面对JVM叙述不正确的是：（） &lt;br /&gt;
-A JVM的全称是Java Virtual Machine &lt;br /&gt;
-B JVM是一种计算机硬件技术，它是Java程序的运行平台 &lt;br /&gt;
-C JVM是在计算机硬件系统上用软件实现的一台假想机 &lt;br /&gt;
-D Java程序在执行时．JVM把Java字节码解释成机器码&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;以下代码执行的结果显示是多少（）？
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
- public static void main(String args[]){
-     Demo inc = new Demo();
-     int i = 0;
-     inc.fermin(i);
-     i = i++;
-     System.out.println((i++)+&quot; &quot;+i);
- }
- void fermin(int i){
-     i++;
- }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;A、0 0    B、0 1    C、1 2    D、2 3&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;检查程序，是否存在问题，如果存在指出问题所在，如果不存在，说明输出结果（）
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
- public static void main(String args[]){
-     int count = 0;
-     int num = 0;
-     for(int i=0;i&amp;lt;=100;i++){
-         num = num+i;
-         count = count++;
-     }
-     System.out.println(num*count);
- }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;A、505000    B、0    C、运行时错误     D、5050&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;关于下面的程序，哪一个选项是正确的输出结果（）
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
- public static void main(String args[]){
-     String classFile = &quot;com.scmdkj.&quot;. replaceAll(&quot;.&quot;, &quot;/&quot;) + &quot;MyClass.class&quot;;
-     System.out.println(classFile);
- }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;A、///////////MyClass.class&lt;br /&gt;
-B、com.scmdkj&lt;br /&gt;
-C、com/scmdkj/MyClass/class&lt;br /&gt;
-D、com/scmdkj/MyClass.class&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;关于下面的程序，说法正确的是（）
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
- static String x = &quot;1&quot;;
- static int y = 1;
- public static void main (String[] args) {
-     static int z= 2;
-     System.out.println(x+y+z);
- }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;A、3    B、112    C、13     D、程序有编译错误&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;有关下述Java代码描述正确的选项是（）
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Demo {
- private static void testMethod(){
-     System.out.println(&quot;testMethod&quot;);
- }
- public static void main(String[] args) {
-     ((Demo)null).testMethod();
- }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;A、编译不通过&lt;br /&gt;
-B、编译通过，运行异常，报NullPointerException&lt;br /&gt;
-C、编译通过，运行异常，报NoSuchMethodException&lt;br /&gt;
-D、运行正常，输出testMethod&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;以下关于final关键字说法错误的是（）&lt;br /&gt;
-A、final是java中的修饰符，可以修饰类、接口、抽象类、方法和属性&lt;br /&gt;
-B、final修饰的类肯定不能被继承&lt;br /&gt;
-C、final修饰的方法不能被重载&lt;br /&gt;
-D、final修饰的变量不允许被再次赋值&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;在使用super和this关键字时，以下描述正确的是（）&lt;br /&gt;
-A、在子类构造方法中使用super（）显示调用父类的构造方法，super（）必须写在子类构造方法的第一行，否则编译不通过&lt;br /&gt;
-B、super（）和this（）不一定要放在构造方法内第一行&lt;br /&gt;
-C、this（）和super（）可以同时出现在一个构造函数中&lt;br /&gt;
-D、this（）和super（）可以在static环境中使用，包括static方法和static语句块&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;对于如下代码段,可以放入到横线位置，使程序正确编译运行，而且不产生错误的选项是（ ）
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class A{
- public A foo(){
-     return this;
- }
-}
-class B extends A{
- public A foo(){
-     return this;
- }
-}
-class C extends B{
- _______
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;A. public void foo(){} &lt;br /&gt;
-B. public int foo(){return 1;} &lt;br /&gt;
-C. public A foo(B b){return b;} &lt;br /&gt;
-D. public A foo(){return A;}&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;下列哪些针对代码运行结果的描述是正确的？
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Vehicle{
- private final void run(){
-     System.out.println(&quot;Vehicle&quot;);
- }
-}
-public class Car extends Vehicle{
- public static void main (String[] args){
-     new Car().run();
- }
- private final void run(){
-     System.out.println (&quot;Car&quot;);
- }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;A. Car &lt;br /&gt;
-B. Vehicle &lt;br /&gt;
-C. Compiler error &lt;br /&gt;
-D. Exception thrown at runtime&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;下列程序执行后结果为( )
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class A {
- public int func1(int a, int b) {
-     return a - b;
- }
-}
-class B extends A {
- public int func1(int a, int b) {
-     return a + b;
- }
-}
-public class ChildClass {
- public static void main(String[] args) {
- A a = new B();
- B b = new B();
- System.out.println(&quot;Result=&quot; + a.func1(100, 50));
- System.out.println(&quot;Result=&quot; + b.func1(100, 50));
- }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;A、 Result=150 Result=150 &lt;br /&gt;
-B、 Result=100 Result=100 &lt;br /&gt;
-C、 Result=100 Result=150 &lt;br /&gt;
-D、 Result=150 Result=100&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;下面哪段程序能够正确的实现了GBK编码字节流到UTF-8编码字节流的转换（）
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;byte[] src,dst;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;A dst=String.fromBytes(src，”GBK”).getBytes(“UTF-8”) &lt;br /&gt;
-B dst=new String(src，”GBK”).getBytes(“UTF-8”) &lt;br /&gt;
-C dst=new String(“GBK”，src).getBytes() &lt;br /&gt;
-D dst=String.encode(String.decode(src，”GBK”))，”UTF-8” )&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;下面输出顺序顺序的是（）
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class B extends Object{
- static{
-     System.out.println(&quot;Load B&quot;);
- }
- public B(){
-     System.out.println(&quot;Create B&quot;);
- }
-}
-class A extends B{
- static{
-     System.out.println(&quot;Load A&quot;);
- }
- public A(){
-     System.out.println(&quot;Create A&quot;);
- }
-}
-public class Testclass{
- public static void main(String[] args){
-     new A();
- }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;A. Load B -&amp;gt;Create B-&amp;gt;Load A -&amp;gt; Create A &lt;br /&gt;
-B. Load B -&amp;gt; Load A -&amp;gt;Create B -&amp;gt;Create A &lt;br /&gt;
-C. Load B -&amp;gt; Create B-&amp;gt; Create A -&amp;gt; Load A &lt;br /&gt;
-D. Create B -&amp;gt;Create A -&amp;gt;Load B -&amp;gt;Load A&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;以下说法错误的是（） &lt;br /&gt;
-A 虚拟机中没有泛型，只有普通类和普通方法 &lt;br /&gt;
-B 所有泛型类的类型参数在编译时都会被擦除 &lt;br /&gt;
-C 创建泛型对象时请指明类型，让编译器尽早的做参数检查 &lt;br /&gt;
-D 泛型的类型擦除机制意味着不能在运行时动态获取List中T的实际类型&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;请问所有的异常类皆直接继承于哪一个类？（） &lt;br /&gt;
-A java.applet.Applet &lt;br /&gt;
-B java.lang.Throwable &lt;br /&gt;
-C java.lang.Exception &lt;br /&gt;
-D java.lang.Error&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;下面函数将返回（）&lt;br /&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public static int func (){
- try{
-     return 1;
- }catch (Exception e){
-     return 2;
- }finally{
-     return 3;
- }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;A、1     B、2     C、3     D、编译错误&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;下列不属于WebService 涉及到的主要标准和技术的是___&lt;br /&gt;
-A、XML    B、SOAP    C、WSDL      D、JAVA&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;下列不属于WebService 特征的是___&lt;br /&gt;
-A. WebService具有良好的封装性&lt;br /&gt;
-B. WebService与使用者是松散耦合的&lt;br /&gt;
-C. WebService具有高度的可集成性&lt;br /&gt;
-D. WebService使用的协议非常简单，通常可以自行解析，不需要使用第三方的库&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;下面关于spring描述错误的是：（ ）&lt;br /&gt;
-A  Spring支持可插入的事务管理器，使事务划分更轻松，同时无需处理底层的问题。&lt;br /&gt;
-B  Spring事务管理的通用抽象层还包括JTA策略和一个JDBC DataSource。&lt;br /&gt;
-C  与JTA或EJB CMT一样，Spring的事务支持依赖于Java EE环境。&lt;br /&gt;
-D  Spring事务语义通过AOP应用于 POJO，通过XML或Java SE 5注释进行配置。&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;关于Spring MVC的核心控制器DispatcherServlet的作用，以下说法错误的是（  ）？&lt;br /&gt;
-A. 它负责接收HTTP请求&lt;br /&gt;
-B. 加载配置文件&lt;br /&gt;
-C. 实现业务操作&lt;br /&gt;
-D. 初始化上下应用对象ApplicationContext&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;多选题&quot;&gt;多选题&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;（多选题）true、false、null、sizeof、goto、synchronized 哪些是Java关键字（）&lt;br /&gt;
-A、true    B、false    C、null     D、sizeof      E、goto     F、synchronized&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;（多选题）类Parent和Child定义如下，对于如下代码段，可以放入到横线位置，使程序正确编译运行，而且不产生错误的选项是（ ）
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Parent{
- public float aFun(float a, float b){return a+b;}
-}
-class Child extends Parent{
- _______
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;A. float aFun(float a, float b){return a+b;} &lt;br /&gt;
-B. public int aFun(int a, int b){return a+b;} &lt;br /&gt;
-C. public float aFun(float a, float b){return a+b;} &lt;br /&gt;
-D. private int aFun(int a, int b){return a+b;}&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;（多选题）常用的servlet包的名称是？（） &lt;br /&gt;
-A java.servlet &lt;br /&gt;
-B javax.servlet &lt;br /&gt;
-C servlet.http &lt;br /&gt;
-D javax.servlet.http&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;（多选题）下面有关forward和redirect的描述，正确的是() ？ &lt;br /&gt;
-A forward是服务器将控制权转交给另外一个内部服务器对象，由新的对象来全权负责响应用户的请求 &lt;br /&gt;
-B 执行forward时，浏览器不知道服务器发送的内容是从何处来，浏览器地址栏中还是原来的地址 &lt;br /&gt;
-C 执行redirect时，服务器端告诉浏览器重新去请求地址 &lt;br /&gt;
-D forward是内部重定向，redirect是外部重定向 &lt;br /&gt;
-E redirect默认将产生301 Permanently moved的HTTP响应&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;（多选题）JAVA反射机制主要提供了以下哪些功能？（）&lt;br /&gt;
-A 在运行时判断一个对象所属的类 &lt;br /&gt;
-B 在运行时构造一个类的对象 &lt;br /&gt;
-C 在运行时判断一个类所具有的成员变量和方法 &lt;br /&gt;
-D 在运行时调用一个对象的方法&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;简述题&quot;&gt;简述题&lt;/h3&gt;
-
-&lt;p&gt;表结构&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CREATE TABLE `TBL_ORDER`(
-	`ID` INT(11) AUTO_INCREMENT,
-	`USER_ID` INT(11) COMMENT '用户',
-	`CODE` VARCHAR(32) COMMENT '订购结果编码 0-成功，999-失败，998-用户取消',
-	`CHANNEL_ID` INT(11) COMMENT '栏目id',
-	`CREATE_TIME` TIMESTAMP COMMENT '统计时间',
-	PRIMARY KEY(`ID`)
-)
-
-CREATE TABLE `TBL_USER`(
-	`ID` INT(11) AUTO_INCREMENT,
-	`USER_NAME` VARCHAR(32) COMMENT '用户登录名',
-	`TEL` VARCHAR(11) COMMENT '电话号码',
-	`USER_IP` VARCHAR(50) COMMENT '用户IP',
-	PRIMARY KEY(`ID`)
-)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;统计用户人数？
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;统计订购成功、订购失败、用户退出订购人数？
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;查询昨天订购成功的用户信息？
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;以下js代码会出现什么情况？在什么地方显示？显示结果是什么？
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;console.log(1 &amp;amp;&amp;amp; 2 || 0);
-console.log(0 || 2 &amp;amp;&amp;amp; 1);
-console.log(0 &amp;amp;&amp;amp; 2 || 1);
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;编写一个方法 去掉一个数组的重复元素
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;应用题&quot;&gt;应用题&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;用js写一个拼图游戏（3x3或可配置）,要求如下：&lt;br /&gt;
-1、通过键盘&lt;code class=&quot;highlighter-rouge&quot;&gt;方向键&lt;/code&gt;进行选择拼块&lt;code class=&quot;highlighter-rouge&quot;&gt;确定键&lt;/code&gt;进行移动，无法移动拼块进行&lt;code class=&quot;highlighter-rouge&quot;&gt;此拼块无法移动&lt;/code&gt;提示&lt;br /&gt;
-2、进入游戏后可观察3秒原图后自动打乱拼图&lt;br /&gt;
-3、拼图成功后可通过回调函数进行自定义成功后续操作&lt;br /&gt;
-4、加入倒计时，5分钟无法完成游戏给出&lt;code class=&quot;highlighter-rouge&quot;&gt;拼图失败&lt;/code&gt;提示&lt;br /&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-</description>
-        <pubDate>Mon, 07 Jan 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/01/java_m/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/01/java_m/</guid>
-        
-        
-      </item>
-    
-      <item>
         <title>页面事件处理</title>
         <description>&lt;p&gt;页面事件处理&lt;/p&gt;
 
@@ -1290,6 +992,35 @@ console.log(0 &amp;amp;&amp;amp; 2 || 1);
         
         
         <category>MacOS</category>
+        
+      </item>
+    
+      <item>
+        <title>JAVA异常处理</title>
+        <description>&lt;p&gt;JAVA异常处理&lt;/p&gt;
+
+&lt;p&gt;要理解Java异常处理是如何工作的，你需要掌握以下三种类型的异常：&lt;/p&gt;
+
+&lt;p&gt;检查性异常: 最具代表的检查性异常是用户错误或问题引起的异常，这是程序员无法预见的。例如要打开一个不存在文件时，一个异常就发生了，这些异常在编译时不能被简单地忽略。&lt;/p&gt;
+
+&lt;p&gt;运行时异常: 运行时异常是可能被程序员避免的异常。与检查性异常相反，运行时异常可以在编译时被忽略。&lt;/p&gt;
+
+&lt;p&gt;错误: 错误不是异常，而是脱离程序员控制的问题。错误在代码中通常被忽略。例如，当栈溢出时，一个错误就发生了，它们在编译也检查不到的。&lt;/p&gt;
+
+&lt;h3 id=&quot;参考资料&quot;&gt;参考资料&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.runoob.com/java/java-exceptions.html&quot;&gt;Java 异常处理&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 01 Nov 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/11/java_exception/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/11/java_exception/</guid>
+        
+        <category>JAVA</category>
+        
+        <category>异常</category>
+        
+        
+        <category>技术开发</category>
         
       </item>
     
