@@ -263,7 +263,7 @@ $ sudo chown $(whoami):admin /usr/local/Frameworks
 $ brew link python
 </code></pre></div></div>
 
-<h4 id="启动-qt">启动 QT</h4>
+<h4 id="启动qt编译redisdesktopmanager">启动QT编译RedisDesktopManager</h4>
 
 <p>双击打开(刚git clone下来的redis客户端源码的src目录下)rdm.pro</p>
 
@@ -282,12 +282,36 @@ CONFIG -= debug
 
 <p>再次执行编译，编译成功后,可以在bin/osx/release下找到<code class="highlighter-rouge">Redis Desktop Manager.app</code></p>
 
+<p>此时只能在本机运行,因为他依赖了本地的一些库，如QT库、Python等,如果想给别人是用需要将这些依赖库复制到 RedisDesktopManager.app/Contents/Frameworks的目录下，
+那么我们怎么知道用了那些库呢?qt给我们提供了一个方便的工具macdeployqt，操作如下：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/local/Cellar/qt/5.13.2/bin/macdeployqt "Redis Desktop Manager.app" -qmldir=../../../src/qml
+</code></pre></div></div>
+<p>执行上面命令时，我这里报错</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ERROR: no file at "/usr/local/opt/python/lib/Python.framework/Versions/3.7/Python"
+File exists, skip copy: "Redis Desktop Manager.app/Contents/PlugIns/quick/libqtquickcontrols2fusionstyleplugin.dylib"
+File exists, skip copy: "Redis Desktop Manager.app/Contents/PlugIns/quick/libqtquickcontrols2imaginestyleplugin.dylib"
+File exists, skip copy: "Redis Desktop Manager.app/Contents/PlugIns/quick/libqtquickcontrols2materialstyleplugin.dylib"
+File exists, skip copy: "Redis Desktop Manager.app/Contents/PlugIns/quick/libqtquickcontrols2universalstyleplugin.dylib"
+</code></pre></div></div>
+
+<p>后来发现我的python路径不同，路径为<code class="highlighter-rouge">/usr/local/opt/python/Frameworks/Python.framework/Versions/3.7/Python</code>,我是通过创建一个软连接解决</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p /usr/local/opt/python/lib/Python.framework/Versions/
+cd /usr/local/opt/python/lib/Python.framework/Versions/
+ln -s /usr/local/opt/python/Frameworks/Python.framework/Versions/3.7 3.7
+</code></pre></div></div>
+
+<p>右键 <code class="highlighter-rouge">Redis Desktop Manager.app</code>-&gt;显示包内容你会发现在Frameworks目录下多了好多内容。至此你就可以把这个应用给别人使用了</p>
+
 <h4 id="打包dmg">打包dmg</h4>
 <p>为了更方便给别人使用我们将 app 打包成 dmg 安装包。在桌面新建一个文件夹，取名<strong>rdm</strong>吧，将<code class="highlighter-rouge">Redis Desktop Manager.app</code>文件放进去。为了实现拖拽到Application的效果，需要在这个文件夹里放一个Application的替身。具体做法是cd到这个目录，建立一个软链接</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /Users/xxxxx/Desktop/rdm
 ln -s /Applications/  Applications
 </code></pre></div></div>
+
 <p>接下来,用macos自带的<code class="highlighter-rouge">磁盘工具</code>打包成dmg安装包,打开<code class="highlighter-rouge">磁盘工具</code>,选择文件-新建映像-来自文件夹的映像…,再选择桌面的rdm目录,根据提示完成整个步骤.至此打包完成!!!</p>
 
 <p><img src="/images/posts/dev/rdm_dmg.png" alt="" /></p>
@@ -466,10 +490,13 @@ ln -s /Applications/  Applications
     			<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
           <!-- 访问统计 -->
-          <span id="busuanzi_container_site_pv">
+          <!-- <span id="busuanzi_container_site_pv">
             本站总访问量
             <span id="busuanzi_value_site_pv"></span>次
-          </span>
+          </span> -->
+          <!-- 备案信息 -->
+          
+          <span id="busuanzi_container_site_pv">蜀ICP备09035688号</span>
 
         </div>
         <div>

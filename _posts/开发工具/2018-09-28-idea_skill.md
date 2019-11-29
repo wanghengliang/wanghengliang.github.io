@@ -1,6 +1,6 @@
 ---
 layout: post
-title: IntelliJ IDEA使用小技巧
+title: IntelliJ IDEA使用小技巧 
 date: 2018-09-28
 categories: 开发工具
 tags: IntelliJIDEA
@@ -16,7 +16,15 @@ IntelliJ IDEA使用小技巧
 
 ### 自动优化导包（自动删除、导入包）
 
-1. 
-Editor→General→Auto Import
+1. Editor→General→Auto Import
 
 ![](/images/posts/tools/idea-auto-import.jpg)
+
+### SpringBoot 在IDEA中实现热部署
+
+1. 
+
+![](/images/posts/tools/idea-auto-matically1.jpg)
+
+![](/images/posts/tools/idea-auto-matically2.jpg)
+
