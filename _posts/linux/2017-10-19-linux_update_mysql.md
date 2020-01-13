@@ -33,15 +33,15 @@ tags: MySQL 服务器架设
 #### 创建安装目录并修改目录拥有者
 
 ```
-# mkdir /usr/local/mysql5727
-# mkdir /data/mysql5727
+# mkdir /usr/local/mysql5728
+# mkdir /data/mysql5728
 # 小版本更新可以直接复制原来版本的数据文件
-# cp -r /data/mysql5726 /data/mysql5726bak    安装好新版本后重命名 mv /data/mysql5726 /data/mysql5727
+# cp -r /data/mysql5728 /data/mysql5728bak    安装好新版本后重命名 mv /data/mysql5727 /data/mysql5728
 # 
-# chown -R mysql:mysql /usr/local/mysql5727
-# chown -R mysql:mysql /data/mysql5727
+# chown -R mysql:mysql /usr/local/mysql5728
+# chown -R mysql:mysql /data/mysql5728
 
-# mkdir /etc/mysql5727
+# mkdir /etc/mysql5728
 ```
 
 
@@ -65,14 +65,14 @@ gmake && gmake install
 然后解压并跳转到解压目录进行编译安装
 
 ```
-# tar -xzvf mysql-boost-5.7.27.tar.gz
-# cd mysql-boost-5.7.27
+# tar -xzvf mysql-boost-5.7.28.tar.gz
+# cd mysql-boost-5.7.28
 
 # cmake . \
--DCMAKE_INSTALL_PREFIX=/usr/local/mysql5727 \
--DMYSQL_DATADIR=/data/mysql5727 \
--DMYSQL_UNIX_ADDR=/data/mysql5727/mysql.sock \
--DSYSCONFDIR=/etc/mysql5727 \
+-DCMAKE_INSTALL_PREFIX=/usr/local/mysql5728 \
+-DMYSQL_DATADIR=/data/mysql \
+-DMYSQL_UNIX_ADDR=/data/mysql/mysql.sock \
+-DSYSCONFDIR=/etc/mysql5728 \
 -DMYSQL_USER=mysql \
 -DMYSQL_TCP_PORT=3306 \
 -DDEFAULT_CHARSET=utf8mb4 \
@@ -90,6 +90,8 @@ gmake && gmake install
 -DWITH_BOOST=boost/boost_1_59_0
 
 # make && make install
+
+# echo $?  //查看下最后的make install是否有报错，0表示没有问题
 ```
 
 > DWITH_BOOST参数对应的是刚刚解压后的boost目录
@@ -100,33 +102,31 @@ gmake && gmake install
 添加mysql配置文件
 
 ```
-# vi /etc/mysql5727/my.cnf
+# vi /etc/mysql5728/my.cnf
 ...
 ```
 
 添加启动项配置并删除原来的启动项
 
 ```
-# cd /usr/local/mysql5727/support-files
-# cp mysql.server /etc/init.d/mysql5727
-# mv /etc/init.d/mysql5726 /data/db_bak/
+# cd /usr/local/mysql5728/support-files
+# cp mysql.server /etc/init.d/mysql5728
 ```
 
-修改/etc/init.d/mysql5727文件中的如下代码
+修改/etc/init.d/mysql5728文件中的如下代码
 
 ```
-# vi /etc/init.d/mysql5727
+# vi /etc/init.d/mysql5728
 
 
-basedir=/usr/local/mysql5727
-datadir=/data/mysql5727
+basedir=/usr/local/mysql5728
+datadir=/data/mysql
 ```
 
 设置为系统服务并删除原来的服务
 
 ```
-# chkconfig --add mysql5727
-# chkconfig --del mysql5726
+# chkconfig --add mysql5728
 ```
 
  修改alias重新指定mysql启动程序
@@ -134,8 +134,8 @@ datadir=/data/mysql5727
  ```
 # vi ~ /.bash_profile
 
-alias mysql="/usr/local/mysql5727/bin/mysql"
-alias mysqldump="/usr/local/mysql5727/bin/mysqldump"
+alias mysql="/usr/local/mysql5728/bin/mysql"
+alias mysqldump="/usr/local/mysql5728/bin/mysqldump"
 
 
 # source ~ /.bash_profile
@@ -146,26 +146,26 @@ alias mysqldump="/usr/local/mysql5727/bin/mysqldump"
 
 ```
 ## 停止老版本
-# service mysql5726 stop
+# service mysql5727 stop
 
 ## 拷贝数据文件(保留原版本数据)
-# cp -r /data/mysql5726 /data/mysql5727
-# chown -R mysql:mysql /usr/local/mysql5727
-# chown -R mysql:mysql /data/mysql5727
+# cp -r /data/mysql5727 /data/mysql
+# chown -R mysql:mysql /usr/local/mysql5728
+# chown -R mysql:mysql /data/mysql
 
 ## 启动新版本
-# service mysql5727 start
+# service mysql5728 start
 
 ## 更新信息
-# cd /usr/local/mysql5727/bin
-# ./mysqld_safe --user=mysql --socket=/data/mysql5727/mysql.sock -p --skip-grant-tables  --datadir=/data/mysql5727/data
-# ./mysql_upgrade -uroot -p -S /data/mysql5727/mysql.sock
+# cd /usr/local/mysql5728/bin
+# ./mysqld_safe --user=mysql --socket=/data/mysql/mysql.sock -p --skip-grant-tables  --datadir=/data/mysql/data
+# ./mysql_upgrade -uroot -p -S /data/mysql/mysql.sock
 ## 重启新版本
-# service mysql5727 restart
+# service mysql5728 restart
 ...
 
 ## 因为用的原来数据,密码还是原来的密码
-# /usr/local/mysql5727/bin/mysql -uroot -p
+# /usr/local/mysql5728/bin/mysql -uroot -p
 Enter password: 
 ...
 mysql>
@@ -196,16 +196,22 @@ mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'abc1';
 mysql> FLUSH PRIVILEGES;
 ```
 
+删除原来的服务
+```
+# cp /etc/init.d/mysql5727 /data/db_bak/
+# chkconfig --del mysql5727
+```
+
 
 
 ### 测试MySQL
 重启并测试
 
 ```
-# service mysql5726 restart
+# service mysql5728 restart
 ...
 
-# /usr/local/mysql5726/bin/mysql -uroot -p     
+# /usr/local/mysql5728/bin/mysql -uroot -p     
 Enter password: 
 ...
 mysql> show databases;
@@ -254,6 +260,7 @@ mysql> show processlist;
 ```
 
 ### 删除旧版本
+
 如果是升级可迁移数据后删除旧版本
 
 ```

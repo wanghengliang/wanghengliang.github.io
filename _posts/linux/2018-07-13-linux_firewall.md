@@ -53,6 +53,7 @@ firewall-cmd --permanent --zone=public --add-rich-rule="rule family='ipv4' sourc
 
 ```
 firewall-cmd --zone=public --remove-port=80/tcp --permanent
+firewall-cmd --zone=public --remove-port=23/tcp --permanent
 firewall-cmd --zone=public --remove-service=smtp --permanent
 
 ```
@@ -75,3 +76,9 @@ systemctl disable firewalld.service #禁止firewall开机启动
 ```
 firewall-cmd --reload
 ```
+
+
+#### 其他
+
+通过掩码设置连续主机IP段，掩码设置包含主机数信息如下表：
+![](/images/posts/linux/firewall_mask.jpg)

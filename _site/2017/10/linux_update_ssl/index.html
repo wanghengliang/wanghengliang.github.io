@@ -7,16 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <title>CentOS 6.5升级OpenSSL步骤</title>
-  <meta name="description" content="https://www.cnblogs.com/kyoung/p/6801143.html">
+  <meta name="description" content="下载指定版本的openssl软件">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="CentOS 6.5升级OpenSSL步骤">
-  <meta name="twitter:description" content="https://www.cnblogs.com/kyoung/p/6801143.html">
+  <meta name="twitter:description" content="下载指定版本的openssl软件">
   
   <meta property="og:type" content="article">
   <meta property="og:title" content="CentOS 6.5升级OpenSSL步骤">
-  <meta property="og:description" content="https://www.cnblogs.com/kyoung/p/6801143.html">
+  <meta property="og:description" content="下载指定版本的openssl软件">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -173,7 +173,34 @@
   </header>
 
   <section class="post">
-    <p>https://www.cnblogs.com/kyoung/p/6801143.html</p>
+    <p>下载指定版本的openssl软件</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://www.openssl.org/source/openssl-1.1.1d.tar.gz
+wget https://www.openssl.org/source/old/1.0.2/openssl-1.0.2u.tar.gz
+
+tar -xzvf openssl-1.1.1d.tar.gz
+cd openssl-1.1.1d
+./config shared zlib
+make &amp;&amp; make install
+</code></pre></div></div>
+
+<p>配置</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mv /usr/bin/openssl /usr/bin/openssl.bak
+mv /usr/include/openssl /usr/include/openssl.bak
+ln -s /usr/local/bin/openssl /usr/bin/openssl
+ln -s /usr/local/include/openssl /usr/include/openssl
+echo "/usr/local/lib64/" &gt;&gt; /etc/ld.so.conf
+ldconfig 
+openssl version -a
+
+</code></pre></div></div>
+
+<p>验证</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>openssl version 
+</code></pre></div></div>
+
+<p>https://www.cnblogs.com/kyoung/p/6801143.html</p>
 
 <p>linux下安装/升级openssl
  （2810）  （1）</p>
@@ -411,7 +438,7 @@ ldconfig -v
 
         <div class = "footer_div">  
            <p class="copyright text-muted">
-            Copyright &copy; hengliang 2019 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
+            Copyright &copy; hengliang 2020 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
             <iframe
                 style="margin-left: 2px; margin-bottom:-5px;"
                 frameborder="0" scrolling="0" width="91px" height="20px"

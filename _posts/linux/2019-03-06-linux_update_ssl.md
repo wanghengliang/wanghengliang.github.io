@@ -7,6 +7,41 @@ tags: CentOS 服务器维护
 ---
 
 
+下载指定版本的openssl软件
+
+```
+wget https://www.openssl.org/source/openssl-1.1.1d.tar.gz
+wget https://www.openssl.org/source/old/1.0.2/openssl-1.0.2u.tar.gz
+
+tar -xzvf openssl-1.1.1d.tar.gz
+cd openssl-1.1.1d
+./config shared zlib
+make && make install
+```
+
+配置
+```
+mv /usr/bin/openssl /usr/bin/openssl.bak
+mv /usr/include/openssl /usr/include/openssl.bak
+ln -s /usr/local/bin/openssl /usr/bin/openssl
+ln -s /usr/local/include/openssl /usr/include/openssl
+echo "/usr/local/lib64/" >> /etc/ld.so.conf
+ldconfig 
+openssl version -a
+
+```
+
+
+验证
+
+```
+openssl version 
+```
+
+
+
+
+
 
 https://www.cnblogs.com/kyoung/p/6801143.html
 

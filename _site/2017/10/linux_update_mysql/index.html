@@ -201,15 +201,15 @@
 
 <h4 id="创建安装目录并修改目录拥有者">创建安装目录并修改目录拥有者</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># mkdir /usr/local/mysql5727
-# mkdir /data/mysql5727
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># mkdir /usr/local/mysql5728
+# mkdir /data/mysql5728
 # 小版本更新可以直接复制原来版本的数据文件
-# cp -r /data/mysql5726 /data/mysql5726bak    安装好新版本后重命名 mv /data/mysql5726 /data/mysql5727
+# cp -r /data/mysql5728 /data/mysql5728bak    安装好新版本后重命名 mv /data/mysql5727 /data/mysql5728
 # 
-# chown -R mysql:mysql /usr/local/mysql5727
-# chown -R mysql:mysql /data/mysql5727
+# chown -R mysql:mysql /usr/local/mysql5728
+# chown -R mysql:mysql /data/mysql5728
 
-# mkdir /etc/mysql5727
+# mkdir /etc/mysql5728
 </code></pre></div></div>
 
 <h4 id="备份mysql">备份MySQL</h4>
@@ -229,14 +229,14 @@ gmake &amp;&amp; gmake install
 <h3 id="安装新版本mysql">安装新版本MySQL</h3>
 <p>然后解压并跳转到解压目录进行编译安装</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># tar -xzvf mysql-boost-5.7.27.tar.gz
-# cd mysql-boost-5.7.27
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># tar -xzvf mysql-boost-5.7.28.tar.gz
+# cd mysql-boost-5.7.28
 
 # cmake . \
--DCMAKE_INSTALL_PREFIX=/usr/local/mysql5727 \
--DMYSQL_DATADIR=/data/mysql5727 \
--DMYSQL_UNIX_ADDR=/data/mysql5727/mysql.sock \
--DSYSCONFDIR=/etc/mysql5727 \
+-DCMAKE_INSTALL_PREFIX=/usr/local/mysql5728 \
+-DMYSQL_DATADIR=/data/mysql \
+-DMYSQL_UNIX_ADDR=/data/mysql/mysql.sock \
+-DSYSCONFDIR=/etc/mysql5728 \
 -DMYSQL_USER=mysql \
 -DMYSQL_TCP_PORT=3306 \
 -DDEFAULT_CHARSET=utf8mb4 \
@@ -254,6 +254,8 @@ gmake &amp;&amp; gmake install
 -DWITH_BOOST=boost/boost_1_59_0
 
 # make &amp;&amp; make install
+
+# echo $?  //查看下最后的make install是否有报错，0表示没有问题
 </code></pre></div></div>
 
 <blockquote>
@@ -266,38 +268,36 @@ gmake &amp;&amp; gmake install
 
 <p>添加mysql配置文件</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># vi /etc/mysql5727/my.cnf
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># vi /etc/mysql5728/my.cnf
 ...
 </code></pre></div></div>
 
 <p>添加启动项配置并删除原来的启动项</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># cd /usr/local/mysql5727/support-files
-# cp mysql.server /etc/init.d/mysql5727
-# mv /etc/init.d/mysql5726 /data/db_bak/
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># cd /usr/local/mysql5728/support-files
+# cp mysql.server /etc/init.d/mysql5728
 </code></pre></div></div>
 
-<p>修改/etc/init.d/mysql5727文件中的如下代码</p>
+<p>修改/etc/init.d/mysql5728文件中的如下代码</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># vi /etc/init.d/mysql5727
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># vi /etc/init.d/mysql5728
 
 
-basedir=/usr/local/mysql5727
-datadir=/data/mysql5727
+basedir=/usr/local/mysql5728
+datadir=/data/mysql
 </code></pre></div></div>
 
 <p>设置为系统服务并删除原来的服务</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># chkconfig --add mysql5727
-# chkconfig --del mysql5726
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># chkconfig --add mysql5728
 </code></pre></div></div>
 
 <p>修改alias重新指定mysql启动程序</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># vi ~ /.bash_profile
 
-alias mysql="/usr/local/mysql5727/bin/mysql"
-alias mysqldump="/usr/local/mysql5727/bin/mysqldump"
+alias mysql="/usr/local/mysql5728/bin/mysql"
+alias mysqldump="/usr/local/mysql5728/bin/mysqldump"
 
 
 # source ~ /.bash_profile
@@ -306,26 +306,26 @@ alias mysqldump="/usr/local/mysql5727/bin/mysqldump"
 <h4 id="小版本升级">小版本升级</h4>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## 停止老版本
-# service mysql5726 stop
+# service mysql5727 stop
 
 ## 拷贝数据文件(保留原版本数据)
-# cp -r /data/mysql5726 /data/mysql5727
-# chown -R mysql:mysql /usr/local/mysql5727
-# chown -R mysql:mysql /data/mysql5727
+# cp -r /data/mysql5727 /data/mysql
+# chown -R mysql:mysql /usr/local/mysql5728
+# chown -R mysql:mysql /data/mysql
 
 ## 启动新版本
-# service mysql5727 start
+# service mysql5728 start
 
 ## 更新信息
-# cd /usr/local/mysql5727/bin
-# ./mysqld_safe --user=mysql --socket=/data/mysql5727/mysql.sock -p --skip-grant-tables  --datadir=/data/mysql5727/data
-# ./mysql_upgrade -uroot -p -S /data/mysql5727/mysql.sock
+# cd /usr/local/mysql5728/bin
+# ./mysqld_safe --user=mysql --socket=/data/mysql/mysql.sock -p --skip-grant-tables  --datadir=/data/mysql/data
+# ./mysql_upgrade -uroot -p -S /data/mysql/mysql.sock
 ## 重启新版本
-# service mysql5727 restart
+# service mysql5728 restart
 ...
 
 ## 因为用的原来数据,密码还是原来的密码
-# /usr/local/mysql5727/bin/mysql -uroot -p
+# /usr/local/mysql5728/bin/mysql -uroot -p
 Enter password: 
 ...
 mysql&gt;
@@ -353,13 +353,18 @@ mysql&gt;
 mysql&gt; FLUSH PRIVILEGES;
 </code></pre></div></div>
 
+<p>删除原来的服务</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># cp /etc/init.d/mysql5727 /data/db_bak/
+# chkconfig --del mysql5727
+</code></pre></div></div>
+
 <h3 id="测试mysql">测试MySQL</h3>
 <p>重启并测试</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># service mysql5726 restart
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># service mysql5728 restart
 ...
 
-# /usr/local/mysql5726/bin/mysql -uroot -p     
+# /usr/local/mysql5728/bin/mysql -uroot -p     
 Enter password: 
 ...
 mysql&gt; show databases;
@@ -405,6 +410,7 @@ mysql&gt; show databases;
 </code></pre></div></div>
 
 <h3 id="删除旧版本">删除旧版本</h3>
+
 <p>如果是升级可迁移数据后删除旧版本</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># rpm -qa | grep mysql
@@ -588,7 +594,7 @@ mysql&gt; FLUSH PRIVILEGES;
 
         <div class = "footer_div">  
            <p class="copyright text-muted">
-            Copyright &copy; hengliang 2019 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
+            Copyright &copy; hengliang 2020 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
             <iframe
                 style="margin-left: 2px; margin-bottom:-5px;"
                 frameborder="0" scrolling="0" width="91px" height="20px"

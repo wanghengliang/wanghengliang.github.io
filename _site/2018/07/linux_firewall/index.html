@@ -216,6 +216,7 @@ firewall-cmd --permanent --zone=public --add-rich-rule="rule family='ipv4' sourc
 <h4 id="删除端口或服务">删除端口或服务</h4>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>firewall-cmd --zone=public --remove-port=80/tcp --permanent
+firewall-cmd --zone=public --remove-port=23/tcp --permanent
 firewall-cmd --zone=public --remove-service=smtp --permanent
 
 </code></pre></div></div>
@@ -235,6 +236,11 @@ systemctl disable firewalld.service #禁止firewall开机启动
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>firewall-cmd --reload
 </code></pre></div></div>
+
+<h4 id="其他">其他</h4>
+
+<p>通过掩码设置连续主机IP段，掩码设置包含主机数信息如下表：
+<img src="/images/posts/linux/firewall_mask.jpg" alt="" /></p>
 
 
   </section>
@@ -385,7 +391,7 @@ systemctl disable firewalld.service #禁止firewall开机启动
 
         <div class = "footer_div">  
            <p class="copyright text-muted">
-            Copyright &copy; hengliang 2019 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
+            Copyright &copy; hengliang 2020 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
             <iframe
                 style="margin-left: 2px; margin-bottom:-5px;"
                 frameborder="0" scrolling="0" width="91px" height="20px"

@@ -165,6 +165,48 @@
   <ol class="post-list">
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/07/mysql_backup/" title="访问 MySQL备份">MySQL备份</a></h2>
+      <p class="excerpt">MySQL备份mysql 导出excel方法1.执行如下命令，可将执行结果导出到excel中：mysql db_abc -uroot -p -e "call SP_PET_STATISTICS(1)" &gt; /data/tj_20160819.xlsmysql db_abc -uroot -p -e "select user_id,code ,create_time from tbl_statistics_order where code like '%result_0' and TO...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2018-07-19 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2018-07-19</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">数据库MySQL</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2018/07/mysql_backup/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2018/07/linux_network/" title="访问 Linux网络设置">Linux网络设置</a></h2>
+      <p class="excerpt">Linux网络设置IP设置查看IP地址# ifconfig网络接口配置文件修改配置文件路径是/etc/sysconfig/network-scripts/# vi /etc/sysconfig/network-scripts/ifcfg-网络接口名称修改以下配置TYPE=EthernetBOOTPROTO=staticHWADDR=00:0c:29:ce:3f:3c  #MAC地址IPADDR=192.168.1.104     #静态IPGATEWAY=192.168.1.2     #...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2018-07-13 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2018-07-13</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">网络</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2018/07/linux_network/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2018/07/linux_firewall/" title="访问 Linux防火墙设置">Linux防火墙设置</a></h2>
       <p class="excerpt">Linux防火墙设置CentOS 6.5查看防火墙的状态查看已经开放的端口开启端口启动防火墙关闭防火墙重启防火墙CentOS 7查看防火墙的状态# firewall-cmd --state查看已经开放的端口firewall-cmd --list-portsfirewall-cmd --list-all开启端口或服务firewall-cmd --zone=public --add-port=80/tcp --permanentfirewall-cmd --zone=public --add-...&hellip;</p>
       <div class="post-list__meta">        
@@ -229,7 +271,7 @@
     
     <li>
       <h2 class="post-list__post-title post-title"><a href="/2017/10/linux_update_ssl/" title="访问 CentOS 6.5升级OpenSSL步骤">CentOS 6.5升级OpenSSL步骤</a></h2>
-      <p class="excerpt">https://www.cnblogs.com/kyoung/p/6801143.htmllinux下安装/升级openssl （2810）  （1）安装环境：   操作系统：CentOs7   OpenSSL Version:openssl-1.0.2j.tar.gz安装：       目前版本最新的SSL地址为http://www.openssl.org/source/openssl-1.1.0e.tar.gz备注：进入http://www.openssl.org/source/ 查看...&hellip;</p>
+      <p class="excerpt">下载指定版本的openssl软件wget https://www.openssl.org/source/openssl-1.1.1d.tar.gzwget https://www.openssl.org/source/old/1.0.2/openssl-1.0.2u.tar.gztar -xzvf openssl-1.1.1d.tar.gzcd openssl-1.1.1d./config shared zlibmake &amp;&amp; make install配置mv /usr/b...&hellip;</p>
       <div class="post-list__meta">        
         <time datetime="2017-10-19 00:00:00 +0800" class="post-list__meta--date date">
           <img src="/images/calendar.png" width="20px" /> 
@@ -542,48 +584,6 @@
       <hr class="post-list__divider" />
     </li>
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/12/linux_MySQL/" title="访问 MySQL安装">MySQL安装</a></h2>
-      <p class="excerpt">mysql 下载下载地址:MySQL版本（mysql包括三个版本）MySQL Enterprise Edition (commercial) MySQL企业版（商业）MySQL Cluster CGE (commercial) MySQL集群CGE（商业）MySQL Community Edition (GPL) MySQL社区版（GPL）–&gt;MySQL Community Server (GPL) MySQL社区服务器（GPL）–&gt;MySQL Cluster (GPL) My...&hellip;</p>
-      <div class="post-list__meta">        
-        <time datetime="2016-12-15 00:00:00 +0800" class="post-list__meta--date date">
-          <img src="/images/calendar.png" width="20px" /> 
-          2016-12-15</time> 
-        <div class = "tag-img-icon">
-          <img src="/images/tag-icon.svg" width="20px" /> 
-        </div>
-        <a href="/tags">
-          <div class = "post-list-icon-mate">
-            <span class="post-list__meta--tags-right">MySQL服务器架设</span>
-          </div>
-          <div class = "post-list-small-mate">
-          <a class="btn-border-small" href=/2016/12/linux_MySQL/>阅读全文 » </a>
-          </div>
-      </div>
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/11/go2shell/" title="访问 Go2Shell安装和设置">Go2Shell安装和设置</a></h2>
-      <p class="excerpt">MacOS使用小技巧整理，持续更新介绍Go2Shell.app 很好使, 图标也萌萌哒. 作为一个 Finder 常驻图标, &gt;_&lt;这个就是. 在你想进的目录里点击直接会启动终端并进入到当前目录. 同时支持 Terminal, iTerm, xterm.下载传送门: Mac App Store-Go2Shell使用方法直接拖拽到 Finder 里即可. 10.10 以后需要按着 command 进行拖拽.配置方法执行命令open -a Go2Shell --args confi...&hellip;</p>
-      <div class="post-list__meta">        
-        <time datetime="2016-11-17 00:00:00 +0800" class="post-list__meta--date date">
-          <img src="/images/calendar.png" width="20px" /> 
-          2016-11-17</time> 
-        <div class = "tag-img-icon">
-          <img src="/images/tag-icon.svg" width="20px" /> 
-        </div>
-        <a href="/tags">
-          <div class = "post-list-icon-mate">
-            <span class="post-list__meta--tags-right">MacOSGo2Shell</span>
-          </div>
-          <div class = "post-list-small-mate">
-          <a class="btn-border-small" href=/2016/11/go2shell/>阅读全文 » </a>
-          </div>
-      </div>
-      <hr class="post-list__divider" />
-    </li>
-    
   </ol>
 
   <hr class="post-list__divider " />
@@ -597,7 +597,9 @@
     
         <a class="newer-posts pagination__newer btn btn-small btn-tertiary" href="/#blog">&larr; 最近</a>
     
-    <span class="pagination__page-number">2 / 2</span>
+    <span class="pagination__page-number">2 / 3</span>
+    
+        <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/page/3/#blog">更早 &rarr;</a>
     
 </nav>
 
@@ -651,7 +653,7 @@
 
         <div class = "footer_div">  
            <p class="copyright text-muted">
-            Copyright &copy; hengliang 2019 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
+            Copyright &copy; hengliang 2020 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
             <iframe
                 style="margin-left: 2px; margin-bottom:-5px;"
                 frameborder="0" scrolling="0" width="91px" height="20px"

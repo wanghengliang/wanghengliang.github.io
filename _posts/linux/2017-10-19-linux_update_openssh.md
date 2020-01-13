@@ -95,8 +95,8 @@ OpenSSL 1.0.2t-fips  26 Jan 2017
 #### 备份当前openssh
 
 ```
-# cp /etc/ssh /etc/ssh.old
-# cp /etc/init.d/sshd /etc/init.d/sshd.old
+# cp -r /etc/ssh /etc/ssh80p1.bak
+# cp -r /etc/init.d/sshd /etc/init.d/sshd80p1
 ```
 
 #### 卸载当前openssh
@@ -126,14 +126,14 @@ OpenSSL 1.0.2t-fips  26 Jan 2017
 
 ```
 wget https://cloudflare.cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.9p1.tar.gz
-
+wget https://cloudflare.cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.1p1.tar.gz
 ```
 
 ##### 编译安装
 
 ```
-tar -zxvf openssh-7.9p1.tar.gz
-cd openssh-7.9p1
+tar -zxvf openssh-8.1p1.tar.gz
+cd openssh-8.1p1
 ./configure --prefix=/usr --sysconfdir=/etc/ssh --with-md5-passwords --with-pam --with-tcp-wrappers  --with-ssl-dir=/usr/local/ssl --without-hardening
 rm -rf /etc/ssh
 make && make install
@@ -150,6 +150,8 @@ chkconfig sshd on
 chkconfig --list|grep sshd
 sed -i "PermitRootLogin yes" /etc/ssh/sshd_config
 systemctl restart sshd
+#或者
+service sshd restart
 ```
 
 ##### 查看版本
