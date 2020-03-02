@@ -175,6 +175,16 @@
   <section class="post">
     <p>Linux防火墙设置</p>
 
+<p>启动指令:service iptables start <br />
+重启指令:service iptables restart <br />
+关闭指令:service iptables stop</p>
+
+<p>vi /etc/sysconfig/iptables
+service iptables restart
+service iptables save</p>
+
+<p>远程操作一定不能执行 iptables -F //清空规则缓冲区</p>
+
 <p>https://blog.csdn.net/slovyz/article/details/79900082</p>
 
 <p>iptables 的历史以及工作原理

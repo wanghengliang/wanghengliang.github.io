@@ -1,2 +1,2 @@
-MacOS	Go2Shell	MySQL	服务器架设	JDK	Tomcat	Sublime	IntelliJIDEA	快捷键	rvm	Ruby	jekyll	blog系统	Sierra	注册机修复工具	gitbook	License	CentOS	服务器维护	FTP	防火墙	网络	数据库	linux	Nginx	压力测试	JAVA	mathjaxJs	异常	Javascript	前端	bat	docker	git	Redis	brew	
+MacOS	Go2Shell	linux	MySQL	服务器架设	JDK	Tomcat	Sublime	IntelliJIDEA	快捷键	rvm	Ruby	jekyll	blog系统	Sierra	注册机修复工具	gitbook	License	CentOS	服务器维护	FTP	防火墙	网络	数据库	Nginx	压力测试	JAVA	mathjaxJs	异常	Javascript	前端	bat	docker	git	Redis	brew	tree	数据结构	
 	

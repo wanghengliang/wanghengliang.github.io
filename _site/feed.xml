@@ -5,9 +5,39 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 13 Jan 2020 18:00:57 +0800</pubDate>
-    <lastBuildDate>Mon, 13 Jan 2020 18:00:57 +0800</lastBuildDate>
+    <pubDate>Mon, 02 Mar 2020 15:01:29 +0800</pubDate>
+    <lastBuildDate>Mon, 02 Mar 2020 15:01:29 +0800</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
+    
+      <item>
+        <title>各种树结构</title>
+        <description>&lt;p&gt;各种树结构&lt;/p&gt;
+
+&lt;h3 id=&quot;二叉树&quot;&gt;二叉树&lt;/h3&gt;
+
+&lt;h3 id=&quot;红黑树&quot;&gt;红黑树&lt;/h3&gt;
+
+&lt;h3 id=&quot;btreebtreeb-treebtree&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Btree&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;B+Tree&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;B+ tree&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;B*tree&lt;/code&gt;&lt;/h3&gt;
+
+&lt;h3 id=&quot;字典树--trie树-&quot;&gt;字典树 ( Trie树 )&lt;/h3&gt;
+
+&lt;h3 id=&quot;决策树利用信息论的熵依靠决策树做决策选择&quot;&gt;决策树(利用信息论的熵依靠决策树做决策选择)&lt;/h3&gt;
+
+&lt;h3 id=&quot;梅克尔帕特里夏树-merkle-patricia-tree-mpt&quot;&gt;梅克尔帕特里夏树( Merkle Patricia Tree, MPT)&lt;/h3&gt;
+
+&lt;h3 id=&quot;计算机科学中的树结构&quot;&gt;计算机科学中的树结构&lt;/h3&gt;
+
+</description>
+        <pubDate>Mon, 24 Feb 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/02/tree/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/02/tree/</guid>
+        
+        <category>tree</category>
+        
+        <category>数据结构</category>
+        
+        
+      </item>
     
       <item>
         <title>CentOS 6.5升级GCC步骤</title>
@@ -51,8 +81,6 @@ gcc -v
         
         <category>linux</category>
         
-        
-        <category>linux</category>
         
       </item>
     
@@ -190,8 +218,6 @@ public class Main {
         
         <category>JAVA</category>
         
-        
-        <category>技术开发</category>
         
       </item>
     
@@ -439,10 +465,8 @@ ln -s /Applications/  Applications
         
         <category>Redis</category>
         
-        
-        <category>技术开发</category>
-        
         <category>MacOS</category>
+        
         
       </item>
     
@@ -496,8 +520,6 @@ Host github.com
         
         <category>git</category>
         
-        
-        <category>技术开发</category>
         
       </item>
     
@@ -638,8 +660,6 @@ docker run &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt;&lt;span class=&qu
         
         <category>docker</category>
         
-        
-        <category>linux</category>
         
       </item>
     
@@ -850,13 +870,21 @@ for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不
         <category>bat</category>
         
         
-        <category>技术开发</category>
-        
       </item>
     
       <item>
         <title>Linux防火墙设置</title>
         <description>&lt;p&gt;Linux防火墙设置&lt;/p&gt;
+
+&lt;p&gt;启动指令:service iptables start &lt;br /&gt;
+重启指令:service iptables restart &lt;br /&gt;
+关闭指令:service iptables stop&lt;/p&gt;
+
+&lt;p&gt;vi /etc/sysconfig/iptables
+service iptables restart
+service iptables save&lt;/p&gt;
+
+&lt;p&gt;远程操作一定不能执行 iptables -F //清空规则缓冲区&lt;/p&gt;
 
 &lt;p&gt;https://blog.csdn.net/slovyz/article/details/79900082&lt;/p&gt;
 
@@ -1031,10 +1059,10 @@ iptables-restore &amp;lt; /etc/sysconfig/iptables.2
         <link>http://localhost:4000/2019/05/linux_iptables/</link>
         <guid isPermaLink="true">http://localhost:4000/2019/05/linux_iptables/</guid>
         
+        <category>linux</category>
+        
         <category>防火墙</category>
         
-        
-        <category>linux</category>
         
       </item>
     
@@ -1079,60 +1107,10 @@ fi
         <link>http://localhost:4000/2019/01/linux_mysql_monitor/</link>
         <guid isPermaLink="true">http://localhost:4000/2019/01/linux_mysql_monitor/</guid>
         
-        <category>MySQL</category>
-        
-        
         <category>linux</category>
         
-      </item>
-    
-      <item>
-        <title>页面事件处理</title>
-        <description>&lt;p&gt;页面事件处理&lt;/p&gt;
-
-&lt;h3 id=&quot;关于keypress和keydown事件的区别和联系&quot;&gt;关于KeyPress和KeyDown事件的区别和联系&lt;/h3&gt;
-
-&lt;h4 id=&quot;keypress主要用来监听键盘输出的字符&quot;&gt;KeyPress主要用来监听键盘输出的「字符」&lt;/h4&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;KeyPress在控件有焦点的情况下按下键时发生。&lt;/li&gt;
-  &lt;li&gt;KeyPress只能捕获单个字符。&lt;/li&gt;
-  &lt;li&gt;KeyPressKeyPress主要用来捕获数字(注意：包括Shift+数字的符号)、字母（注意：包括大小写）、ANSI字符（注意:只能捕获除了F1-12、SHIFT、Alt、Ctrl、Insert、Home、PgUp、Delete、End、PgDn、ScrollLock、Pause、NumLock、{菜单键}、{开始键}和方向键外的ANSI字符，如：&lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;{&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;}&lt;/code&gt;等）.&lt;/li&gt;
-  &lt;li&gt;KeyPress不显示键盘的物理状态（SHIFT键），而只是传递一个字符,KeyPress 将每个字符的大、小写形式作为不同的键代码解释，即作为两种不同的字符，（区分大小写）。&lt;/li&gt;
-  &lt;li&gt;KeyPress 不区分小键盘和主键盘的数字字符。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;keydown主要用来监听键盘输出的功能&quot;&gt;KeyDown主要用来监听键盘输出的「功能」&lt;/h4&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;KeyDown在控件有焦点的情况下按下键时发生。&lt;/li&gt;
-  &lt;li&gt;KeyDown可以捕获组合键。&lt;/li&gt;
-  &lt;li&gt;KeyDown事件过程通常可以捕获键盘上除了PrScrn（在键盘右上角）之外的所有按键(这里不讨论特殊键盘的特殊键）&lt;/li&gt;
-  &lt;li&gt;KeyDown不能判断键值字母的大小写（可通过SHIFT键状态判断）。&lt;/li&gt;
-  &lt;li&gt;KeyDown区分小键盘和主键盘的数字字符。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;keyup主要用来监听键盘输出的功能&quot;&gt;KeyUp主要用来监听键盘输出的「功能」&lt;/h4&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;KeyUp在控件有焦点的情况下释放键时发生。&lt;/li&gt;
-  &lt;li&gt;KeyUp可以捕获组合键。&lt;/li&gt;
-  &lt;li&gt;KeyUp事件过程通常可以捕获键盘上除了PrScrn（在键盘右上角）之外的所有按键(这里不讨论特殊键盘的特殊键）&lt;/li&gt;
-  &lt;li&gt;KeyUp不能判断键值字母的大小写（可通过SHIFT键状态判断）。&lt;/li&gt;
-  &lt;li&gt;KeyUp区分小键盘和主键盘的数字字符。&lt;/li&gt;
-  &lt;li&gt;要判断key修改后的状态必须用KeyUp（如：同步一个输入框内容到span中，keypress和keydown总是少最后一个字符，keyup才能完整同步）。&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        <pubDate>Fri, 23 Nov 2018 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2018/11/js_event/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/11/js_event/</guid>
+        <category>MySQL</category>
         
-        <category>Javascript</category>
-        
-        <category>前端</category>
-        
-        
-        <category>技术开发</category>
         
       </item>
     
