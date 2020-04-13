@@ -5,9 +5,99 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 02 Mar 2020 15:01:29 +0800</pubDate>
-    <lastBuildDate>Mon, 02 Mar 2020 15:01:29 +0800</lastBuildDate>
+    <pubDate>Mon, 13 Apr 2020 11:02:28 +0800</pubDate>
+    <lastBuildDate>Mon, 13 Apr 2020 11:02:28 +0800</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
+    
+      <item>
+        <title>GC调优之工具篇</title>
+        <description>&lt;p&gt;GC调优之工具篇&lt;/p&gt;
+</description>
+        <pubDate>Mon, 23 Mar 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/03/gc-tuning-command/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/gc-tuning-command/</guid>
+        
+        <category>jvm</category>
+        
+        
+        <category>JVM</category>
+        
+      </item>
+    
+      <item>
+        <title>GC调优之命令行</title>
+        <description>&lt;p&gt;GC调优之命令行&lt;/p&gt;
+</description>
+        <pubDate>Sat, 21 Mar 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/03/gc-tuning-command/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/gc-tuning-command/</guid>
+        
+        <category>jvm</category>
+        
+        
+        <category>JVM</category>
+        
+      </item>
+    
+      <item>
+        <title>GC收集器</title>
+        <description>&lt;p&gt;GC收集器&lt;/p&gt;
+</description>
+        <pubDate>Fri, 20 Mar 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/03/jvm-gc-collector/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/jvm-gc-collector/</guid>
+        
+        <category>GC</category>
+        
+        
+        <category>JVM</category>
+        
+      </item>
+    
+      <item>
+        <title>GC算法</title>
+        <description>&lt;p&gt;GC算法&lt;/p&gt;
+</description>
+        <pubDate>Thu, 19 Mar 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/03/jvm-garbage-collection/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/jvm-garbage-collection/</guid>
+        
+        <category>GC</category>
+        
+        
+        <category>JVM</category>
+        
+      </item>
+    
+      <item>
+        <title>JVM内存结构</title>
+        <description>&lt;p&gt;JVM内存结构&lt;/p&gt;
+</description>
+        <pubDate>Wed, 18 Mar 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/03/jvm-memory-structure/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/jvm-memory-structure/</guid>
+        
+        <category>jvm</category>
+        
+        
+        <category>JVM</category>
+        
+      </item>
+    
+      <item>
+        <title>java类加载机制</title>
+        <description>&lt;p&gt;java类加载机制&lt;/p&gt;
+</description>
+        <pubDate>Tue, 17 Mar 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/03/jvm-class-loading/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/03/jvm-class-loading/</guid>
+        
+        <category>jvm</category>
+        
+        
+        <category>JVM</category>
+        
+      </item>
     
       <item>
         <title>各种树结构</title>
@@ -36,6 +126,23 @@
         
         <category>数据结构</category>
         
+        
+      </item>
+    
+      <item>
+        <title>分布式链路跟踪</title>
+        <description>&lt;p&gt;分布式链路跟踪&lt;/p&gt;
+</description>
+        <pubDate>Wed, 22 Jan 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/01/sleuthandzipkin/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/01/sleuthandzipkin/</guid>
+        
+        <category>sleuth</category>
+        
+        <category>zipkin</category>
+        
+        
+        <category>SpringCloud</category>
         
       </item>
     
@@ -85,1032 +192,17 @@ gcc -v
       </item>
     
       <item>
-        <title>Java自定义注解</title>
-        <description>&lt;p&gt;Java自定义注解&lt;/p&gt;
-
-&lt;h3 id=&quot;简介&quot;&gt;简介&lt;/h3&gt;
-
-&lt;p&gt;注解是Java 1.5引入的，可以提供代码的额外信息，目前正在被广泛应用。除了Java内置注解，我们也可以自定义注解。以下就是一个自定义注解的例子：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-@Inherited
-@Documented
-public @interface CustomAnnotation {
-  String DEFAULT_MSG = &quot;msg&quot;;
-
-  String msg() default DEFAULT_MSG
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;自定义注解分析：
-1.@interface关键字定义注解，
-2.注解可以被其它注解修饰（如果我说注解，这也太绕了），最重要的就是元注解。
-3.注解和接口类似，内部可以定义常量和方法。
-4.注解定义的方法有一些限制：方法不能有参数；返回值只能是基本类型、字符串、Class、枚举、注解、及以上类型的数组；可以包含默认值。&lt;/p&gt;
-
-&lt;h3 id=&quot;元注解&quot;&gt;元注解&lt;/h3&gt;
-
-&lt;p&gt;元注解就是定义注解的注解，包含@Target、@Retention、@Inherited、@Documented这四种。&lt;/p&gt;
-
-&lt;h4 id=&quot;target&quot;&gt;@Target&lt;/h4&gt;
-
-&lt;p&gt;描述注解的使用目标，取值有：
-ElementType.PACKAGE 注解作用于包
-ElementType.TYPE 注解作用于类型（类，接口，注解，枚举）
-ElementType.ANNOTATION_TYPE 注解作用于注解
-ElementType.CONSTRUCTOR 注解作用于构造方法
-ElementType.METHOD 注解作用于方法
-ElementType.PARAMETER 注解作用于方法参数
-ElementType.FIELD 注解作用于属性
-ElementType.LOCAL_VARIABLE 注解作用于局部变量
-默认可以作用于以上任何目标。&lt;/p&gt;
-
-&lt;p&gt;@Target注解源码如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.ANNOTATION_TYPE})
-public @interface Target {
-    ElementType[] value();
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;注解方法返回值是ElementType[],ElementType枚举类型，枚举值就是@Target注解的可取值。方法名value，这样在使用注解时，可以不需要指定方法名。&lt;/p&gt;
-
-&lt;h4 id=&quot;retention&quot;&gt;@Retention&lt;/h4&gt;
-
-&lt;p&gt;描述注解的生命周期，取值有：
-RetentionPolicy.SOURCE 源码中保留，编译期可以处理
-RetentionPolicy.CLASS Class文件中保留，Class加载时可以处理
-RetentionPolicy.RUNTIME 运行时保留，运行中可以处理
-默认RetentionPolicy.CLASS 值&lt;/p&gt;
-
-&lt;p&gt;@Retention注解源码如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.ANNOTATION_TYPE})
-public @interface Retention {
-    RetentionPolicy value();
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;注解方法返回值是枚举类型RetentionPolicy，枚举值就是@Retention注解的可取值。&lt;/p&gt;
-
-&lt;h4 id=&quot;inherited&quot;&gt;@Inherited&lt;/h4&gt;
-
-&lt;p&gt;标记注解，使用@Inherited修饰的注解作用于一个类，则该注解将被用于该类的子类。
-@Inherited注解源码如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.ANNOTATION_TYPE})
-public @interface Inherited {
-
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;documented&quot;&gt;@Documented&lt;/h4&gt;
-
-&lt;p&gt;描述注解可以文档化，是一个标记注解。
-在生成javadoc的时候，是不包含注释的，但是如果注解被@Documented修饰，则生成的文档就包含该注解。
-@Documented注解源码如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.ANNOTATION_TYPE})
-public @interface Documented {
-
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;自定义注解实例&quot;&gt;自定义注解实例&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-@Inherited
-@Documented
-public @interface Msg {
-  String DEFAULT_MSG = &quot;msg&quot;;
-
-  String msg() default DEFAULT_MSG;
-}
-
-@Msg(msg = &quot;Test&quot;)
-public class Test {
-    
-}
-
-public class Main {
-  public static void main(String[] args) {
-      Test test = new Test();
-      Class tClass = test.getClass();
-      Msg msg = (Msg) tClass.getAnnotation(Msg.class);
-      System.out.println(msg.msg());//运行结果：Test, 因为Msg注解的生命周期为RetentionPolicy.RUNTIME，所以可以运行时通过反射获取。
-  }
-}
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
+        <title>配置中心</title>
+        <description>&lt;p&gt;配置中心&lt;/p&gt;
 </description>
-        <pubDate>Thu, 12 Dec 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/12/java_annotation/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/12/java_annotation/</guid>
+        <pubDate>Fri, 10 Jan 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/01/springconfig/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/01/springconfig/</guid>
         
-        <category>JAVA</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>执行brew install命令长时间卡在 Updating Homebrew 的解决方法</title>
-        <description>&lt;p&gt;执行brew install命令长时间卡在 Updating Homebrew 的解决方法&lt;/p&gt;
-
-&lt;p&gt;在国内的网络环境下使用 Homebrew 安装软件的过程中可能会长时间卡在 Updating Homebrew 这个步骤。&lt;/p&gt;
-
-&lt;h3 id=&quot;解决方法一&quot;&gt;解决方法一&lt;/h3&gt;
-&lt;p&gt;方法 1：按住 control + c 取消本次更新操作,这个方法是临时的、一次性的&lt;/p&gt;
-
-&lt;p&gt;按住 control + c 之后命令行会显示 ^C，就代表已经取消了 Updating Homebrew 操作,大概不到 1 秒钟之后就会去执行我们真正需要的安装操作了&lt;/p&gt;
-
-&lt;h3 id=&quot;解决方法二&quot;&gt;解决方法二&lt;/h3&gt;
-&lt;p&gt;方法 2：国内镜像源进行加速&lt;/p&gt;
-
-&lt;p&gt;平时我们执行 brew 命令安装软件的时候，跟以下 4 个仓库地址有关：&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;brew.git&lt;/li&gt;
-  &lt;li&gt;homebrew-core.git&lt;/li&gt;
-  &lt;li&gt;homebrew-cask.git&lt;/li&gt;
-  &lt;li&gt;homebrew-bottles&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;通过以下操作将这 4 个仓库地址全部替换为国内镜像源&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 替换成阿里巴巴的 brew.git 仓库地址:
-cd &quot;$(brew --repo)&quot;
-git remote set-url origin https://mirrors.aliyun.com/homebrew/brew.git
-
-# 替换成阿里巴巴的 homebrew-core.git 仓库地址:
-cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;
-git remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git
-
-# 替换成中国科学技术大学的 homebrew-cask 仓库地址：
-cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-cask&quot;
-git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
-
-# 替换 homebrew-bottles 访问 URL:
-echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles' &amp;gt;&amp;gt; ~/.bash_profile
-source ~/.bash_profile
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;还原官方镜像源&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 还原为官方提供的 brew.git 仓库地址
-cd &quot;$(brew --repo)&quot;
-git remote set-url origin https://github.com/Homebrew/brew.git
-
-# 还原为官方提供的 homebrew-core.git 仓库地址
-cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;
-git remote set-url origin https://github.com/Homebrew/homebrew-core.git
-
-# 还原为官方提供的 homebrew-cask.git 仓库地址
-cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-cask&quot;
-git remote set-url origin https://github.com/Homebrew/homebrew-cask.git
-
-# 还原为官方提供的 homebrew-bottles 访问地址
-vi ~/.bash_profile
-# 然后，删除 HOMEBREW_BOTTLE_DOMAIN 这一行配置
-source ~/.bash_profile
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Wed, 13 Nov 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/11/brew_update/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/11/brew_update/</guid>
-        
-        <category>MacOS</category>
-        
-        <category>brew</category>
+        <category>config</category>
         
         
-        <category>MacOS</category>
-        
-      </item>
-    
-      <item>
-        <title>MacBook安装使用redis</title>
-        <description>&lt;p&gt;MacBook安装使用redis&lt;/p&gt;
-
-&lt;h3 id=&quot;安装redis服务器&quot;&gt;安装redis服务器&lt;/h3&gt;
-
-&lt;h4 id=&quot;采用docker安装redis&quot;&gt;采用Docker安装redis&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker search redis
-$ docker pull redis
-$ docker images
-$ docker images redis
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;编辑脚本&lt;code class=&quot;highlighter-rouge&quot;&gt;redis-server.sh&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# -p 6379:6379 : 将容器的6379端口映射到主机的6379端口&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# -v ~/software/redis/data:/data : 将主机中/Users/xxx/software/redis/data挂载到容器的/data&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# redis-server --appendonly yes : 在容器执行redis-server启动命令，并打开redis持久化配置&lt;/span&gt;
-docker run &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 6379:6379 &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /Users/xxx/software/redis/data:/data  &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; redis:latest redis-server &lt;span class=&quot;nt&quot;&gt;--appendonly&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;yes&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;提供快捷命令&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo ln -s ~/software/redis/redis-server.sh ~/bin/redis-server
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;注意:需将 &lt;code class=&quot;highlighter-rouge&quot;&gt;~/bin&lt;/code&gt;添加到环境变量中&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vi ~/.bash_profile
-   export PATH=&quot;~/bin:$PATH&quot;
-
-$ source ~/.bash_profile
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;然后就可以通过redis-server启动redis服务了&lt;/p&gt;
-
-&lt;h4 id=&quot;下载安装&quot;&gt;下载安装&lt;/h4&gt;
-
-&lt;p&gt;https://redis.io/download&lt;/p&gt;
-
-&lt;h3 id=&quot;安装redis客户端&quot;&gt;安装redis客户端&lt;/h3&gt;
-
-&lt;p&gt;redis客户端在官网是要&lt;code class=&quot;highlighter-rouge&quot;&gt;收费&lt;/code&gt;的，好在作者开源了项目，可以去&lt;a href=&quot;https://github.com/uglide/RedisDesktopManager/releases&quot;&gt;github&lt;/a&gt;上下载测试版。ps：测试版需要自己编译，不想麻烦的可以在网上找别人编译好的&lt;/p&gt;
-
-&lt;h4 id=&quot;下载源码&quot;&gt;下载源码&lt;/h4&gt;
-&lt;p&gt;这里要注意下载的源码是有第三方依赖的,所以git的时候要加–recursive,要保证第三方依赖包也下载下来&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone --recursive https://github.com/uglide/RedisDesktopManager rdm &amp;amp;&amp;amp; cd ./rdm
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;安装qt&quot;&gt;安装QT&lt;/h4&gt;
-&lt;p&gt;编译需要安装qt软件&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install qt
-brew cask install qt-creator
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;然后在 Qt Creator 里改一下 Qt Versions&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;偏好设置-Kits-Qt Versions&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;添加路径/usr/local/Cellar/qt/5.13.2/bin/qmake(此为刚刚安装的qt路径)&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/dev/qt_setting1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;偏好设置-Kits-构建套件(Kit)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Qt版本-设置为Qt 5.13.2,把编译器C和C++全部改为Clang&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/dev/qt_setting2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;安装python依赖，并复制Info.plist&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install python3
-pip3 install -r src/py/requirements.txt
-cp ./src/resources/Info.plist.sample ./src/resources/Info.plist
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;安装python3时候可能提示下面错误&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Error: An unexpected error occurred during the `brew link` step
-The formula built, but is not symlinked into /usr/local
-Permission denied @ dir_s_mkdir - /usr/local/Frameworks
-Error: Permission denied @ dir_s_mkdir - /usr/local/Frameworks
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;解决：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo mkdir /usr/local/Frameworks
-$ sudo chown $(whoami):admin /usr/local/Frameworks
-$ brew link python
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;启动qt编译redisdesktopmanager&quot;&gt;启动QT编译RedisDesktopManager&lt;/h4&gt;
-
-&lt;p&gt;双击打开(刚git clone下来的redis客户端源码的src目录下)rdm.pro&lt;/p&gt;
-
-&lt;p&gt;选择项目展开 desktop-&amp;gt;build 选择 release 等待(左下角)运行的三角变绿,点击运行工程&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/dev/qt_build.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;编译后会直接启动RedisDesktopManager应用,但是不会生成app文件,只在bin/osx/debug下生成了一个可执行程序&lt;code class=&quot;highlighter-rouge&quot;&gt;Redis Desktop Manager&lt;/code&gt;,此时需要手动修改src/rdm.pro的配置&lt;/p&gt;
-
-&lt;p&gt;用文本编辑器打开rdm.pro文件,找到debug: CONFIG-=app_bundle并注释他,并加入以下内容&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#debug: CONFIG-=app_bundle
-
-CONFIG += static release
-CONFIG -= debug
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;再次执行编译，编译成功后,可以在bin/osx/release下找到&lt;code class=&quot;highlighter-rouge&quot;&gt;Redis Desktop Manager.app&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;此时只能在本机运行,因为他依赖了本地的一些库，如QT库、Python等,如果想给别人是用需要将这些依赖库复制到 RedisDesktopManager.app/Contents/Frameworks的目录下，
-那么我们怎么知道用了那些库呢?qt给我们提供了一个方便的工具macdeployqt，操作如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/local/Cellar/qt/5.13.2/bin/macdeployqt &quot;Redis Desktop Manager.app&quot; -qmldir=../../../src/qml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;执行上面命令时，我这里报错&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ERROR: no file at &quot;/usr/local/opt/python/lib/Python.framework/Versions/3.7/Python&quot;
-File exists, skip copy: &quot;Redis Desktop Manager.app/Contents/PlugIns/quick/libqtquickcontrols2fusionstyleplugin.dylib&quot;
-File exists, skip copy: &quot;Redis Desktop Manager.app/Contents/PlugIns/quick/libqtquickcontrols2imaginestyleplugin.dylib&quot;
-File exists, skip copy: &quot;Redis Desktop Manager.app/Contents/PlugIns/quick/libqtquickcontrols2materialstyleplugin.dylib&quot;
-File exists, skip copy: &quot;Redis Desktop Manager.app/Contents/PlugIns/quick/libqtquickcontrols2universalstyleplugin.dylib&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;后来发现我的python路径不同，路径为&lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/opt/python/Frameworks/Python.framework/Versions/3.7/Python&lt;/code&gt;,我是通过创建一个软连接解决&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir -p /usr/local/opt/python/lib/Python.framework/Versions/
-cd /usr/local/opt/python/lib/Python.framework/Versions/
-ln -s /usr/local/opt/python/Frameworks/Python.framework/Versions/3.7 3.7
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;右键 &lt;code class=&quot;highlighter-rouge&quot;&gt;Redis Desktop Manager.app&lt;/code&gt;-&amp;gt;显示包内容你会发现在Frameworks目录下多了好多内容。至此你就可以把这个应用给别人使用了&lt;/p&gt;
-
-&lt;h4 id=&quot;打包dmg&quot;&gt;打包dmg&lt;/h4&gt;
-&lt;p&gt;为了更方便给别人使用我们将 app 打包成 dmg 安装包。在桌面新建一个文件夹，取名&lt;strong&gt;rdm&lt;/strong&gt;吧，将&lt;code class=&quot;highlighter-rouge&quot;&gt;Redis Desktop Manager.app&lt;/code&gt;文件放进去。为了实现拖拽到Application的效果，需要在这个文件夹里放一个Application的替身。具体做法是cd到这个目录，建立一个软链接&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd /Users/xxxxx/Desktop/rdm
-ln -s /Applications/  Applications
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;接下来,用macos自带的&lt;code class=&quot;highlighter-rouge&quot;&gt;磁盘工具&lt;/code&gt;打包成dmg安装包,打开&lt;code class=&quot;highlighter-rouge&quot;&gt;磁盘工具&lt;/code&gt;,选择文件-新建映像-来自文件夹的映像…,再选择桌面的rdm目录,根据提示完成整个步骤.至此打包完成!!!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/posts/dev/rdm_dmg.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;其他问题&quot;&gt;其他问题&lt;/h4&gt;
-
-&lt;h5 id=&quot;关闭quickstart弹框&quot;&gt;关闭QuickStart弹框&lt;/h5&gt;
-&lt;p&gt;程序每次运行都会弹出更新和QuickStart弹框，为了解决该问题，直接找到app.qml文件(源码的src/qml目录中)注释掉以下代码：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Component.onCompleted: {
-
-    if (connectionsManager.size() == 0)
-
-        quickStartDialog.open()
-
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Tue, 12 Nov 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/11/mac_redis/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/11/mac_redis/</guid>
-        
-        <category>Redis</category>
-        
-        <category>MacOS</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>git使用小技巧</title>
-        <description>&lt;p&gt;git使用小技巧&lt;/p&gt;
-
-&lt;h3 id=&quot;生成ssh-key&quot;&gt;生成ssh-key&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-keygen -t rsa -C “wanghengliang@outlook.com”
-提示输入文件名称：github_rsa，或者直接回车则采用默认为id_rsa
-提示输入密码：直接回车采用空密码
-提示再次输入密码：直接回车采用空密码
-然后就会生成两个文件
-私钥：github_rsa
-公钥：github_rsa.pub
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;本地多个ssh-key的问题&quot;&gt;本地多个ssh-key的问题&lt;/h3&gt;
-
-&lt;p&gt;1.生成多个ssh-key键值对，参考生成ssh-key,生成多个文件&lt;/p&gt;
-
-&lt;p&gt;2.新建配置文件，并修改权限&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;touch ~/.ssh/config
-chmod 600 ~/.ssh/config
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;3.编辑配置文件，这样在登陆的时候，ssh会根据登陆不同的域来读取相应的私钥文件，内容如下：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi ~/.ssh/config
-
-# #######该配置用于个人gitee上#######
-Host gitee.com
- HostName gitee.com
- PreferredAuthentications publickey
- User wanghengliang@outlook.com
- IdentityFile ~/.ssh/gitee_rsa
-
-# #######该配置用于个人github上#######
-Host github.com
- HostName github.com
- PreferredAuthentications publickey
- User wanghengliang@outlook.com
- IdentityFile ~/.ssh/github_rsa
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Thu, 08 Aug 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/08/git_skill/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/08/git_skill/</guid>
-        
-        <category>git</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>docker安装</title>
-        <description>&lt;p&gt;docker安装&lt;/p&gt;
-
-&lt;h3 id=&quot;安装环境准备&quot;&gt;安装环境准备&lt;/h3&gt;
-&lt;p&gt;1.Docker 要求 CentOS 系统的内核版本高于 3.10 ，验证你的CentOS 版本是否支持 Docker,通过 uname -r 命令查看你当前的内核版本&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ uname -r
-3.10.0-957.21.3.el7.x86_64
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;2.确保 yum 包更新到最新&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum update
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;3.卸载旧版本(未安装可跳过)&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum remove docker  docker-common docker-selinux docker-engine
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;docker安装&quot;&gt;docker安装&lt;/h3&gt;
-
-&lt;p&gt;1.安装需要的软件包， yum-utils 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;2.设置yum源&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;或者&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;3.查看所有仓库中所有docker版本，并选择特定版本安装&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ yum list docker-ce --showduplicates | sort -r
-Loading mirror speeds from cached hostfile
-Loaded plugins: fastestmirror
-docker-ce.x86_64            3:19.03.1-3.el7                     docker-ce-stable
-docker-ce.x86_64            3:19.03.0-3.el7                     docker-ce-stable
-docker-ce.x86_64            3:18.09.8-3.el7                     docker-ce-stable
-docker-ce.x86_64            3:18.09.7-3.el7                     docker-ce-stable
-docker-ce.x86_64            3:18.09.6-3.el7                     docker-ce-stable
-docker-ce.x86_64            3:18.09.5-3.el7                     docker-ce-stable
-docker-ce.x86_64            3:18.09.4-3.el7                     docker-ce-stable
-docker-ce.x86_64            3:18.09.3-3.el7                     docker-ce-stable
-docker-ce.x86_64            3:18.09.2-3.el7                     docker-ce-stable
-docker-ce.x86_64            3:18.09.1-3.el7                     docker-ce-stable
-docker-ce.x86_64            3:18.09.0-3.el7                     docker-ce-stable
-docker-ce.x86_64            18.06.3.ce-3.el7                    docker-ce-stable
-docker-ce.x86_64            18.06.2.ce-3.el7                    docker-ce-stable
-docker-ce.x86_64            18.06.1.ce-3.el7                    docker-ce-stable
-docker-ce.x86_64            18.06.0.ce-3.el7                    docker-ce-stable
-docker-ce.x86_64            18.03.1.ce-1.el7.centos             docker-ce-stable
-docker-ce.x86_64            18.03.0.ce-1.el7.centos             docker-ce-stable
-docker-ce.x86_64            17.12.1.ce-1.el7.centos             docker-ce-stable
-docker-ce.x86_64            17.12.0.ce-1.el7.centos             docker-ce-stable
-docker-ce.x86_64            17.09.1.ce-1.el7.centos             docker-ce-stable
-docker-ce.x86_64            17.09.0.ce-1.el7.centos             docker-ce-stable
-docker-ce.x86_64            17.06.2.ce-1.el7.centos             docker-ce-stable
-docker-ce.x86_64            17.06.1.ce-1.el7.centos             docker-ce-stable
-docker-ce.x86_64            17.06.0.ce-1.el7.centos             docker-ce-stable
-docker-ce.x86_64            17.03.3.ce-1.el7                    docker-ce-stable
-docker-ce.x86_64            17.03.2.ce-1.el7.centos             docker-ce-stable
-docker-ce.x86_64            17.03.1.ce-1.el7.centos             docker-ce-stable
-docker-ce.x86_64            17.03.0.ce-1.el7.centos             docker-ce-stable
-Available Packages
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;4.安装docker&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum install docker-ce  #由于repo中默认只开启stable仓库，故这里安装的是最新稳定版19.03.1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;或者&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum install &amp;lt;FQPN&amp;gt;  # 例如：sudo yum install docker-ce-19.03.1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;5.启动并加入开机启动&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo systemctl start docker
-$ sudo systemctl enable docker
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;6.验证安装是否成功(有client和service两部分表示docker安装启动都成功了)&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker version
-Client: Docker Engine - Community
- Version:           19.03.1
- API version:       1.40
- Go version:        go1.12.5
- Git commit:        74b1e89
- Built:             Thu Jul 25 21:21:07 2019
- OS/Arch:           linux/amd64
- Experimental:      false
-
-Server: Docker Engine - Community
- Engine:
-  Version:          19.03.1
-  API version:      1.40 (minimum version 1.12)
-  Go version:       go1.12.5
-  Git commit:       74b1e89
-  Built:            Thu Jul 25 21:19:36 2019
-  OS/Arch:          linux/amd64
-  Experimental:     false
- containerd:
-  Version:          1.2.6
-  GitCommit:        894b81a4b802e4eb2a91d1ce216b8817763c29fb
- runc:
-  Version:          1.0.0-rc8
-  GitCommit:        425e105d5a03fabd737a126ad93d62a9eeede87f
- docker-init:
-  Version:          0.18.0
-  GitCommit:        fec3683
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-
-docker run &lt;span class=&quot;nt&quot;&gt;-name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;aosun-website &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 80:80&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /data/aosunsoft/nginx/nginx.conf:/etc/nginx/nginx.conf&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /data/aosunsoft/nginx/conf.d:/etc/nginx/conf.d&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /data/aosunsoft/nginx/logs:/var/log/nginx&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /data/aosunsoft/wwwroot:/usr/share/nginx/html&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; nginx
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Wed, 07 Aug 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/08/linux_docker/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/08/linux_docker/</guid>
-        
-        <category>linux</category>
-        
-        <category>docker</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>bat使用小技巧</title>
-        <description>&lt;p&gt;bat使用小技巧&lt;/p&gt;
-
-&lt;h3 id=&quot;bat-批处理之-forf-详解&quot;&gt;Bat 批处理之 for/f 详解&lt;/h3&gt;
-
-&lt;p&gt;含有/F的for
-格式：
-FOR /F [“options”] %%i IN (file) DO command&lt;/p&gt;
-
-&lt;p&gt;FOR /F [“options”] %%i IN (“string”) DO command&lt;/p&gt;
-
-&lt;p&gt;FOR /F [“options”] %%i IN (‘command’) DO command&lt;/p&gt;
-
-&lt;p&gt;这个可能是最常用的，也是最强的命令，主要用来处理文件和一些命令的输出结果。&lt;/p&gt;
-
-&lt;p&gt;file代表一个或多个文件&lt;/p&gt;
-
-&lt;p&gt;string 代表字符串&lt;/p&gt;
-
-&lt;p&gt;command代表命令&lt;/p&gt;
-
-&lt;p&gt;[“options”] 可选&lt;/p&gt;
-
-&lt;p&gt;对于FOR /F %%i IN (file) DO command&lt;/p&gt;
-
-&lt;p&gt;file为文件名，按照官方的说法是，for会依次将file中的文件打开，并且在进行到下一个文件之前将每个文件读取到内存，按照每一行分成一个一个的元素，忽略空白的行，看个例子。&lt;/p&gt;
-
-&lt;p&gt;假如文件a.txt中有如下内容：&lt;/p&gt;
-
-&lt;p&gt;第1行第1列 第1行第2列 第1行第3列
-第2行第1列 第2行第2列 第2行第3列
-第3行第1列 第3行第2列 第3行第3列&lt;/p&gt;
-
-&lt;p&gt;你想显示a.txt中的内容，会用什么命令呢？当然是type，type a.txt&lt;/p&gt;
-
-&lt;p&gt;for也可以完成同样的命令：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f %%i in (a.txt) do echo %%i
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;还是先从括号执行，因为含有参数/f,所以for会先打开a.txt，然后读出a.txt里面的所有内容，把它作为一个集合，并且以每一行作为一个元素，所以会产生这样的集合，&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{“第1行第1列 第1行第2列 第1行第3列”， //第一个元素
-
-“第2行第1列 第2行第2列 第2行第3列”， //第二个元素
-
-“第3行第1列 第3行第2列 第3行第3列”}   //第三个元素
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;集合中只有3个元素，同样用%%i依次代替每个元素，然后执行do后面的命令。&lt;/p&gt;
-
-&lt;p&gt;具体过程：&lt;/p&gt;
-
-&lt;p&gt;用%%i代替“第1行第1列 第1行第2列 第1行第3列”，执行do后面的echo %%i，显示“第1行第1列 第1行第2列 第1行第3列”，&lt;/p&gt;
-
-&lt;p&gt;用%%i代替“第2行第1列 第2行第2列 第2行第3列”，执行echo %%i，显示“第2行第1列 第2行第2列 第2行第3列”，&lt;/p&gt;
-
-&lt;p&gt;依次，直到每个元素都代替完为止。&lt;/p&gt;
-
-&lt;p&gt;为了加强理解/f的作用，请执行一下两个命令，对比即可明白：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f %%i in (a.txt) do echo %%i //这个会显示a.txt里面的内容，因为/f的作用，会读出a.txt中的内容。
-
-for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不会读取其中的内容。
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;通过上面的学习，我们发现for /f会默认以每一行来作为一个元素，但是如果我们还想把每一行再分解更小的内容，该怎么办呢？不用担心，for命令还为我们提供了更详细的参数，使我们将每一行分为更小的元素成为可能。&lt;/p&gt;
-
-&lt;p&gt;它们就是：delims和tokens&lt;/p&gt;
-
-&lt;p&gt;delims 用来告诉for每一行应该拿什么作为分隔符，默认的分隔符是空格和tab键&lt;/p&gt;
-
-&lt;p&gt;比如，还是上面的文件，我们执行下面的命令：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;delims= &quot; %%i in (a.txt) do echo %%i
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;显示的结果是：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第1行第1列
-第2行第1列
-第3行第1列
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;为什么是这样的呢。因为这里有了delims这个参数，=后面有一个空格，意思是再将每个元素以空格分割，默认是只取分割之后的第一个元素。&lt;/p&gt;
-
-&lt;p&gt;执行过程是：&lt;/p&gt;
-
-&lt;p&gt;将第一个元素“第1行第1列 第1行第2列 第1行第3列”分成三个元素：“第1行第1列” “第1行第2列” “第1行第3列”，它默认只取第一个，即“第1行第1列”，然后执行do后面的命令，依次类推。&lt;/p&gt;
-
-&lt;p&gt;但是这样还是有局限的，如果我们想要每一行的第二列元素，那又如何呢？&lt;/p&gt;
-
-&lt;p&gt;这时候，tokens跳出来说，我能做到。&lt;/p&gt;
-
-&lt;p&gt;它的作用就是当你通过delims将每一行分为更小的元素时，由它来控制要取哪一个或哪几个。&lt;/p&gt;
-
-&lt;p&gt;还是上面的例子，执行如下命令：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;tokens=2 delims= &quot; %%i in (a.txt) do echo %%i
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;执行结果：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第1行第2列
-第2行第2列
-第3行第2列
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;如果要显示第三列，那就换成tokens=3。&lt;/p&gt;
-
-&lt;p&gt;同时tokens支持通配符&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;，以及限定范围。&lt;/p&gt;
-
-&lt;p&gt;如果要显示第二列和第三列，则换成tokens=2,3或tokens=2-3,如果还有更多的则为：tokens=2-10之类的。&lt;/p&gt;
-
-&lt;p&gt;此时的命令为：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;tokens=2,3 delims= &quot; %%i in (a.txt) do echo %%i %%j
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;怎么多出一个%%j？&lt;/p&gt;
-
-&lt;p&gt;这是因为你的tokens后面要取每一行的两列，用%%i来替换第二列，用%%j来替换第三列。&lt;/p&gt;
-
-&lt;p&gt;并且必须是按照英文字母顺序排列的，%%j不能换成%%k，因为i后面是j&lt;/p&gt;
-
-&lt;p&gt;执行结果为：&lt;/p&gt;
-
-&lt;p&gt;第1行第2列 第1行第3列
-第2行第2列 第2行第3列
-第3行第2列 第3行第3列&lt;/p&gt;
-
-&lt;p&gt;对以通配符&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;，就是把这一行全部或者这一行的剩余部分当作一个元素了。&lt;/p&gt;
-
-&lt;p&gt;比如：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;tokens=* delims= &quot; %%i in (a.txt) do echo %%i
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;执行结果为：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第1行第1列 第1行第2列 第1行第3列
-第2行第1列 第2行第2列 第2行第3列
-第3行第1列 第3行第2列 第3行第3列
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;其实就跟for /f %%i in (a.txt) do echo %%i的执行结果是一样的。&lt;/p&gt;
-
-&lt;p&gt;再如：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;tokens=2,* delims= &quot; %%i in (a.txt) do echo %%i %%j
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;执行结果为：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第1行第2列 第1行第3列
-第2行第2列 第2行第3列
-第3行第2列 第3行第3列
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;用%%i代替第二列，用%%j代替剩余的所有&lt;/p&gt;
-
-&lt;p&gt;最后还有skip合eol，这俩个简单，skip就是要忽略文件的前多少行，而eol用来指定当一行以什么符号开始时，就忽略它。&lt;/p&gt;
-
-&lt;p&gt;比如：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;skip=2 tokens=*&quot; %%i in (a.txt) do echo %%i
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;结果为:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第3行第1列 第3行第2列 第3行第3列
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;用skip来告诉for跳过前两行。&lt;/p&gt;
-
-&lt;p&gt;如果不加&lt;code class=&quot;highlighter-rouge&quot;&gt;tokens=*&lt;/code&gt;的话，执行结果为：&lt;/p&gt;
-
-&lt;p&gt;第3行第1列&lt;/p&gt;
-
-&lt;p&gt;不知道怎么回事。&lt;/p&gt;
-
-&lt;p&gt;再如，当a.txt内容变成：&lt;/p&gt;
-
-&lt;p&gt;.第1行第1列 第1行第2列 第1行第3列
-.第2行第1列 第2行第2列 第2行第3列
-第3行第1列 第3行第2列 第3行第3列&lt;/p&gt;
-
-&lt;p&gt;执行&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for /f &quot;eol=. tokens=*&quot; %%i in (a.txt) do echo %%i
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;结果是：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;第3行第1列 第3行第2列 第3行第3列
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;用eol来告诉for忽略以“.”开头的行。&lt;/p&gt;
-
-&lt;p&gt;同样也必须加&lt;code class=&quot;highlighter-rouge&quot;&gt;tokens=*&lt;/code&gt;，否则只会显示“第3行第1列”&lt;/p&gt;
-</description>
-        <pubDate>Mon, 17 Jun 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/06/bat_skill/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/06/bat_skill/</guid>
-        
-        <category>bat</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Linux防火墙设置</title>
-        <description>&lt;p&gt;Linux防火墙设置&lt;/p&gt;
-
-&lt;p&gt;启动指令:service iptables start &lt;br /&gt;
-重启指令:service iptables restart &lt;br /&gt;
-关闭指令:service iptables stop&lt;/p&gt;
-
-&lt;p&gt;vi /etc/sysconfig/iptables
-service iptables restart
-service iptables save&lt;/p&gt;
-
-&lt;p&gt;远程操作一定不能执行 iptables -F //清空规则缓冲区&lt;/p&gt;
-
-&lt;p&gt;https://blog.csdn.net/slovyz/article/details/79900082&lt;/p&gt;
-
-&lt;p&gt;iptables 的历史以及工作原理
-1.iptables的发展:
-iptables的前身叫ipfirewall （内核1.x时代）,这是一个作者从freeBSD上移植过来的，能够工作在内核当中的，对数据包进行检测的一款简易访问控制工具。但是ipfirewall工作功能极其有限(它需要将所有的规则都放进内核当中，这样规则才能够运行起来，而放进内核，这个做法一般是极其困难的)。当内核发展到2.x系列的时候，软件更名为ipchains，它可以定义多条规则，将他们串起来，共同发挥作用，而现在，它叫做iptables，可以将规则组成一个列表，实现绝对详细的访问控制功能。
-他们都是工作在用户空间中，定义规则的工具，本身并不算是防火墙。它们定义的规则，可以让在内核空间当中的netfilter来读取，并且实现让防火墙工作。而放入内核的地方必须要是特定的位置，必须是tcp/ip的协议栈经过的地方。而这个tcp/ip协议栈必须经过的地方，可以实现读取规则的地方就叫做 netfilter.(网络过滤器)
-作者一共在内核空间中选择了5个位置，
-1.内核空间中：从一个网络接口进来，到另一个网络接口去的
-2.数据包从内核流入用户空间的
-3.数据包从用户空间流出的
-4.进入/离开本机的外网接口
-5.进入/离开本机的内网接口
-2.iptables的工作机制
-从上面的发展我们知道了作者选择了5个位置，来作为控制的地方，但是你有没有发现，其实前三个位置已经基本上能将路径彻底封锁了，但是为什么已经在进出的口设置了关卡之后还要在内部卡呢？ 由于数据包尚未进行路由决策，还不知道数据要走向哪里，所以在进出口是没办法实现数据过滤的。所以要在内核空间里设置转发的关卡，进入用户空间的关卡，从用户空间出去的关卡。那么，既然他们没什么用，那我们为什么还要放置他们呢？因为我们在做NAT和DNAT的时候，目标地址转换必须在路由之前转换。所以我们必须在外网而后内网的接口处进行设置关卡。
-这五个位置也被称为五个钩子函数（hook functions）,也叫五个规则链。
-1.PREROUTING (路由前)
-2.INPUT (数据包流入口)
-3.FORWARD (转发管卡)
-4.OUTPUT(数据包出口)
-5.POSTROUTING（路由后）
-这是NetFilter规定的五个规则链，任何一个数据包，只要经过本机，必将经过这五个链中的其中一个链。
-3.防火墙的策略
-防火墙策略一般分为两种，一种叫“通”策略，一种叫“堵”策略，通策略，默认门是关着的，必须要定义谁能进。堵策略则是，大门是洞开的，但是你必须有身份认证，否则不能进。所以我们要定义，让进来的进来，让出去的出去，所以通，是要全通，而堵，则是要选择。当我们定义的策略的时候，要分别定义多条功能，其中：定义数据包中允许或者不允许的策略，filter过滤的功能，而定义地址转换的功能的则是nat选项。为了让这些功能交替工作，我们制定出了“表”这个定义，来定义、区分各种不同的工作功能和处理方式。
-我们现在用的比较多个功能有3个：
-1.filter 定义允许或者不允许的
-2.nat 定义地址转换的
-3.mangle功能:修改报文原数据
-我们修改报文原数据就是来修改TTL的。能够实现将数据包的元数据拆开，在里面做标记/修改内容的。而防火墙标记，其实就是靠mangle来实现的。
-小扩展:
-对于filter来讲一般只能做在3个链上：INPUT ，FORWARD ，OUTPUT
-对于nat来讲一般也只能做在3个链上：PREROUTING ，OUTPUT ，POSTROUTING
-而mangle则是5个链都可以做：PREROUTING，INPUT，FORWARD，OUTPUT，POSTROUTING
-iptables/netfilter（这款软件）是工作在用户空间的，它可以让规则进行生效的，本身不是一种服务，而且规则是立即生效的。而我们iptables现在被做成了一个服务，可以进行启动，停止的。启动，则将规则直接生效，停止，则将规则撤销。
-iptables还支持自己定义链。但是自己定义的链，必须是跟某种特定的链关联起来的。在一个关卡设定，指定当有数据的时候专门去找某个特定的链来处理，当那个链处理完之后，再返回。接着在特定的链中继续检查。
-注意：规则的次序非常关键，谁的规则越严格，应该放的越靠前，而检查规则的时候，是按照从上往下的方式进行检查的。
-三．规则的写法:
-iptables定义规则的方式比较复杂:
-格式：iptables [-t table] COMMAND chain CRETIRIA -j ACTION
--t table ：3个filter nat mangle
-COMMAND：定义如何对规则进行管理
-chain：指定你接下来的规则到底是在哪个链上操作的，当定义策略的时候，是可以省略的
-CRETIRIA:指定匹配标准
--j ACTION :指定如何进行处理
-比如：不允许172.16.0.0/24的进行访问。
-iptables -t filter -A INPUT -s 172.16.0.0/16 -p udp –dport 53 -j DROP
-当然你如果想拒绝的更彻底：
-iptables -t filter -R INPUT 1 -s 172.16.0.0/16 -p udp –dport 53 -j REJECT
-iptables -L -n -v	#查看定义规则的详细信息
-四：详解COMMAND:
-1.链管理命令（这都是立即生效的）
--P :设置默认策略的（设定默认门是关着的还是开着的）
-默认策略一般只有两种
-iptables -P INPUT (DROP|ACCEPT) 默认是关的/默认是开的
-比如：
-iptables -P INPUT DROP 这就把默认规则给拒绝了。并且没有定义哪个动作，所以关于外界连接的所有规则包括Xshell连接之类的，远程连接都被拒绝了。
--F: FLASH，清空规则链的(注意每个链的管理权限)
-iptables -t nat -F PREROUTING
-iptables -t nat -F 清空nat表的所有链
--N:NEW 支持用户新建一个链
-iptables -N inbound_tcp_web 表示附在tcp表上用于检查web的。
--X: 用于删除用户自定义的空链
-使用方法跟-N相同，但是在删除之前必须要将里面的链给清空昂了
--E：用来Rename chain主要是用来给用户自定义的链重命名
--E oldname newname
--Z：清空链，及链中默认规则的计数器的（有两个计数器，被匹配到多少个数据包，多少个字节）
-iptables -Z :清空
-2.规则管理命令
--A：追加，在当前链的最后新增一个规则
--I num : 插入，把当前规则插入为第几条。
--I 3 :插入为第三条
--R num：Replays替换/修改第几条规则
-格式：iptables -R 3 …………
--D num：删除，明确指定删除第几条规则
-3.查看管理命令 “-L”
-附加子命令
--n：以数字的方式显示ip，它会将ip直接显示出来，如果不加-n，则会将ip反向解析成主机名。
--v：显示详细信息
--vv
--vvv :越多越详细
--x：在计数器上显示精确值，不做单位换算
-–line-numbers : 显示规则的行号
--t nat：显示所有的关卡的信息
-五：详解匹配标准
-1.通用匹配：源地址目标地址的匹配
--s：指定作为源地址匹配，这里不能指定主机名称，必须是IP
-IP | IP/MASK | 0.0.0.0/0.0.0.0
-而且地址可以取反，加一个“!”表示除了哪个IP之外
--d：表示匹配目标地址
--p：用于匹配协议的（这里的协议通常有3种，TCP/UDP/ICMP）
--i eth0：从这块网卡流入的数据
-流入一般用在INPUT和PREROUTING上
--o eth0：从这块网卡流出的数据
-流出一般在OUTPUT和POSTROUTING上
-2.扩展匹配
-2.1隐含扩展：对协议的扩展
--p tcp :TCP协议的扩展。一般有三种扩展
-–dport XX-XX：指定目标端口,不能指定多个非连续端口,只能指定单个端口，比如
-–dport 21 或者 –dport 21-23 (此时表示21,22,23)
-–sport：指定源端口
-–tcp-fiags：TCP的标志位（SYN,ACK，FIN,PSH，RST,URG）
-对于它，一般要跟两个参数：
-1.检查的标志位
-2.必须为1的标志位
-–tcpflags syn,ack,fin,rst syn = –syn
-表示检查这4个位，这4个位中syn必须为1，其他的必须为0。所以这个意思就是用于检测三次握手的第一次包的。对于这种专门匹配第一包的SYN为1的包，还有一种简写方式，叫做–syn
--p udp：UDP协议的扩展
-–dport
-–sport
--p icmp：icmp数据报文的扩展
-–icmp-type：
-echo-request(请求回显)，一般用8 来表示
-所以 –icmp-type 8 匹配请求回显数据包
-echo-reply （响应的数据包）一般用0来表示
-2.2显式扩展（-m）
-扩展各种模块
--m multiport：表示启用多端口扩展
-之后我们就可以启用比如 –dports 21,23,80
-六：详解-j ACTION
-常用的ACTION：
-DROP：悄悄丢弃
-一般我们多用DROP来隐藏我们的身份，以及隐藏我们的链表
-REJECT：明示拒绝
-ACCEPT：接受
-custom_chain：转向一个自定义的链
-DNAT
-SNAT
-MASQUERADE：源地址伪装
-REDIRECT：重定向：主要用于实现端口重定向
-MARK：打防火墙标记的
-RETURN：返回
-在自定义链执行完毕后使用返回，来返回原规则链。
-七：状态检测：
-是一种显式扩展，用于检测会话之间的连接关系的，有了检测我们可以实现会话间功能的扩展
-什么是状态检测？对于整个TCP协议来讲，它是一个有连接的协议，三次握手中，第一次握手，我们就叫NEW连接，而从第二次握手以后的，ack都为1，这是正常的数据传输，和tcp的第二次第三次握手，叫做已建立的连接（ESTABLISHED）,还有一种状态，比较诡异的，比如：SYN=1 ACK=1 RST=1,对于这种我们无法识别的，我们都称之为INVALID无法识别的。还有第四种，FTP这种古老的拥有的特征，每个端口都是独立的，21号和20号端口都是一去一回，他们之间是有关系的，这种关系我们称之为RELATED。
-所以我们的状态一共有四种：
-NEW
-ESTABLISHED
-RELATED
-INVALID
-八：SNAT和DNAT的实现
-由于我们现在IP地址十分紧俏，已经分配完了，这就导致我们必须要进行地址转换，来节约我们仅剩的一点IP资源。那么通过iptables如何实现NAT的地址转换呢？
-1.SNAT基于原地址的转换
-基于原地址的转换一般用在我们的许多内网用户通过一个外网的口上网的时候，这时我们将我们内网的地址转换为一个外网的IP，我们就可以实现连接其他外网IP的功能。
-所以我们在iptables中就要定义到底如何转换：
-定义的样式：
-比如我们现在要将所有192.168.10.0网段的IP在经过的时候全都转换成172.16.100.1这个假设出来的外网地址：
-iptables -t nat -A POSTROUTING -s 192.168.10.0/24 -j SNAT –to-source 172.16.100.1
-这样，只要是来自本地网络的试图通过网卡访问网络的，都会被统统转换成172.16.100.1这个IP.
-那么，如果172.16.100.1不是固定的怎么办？
-我们都知道当我们使用联通或者电信上网的时候，一般它都会在每次你开机的时候随机生成一个外网的IP，意思就是外网地址是动态变换的。这时我们就要将外网地址换成 MASQUERADE(动态伪装):它可以实现自动寻找到外网地址，而自动将其改为正确的外网地址。所以，我们就需要这样设置：
-iptables -t nat -A POSTROUTING -s 192.168.10.0/24 -j MASQUERADE
-这里要注意：地址伪装并不适用于所有的地方。
-2.DNAT目标地址转换
-对于目标地址转换，数据流向是从外向内的，外面的是客户端，里面的是服务器端通过目标地址转换，我们可以让外面的ip通过我们对外的外网ip来访问我们服务器不同的服务器，而我们的服务却放在内网服务器的不同的服务器上。
-如何做目标地址转换呢？：
-iptables -t nat -A PREROUTING -d 192.168.10.18 -p tcp –dport 80 -j DNAT –todestination 172.16.100.2
-目标地址转换要做在到达网卡之前进行转换,所以要做在PREROUTING这个位置上
-九：控制规则的存放以及开启
-注意：你所定义的所有内容，当你重启的时候都会失效，要想我们能够生效，需要使用一个命令将它保存起来
-1.service iptables save 命令
-它会保存在/etc/sysconfig/iptables这个文件中
-2.iptables-save 命令
-iptables-save &amp;gt; /etc/sysconfig/iptables
-3.iptables-restore 命令
-开机的时候，它会自动加载/etc/sysconfig/iptabels
-如果开机不能加载或者没有加载，而你想让一个自己写的配置文件（假设为iptables.2）手动生效的话：
-iptables-restore &amp;lt; /etc/sysconfig/iptables.2
-则完成了将iptables中定义的规则手动生效&lt;/p&gt;
-</description>
-        <pubDate>Fri, 31 May 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/05/linux_iptables/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/05/linux_iptables/</guid>
-        
-        <category>linux</category>
-        
-        <category>防火墙</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Linux监测MySQL运行情况</title>
-        <description>&lt;p&gt;Linux监测MySQL运行情况&lt;/p&gt;
-
-&lt;p&gt;有两种方式实现，直接上shell代码，新建shell文件mysqlMonitor.sh，将以下内容加入其中，设置定时任务执行此shell即可（具体代码暂未来得及测试，思路和原理已测试可行）&lt;/p&gt;
-
-&lt;h3 id=&quot;第一种方式&quot;&gt;第一种方式&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MYSQL_PING=`/usr/local/mysql/bin/mysqladmin -u root -p123123 ping`
-MYSQL_OK=&quot;mysqld is alive&quot;
-
-if [[ &quot;$MYSQL_PING&quot; != &quot;$MYSQL_OK&quot; ]]
-    then
-        echo &quot;mysql not ok&quot;
-        service mysqld restart
-    else
-        echo &quot;mysql is ok&quot;
-fi
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;第二种方式&quot;&gt;第二种方式&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PORT=&quot;0&quot;
-PORT=`netstat -lnt | grep 3306 | wc -l `
-echo $PORT
-if [ $PORT -eq 1 ]
- then
-echo &quot;mysql is running&quot;
-else
-echo &quot;mysql is not running&quot;
-echo &quot;progrome reeady to start mysql&quot;
-
-sudo service mysql start
-./check_mysql.sh
-fi
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Mon, 14 Jan 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/01/linux_mysql_monitor/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/01/linux_mysql_monitor/</guid>
-        
-        <category>linux</category>
-        
-        <category>MySQL</category>
-        
+        <category>SpringCloud</category>
         
       </item>
     

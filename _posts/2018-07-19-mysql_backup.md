@@ -113,6 +113,9 @@ Query OK, 0 rows affected, 1 warning (0.00 sec)
 ```
 
 ### 日常操作语句归纳
+mysql 添加索引
+ALTER TABLE `table_name` ADD UNIQUE ( `column` ) 
+
 mysql 添加表字段
 
 ```

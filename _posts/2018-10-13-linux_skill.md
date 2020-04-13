@@ -156,6 +156,7 @@ $ yum install -y unzip zip
 
 ### 其他
 
+top命令按E可以切换显示单位K、M、G、T、P
 
 traceroute命令（路由跟踪）
 

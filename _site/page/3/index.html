@@ -165,8 +165,323 @@
   <ol class="post-list">
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/12/linux_jdk/" title="访问 JDK安装">JDK安装</a></h2>
-      <p class="excerpt">下载jdk下载地址:http://www.oracle.com/technetwork/java/javase/downloads/index.html选择最下面的Java Archive &gt; Java SE 7 &gt; 根据系统选择下载版本rpm安装rpm -ivh jdk-7u79-linux-x64.rpmtar.gz包安装新建安装目录将下载文件拷贝其中并添加执行权限# mkdir /usr/java# cd /usr/java# tar -zxvf /opt/jdk-7u7...&hellip;</p>
+      <h2 class="post-list__post-title post-title"><a href="/2017/12/linux_ftp/" title="访问 linux服务器架设FTP">linux服务器架设FTP</a></h2>
+      <p class="excerpt">linux服务器架设FTP准备工作下载新版本FTP下载地址：https://pkgs.org/download/vsftpd/  根据服务器选择相应版本，此处选择CentOS 6的版本安装FTP检查安装vsftpd软件使用如下命令查询是否安装vsftpd软件#rpm -qa |grep vsftpd安装vsftpd软件rpm -ivh vsftpd-2.2.2-24.el6.i686.rpm  需要安装依赖包，且依赖包较多，有网络条件最好用yum安装。yum -y install vsft...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-12-06 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-12-06</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">linuxFTP服务器架设CentOS</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/12/linux_ftp/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/11/tomcat_url_invalid_character/" title="访问 Tomcat的URL中存在特殊符号报404错误">Tomcat的URL中存在特殊符号报404错误</a></h2>
+      <p class="excerpt">Tomcat的URL中存在特殊符号报404错误            当url中存在 \      { } 等字符串时，tomcat报404错误，后台报错信息如下：      信息: Error parsing HTTP request header Note: further occurrences of HTTP header parsing errors will be logged at DEBUG level.java.lang.IllegalArgumentException:...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-11-24 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-11-24</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">Tomcat</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/11/tomcat_url_invalid_character/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/10/linux_update_ssl/" title="访问 CentOS 6.5升级OpenSSL步骤">CentOS 6.5升级OpenSSL步骤</a></h2>
+      <p class="excerpt">//wget https://www.openssl.org/source/old/1.0.2/openssl-1.0.2u.tar.gz下载指定版本的openssl软件wget https://www.openssl.org/source/openssl-1.1.1d.tar.gztar -xzvf openssl-1.1.1d.tar.gzcd openssl-1.1.1d./config shared zlibmake &amp;&amp; make install配置mv /usr...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-10-19 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-10-19</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">CentOS服务器维护</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/10/linux_update_ssl/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/10/mysql_update_linux/" title="访问 保留旧版本安装新版本MySQL">保留旧版本安装新版本MySQL</a></h2>
+      <p class="excerpt">保留旧版本安装新版本mysql准备工作下载新版本MySQL下载地址：http://www.mysql.com/downloads/依次选择 MySQL Community Edition (GPL) MySQL社区版（GPL）–&gt; MySQL Community Server (GPL) MySQL社区服务器（GPL）操作系统选择：Source Code下载如下版本：Generic Linux (Architecture Independent), Compressed TAR Ar...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-10-19 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-10-19</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">linuxMySQL服务器架设</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/10/mysql_update_linux/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/10/linux_update_openssh/" title="访问 CentOS 6.5升级OpenSSH步骤">CentOS 6.5升级OpenSSH步骤</a></h2>
+      <p class="excerpt">安装telnet服务（我本地安装的没有做这步操作）安装软件  检查CentOS7.0是否已经安装 telnet-server xinetd# rpm -qa telnet-server# rpm -qa xinetd  安装telnet、xinetd# yum -y install telnet-server* telnet# yum install xinetd  将telnet、xinetd服务加入开机自启动systemctl enable xinetd.service  ## sys...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-10-19 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-10-19</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">linuxCentOS服务器架设</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/10/linux_update_openssh/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/09/Apache_License_Version_2.0_zh/" title="访问 Apache许可证2.0 中文版">Apache许可证2.0 中文版</a></h2>
+      <p class="excerpt">Apache许可证2.0版 2004年1月http://www.apache.org/licenses/关于使用、复制和分发的条款      定义    “许可证”是指根据本文件第1到第9部分关于使用、复制和分发的条款。    “许可证颁发者”是指版权所有者或者由版权所有者授权许可证的实体。    “法律实体”是指实施实体和进行控制的所有其它实体受该实体控制，或者受该实体集中控制。根据此定义，”控制”是指(i)让无论是否签订协议的上述实体，进行指导或管理的直接权利或间接权利，或者(ii)拥...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-09-26 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-09-26</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">License</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/09/Apache_License_Version_2.0_zh/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/09/Apache_License_Version_2.0/" title="访问 Apache License Version 2.0">Apache License Version 2.0</a></h2>
+      <p class="excerpt">                             Apache License                       Version 2.0, January 2004                    http://www.apache.org/licenses/TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION      Definitions.    “License” shall mean th...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-09-26 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-09-26</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">License</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/09/Apache_License_Version_2.0/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/09/gitbook/" title="访问 Mac安装Gitbook并导出电子书">Mac安装Gitbook并导出电子书</a></h2>
+      <p class="excerpt">安装Gitbook并导出电子书安装Gitbook客户端输入如下命令进行安装，一定要用到-g，这个代表全局安装$ sudo npm install gitbook-cli -g在终端输入如下命令即可查看当前Gitbook版本，出现版本信息代表安装成功。$ gitbook -VCLI version: 2.3.2GitBook version: 3.2.3安装Gitbook编辑器终端环境下的Gitbook只是为了生成HTML文档与电子书使用的，为了方便进行文章书写建议安装Gitbook编辑器。...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-09-22 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-09-22</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">gitbook</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/09/gitbook/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/09/macOS_Sierra_Keygen/" title="访问 让macOS Sierra 10.12支持KeyGen和Special [K]">让macOS Sierra 10.12支持KeyGen和Special [K]</a></h2>
+      <p class="excerpt">macOS Sierra 10.12 注册机修复工具，下载链接: 百度云 密码: ngf4Corel Keygen 系列  打开下载的文件，解压后将“CORE Patcher.app”拖入应用程序中；  运行“CORE Patcher.app”,选择需要修复的“CORE Keygen.app”，屏幕右上角有修复完成的提示，“CORE Keygen.app”就能顺利打开了，此工具支持CORE和x-force系列注册机；  Have done！Special K 系列  将“Special K...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-09-20 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-09-20</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">MacOSSierra注册机修复工具</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/09/macOS_Sierra_Keygen/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/09/IntelliJIDEA_Multi_Module/" title="访问 IntelliJ IDEA 创建多模块项目的正确姿势">IntelliJ IDEA 创建多模块项目的正确姿势</a></h2>
+      <p class="excerpt">IntelliJ IDEA 创建多模块项目的正确姿势  新建一个空项目（项目类型选择Empty Project）  新建立模块,在菜单依次选择: File –&gt; new –&gt; Modual… (创建新模块需要先选中External Libraries进行创建，创建新子模块则先选中某个模块进行创建子模块)  以后增加模块, 重复第2步  如果要实现eclipse里的workset模块分组功能, 有两种方式a. 右键点击模块找Move Module To Group &gt; Ne...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-09-07 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-09-07</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">IntelliJIDEA</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/09/IntelliJIDEA_Multi_Module/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/09/jekyll_blog/" title="访问 Jekyll搭建个人博客过程记录">Jekyll搭建个人博客过程记录</a></h2>
+      <p class="excerpt">一直想搭建一个自己的博客系统，网上搜了一下发现了Hexo! 但是没有找到一个自己满意的模板，后来发现潘柏信的博客,非常喜欢这个模板，作者也愿意共享此模板并提供源码，但发现采用的不是Hexo而是Jekyll，了解了一下这两个Blog系统，发现Jekyll还有个优点就是所有的Markdown文档也是放到一起的，而用Hexo则需要将Markdown单独存放，如果想多端同步更新blog则需要建立两个Github项目进行存放，关于Hexo和Jekyll的优缺点自行对比，以上为个人关注的优缺点。最终决...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-09-05 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-09-05</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">jekyllblog系统</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/09/jekyll_blog/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/09/rvm_install_ruby/" title="访问 Mac OS10.12采用rvm更新安装Ruby">Mac OS10.12采用rvm更新安装Ruby</a></h2>
+      <p class="excerpt">因为很多软件需要Ruby高版本支持，但Mac默认安装的版本为2.0，故需要升级Ruby，升级步骤如下：注意事项：升级osx 10.11后，brew在使用的时候就会直接报错了，会影响以下操作，因为从10.11开始，对几个重要目录的权限苹果有了新的限制，特别是/usr目录，解决办法：sudo chown -R $(whoami):admin /usr/local第一步：安装rvmrvm是什么？为什么要安装rvm呢，因为rvm可以让你拥有多个版本的Ruby，并且可以在多个版本之间自由切换。安装命...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-09-04 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-09-04</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">rvmRubyMacOS</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/09/rvm_install_ruby/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/09/mac_skill/" title="访问 MacBook使用小技巧">MacBook使用小技巧</a></h2>
+      <p class="excerpt">MacOS使用小技巧整理，持续更新Finder始终显示用户「资料库」  打开终端，运行以下命令：chflags nohidden ~/Library/macOS Sierra 如何打开任何来源  打开终端，运行以下命令：sudo spctl --master-disable  打开应用程序-系统偏好设置-安全性和隐私-通用，消失的任何来源终于出现了（默认应该勾选了）；  如果你不喜欢用终端输入命令的方式打开任何来源选项，sudo xattr -d com.apple.quarantine ...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-09-01 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-09-01</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">MacOS</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/09/mac_skill/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/01/IntelliJIDEA_ReferenceCard_mac/" title="访问 IntelliJ IDEA Mac OS X 快捷键">IntelliJ IDEA Mac OS X 快捷键</a></h2>
+      <p class="excerpt">IntelliJ IDEA Mac OS X 快捷键备注：⌘ command,⌥ option,^ control,⇧ shift，⎋ esc，⇥ tab，↩ return/enterEditing 编辑            快捷键      功能描述      中文描述                  ^ Space      Basic code completion (the name of any class, method or variable)      ？基本的代码补全...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2017-01-03 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2017-01-03</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">IntelliJIDEA快捷键</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2017/01/IntelliJIDEA_ReferenceCard_mac/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/12/Terminal_Sublime/" title="访问 Mac终端用Sublime打开指定文件或文件夹">Mac终端用Sublime打开指定文件或文件夹</a></h2>
+      <p class="excerpt">经常使用Mac终端或iTerm,但是编辑工具习惯了使用Sublime，所以希望从终端用sublime打开指定文件或文件夹，方法如下：1.建立Sublime的别名软连接mkdir ~/binsudo ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl2.将~/bin添加到环境变量中vi ~/.bash_profile   export PATH="~/bin:$PATH"sourc...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2016-12-27 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2016-12-27</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">Sublime</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2016/12/Terminal_Sublime/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/12/tomcat_linux/" title="访问 Tomcat安装">Tomcat安装</a></h2>
+      <p class="excerpt">下载Tomcat下载地址:http://tomcat.apache.org/安装Tomcat# mkdir /usr/local/tomcat# cd /usr/local/tomcat# tar -zxvf /opt/apache-tomcat-7.0.54.tar.gz生成链接以便版本升级# ln -s apache-tomcat-7.0.54 server升级时候先删除原来的后重新生成新的# rm -rf ./server# ln -s apache-tomcat-7.0.92 se...&hellip;</p>
       <div class="post-list__meta">        
         <time datetime="2016-12-15 00:00:00 +0800" class="post-list__meta--date date">
           <img src="/images/calendar.png" width="20px" /> 
@@ -176,17 +491,17 @@
         </div>
         <a href="/tags">
           <div class = "post-list-icon-mate">
-            <span class="post-list__meta--tags-right">linuxJDK服务器架设</span>
+            <span class="post-list__meta--tags-right">linuxTomcat服务器架设</span>
           </div>
           <div class = "post-list-small-mate">
-          <a class="btn-border-small" href=/2016/12/linux_jdk/>阅读全文 » </a>
+          <a class="btn-border-small" href=/2016/12/tomcat_linux/>阅读全文 » </a>
           </div>
       </div>
       <hr class="post-list__divider" />
     </li>
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/12/linux_MySQL/" title="访问 MySQL安装">MySQL安装</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2016/12/mysql_linux/" title="访问 MySQL安装">MySQL安装</a></h2>
       <p class="excerpt">mysql 下载下载地址:MySQL版本（mysql包括三个版本）MySQL Enterprise Edition (commercial) MySQL企业版（商业）MySQL Cluster CGE (commercial) MySQL集群CGE（商业）MySQL Community Edition (GPL) MySQL社区版（GPL）–&gt;MySQL Community Server (GPL) MySQL社区服务器（GPL）–&gt;MySQL Cluster (GPL) My...&hellip;</p>
       <div class="post-list__meta">        
         <time datetime="2016-12-15 00:00:00 +0800" class="post-list__meta--date date">
@@ -200,7 +515,28 @@
             <span class="post-list__meta--tags-right">linuxMySQL服务器架设</span>
           </div>
           <div class = "post-list-small-mate">
-          <a class="btn-border-small" href=/2016/12/linux_MySQL/>阅读全文 » </a>
+          <a class="btn-border-small" href=/2016/12/mysql_linux/>阅读全文 » </a>
+          </div>
+      </div>
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/12/jdk_linux/" title="访问 JDK安装">JDK安装</a></h2>
+      <p class="excerpt">下载jdk下载地址:http://www.oracle.com/technetwork/java/javase/downloads/index.html选择最下面的Java Archive &gt; Java SE 7 &gt; 根据系统选择下载版本rpm安装rpm -ivh jdk-7u79-linux-x64.rpmtar.gz包安装新建安装目录将下载文件拷贝其中并添加执行权限# mkdir /usr/java# cd /usr/java# tar -zxvf /opt/jdk-7u7...&hellip;</p>
+      <div class="post-list__meta">        
+        <time datetime="2016-12-15 00:00:00 +0800" class="post-list__meta--date date">
+          <img src="/images/calendar.png" width="20px" /> 
+          2016-12-15</time> 
+        <div class = "tag-img-icon">
+          <img src="/images/tag-icon.svg" width="20px" /> 
+        </div>
+        <a href="/tags">
+          <div class = "post-list-icon-mate">
+            <span class="post-list__meta--tags-right">linuxJDK服务器架设</span>
+          </div>
+          <div class = "post-list-small-mate">
+          <a class="btn-border-small" href=/2016/12/jdk_linux/>阅读全文 » </a>
           </div>
       </div>
       <hr class="post-list__divider" />
