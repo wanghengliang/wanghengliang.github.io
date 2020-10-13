@@ -177,48 +177,48 @@
 
 <p>直接上shell代码，新建shell文件tomcatMonitor.sh，将以下内容加入其中，设置定时任务执行此shell即可</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash
 
-<span class="c"># func:自动监控tomcat并且在异常时执行重启操作</span>
-
-
-<span class="c"># 获取tomcat进程ID</span>
-<span class="nv">TomcatID</span><span class="o">=</span><span class="si">$(</span>ps <span class="nt">-ef</span> |grep tomcat |grep <span class="nt">-w</span> <span class="s1">'tomcat/server'</span>|grep <span class="nt">-v</span> <span class="s1">'grep'</span>|awk <span class="s1">'{print $2}'</span><span class="si">)</span>
-
-<span class="c"># tomcat启动程序</span>
-<span class="nv">StartTomcat</span><span class="o">=</span>/usr/local/tomcat/server/bin/startup.sh
-
-<span class="c"># 定义要监控的页面地址 </span>
-<span class="nv">WebUrl</span><span class="o">=</span>http://localhost:8082/index.jsp
+# func:自动监控tomcat并且在异常时执行重启操作
 
 
-<span class="c"># 日志输出</span>
-<span class="nv">GetPageInfo</span><span class="o">=</span>/data/wwwlogs/GetPageInfo.log
-<span class="nv">TomcatMonitorLog</span><span class="o">=</span>/data/wwwlogs/TomcatMonitor.log
+# 获取tomcat进程ID
+TomcatID=$(ps -ef |grep tomcat |grep -w 'tomcat/server'|grep -v 'grep'|awk '{print $2}')
 
-Monitor<span class="o">(){</span>
-	<span class="nb">echo</span> <span class="s2">"[info]开始监控tomcat...[</span><span class="si">$(</span><span class="nb">date</span> +<span class="s1">'%F %H:%M:%S'</span><span class="si">)</span><span class="s2">]"</span>
-	<span class="k">if</span> <span class="o">[</span> <span class="nv">$TomcatID</span> <span class="o">]</span> <span class="p">;</span><span class="k">then</span> <span class="c"># 这里判断TOMCAT进程是否存在</span>
-		<span class="nb">echo</span> <span class="s2">"[info]当前tomcat进程ID为:</span><span class="nv">$TomcatID</span><span class="s2">,继续检测页面..."</span>
-		<span class="c"># 检测是否启动成功(成功的话页面会返回状态"200")</span>
-		<span class="nv">TomcatServiceCode</span><span class="o">=</span><span class="si">$(</span>curl <span class="nt">-s</span> <span class="nt">-o</span> <span class="nv">$GetPageInfo</span> <span class="nt">-m</span> 10 <span class="nt">--connect-timeout</span> 10 <span class="nv">$WebUrl</span> <span class="nt">-w</span> %<span class="o">{</span>http_code<span class="o">}</span><span class="si">)</span>
-		<span class="k">if</span> <span class="o">[</span> <span class="nv">$TomcatServiceCode</span> <span class="nt">-eq</span> 200 <span class="o">]</span> <span class="p">;</span><span class="k">then
-			</span><span class="nb">echo</span> <span class="s2">"[info]页面返回码为</span><span class="nv">$TomcatServiceCode</span><span class="s2">,tomcat启动成功,测试页面正常......"</span>
-		<span class="k">else
-			</span><span class="nb">echo</span> <span class="s2">"[error]tomcat页面出错,请注意......状态码为</span><span class="nv">$TomcatServiceCode</span><span class="s2">,错误日志已输出到</span><span class="nv">$GetPageInfo</span><span class="s2">"</span>
-			<span class="nb">echo</span> <span class="s2">"[error]页面访问出错,开始重启tomcat"</span>
-			<span class="nb">kill</span> <span class="nt">-9</span> <span class="nv">$TomcatID</span>  <span class="c"># 杀掉原tomcat进程</span>
-			<span class="nb">sleep </span>3
-			<span class="nv">$StartTomcat</span>
-		<span class="k">fi
+# tomcat启动程序
+StartTomcat=/usr/local/tomcat/server/bin/startup.sh
+
+# 定义要监控的页面地址 
+WebUrl=http://localhost:8082/index.jsp
+
+
+# 日志输出
+GetPageInfo=/data/wwwlogs/GetPageInfo.log
+TomcatMonitorLog=/data/wwwlogs/TomcatMonitor.log
+
+Monitor(){
+	echo "[info]开始监控tomcat...[$(date +'%F %H:%M:%S')]"
+	if [ $TomcatID ] ;then # 这里判断TOMCAT进程是否存在
+		echo "[info]当前tomcat进程ID为:$TomcatID,继续检测页面..."
+		# 检测是否启动成功(成功的话页面会返回状态"200")
+		TomcatServiceCode=$(curl -s -o $GetPageInfo -m 10 --connect-timeout 10 $WebUrl -w %{http_code})
+		if [ $TomcatServiceCode -eq 200 ] ;then
+			echo "[info]页面返回码为$TomcatServiceCode,tomcat启动成功,测试页面正常......"
+		else
+			echo "[error]tomcat页面出错,请注意......状态码为$TomcatServiceCode,错误日志已输出到$GetPageInfo"
+			echo "[error]页面访问出错,开始重启tomcat"
+			kill -9 $TomcatID  # 杀掉原tomcat进程
+			sleep 3
+			$StartTomcat
+		fi
 	else
-		</span><span class="nb">echo</span> <span class="s2">"[error]tomcat进程不存在!tomcat开始自动重启..."</span>
-		<span class="nb">echo</span> <span class="s2">"[info]</span><span class="nv">$StartTomcat</span><span class="s2">,请稍候......"</span>
-		<span class="nv">$StartTomcat</span>
-	<span class="k">fi
-	</span><span class="nb">echo</span> <span class="s2">"------------------------------"</span>
-<span class="o">}</span>
-Monitor&gt;&gt;<span class="nv">$TomcatMonitorLog</span>
+		echo "[error]tomcat进程不存在!tomcat开始自动重启..."
+		echo "[info]$StartTomcat,请稍候......"
+		$StartTomcat
+	fi
+	echo "------------------------------"
+}
+Monitor&gt;&gt;$TomcatMonitorLog
 
 </code></pre></div></div>
 

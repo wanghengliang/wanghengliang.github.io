@@ -144,3 +144,22 @@ docker run -name=aosun-website -p 80:80\
 -d nginx
 
 ```
+
+### docker-compose 安装
+
+需要先安装python，如有请忽略此步骤，此处安装python2.x ，如需安装python3请自行安装
+
+```
+$ yum -y install epel-release
+$ yum -y install python-pip
+```
+
+安装docker-compose
+
+```
+$ pip install docker-compose
+$ docker-compose version ## 查看版本
+```
+
+
+

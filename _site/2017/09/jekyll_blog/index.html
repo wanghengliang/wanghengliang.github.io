@@ -190,7 +190,7 @@
 
 <h4 id="直接创建">直接创建</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ jekyll new myBlog
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ jekyll new myBlog
 </code></pre></div></div>
 
 <h4 id="通过已有模板创建">通过已有模板创建</h4>
@@ -198,7 +198,7 @@
 
 <p>建立与你用户名对应的仓库，仓库名必须为【your_user_name.github.io】固定写法,如我的 github 账户名叫 wanghengliang，我的 Github Pages 仓库名就叫 wanghengliang.github.io;然后clone到本地,可以通过HTTPS，如果为Github添加了SSH keys可以采用SSH方式，如clone我的项目命令如下：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:wanghengliang/wanghengliang.github.io.git
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github.com:wanghengliang/wanghengliang.github.io.git
 </code></pre></div></div>
 
 <p>2.下载模板，可采用潘柏信提供的<a href="https://github.com/leopardpan/leopardpan.github.io" target="_blank">leopardpan</a>模板，，或者我修改后的<a href="https://github.com/wanghengliang/wanghengliang.github.io" target="_blank">模板</a>(只增加了分类信息)，下载zip版本，并将内容解压到Github Pages本地目录。</p>
@@ -219,7 +219,7 @@
 
 <p>文章head格式</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
 layout: post
 title:  "Welcome to Jekyll!"
 date:   2016-10-16 11:29:08 +0800
@@ -237,7 +237,7 @@ tag: jekyll
 
 <h4 id="如果你本机没配置过任何jekyll的环境可能会报错">如果你本机没配置过任何jekyll的环境，可能会报错</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- bundler (LoadError)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- bundler (LoadError)
 	from /Users/xxxxxxxx/.rvm/rubies/ruby-2.2.2/lib/ruby/site_ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require'
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/lib/jekyll/plugin_manager.rb:34:in `require_from_bundler'
 	from /Users/xxxxxxxx/.rvm/gems/ruby-2.2.2/gems/jekyll-3.3.0/exe/jekyll:9:in `&lt;top (required)&gt;'
@@ -249,12 +249,12 @@ tag: jekyll
 
 <p>原因： 没有安装 bundler ，执行安装 bundler 命令</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gem install bundler
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gem install bundler
 </code></pre></div></div>
 
 <p>提示：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Fetching: bundler-1.13.5.gem (100%)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Fetching: bundler-1.13.5.gem (100%)
 Successfully installed bundler-1.13.5
 Parsing documentation for bundler-1.13.5
 Installing ri documentation for bundler-1.13.5
@@ -265,7 +265,7 @@ Done installing documentation for bundler after 5 seconds
 
 <p>再次执行 $ jekyll server  ，提示</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 Could not find proper version of jekyll (3.1.1) in any of the sources
 Run `bundle install` to install missing gems.
 
@@ -273,14 +273,14 @@ Run `bundle install` to install missing gems.
 
 <p>跟着提示运行命令</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bundle install
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bundle install
 </code></pre></div></div>
 
 <p>这个时候你可能会发现 bundle install 运行卡主不动了。</p>
 
 <p>如果很长时间都没任何提示的话，你可以尝试修改 gem 的 source</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
 $ gem sources -l
 *** CURRENT SOURCES ***
 
@@ -290,7 +290,7 @@ https://gems.ruby-china.org
 
 <p>再次执行命令 $ bundle install，发现开始有动静了</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Fetching gem metadata from https://rubygems.org/...........
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Fetching gem metadata from https://rubygems.org/...........
 Fetching version metadata from https://rubygems.org/..
 Fetching dependency metadata from https://rubygems.org/.
 。。。
@@ -303,13 +303,13 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 
 <p>bundler安装完成，后再次启动本地服务</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ jekyll server
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ jekyll server
 
 </code></pre></div></div>
 
 <p>继续报错</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Configuration file: /Users/tendcloud-Caroline/Desktop/leopardpan.github.io/_config.yml
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Configuration file: /Users/tendcloud-Caroline/Desktop/leopardpan.github.io/_config.yml
   Dependency Error: Yikes! It looks like you don't have jekyll-sitemap or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. The full error message from Ruby is: 'cannot load such file -- jekyll-sitemap' If you run into trouble, you can find helpful resources at http://jekyllrb.com/help/! 
 jekyll 3.1.1 | Error:  jekyll-sitemap
 
@@ -319,18 +319,18 @@ jekyll 3.1.1 | Error:  jekyll-sitemap
 <p>解决方法有两个</p>
 
 <blockquote>
-  <p>1、打开当前目录下的 <code class="highlighter-rouge">_config.yml</code> 文件,把 gems: [jekyll-paginate,jekyll-sitemap] 换成 gems: [jekyll-paginate],也就是去掉jekyll-sitemap.
+  <p>1、打开当前目录下的 <code class="language-plaintext highlighter-rouge">_config.yml</code> 文件,把 gems: [jekyll-paginate,jekyll-sitemap] 换成 gems: [jekyll-paginate],也就是去掉jekyll-sitemap.
 2、升级 jekyll 版本。</p>
 </blockquote>
 
 <p>修改完成后保存配置，再次执行</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ jekyll server
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ jekyll server
 
 </code></pre></div></div>
 <p>提示</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_config.yml
             Source: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github
        Destination: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpan.github.io-github/_site
  Incremental build: disabled. Enable with --incremental
@@ -349,7 +349,7 @@ Configuration file: /Users/baixinpan/Desktop/OpenSource/Mine/Page-Blog/leopardpa
 
 <p>发现markdown中代码部分显示不正常，原因是jekyllMarkdown的解析器版本太旧，通过如下命令更新：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bundle update
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bundle update
 </code></pre></div></div>
 
 <h3 id="发布博客">发布博客</h3>

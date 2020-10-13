@@ -160,6 +160,7 @@ sed -i 's/${catalina.base}\/logs/\/data\/wwwlogs\/tomcat-web/g' /usr/local/tomca
 
 ##### 一台机器安装多个Tomcat
 
+```
 修改 <Server port="8005" shutdown="SHUTDOWN"> 
 为 <Server port="8006" shutdown="SHUTDOWN">
 
@@ -169,8 +170,6 @@ sed -i 's/${catalina.base}\/logs/\/data\/wwwlogs\/tomcat-web/g' /usr/local/tomca
 修改 <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
 为 <Connector port="8007" protocol="AJP/1.3" redirectPort="8446" />
 
-
-
 修改 <Server port="8005" shutdown="SHUTDOWN"> 
 为 <Server port="8008" shutdown="SHUTDOWN">
 
@@ -179,5 +178,5 @@ sed -i 's/${catalina.base}\/logs/\/data\/wwwlogs\/tomcat-web/g' /usr/local/tomca
 
 修改 <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
 为 <Connector port="8009" protocol="AJP/1.3" redirectPort="8448" />
-
+```
 

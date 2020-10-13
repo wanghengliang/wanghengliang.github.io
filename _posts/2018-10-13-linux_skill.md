@@ -7,6 +7,173 @@ tags: linux
 ---
 Linux使用技巧
 
+### 安装linux后配置
+
+#### 配置主机名
+
+```
+$ hostname
+$ vi /etc/hostname
+```
+
+#### 配置网络
+
+```
+## 安装net-tools
+$ yum -y install net-tools
+## 修改网络配置
+$ cd /etc/sysconfig/network-scripts/
+$ vi ifcfg-enp0s3
+$ less ifcfg-enp0s3
+
+TYPE="Ethernet"
+PROXY_METHOD="none"
+BROWSER_ONLY="no"
+BOOTPROTO="none"
+DEFROUTE="yes"
+IPV4_FAILURE_FATAL="no"
+IPV6INIT="yes"
+IPV6_AUTOCONF="yes"
+IPV6_DEFROUTE="yes"
+IPV6_FAILURE_FATAL="no"
+IPV6_ADDR_GEN_MODE="stable-privacy"
+NAME="enp0s3"
+UUID="bb52f7c9-24c5-41a0-94db-7e86dfb561b2"
+DEVICE="enp0s3"
+ONBOOT="yes"
+IPADDR="192.168.0.231"
+PREFIX="21"
+GATEWAY="192.168.0.1"
+DNS1="114.114.114.114"
+IPV6_PRIVACY="no"
+
+## 重启网络服务
+$ service network restart
+## 查看网络信息
+$ ifconfig -a
+```
+
+#### 配置yum源信息
+
+```
+## 先安装wget，下载163源需要
+$ yum install wget
+## 备份原来的源
+$ cd /etc/yum.repos.d/
+$ mkdir repo_backup
+$ mv *.repo repo_backup/
+## 下载163源
+$ wget http://mirrors.163.com/.help/CentOS7-Base-163.repo
+## 清除yum缓存
+$ yum clean all
+## 刷新yum源
+$ yum repolist
+## 更新yum包
+$ yum update -y
+```
+
+#### 安装docker
+
+```
+## 在 CentOS 7安装docker要求系统为64位、系统内核版本为 3.10 以上，可以使用以下命令查看
+$ uname -r
+3.10.0-1127.el7.x86_64
+## 安装docker 下面两个安装一个就可以
+### 官网脚本(https://get.docker.com)
+$ wget -qO- https://get.docker.com | sh
+### 国内脚本(https://get.daocloud.io/docker)
+$ curl -sSL https://get.daocloud.io/docker | sh
+## 查看docker版本
+$ docker version
+## 启动docker
+$ service docker start
+## 设置开机启动
+$ systemctl enable docker
+```
+或者
+```
+## 在 CentOS 7安装docker要求系统为64位、系统内核版本为 3.10 以上，可以使用以下命令查看
+$ uname -r
+3.10.0-1127.el7.x86_64
+
+## 官方安装说明：https://docs.docker.com/engine/install/centos/
+## 卸载老版本
+$ yum list installed | grep docker
+$ yum -y remove docker*
+## 安装docker
+$ yum install -y yum-utils
+$ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+$ yum install docker-ce docker-ce-cli containerd.io
+## 查看docker版本
+$ docker version
+## 启动docker
+$ service docker start
+## 设置开机启动
+$ systemctl enable docker
+```
+
+#### 安装docker-compose
+
+```
+## 安装python-pip
+$ yum -y install epel-release
+$ yum -y install python-pip
+
+## 升级python-pip
+$ pip install --upgrade pip
+
+## 安装docker-compose
+$ yum -y install gcc python-devel
+$ pip install six --user -U
+$ pip install docker-compose
+```
+
+
+
+#### 配置docker
+
+```
+$ mkdir -p /etc/docker
+$ vi /etc/docker/daemon.json
+$ less /etc/docker/daemon.json
+
+{
+        "registry-mirrors": ["http://hub-mirror.c.163.com"]
+}
+```
+
+#### 安装nodejs
+
+```
+yum -y update
+wget https://nodejs.org/dist/v12.18.3/node-v12.18.3-linux-x64.tar.xz
+mkdir -p /mnt/nodejs
+tar -xvf node-v12.18.3-linux-x64.tar.xz
+mv node-v12.18.3-linux-x64  nodejs
+ln -s /mnt/nodejs/node-v12.18.3-linux-x64 latest
+ln -s latest default
+ln -s latest default
+ln -s /mnt/nodejs/default/bin/npm /usr/local/bin/
+ln -s /mnt/nodejs/default/bin/node /usr/local/bin/
+
+```
+
+修改配置文件vi /etc/profile,修改后使其生效 source /etc/profile
+
+```
+export NODE_HOME=/usr/local/bin/node/
+export PATH=$NODE_HOME/bin:$PATH
+```
+
+检验nodejs是否已变为全局
+
+```
+node -v
+```
+
+
+
+
 
 ### 单用户登录模式
 

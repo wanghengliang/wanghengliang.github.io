@@ -178,38 +178,38 @@
 <h3 id="安装环境准备">安装环境准备</h3>
 <p>1.Docker 要求 CentOS 系统的内核版本高于 3.10 ，验证你的CentOS 版本是否支持 Docker,通过 uname -r 命令查看你当前的内核版本</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ uname -r
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ uname -r
 3.10.0-957.21.3.el7.x86_64
 </code></pre></div></div>
 
 <p>2.确保 yum 包更新到最新</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum update
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum update
 </code></pre></div></div>
 
 <p>3.卸载旧版本(未安装可跳过)</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum remove docker  docker-common docker-selinux docker-engine
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum remove docker  docker-common docker-selinux docker-engine
 </code></pre></div></div>
 
 <h3 id="docker安装">docker安装</h3>
 
 <p>1.安装需要的软件包， yum-utils 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 </code></pre></div></div>
 
 <p>2.设置yum源</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 </code></pre></div></div>
 <p>或者</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 </code></pre></div></div>
 
 <p>3.查看所有仓库中所有docker版本，并选择特定版本安装</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ yum list docker-ce --showduplicates | sort -r
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ yum list docker-ce --showduplicates | sort -r
 Loading mirror speeds from cached hostfile
 Loaded plugins: fastestmirror
 docker-ce.x86_64            3:19.03.1-3.el7                     docker-ce-stable
@@ -245,21 +245,21 @@ Available Packages
 
 <p>4.安装docker</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum install docker-ce  #由于repo中默认只开启stable仓库，故这里安装的是最新稳定版19.03.1
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum install docker-ce  #由于repo中默认只开启stable仓库，故这里安装的是最新稳定版19.03.1
 </code></pre></div></div>
 <p>或者</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum install &lt;FQPN&gt;  # 例如：sudo yum install docker-ce-19.03.1
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum install &lt;FQPN&gt;  # 例如：sudo yum install docker-ce-19.03.1
 </code></pre></div></div>
 
 <p>5.启动并加入开机启动</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo systemctl start docker
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo systemctl start docker
 $ sudo systemctl enable docker
 </code></pre></div></div>
 
 <p>6.验证安装是否成功(有client和service两部分表示docker安装启动都成功了)</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker version
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker version
 Client: Docker Engine - Community
  Version:           19.03.1
  API version:       1.40
@@ -289,16 +289,31 @@ Server: Docker Engine - Community
   GitCommit:        fec3683
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash
 
-docker run <span class="nt">-name</span><span class="o">=</span>aosun-website <span class="nt">-p</span> 80:80<span class="se">\</span>
-<span class="nt">-v</span> /data/aosunsoft/nginx/nginx.conf:/etc/nginx/nginx.conf<span class="se">\</span>
-<span class="nt">-v</span> /data/aosunsoft/nginx/conf.d:/etc/nginx/conf.d<span class="se">\</span>
-<span class="nt">-v</span> /data/aosunsoft/nginx/logs:/var/log/nginx<span class="se">\</span>
-<span class="nt">-v</span> /data/aosunsoft/wwwroot:/usr/share/nginx/html<span class="se">\</span>
-<span class="nt">-d</span> nginx
+docker run -name=aosun-website -p 80:80\
+-v /data/aosunsoft/nginx/nginx.conf:/etc/nginx/nginx.conf\
+-v /data/aosunsoft/nginx/conf.d:/etc/nginx/conf.d\
+-v /data/aosunsoft/nginx/logs:/var/log/nginx\
+-v /data/aosunsoft/wwwroot:/usr/share/nginx/html\
+-d nginx
 
 </code></pre></div></div>
+
+<h3 id="docker-compose-安装">docker-compose 安装</h3>
+
+<p>需要先安装python，如有请忽略此步骤，此处安装python2.x ，如需安装python3请自行安装</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ yum -y install epel-release
+$ yum -y install python-pip
+</code></pre></div></div>
+
+<p>安装docker-compose</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pip install docker-compose
+$ docker-compose version ## 查看版本
+</code></pre></div></div>
+
 
 
   </section>

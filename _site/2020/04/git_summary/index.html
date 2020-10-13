@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>git学习总结</title>
+  <meta name="description" content="git学习总结">
+  <meta name="author" content="leopardpan">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="git学习总结">
+  <meta name="twitter:description" content="git学习总结">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="git学习总结">
+  <meta property="og:description" content="git学习总结">
+  
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2020/04/git_summary/">
+  <link rel="alternate" type="application/rss+xml" title="hengliang" href="http://localhost:4000/feed.xml">
+  
+  <link rel="dns-prefetch" href="//cdn.mathjax.org" />
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+
+<!-- 站点统计 -->
+  <script 
+  async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>  
+
+<!-- 百度统计 -->
+  
+
+<!-- google 统计 -->
+  
+
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">        
+      <div class="nav_container">
+         <nav class="nav-menu-item" style = "float:right">
+            <i class="nav-menu-item">
+              <a href="/#blog" title="" class="blog-button">  博客主页
+              </a>
+            </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/archive" title="archive" class="btn-mobile-menu__icon">
+                      所有文章
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/category" title="category" class="btn-mobile-menu__icon">
+                      分类
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/tags" title="tags" class="btn-mobile-menu__icon">
+                      标签
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/about" title="about" class="btn-mobile-menu__icon">
+                      关于我
+                  </a>
+                </i>
+            
+          </nav>
+      </div>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <!-- 头像效果-start -->
+        <div class="ih-item circle effect right_to_left">            
+            <a href="/#blog" title="前往 hengliang 的主页" class="blog-button">
+                <div class="img"><img src="/images/avatar.jpg" alt="img"></div>
+                <div class="info">
+                    <div class="info-back">
+                        <h2> 
+                            
+                                hengliang
+                            
+                        </h2>
+                        <p>
+                           
+                                java / iOS
+                            
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- 头像效果-end -->
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for hengliang" class="blog-button">hengliang</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">个人站</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">快乐地创造和品味生活</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">博客主页</a></li>
+                
+                  <li class="navigation__item"><a href="/archive" title="archive">所有文章</a></li>
+                
+                  <li class="navigation__item"><a href="/category" title="category">分类</a></li>
+                
+                  <li class="navigation__item"><a href="/tags" title="tags">标签</a></li>
+                
+                  <li class="navigation__item"><a href="/about" title="about">关于我</a></li>
+                
+              </ul>
+              <ul class="navigation">
+                <li class="navigation__item"><a href="http://beian.miit.gov.cn/" title="蜀ICP备09035688号">蜀ICP备09035688号</a></li>
+              </ul>
+            </nav>
+          </div>          
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-clear"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">git学习总结</h1>
+    <div class="post-meta">
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2020-04-13 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2020-04-13</time>  
+         
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
+    </div>
+  </header>
+
+  <section class="post">
+    <p>git学习总结</p>
+
+<h3 id="git是什么">Git是什么？</h3>
+
+<h4 id="git的特点">git的特点</h4>
+
+<p><strong>有助于分布式开发</strong>：git允许并行开发，各人可以在自己的版本库中独立且同时开发，不需要与一个中心版本时刻同步。允许许多开发者在不同的地方甚至离线的情况无障碍的开发</p>
+
+<p><strong>能够胜任上千开发人员的规模</strong>：支持上千开发人员规模的VCS(Version Control System)版本控制系统</p>
+
+<p><strong>性能优异</strong>：快速且高效，使用“压缩”和“差异比较”技术节约存储空间，进而节约传输时间。使用分布式开发模型，而非集中式开发模型，确保了网络不确定因素不会影响到日常开发的效率。</p>
+
+<p><strong>保持完整性和可靠性</strong>：git采用了一个叫做“安全散列函数”(SHA1)的通用加密散列函数来命名和识别数据库中的对象。虽然理论上不是绝对的，但是在实践中已经证实这是足够可靠的方式。</p>
+
+<p><strong>强化责任</strong>：git对每个有文件改动的提交强制使用“改动日志”。进而可对所有的改动进行责任最终。</p>
+
+<p><strong>不可变性</strong>：git版本库中存储的对象均为不可变的。一点创建数据对象并把他存储到数据库中，它们便不可修改。这样的好处很多如快速比较相同性。</p>
+
+<p><strong>原子事务</strong>：git通过记录完整、离散的版本库状态来实现原子事务。</p>
+
+<p><strong>支持并鼓励基于分支的开发</strong>：git支持分支开发，并提供了一个简单、清晰、快速的合并功能。</p>
+
+<p><strong>完整的版本库</strong>：每个人的版本库中都有一份关于每个文件的完整历史修订信息。</p>
+
+<p><strong>一个清晰的内部设计</strong>：</p>
+
+<p><strong>免费自由</strong>：be free ,as in freedom.</p>
+
+<h4 id="git快速入门">git快速入门</h4>
+
+<h5 id="git安装">git安装</h5>
+
+<p>到<a href="https://git-scm.com/download">git官方网站</a>上下载软件进行安装即可。</p>
+
+<h5 id="git配置">git配置</h5>
+
+<p>git自带一个config工具，首次安装好git后，可通过此工具设置控制 Git 外观和行为的配置变量。这些变量存储在三个不同的位置：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">/etc/gitconfig</code> 文件: 包含系统上每一个用户及他们仓库的通用配置。如果在执行 <code class="language-plaintext highlighter-rouge">git config</code> 时带上 <code class="language-plaintext highlighter-rouge">--system</code> 选项，那么它就会读写该文件中的配置变量。</li>
+  <li><code class="language-plaintext highlighter-rouge">~/.gitconfig</code> 或 <code class="language-plaintext highlighter-rouge">~/.config/git/config</code> 文件：只针对当前用户。你可以传递 <code class="language-plaintext highlighter-rouge">--global</code> 选项让 Git 读写此文件，这会对你系统上 <strong>所有</strong> 的仓库生效。</li>
+  <li>当前使用仓库的 Git 目录中的 <code class="language-plaintext highlighter-rouge">config</code> 文件（即 <code class="language-plaintext highlighter-rouge">.git/config</code>）：针对该仓库。 你可以传递 <code class="language-plaintext highlighter-rouge">--local</code> 选项让 Git 强制读写此文件，虽然默认情况下用的就是它。</li>
+</ul>
+
+<p>优先级顺序为： <code class="language-plaintext highlighter-rouge">.git/config</code> &gt; <code class="language-plaintext highlighter-rouge">~/.gitconfig</code>  &gt;  <code class="language-plaintext highlighter-rouge">/etc/gitconfig</code></p>
+
+<p>配置用户信息</p>
+
+<h3 id="git基本概念">Git基本概念</h3>
+
+<p>Git版本库不仅仅提供版本库中所有文件的完整副本，还提供 版本库本身的副本。在版本库中，Git维护两个主要的数据结构:对象库(object store)和 索引(index)。所有这些版本库数据存放在工作目录根目录下一个名 为<strong>.git</strong> 的隐藏子目录中。</p>
+
+<h4 id="git对象类型">git对象类型</h4>
+
+<p>对象库是Git版本库实现的心脏。它包含你的原始数据文件和所有日志 消息、作者信息、日期，以及其他用来重建项目任意版本或分支的信息。</p>
+
+<p>Git放在对象库里的对象只有4种类型:<code class="language-plaintext highlighter-rouge">块(blob)</code>、<code class="language-plaintext highlighter-rouge">目录树(tree)</code>、 <code class="language-plaintext highlighter-rouge">提交(commit)</code>和<code class="language-plaintext highlighter-rouge">标签(tag)</code>。这4种原子对象构成Git高层数据结构的基 础。</p>
+
+<p><strong>块(blob)</strong></p>
+
+<p>文件的每一个版本表示为一个块(blob)。一个blob保存一个文件的数据，但不包含任何关于 这个文件的元数据，甚至连文件名也没有。</p>
+
+<p><strong>目录树(tree)</strong></p>
+
+<p>一个目录树(tree)对象代表一层目录信息。它记录blob标识符、路径名和在一个目录里所有文件的一些元数据。它也可以递归引用其他目录树或子树对象，从而建立一个包含文件和子目录的完整层次结构。</p>
+
+<p><strong>提交(commit)</strong></p>
+
+<p>一个提交(commit)对象保存版本库中每一次变化的元数据，包括作者、提交者、提交日期和日志消息。每一个提交对象指向一个目录树对象，这个目录树对象在一张完整的快照中捕获提交时版本库的状态。最初的提交或者根提交(root commit)是没有父提交的。大多数提交都有一个父提交。</p>
+
+<p><strong>标签(tag)</strong></p>
+
+<p>一个标签对象分配一个任意的且人类可读的名字给一个特定对象，通常是一个提交对象。虽然9da581d910c9c4ac93557ca4859e767f5caf5169指的 是一个确切且定义好的提交，但是一个更熟悉的标签名(如Ver-1.0- Alpha)可能会更有意义!</p>
+
+<p>随着时间的推移，所有信息在对象库中会变化和增长，项目的编辑、 添加和删除都会被跟踪和建模。为了有效地利用磁盘空间和网络带宽，Git 把对象压缩并存储在打包文件(pack file)里，这些文件也在对象库里。</p>
+
+<p>这里会用一个简单的例子让大家直观感受一下git是怎么储存信息的。</p>
+
+<p>首先初始化一个git版本库</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git init
+<span class="c">## 初始化后会生成git对象库信息,但是没有对象信息</span>
+<span class="nv">$ </span>ll .git
+total 24
+<span class="nt">-rw-r--r--</span>   1 hengliang  staff    23B  9 25 10:25 HEAD
+drwxr-xr-x   2 hengliang  staff    64B  9 25 10:25 branches
+<span class="nt">-rw-r--r--</span>   1 hengliang  staff   137B  9 25 10:25 config
+<span class="nt">-rw-r--r--</span>   1 hengliang  staff    73B  9 25 10:25 description
+drwxr-xr-x  12 hengliang  staff   384B  9 25 10:25 hooks
+drwxr-xr-x   3 hengliang  staff    96B  9 25 10:25 info
+drwxr-xr-x   4 hengliang  staff   128B  9 25 10:25 objects
+drwxr-xr-x   4 hengliang  staff   128B  9 25 10:25 refs
+</code></pre></div></div>
+<p>我们先创建两个文件</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">echo</span> <span class="s1">'111'</span> <span class="o">&gt;</span> a.txt
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s1">'222'</span> <span class="o">&gt;</span> b.txt
+<span class="nv">$ </span>git add <span class="k">*</span>.txt
+<span class="c">## 执行add命令后，仓库里面多了2个object</span>
+<span class="nv">$ </span>tree .git/objects
+.git/objects
+├── 58
+│   └── c9bdf9d017fcd178dc8c073cbfcbb7ff240d6c
+├── c2
+│   └── 00906efd24ec5e783bee7f23b5d7c941b0c12c
+├── info
+└── pack
+</code></pre></div></div>
+
+<p>通过<code class="language-plaintext highlighter-rouge">git cat-file</code> 命令查看文件类型和内容,这里我们遇到第一种Git object，blob类型，它只储存的是一个文件的内容，不包括文件名等其他信息。然后将这些信息经过SHA1哈希算法得到对应的哈希值58c9bdf9d017fcd178dc8c073cbfcbb7ff240d6c，作为这个object在Git仓库中的唯一身份证。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">## git cat-file -t 可以查看object的类型</span>
+<span class="nv">$ </span>git cat-file <span class="nt">-t</span> 58c9
+blob
+<span class="c">## git cat-file -p可以查看object储存的具体内容</span>
+<span class="nv">$ </span>git cat-file <span class="nt">-p</span> 58c9
+111
+</code></pre></div></div>
+
+<p>现在我们提交一下刚刚创建的两个文件</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"feat:增加连个文件a.txt和b.txt"</span>
+<span class="o">[</span>master <span class="o">(</span>root-commit<span class="o">)</span> 49ac3b9] feat:增加连个文件a.txt和b.txt
+ 2 files changed, 2 insertions<span class="o">(</span>+<span class="o">)</span>
+ create mode 100644 a.txt
+ create mode 100644 b.txt
+
+<span class="nv">$ </span>tree .git/objects
+.git/objects
+├── 49
+│   └── ac3b91f06b197d6663859ea4deef2c9ddd49ee
+├── 4c
+│   └── aaa1a9ae0b274fba9e3675f9ef071616e5b209
+├── 58
+│   └── c9bdf9d017fcd178dc8c073cbfcbb7ff240d6c
+├── c2
+│   └── 00906efd24ec5e783bee7f23b5d7c941b0c12c
+├── info
+└── pack
+
+</code></pre></div></div>
+
+<p>当我们commit完成之后，Git仓库里面多出来两个object。同样使用<code class="language-plaintext highlighter-rouge">cat-file</code>命令，我们看看它们分别是什么类型以及具体的内容是什么。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git cat-file <span class="nt">-t</span> 4caa
+tree
+<span class="nv">$ </span>git cat-file <span class="nt">-p</span> 4caa
+100644 blob 58c9bdf9d017fcd178dc8c073cbfcbb7ff240d6c	a.txt
+100644 blob c200906efd24ec5e783bee7f23b5d7c941b0c12c	b.txt
+
+<span class="nv">$ </span>git cat-file <span class="nt">-t</span> 49ac
+commit
+<span class="nv">$ </span>git cat-file <span class="nt">-p</span> 49ac
+tree 4caaa1a9ae0b274fba9e3675f9ef071616e5b209
+author hengliang &lt;wanghengliang@outlook.com&gt; 1601002121 +0800
+committer hengliang &lt;wanghengliang@outlook.com&gt; 1601002121 +0800
+
+feat:增加连个文件a.txt和b.txt
+
+</code></pre></div></div>
+
+<p>4caa为tree、49ac为commit，再看他们的内容发现</p>
+
+<p>tree储存了一个目录结构（类似于文件夹），以及每一个文件（或者子文件夹）的权限、类型、对应的身份证（SHA1值）、以及文件名，如果提交文件带目录则目录也是一个tree。</p>
+
+<p>commit则包含了tree哈希值和提交信息（提交的作者、提交的具体时间和提交的说明信息）。</p>
+
+<ul>
+  <li>再看看平常接触的分支信息储存在哪里呢？在Git仓库里面，HEAD、分支、普通的Tag可以简单的理解成是一个指针，指向对应commit的SHA1值。</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cat</span> .git/HEAD
+ref: refs/heads/master
+<span class="nv">$ </span><span class="nb">cat</span> .git/refs/heads/master
+49ac3b91f06b197d6663859ea4deef2c9ddd49ee
+<span class="c">## 新建一个dev分支</span>
+<span class="nv">$ </span>git branch dev
+<span class="nv">$ </span><span class="nb">cat</span> .git/refs/heads/dev
+49ac3b91f06b197d6663859ea4deef2c9ddd49ee
+</code></pre></div></div>
+<ul>
+  <li>另起一个Git项目看看带目录的情况</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git init
+$ mkdir d1
+$ echo "123" &gt; d1/a1.txt
+$ git add .
+$ git commit -m "feat:增加带文件夹内容的提交"
+$ tree .git/objects
+.git/objects
+├── 19
+│   └── 0a18037c64c43e6b11489df4bf0b9eb6d2c9bf
+├── 69
+│   └── 700c8f3321a65f7499f3198b3ebbbc1f8fa658
+├── 7d
+│   └── 9ddec14e8e3ca23de8746f11bd6bf58f9ec541
+├── dd
+│   └── d4d0b0bcd7db4f1b1a0527d124d72188fbfec8
+├── info
+└── pack
+$ cat .git/HEAD
+ref: refs/heads/master
+$ cat .git/refs/heads/master
+7d9ddec14e8e3ca23de8746f11bd6bf58f9ec541
+$ git cat-file -p 7d9d
+tree 69700c8f3321a65f7499f3198b3ebbbc1f8fa658
+author hengliang &lt;wanghengliang@outlook.com&gt; 1601184377 +0800
+committer hengliang &lt;wanghengliang@outlook.com&gt; 1601184377 +0800
+
+feat:增加带文件夹内容的提交
+$ git cat-file -p 6970
+040000 tree ddd4d0b0bcd7db4f1b1a0527d124d72188fbfec8	d1
+$ git cat-file -p ddd4
+100644 blob 190a18037c64c43e6b11489df4bf0b9eb6d2c9bf	a1.txt
+$ git cat-file -p 190a
+123
+</code></pre></div></div>
+
+<p>现在已经知道了前三种对象类型，最后再简单看看<code class="language-plaintext highlighter-rouge">标签(tag)</code>,其实和前三种相似。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git tag <span class="nt">-a</span> v1.0 <span class="nt">-m</span> <span class="s2">"第一个版本"</span>
+<span class="nv">$ </span><span class="nb">cat</span> .git/refs/tags/v1.0
+d809be2a64963ad60fbcb05564bd7cc59bff3ca9
+<span class="nv">$ </span>git cat-file <span class="nt">-t</span> d809
+tag
+<span class="nv">$ </span>git cat-file <span class="nt">-p</span> d809
+object 49ac3b91f06b197d6663859ea4deef2c9ddd49ee
+<span class="nb">type </span>commit
+tag v1.0
+tagger hengliang &lt;wanghengliang@outlook.com&gt; 1601172803 +0800
+
+第一个版本
+<span class="nv">$ </span>
+</code></pre></div></div>
+
+<p>此时的仓库用图形可视化表示看上去像这样</p>
+
+<p><img src="/images/posts/git/git_summary_01.jpg" alt="img" /></p>
+
+<h4 id="git的三个分区">Git的三个分区</h4>
+
+<p>Git分为三个分区，分别为<code class="language-plaintext highlighter-rouge">工作目录</code>、<code class="language-plaintext highlighter-rouge">索引区域</code>、<code class="language-plaintext highlighter-rouge">Git仓库</code>。接下来我们一起了解这三个分区和Git链的内部原理。</p>
+
+<p><strong>工作目录(working directory)</strong></p>
+
+<p>操作系统上的文件，所有代码开发编辑都在这上面完成。</p>
+
+<p><strong>索引区域(index or staging area)</strong></p>
+
+<p>索引是一个临时的、动态的二进制文件，它描述整个版本库的目录结 构。更具体地说，索引捕获项目在某个时刻的整体结构的一个版本。</p>
+
+<p><strong>Git仓库(git repository)</strong></p>
+
+<p>由Git object记录着每一次提交的快照，以及链式结构记录的提交变更历史。</p>
+
+<p>接着上面的例子，目前的仓库状态如下：</p>
+
+<p><img src="/images/posts/git/git_summary_02.jpg" alt="img" /></p>
+
+<p>修改一个文件，修改文件是在工作目录完成（动态来自于网络，其中的哈希值可能无法完全对应）</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo "333" &gt; a.txt
+</code></pre></div></div>
+
+<p><img src="/images/posts/git/git_summary_update_file.gif" alt="img" /></p>
+
+<p>添加到索引,当使用<code class="language-plaintext highlighter-rouge">git add</code>命令时，</p>
+
+<ol>
+  <li>Git会给添加的每个文件的内容创建一 个对象，但它并不会马上为树创建一个对象。</li>
+  <li>更新索引。索引位于<strong>.git/index</strong> 中，它跟踪文件的路径名和相应的blob。每次执行命令(比 如，git add、git rm或者git mv)的时候，Git会用新的路径名和blob信息来 更新索引。查看索引文件内容可以用命令<code class="language-plaintext highlighter-rouge">git ls-files -s</code></li>
+</ol>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git ls-files <span class="nt">-s</span>
+100644 58c9bdf9d017fcd178dc8c073cbfcbb7ff240d6c 0	a.txt
+100644 c200906efd24ec5e783bee7f23b5d7c941b0c12c 0	b.txt
+<span class="nv">$ </span>git add a.txt
+<span class="nv">$ </span>git ls-files <span class="nt">-s</span>
+100644 55bd0ac4c42e46cd751eb7405e12a35e61425550 0	a.txt
+100644 c200906efd24ec5e783bee7f23b5d7c941b0c12c 0	b.txt
+</code></pre></div></div>
+
+<p><img src="/images/posts/git/git_summary_add_to_index.gif" alt="img" /></p>
+
+<p>提交到git仓库，当执行<code class="language-plaintext highlighter-rouge">git commit</code>命令时：</p>
+
+<ol>
+  <li>Git首先根据当前的索引生产一个tree object，充当新提交的一个快照。</li>
+  <li>创建一个新的commit object，将这次commit的信息储存起来，并且parent指向上一个commit，组成一条链记录变更历史。</li>
+  <li>将master分支的指针移到新的commit结点。</li>
+</ol>
+
+<p><img src="/images/posts/git/git_summary_commit_to_git.gif" alt="img" /></p>
+
+<p>至此我们知道了Git的三个分区分别是什么以及他们的作用，以及历史链是怎么被建立起来的。<strong>基本上Git的大部分指令就是在操作这三个分区以及这条链。</strong>可以尝试的思考一下git的各种命令，试一下你能不能够在上图将它们<strong>“可视化”</strong>出来，这个很重要，建议尝试一下。</p>
+
+<h3 id="git命令">git命令</h3>
+
+<h3 id="git工具">git工具</h3>
+
+<h3 id="git工作流">git工作流</h3>
+
+<p>####GitFlow简介</p>
+
+<h3 id="参考资料">参考资料</h3>
+
+<p>《Git版本控制管理 第二版》人民邮电出版社</p>
+
+<p><a href="https://mp.weixin.qq.com/s/UQKrAR3zsdTRz8nFiLk2uQ">这才是真正的Git——Git内部原理揭秘！</a></p>
+
+<p><a href="https://marklodato.github.io/visual-git-guide/index-zh-cn.html">图解Git</a></p>
+
+
+
+  </section>
+</article>
+
+<section>
+
+            <div class="content-play">
+              <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">打赏一个呗</a></p>
+              <div class="hide_box-play"></div>
+              <div class="shang_box-play">
+                <a class="shang_close-play" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="/images/payimg/close.jpg" alt="取消" /></a>
+                <div class="shang_tit-play">
+                  <p>感谢您的支持!!!</p>
+                </div>
+                <div class="shang_payimg">
+                    <img src="/images/payimg/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+              <div class="shang_payimg">    
+                    <img src="/images/payimg/weipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+                <div class="pay_explain">扫码打赏</div>
+                <div class="shang_payselect">
+                  <div class="pay_item checked" data-id="alipay">
+                    <span class="pay_logo"><img src="/images/payimg/alipay.jpg" alt="支付宝" /></span>
+                  </div>
+                  <div class="pay_item" data-id="weipay">
+                    <span class="pay_logo"><img src="/images/payimg/wechat.jpg" alt="微信" /></span>
+                  </div>
+                </div>
+                <div class="shang_info-play">
+                  <p>打开<span id="shang_pay_txt">支付宝或微信</span>扫一扫，即可进行扫码打赏哦</p>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+            function dashangToggle(){
+              $(".hide_box-play").fadeToggle();
+              $(".shang_box-play").fadeToggle();
+            }
+            </script>
+
+            <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+
+            <style type="text/css">
+              .content-play{width:80%;margin-top: 20px;margin-bottom: 10px;height:40px;}
+              .hide_box-play{z-index:999;filter:alpha(opacity=50);background:#666;opacity: 0.5;-moz-opacity: 0.5;left:0;top:0;height:99%;width:100%;position:fixed;display:none;}
+              .shang_box-play{width:540px;height:540px;padding:10px;background-color:#fff;border-radius:10px;position:fixed;z-index:1000;left:50%;top:50%;margin-left:-280px;margin-top:-280px;border:1px dotted #dedede;display:none;}
+              .shang_box-play img{border:none;border-width:0;}
+              .dashang{display:block;width:100px;margin:5px auto;height:25px;line-height:25px;padding:10px;background-color:#E74851;color:#fff;text-align:center;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;}
+              .dashang:hover{opacity:0.8;padding:15px;font-size:18px;}
+              .shang_close-play{float:right;display:inline-block;
+                margin-right: 10px;margin-top: 20px;
+              }
+              .shang_logo{display:block;text-align:center;margin:20px auto;}
+              .shang_tit-play{width: 100%;height: 75px;text-align: center;line-height: 66px;color: #a3a3a3;font-size: 16px;background: url('/images/payimg/cy-reward-title-bg.jpg');font-family: 'Microsoft YaHei';margin-top: 7px;margin-right:2px;}
+              .shang_tit-play p{color:#a3a3a3;text-align:center;font-size:16px;}
+              .shang_payimg{width:140px;padding:10px;padding-left: 80px; /*border:6px solid #EA5F00;**/margin:0 auto;border-radius:3px;height:140px;display:inline-block;}
+              .shang_payimg img{display:inline-block;margin-right:10px;float:left;text-align:center;width:140px;height:140px; }
+              .pay_explain{text-align:center;margin:10px auto;font-size:12px;color:#545454;}
+              .shang_payselect{text-align:center;margin:0 auto;margin-top:40px;cursor:pointer;height:60px;width:500px;margin-left:110px;}
+              .shang_payselect .pay_item{display:inline-block;margin-right:140px;float:left;}
+              .shang_info-play{clear:both;}
+              .shang_info-play p,.shang_info-play a{color:#C3C3C3;text-align:center;font-size:12px;text-decoration:none;line-height:2em;}
+            </style>
+
+       <ul class="pager">
+        
+        <li class="previous">
+            <a href="/2020/03/gc-tuning-tool/" data-toggle="tooltip" data-placement="top" title="GC调优之工具篇">上一篇：  <span>GC调优之工具篇</span>
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2020/05/cas_01_base/" data-toggle="tooltip" data-placement="top" title="CAS单点登录-SSO">下一篇：  <span>CAS单点登录-SSO</span>
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+<section class="post-comments">
+
+
+    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    <script>
+    var cloudTieConfig = {
+      url: document.location.href, 
+      sourceId: "",
+      productKey: "aa395cf7778f458492060f3f53301b7c",
+      target: "cloud-tie-wrapper"
+    };
+    var yunManualLoad = true;
+    Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+    </script>
+
+
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <div class = "footer_div">  
+        <nav class="cover-navigation navigation--social">
+          <ul class="navigation">
+
+          
+
+          
+          <!-- Github -->
+          <li class="navigation__item_social">
+            <a href="https://github.com/wanghengliang" title="@wanghengliang 的 Github" target="_blank">
+              <i class='social fa fa-github fa-2x'></i>
+              <span class="label">Github</span>
+            </a>
+          </li>
+          
+          
+          
+
+          
+
+          <!-- RSS -->
+          <li class="navigation__item_social">
+            <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+              <i class='social fa fa-rss fa-2x'></i>
+              <span class="label">RSS</span>
+            </a>
+          </li>
+
+          
+          <!-- Email -->
+          <li class="navigation__item_social">
+            <a href="mailto:wanghengliang@outlook.com" title="Contact me">
+              <i class='social fa fa-envelope fa-2x'></i>
+              <span class="label">Email</span>
+            </a>
+          </li>
+          
+
+          </ul>
+        </nav>
+
+        </div>
+
+        <div class = "footer_div">  
+           <p class="copyright text-muted">
+            Copyright &copy; hengliang 2020 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=wanghengliang&repo=wanghengliang.github.io&type=star&count=true" >
+            </iframe>
+            </p>
+        	<div align="right">
+    			<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+          <!-- 访问统计 -->
+          <!-- <span id="busuanzi_container_site_pv">
+            本站总访问量
+            <span id="busuanzi_value_site_pv"></span>次
+          </span> -->
+          <!-- 备案信息 -->
+          
+          <span id="busuanzi_container_site_pv">蜀ICP备09035688号</span>
+
+        </div>
+        <div>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    showProcessingMessages: false,
+    messageStyle: "none",
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath:  [ ["$", "$"] ],
+        displayMath: [ ["$$","$$"] ],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+        ignoreClass:"comment-content"
+    },
+    "HTML-CSS": {
+        availableFonts: ["STIX","TeX"],
+        showMathMenu: false
+    }
+});
+MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  </body>
+
+</html>

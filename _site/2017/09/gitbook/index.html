@@ -179,12 +179,12 @@
 
 <p>输入如下命令进行安装，一定要用到-g，这个代表全局安装</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo npm install gitbook-cli -g
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo npm install gitbook-cli -g
 </code></pre></div></div>
 
 <p>在终端输入如下命令即可查看当前Gitbook版本，出现版本信息代表安装成功。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gitbook -V
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gitbook -V
 CLI version: 2.3.2
 GitBook version: 3.2.3
 </code></pre></div></div>
@@ -195,13 +195,13 @@ GitBook version: 3.2.3
 
 <p>下载地址：<a href="https://www.gitbook.com/editor/">GitBook Editor</a></p>
 
-<p>安装了Gitbook桌面端之后，你可以在客户端看见gitbook上已有的书籍，也可进行新建一本书籍。创建书籍一般在<code class="highlighter-rouge">~/GitBook/Library/</code>目录下</p>
+<p>安装了Gitbook桌面端之后，你可以在客户端看见gitbook上已有的书籍，也可进行新建一本书籍。创建书籍一般在<code class="language-plaintext highlighter-rouge">~/GitBook/Library/</code>目录下</p>
 
 <h3 id="创建电子书">创建电子书</h3>
 
 <p>有了书籍后，在对应电子书目录，通过如下命令生成HTML</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gitbook build
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gitbook build
 info: 7 plugins are installed
 info: 6 explicitly listed
 info: loading plugin "highlight"... OK
@@ -219,7 +219,7 @@ info: &gt;&gt; generation finished with success in 3.1s !
 
 <p>通过如下命令启动服务，就可以在本地浏览了</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gitbook serve
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gitbook serve
 Live reload server started on port: 35729
 Press CTRL+C to quit ...
 
@@ -252,12 +252,12 @@ Serving book on http://localhost:4000
 
 <p>安装好后执行如下命令</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo ln -s /Applications/calibre.app/Contents/MacOS/ebook-convert /usr/local/bin
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo ln -s /Applications/calibre.app/Contents/MacOS/ebook-convert /usr/local/bin
 </code></pre></div></div>
 
 <p>插件安装并配置完成，接下来生成电子书，执行如下命令</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gitbook pdf . ename.pdf
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ gitbook pdf . ename.pdf
 info: 7 plugins are installed
 info: 6 explicitly listed
 info: loading plugin "highlight"... OK
@@ -273,7 +273,7 @@ info: &gt;&gt; 1 file(s) generated
 
 </code></pre></div></div>
 <p>执行完以上代码，进入书籍目录，即可看到已经转换完成的pdf文件了。
-同理将<code class="highlighter-rouge">gitbook pdf . ename.pdf</code>改为<code class="highlighter-rouge">gitbook mobi . ename.mobi</code>即可生成mobi文件。</p>
+同理将<code class="language-plaintext highlighter-rouge">gitbook pdf . ename.pdf</code>改为<code class="language-plaintext highlighter-rouge">gitbook mobi . ename.mobi</code>即可生成mobi文件。</p>
 
 <h3 id="设置封面">设置封面</h3>
 

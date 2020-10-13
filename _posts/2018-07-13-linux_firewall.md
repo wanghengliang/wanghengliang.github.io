@@ -82,3 +82,4 @@ firewall-cmd --reload
 
 通过掩码设置连续主机IP段，掩码设置包含主机数信息如下表：
 ![](/images/posts/linux/firewall_mask.jpg)
+

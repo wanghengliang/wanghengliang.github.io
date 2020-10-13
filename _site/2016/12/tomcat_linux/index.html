@@ -178,19 +178,19 @@
 
 <h3 id="安装tomcat">安装Tomcat</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># mkdir /usr/local/tomcat
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># mkdir /usr/local/tomcat
 # cd /usr/local/tomcat
 # tar -zxvf /opt/apache-tomcat-7.0.54.tar.gz
 </code></pre></div></div>
 
 <p>生成链接以便版本升级</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># ln -s apache-tomcat-7.0.54 server
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># ln -s apache-tomcat-7.0.54 server
 </code></pre></div></div>
 
 <p>升级时候先删除原来的后重新生成新的</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># rm -rf ./server
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># rm -rf ./server
 # ln -s apache-tomcat-7.0.92 server
 </code></pre></div></div>
 
@@ -208,13 +208,13 @@ CATALINA_OUT="$CATALINA_BASE"/logs/catalina.out; //此行内的"$CATALINA_BASE",
 
 </code></pre>
 <p>或者</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sed -i 's/CATALINA_OUT="$CATALINA_BASE"\/logs\/catalina.out/CATALINA_OUT=\/data\/wwwlogs\/tomcat-web\/catalina.out/g' /usr/local/tomcat/server/bin/catalina.sh
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sed -i 's/CATALINA_OUT="$CATALINA_BASE"\/logs\/catalina.out/CATALINA_OUT=\/data\/wwwlogs\/tomcat-web\/catalina.out/g' /usr/local/tomcat/server/bin/catalina.sh
 </code></pre></div></div>
 
 <p>修改localhost、catalina、manager、host-manager日志路径
 打开Tomcat目录conf/logging.properties，修改</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># vi /usr/local/tomcat/server/conf/logging.properties
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># vi /usr/local/tomcat/server/conf/logging.properties
 //分别修改其路径，将${catalina.base}更改为想要更换的目录
 1catalina.org.apache.juli.AsyncFileHandler.directory = ${catalina.base}/logs
 2localhost.org.apache.juli.AsyncFileHandler.directory = ${catalina.base}/logs
@@ -222,31 +222,31 @@ CATALINA_OUT="$CATALINA_BASE"/logs/catalina.out; //此行内的"$CATALINA_BASE",
 4host-manager.org.apache.juli.AsyncFileHandler.directory = ${catalina.base}/logs
 </code></pre></div></div>
 <p>或者</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sed -i 's/${catalina.base}\/logs/\/data\/wwwlogs\/tomcat-web/g' /usr/local/tomcat/server/bin/catalina.sh
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sed -i 's/${catalina.base}\/logs/\/data\/wwwlogs\/tomcat-web/g' /usr/local/tomcat/server/bin/catalina.sh
 
 </code></pre></div></div>
 
 <p>修改localhost_access_log日志路径
 打开Tomcat目录conf/server.xml,修改</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># vi /usr/local/tomcat/server/conf/server.xml
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># vi /usr/local/tomcat/server/conf/server.xml
 //修改directory为想要更换的目录
 &lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="/usr/local/tomcats/logs" ...&gt;
 </code></pre></div></div>
 <p>或者</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 </code></pre></div></div>
 
 <h5 id="删除自带的项目">删除自带的项目</h5>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># cd /usr/local/tomcat/server/webapps
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># cd /usr/local/tomcat/server/webapps
 # rm -rf *
 </code></pre></div></div>
 
 <h5 id="配置虚拟主机">配置虚拟主机</h5>
 <h6 id="方法1直接配置confserverxml配置虚拟主机">方法1，直接配置conf/server.xml配置虚拟主机</h6>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Engine name="Catalina" defaultHost="wwww.aaa.com"&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Engine name="Catalina" defaultHost="wwww.aaa.com"&gt;
     &lt;Host name="www.aaa.com" appBase="webapps_1" autoDeploy="true" unpackWARs="true" xmlNamespaceAware="false" xmlValidation="false"&gt;
         &lt;Alias&gt;aaa.com&lt;/Alias&gt;
         &lt;Context path="/" docBase="./war/aaa.war" reloadable="true" /&gt;
@@ -263,8 +263,8 @@ CATALINA_OUT="$CATALINA_BASE"/logs/catalina.out; //此行内的"$CATALINA_BASE",
 <h6 id="方法2confserverxml引入子文件配置虚拟主机">方法2，conf/server.xml引入子文件配置虚拟主机</h6>
 <p>在<server>元素前添加如下格式：</server></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE server-xml [
-  &lt;!ENTITY localhost-vhost SYSTEM "file:///usr/local/tomcat/conf/vhost/localhost.xml"&gt;</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!DOCTYPE server-xml [
+  &lt;!ENTITY localhost-vhost SYSTEM "file:///usr/local/tomcat/conf/vhost/localhost.xml"&gt;
 ]&gt;
 </code></pre></div></div>
 
@@ -272,29 +272,29 @@ CATALINA_OUT="$CATALINA_BASE"/logs/catalina.out; //此行内的"$CATALINA_BASE",
 
 <p>完整代码如下：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="cp">&lt;!DOCTYPE server-xml [
-&lt;!ENTITY vhost-wwww.aaa.com SYSTEM "file:///usr/local/tomcat/conf/vhost/wwww.aaa.com.xml"&gt;</span>
-<span class="cp">&lt;!ENTITY vhost-wwww.bbb.com SYSTEM "file:///usr/local/tomcat/conf/vhost/wwww.bbb.com.xml"&gt;</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE server-xml [
+&lt;!ENTITY vhost-wwww.aaa.com SYSTEM "file:///usr/local/tomcat/conf/vhost/wwww.aaa.com.xml"&gt;
+&lt;!ENTITY vhost-wwww.bbb.com SYSTEM "file:///usr/local/tomcat/conf/vhost/wwww.bbb.com.xml"&gt;
 ]&gt;
 
-<span class="nt">&lt;Server</span> <span class="na">port=</span><span class="s">"8005"</span> <span class="na">shutdown=</span><span class="s">"SHUTDOWN"</span><span class="nt">&gt;</span>
+&lt;Server port="8005" shutdown="SHUTDOWN"&gt;
   ...
-  <span class="nt">&lt;Service</span> <span class="na">name=</span><span class="s">"Catalina"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;Connector</span> <span class="na">port=</span><span class="s">"8080"</span> <span class="na">protocol=</span><span class="s">"HTTP/1.1"</span> <span class="na">connectionTimeout=</span><span class="s">"20000"</span> <span class="na">redirectPort=</span><span class="s">"8443"</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;Engine</span> <span class="na">name=</span><span class="s">"Catalina"</span> <span class="na">defaultHost=</span><span class="s">"localhost"</span><span class="nt">&gt;</span>
+  &lt;Service name="Catalina"&gt;
+    &lt;Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" /&gt;
+    &lt;Engine name="Catalina" defaultHost="localhost"&gt;
       ...
-      <span class="ni">&amp;vhost-wwww.aaa.com;</span>
-      <span class="ni">&amp;vhost-wwww.bbb.com;</span>
-    <span class="nt">&lt;/Engine&gt;</span>
-  <span class="nt">&lt;/Service&gt;</span>
-<span class="nt">&lt;/Server&gt;</span>
+      &amp;vhost-wwww.aaa.com;
+      &amp;vhost-wwww.bbb.com;
+    &lt;/Engine&gt;
+  &lt;/Service&gt;
+&lt;/Server&gt;
 </code></pre></div></div>
 
 <p>每个单独虚拟主机文件内容如下:
 /usr/local/tomcat/conf/vhost/www.aaa.com.xml</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Host name="wwww.aaa.com" appBase="webapps" unpackWARs="true" autoDeploy="true"&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Host name="wwww.aaa.com" appBase="webapps" unpackWARs="true" autoDeploy="true"&gt;
     &lt;Alias&gt;www.aaa.cn&lt;/Alias&gt;
     &lt;Context path="" docBase="/data/wwwroot/aaa" debug="0" reloadable="false" crossContext="true"/&gt;
     &lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" prefix="wwww.aaa.com_access_log." suffix=".txt" pattern="%h %l %u %t &amp;quot;%r&amp;quot; %s %b" /&gt;
@@ -303,7 +303,7 @@ CATALINA_OUT="$CATALINA_BASE"/logs/catalina.out; //此行内的"$CATALINA_BASE",
 
 <p>/usr/local/tomcat/conf/vhost/www.bbb.com.xml</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Host name="wwww.bbb.com" appBase="webapps" unpackWARs="true" autoDeploy="true"&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Host name="wwww.bbb.com" appBase="webapps" unpackWARs="true" autoDeploy="true"&gt;
     &lt;Context path="" docBase="/data/wwwroot/bbb" debug="0" reloadable="false" crossContext="true"/&gt;
     &lt;Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" prefix="wwww.bbb.com_access_log." suffix=".txt" pattern="%h %l %u %t &amp;quot;%r&amp;quot; %s %b" /&gt;
 &lt;/Host&gt;
@@ -311,23 +311,24 @@ CATALINA_OUT="$CATALINA_BASE"/logs/catalina.out; //此行内的"$CATALINA_BASE",
 
 <h5 id="一台机器安装多个tomcat">一台机器安装多个Tomcat</h5>
 
-<p>修改 <Server port="8005" shutdown="SHUTDOWN"> 
-为 <Server port="8006" shutdown="SHUTDOWN"></Server></Server></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>修改 &lt;Server port="8005" shutdown="SHUTDOWN"&gt; 
+为 &lt;Server port="8006" shutdown="SHUTDOWN"&gt;
 
-<p>修改 <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443"></Connector>
-为 <Connector port="8086" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8446"></Connector></p>
+修改 &lt;Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" /&gt;
+为 &lt;Connector port="8086" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8446" /&gt;
 
-<p>修改 <Connector port="8009" protocol="AJP/1.3" redirectPort="8443"></Connector>
-为 <Connector port="8007" protocol="AJP/1.3" redirectPort="8446"></Connector></p>
+修改 &lt;Connector port="8009" protocol="AJP/1.3" redirectPort="8443" /&gt;
+为 &lt;Connector port="8007" protocol="AJP/1.3" redirectPort="8446" /&gt;
 
-<p>修改 <Server port="8005" shutdown="SHUTDOWN"> 
-为 <Server port="8008" shutdown="SHUTDOWN"></Server></Server></p>
+修改 &lt;Server port="8005" shutdown="SHUTDOWN"&gt; 
+为 &lt;Server port="8008" shutdown="SHUTDOWN"&gt;
 
-<p>修改 <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8446"></Connector>
-为 <Connector port="8088" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8448"></Connector></p>
+修改 &lt;Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8446" /&gt;
+为 &lt;Connector port="8088" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8448" /&gt;
 
-<p>修改 <Connector port="8009" protocol="AJP/1.3" redirectPort="8443"></Connector>
-为 <Connector port="8009" protocol="AJP/1.3" redirectPort="8448"></Connector></p>
+修改 &lt;Connector port="8009" protocol="AJP/1.3" redirectPort="8443" /&gt;
+为 &lt;Connector port="8009" protocol="AJP/1.3" redirectPort="8448" /&gt;
+</code></pre></div></div>
 
 
 

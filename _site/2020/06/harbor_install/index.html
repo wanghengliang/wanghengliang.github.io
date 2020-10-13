@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Harbor安装</title>
+  <meta name="description" content="利用Harbor搭建docker 私有仓库">
+  <meta name="author" content="leopardpan">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Harbor安装">
+  <meta name="twitter:description" content="利用Harbor搭建docker 私有仓库">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Harbor安装">
+  <meta property="og:description" content="利用Harbor搭建docker 私有仓库">
+  
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://localhost:4000/2020/06/harbor_install/">
+  <link rel="alternate" type="application/rss+xml" title="hengliang" href="http://localhost:4000/feed.xml">
+  
+  <link rel="dns-prefetch" href="//cdn.mathjax.org" />
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+
+<!-- 站点统计 -->
+  <script 
+  async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>  
+
+<!-- 百度统计 -->
+  
+
+<!-- google 统计 -->
+  
+
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">        
+      <div class="nav_container">
+         <nav class="nav-menu-item" style = "float:right">
+            <i class="nav-menu-item">
+              <a href="/#blog" title="" class="blog-button">  博客主页
+              </a>
+            </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/archive" title="archive" class="btn-mobile-menu__icon">
+                      所有文章
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/category" title="category" class="btn-mobile-menu__icon">
+                      分类
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/tags" title="tags" class="btn-mobile-menu__icon">
+                      标签
+                  </a>
+                </i>
+            
+                <i class="nav-menu-item">
+
+                  <a href="/about" title="about" class="btn-mobile-menu__icon">
+                      关于我
+                  </a>
+                </i>
+            
+          </nav>
+      </div>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <!-- 头像效果-start -->
+        <div class="ih-item circle effect right_to_left">            
+            <a href="/#blog" title="前往 hengliang 的主页" class="blog-button">
+                <div class="img"><img src="/images/avatar.jpg" alt="img"></div>
+                <div class="info">
+                    <div class="info-back">
+                        <h2> 
+                            
+                                hengliang
+                            
+                        </h2>
+                        <p>
+                           
+                                java / iOS
+                            
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- 头像效果-end -->
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for hengliang" class="blog-button">hengliang</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">个人站</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">快乐地创造和品味生活</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">博客主页</a></li>
+                
+                  <li class="navigation__item"><a href="/archive" title="archive">所有文章</a></li>
+                
+                  <li class="navigation__item"><a href="/category" title="category">分类</a></li>
+                
+                  <li class="navigation__item"><a href="/tags" title="tags">标签</a></li>
+                
+                  <li class="navigation__item"><a href="/about" title="about">关于我</a></li>
+                
+              </ul>
+              <ul class="navigation">
+                <li class="navigation__item"><a href="http://beian.miit.gov.cn/" title="蜀ICP备09035688号">蜀ICP备09035688号</a></li>
+              </ul>
+            </nav>
+          </div>          
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-clear"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">Harbor安装</h1>
+    <div class="post-meta">
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="2020-06-03 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2020-06-03</time>  
+         
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
+    </div>
+  </header>
+
+  <section class="post">
+    <p>利用Harbor搭建docker 私有仓库</p>
+
+<h3 id="下载harbor">下载harbor</h3>
+
+<p><a href="https://github.com/goharbor/harbor">harbor github 地址</a>
+直接下载编译好的包<a href="https://github.com/goharbor/harbor/releases">下载地址</a></p>
+
+<p>包括有两个包<strong>Harbor offline installer</strong> 和 <strong>Harbor online installer</strong>，此处下载offline版本。</p>
+
+<ul>
+  <li><strong>Online installer :</strong> 在线安装版直接从DockerHub下载Harbor镜像。</li>
+  <li><strong>Offline installer :</strong> 如果部署Harbor的主机不能联网可选择离线安装版，离线安装版包括Harbor镜像文件。</li>
+</ul>
+
+<h3 id="解压安装harbor">解压安装harbor</h3>
+
+<p>解压安装包</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#使用tar命令解压到/usr/local/目录下
+tar -zxvf harbor-online-installer-v1.10.2.tgz -C /usr/local/
+</code></pre></div></div>
+
+<p>安装harbor</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd /usr/local/harbor
+## 编辑harbor的配置文件
+$ vi harbor.yml
+	#修改以下内容
+	hostname = 192.168.159.134 #修改harbor的启动ip，这里需要依据系统ip设置
+	port: 80 #harbor的端口,有两个端口,http协议(80)和https协议(443)
+	harbor_admin_password = admin #修改harbor的admin用户的密码
+	data_volume: /data/harbor	#修改harbor存储位置
+	#注释掉https配置，包括端口及证书路径
+	# https:
+	#   port: 443
+	#   certificate: /your/certificate/path
+  #   private_key: /your/private/key/path
+  
+$ ./prepare #配置Harbor
+$ ./install.sh #安装Harbor
+</code></pre></div></div>
+
+<p>配置harbor</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## 设置Harbor开机启动
+$ vi /lib/systemd/system/harbor.service
+
+[Unit]
+Description=Harbor
+After=docker.service systemd-networkd.service systemd-resolved.service
+Requires=docker.service
+Documentation=http://github.com/vmware/harbor
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=5
+#需要注意harbor的安装位置
+ExecStart=/usr/bin/docker-compose -f  /usr/local/harbor/docker-compose.yml up
+ExecStop=/usr/bin/docker-compose -f /usr/local/harbor/docker-compose.yml down	
+
+[Install]
+WantedBy=multi-user.target
+
+$ systemctl enable harbor
+</code></pre></div></div>
+
+<p>开放2375端口</p>
+
+<p>注意:在外网开放有安全风险，只推荐在内网对外开放</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ vi /lib/systemd/system/docker.service
+## 修改[Service]节点，增加 -H tcp://0.0.0.0:2375
+ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock
+
+$ systemctl daemon-reload
+$ systemctl restart docker
+$ systemctl restart harbor
+</code></pre></div></div>
+
+<h3 id="harbor操作说明">harbor操作说明</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## 关闭harbor服务
+$ docker-compose down -v
+
+## 启动Harbor服务
+$ docker-compose up -d
+
+## 重启harbor
+$ docker-compose down -v &amp;&amp; docker-compose up -d
+
+## 常用debug方式
+## 查看docker程序的配置信息
+$ docker info  
+## 查看harbor相关的容器信息
+$ docker-compose ps
+
+## 注意：如果更改了harbor.yml文件，必须要重新执行install脚本,或者执行./prepare脚本，生成新的配置文件；
+</code></pre></div></div>
+
+<h3 id="harbor测试">harbor测试</h3>
+
+<p>修改docker配置文件，使docker支持harbor</p>
+
+<p>编辑客户机<code class="language-plaintext highlighter-rouge">/etc/docker/daemon.json</code>文件</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ vi /etc/docker/daemon.json
+{ "insecure-registries": [ "192.168.159.134" ] }
+
+$ systemctl daemon-reload &amp;&amp; systemctl restart docker
+
+$ docker login 192.168.159.134
+Username: admin
+Password:
+Login Succeeded
+$ docker pull 192.168.159.134/blade/demo:latest
+
+</code></pre></div></div>
+
+<h3 id="附-virtualbox虚拟机增加磁盘空间">附: VirtualBox虚拟机增加磁盘空间</h3>
+
+<p>之前采用默认分配了8G空间，后来发现空间不够，需增加磁盘空间，方法如下：</p>
+
+<p>修改磁盘大小，停掉虚拟机，在VirtualBox设置-存储中查看磁盘位置，通过VBoxManage命令修改磁盘大小</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## 增加磁盘空间到20G，resize参数单位为M，20G=20480M
+$ VBoxManage modifyhd /Volumes/wd/vbox/harbor/harbor-disk1.vdi --resize 20480
+</code></pre></div></div>
+
+<p>扩容核心操作，启动虚拟机并进入，执行下面命令</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-------------------------------------------------------------------------
+[root@harbor ~]# fdisk -l
+
+磁盘 /dev/sda：21.5 GB, 21474836480 字节，41943040 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+磁盘标签类型：dos
+磁盘标识符：0x0003864b
+
+   设备 Boot      Start         End      Blocks   Id  System
+/dev/sda1   *        2048     2099199     1048576   83  Linux
+/dev/sda2         2099200    16777215     7339008   8e  Linux LVM
+
+磁盘 /dev/mapper/centos-root：6652 MB, 6652166144 字节，12992512 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+
+
+磁盘 /dev/mapper/centos-swap：859 MB, 859832320 字节，1679360 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+
+-------------------------------------------------------------------------
+[root@harbor ~]# fdisk /dev/sda
+欢迎使用 fdisk (util-linux 2.23.2)。
+
+更改将停留在内存中，直到您决定将更改写入磁盘。
+使用写入命令前请三思。
+
+命令(输入 m 获取帮助)：m
+命令操作
+   a   toggle a bootable flag
+   b   edit bsd disklabel
+   c   toggle the dos compatibility flag
+   d   delete a partition
+   g   create a new empty GPT partition table
+   G   create an IRIX (SGI) partition table
+   l   list known partition types
+   m   print this menu
+   n   add a new partition
+   o   create a new empty DOS partition table
+   p   print the partition table
+   q   quit without saving changes
+   s   create a new empty Sun disklabel
+   t   change a partition's system id
+   u   change display/entry units
+   v   verify the partition table
+   w   write table to disk and exit
+   x   extra functionality (experts only)
+
+命令(输入 m 获取帮助)：n
+Partition type:
+   p   primary (2 primary, 0 extended, 2 free)
+   e   extended
+Select (default p): p
+分区号 (3,4，默认 3)：3
+起始 扇区 (16777216-41943039，默认为 16777216)：
+将使用默认值 16777216
+Last 扇区, +扇区 or +size{K,M,G} (16777216-41943039，默认为 41943039)：
+将使用默认值 41943039
+分区 3 已设置为 Linux 类型，大小设为 12 GiB
+
+命令(输入 m 获取帮助)：t
+分区号 (1-3，默认 3)：3
+Hex 代码(输入 L 列出所有代码)：l
+
+ 0  空              24  NEC DOS         81  Minix / 旧 Linu bf  Solaris
+ 1  FAT12           27  隐藏的 NTFS Win 82  Linux 交换 / So c1  DRDOS/sec (FAT-
+ 2  XENIX root      39  Plan 9          83  Linux           c4  DRDOS/sec (FAT-
+ 3  XENIX usr       3c  PartitionMagic  84  OS/2 隐藏的 C:  c6  DRDOS/sec (FAT-
+ 4  FAT16 &lt;32M      40  Venix 80286     85  Linux 扩展      c7  Syrinx
+ 5  扩展            41  PPC PReP Boot   86  NTFS 卷集       da  非文件系统数据
+ 6  FAT16           42  SFS             87  NTFS 卷集       db  CP/M / CTOS / .
+ 7  HPFS/NTFS/exFAT 4d  QNX4.x          88  Linux 纯文本    de  Dell 工具
+ 8  AIX             4e  QNX4.x 第2部分  8e  Linux LVM       df  BootIt
+ 9  AIX 可启动      4f  QNX4.x 第3部分  93  Amoeba          e1  DOS 访问
+ a  OS/2 启动管理器 50  OnTrack DM      94  Amoeba BBT      e3  DOS R/O
+ b  W95 FAT32       51  OnTrack DM6 Aux 9f  BSD/OS          e4  SpeedStor
+ c  W95 FAT32 (LBA) 52  CP/M            a0  IBM Thinkpad 休 eb  BeOS fs
+ e  W95 FAT16 (LBA) 53  OnTrack DM6 Aux a5  FreeBSD         ee  GPT
+ f  W95 扩展 (LBA)  54  OnTrackDM6      a6  OpenBSD         ef  EFI (FAT-12/16/
+10  OPUS            55  EZ-Drive        a7  NeXTSTEP        f0  Linux/PA-RISC
+11  隐藏的 FAT12    56  Golden Bow      a8  Darwin UFS      f1  SpeedStor
+12  Compaq 诊断     5c  Priam Edisk     a9  NetBSD          f4  SpeedStor
+14  隐藏的 FAT16 &lt;3 61  SpeedStor       ab  Darwin 启动     f2  DOS 次要
+16  隐藏的 FAT16    63  GNU HURD or Sys af  HFS / HFS+      fb  VMware VMFS
+17  隐藏的 HPFS/NTF 64  Novell Netware  b7  BSDI fs         fc  VMware VMKCORE
+18  AST 智能睡眠    65  Novell Netware  b8  BSDI swap       fd  Linux raid 自动
+1b  隐藏的 W95 FAT3 70  DiskSecure 多启 bb  Boot Wizard 隐  fe  LANstep
+1c  隐藏的 W95 FAT3 75  PC/IX           be  Solaris 启动    ff  BBT
+1e  隐藏的 W95 FAT1 80  旧 Minix
+Hex 代码(输入 L 列出所有代码)：8e
+已将分区“Linux”的类型更改为“Linux LVM”
+
+命令(输入 m 获取帮助)：w
+The partition table has been altered!
+
+Calling ioctl() to re-read partition table.
+
+WARNING: Re-reading the partition table failed with error 16: 设备或资源忙.
+The kernel still uses the old table. The new table will be used at
+the next reboot or after you run partprobe(8) or kpartx(8)
+正在同步磁盘。
+
+## 重启后执行sudo fdisk -l查看设备Boot（我的为 /dev/sda3 ）
+-------------------------------------------------------------------------
+[root@harbor ~]# reboot
+[root@harbor ~]# fdisk -l
+
+磁盘 /dev/sda：21.5 GB, 21474836480 字节，41943040 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+磁盘标签类型：dos
+磁盘标识符：0x0003864b
+
+   设备 Boot      Start         End      Blocks   Id  System
+/dev/sda1   *        2048     2099199     1048576   83  Linux
+/dev/sda2         2099200    16777215     7339008   8e  Linux LVM
+/dev/sda3        16777216    41943039    12582912   8e  Linux LVM
+
+磁盘 /dev/mapper/centos-root：6652 MB, 6652166144 字节，12992512 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+
+
+磁盘 /dev/mapper/centos-swap：859 MB, 859832320 字节，1679360 个扇区
+Units = 扇区 of 1 * 512 = 512 bytes
+扇区大小(逻辑/物理)：512 字节 / 512 字节
+I/O 大小(最小/最佳)：512 字节 / 512 字节
+
+## 将分区格式化为ext4格式
+-------------------------------------------------------------------------
+[root@harbor ~]# mkfs.ext4 /dev/sda3
+mke2fs 1.42.9 (28-Dec-2013)
+文件系统标签=
+OS type: Linux
+块大小=4096 (log=2)
+分块大小=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+786432 inodes, 3145728 blocks
+157286 blocks (5.00%) reserved for the super user
+第一个数据块=0
+Maximum filesystem blocks=2151677952
+96 block groups
+32768 blocks per group, 32768 fragments per group
+8192 inodes per group
+Superblock backups stored on blocks:
+	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208
+
+Allocating group tables: 完成
+正在写入inode表: 完成
+Creating journal (32768 blocks): 完成
+Writing superblocks and filesystem accounting information: 完成
+
+## 创建新的物理分区
+-------------------------------------------------------------------------
+[root@harbor ~]# sudo pvcreate /dev/sda3
+WARNING: ext4 signature detected on /dev/sda3 at offset 1080. Wipe it? [y/n]: y
+  Wiping ext4 signature on /dev/sda3.
+  Physical volume "/dev/sda3" successfully created.
+[root@harbor ~]# sudo vgextend centos /dev/sda3
+  Volume group "centos" successfully extended
+
+
+查看LVM信息
+1.pvdisplay 查看物理卷
+2.vgdisplay 查看虚拟卷
+3.lvdisplay 查看逻辑卷
+-------------------------------------------------------------------------
+[root@harbor ~]# pvdisplay
+  --- Physical volume ---
+  PV Name               /dev/sda2
+  VG Name               centos
+  PV Size               &lt;7.00 GiB / not usable 3.00 MiB
+  Allocatable           yes (but full)
+  PE Size               4.00 MiB
+  Total PE              1791
+  Free PE               0
+  Allocated PE          1791
+  PV UUID               jhAzWm-Cbsk-UjUg-328S-Ckk4-IHyQ-e2AnR8
+
+  --- Physical volume ---
+  PV Name               /dev/sda3
+  VG Name               centos
+  PV Size               12.00 GiB / not usable 4.00 MiB
+  Allocatable           yes
+  PE Size               4.00 MiB
+  Total PE              3071
+  Free PE               3071
+  Allocated PE          0
+  PV UUID               DqL9Bo-HC7B-HMde-cG9o-eAXy-MSQ5-fedoxS
+
+查看LVM信息
+2.vgdisplay 查看虚拟卷
+-------------------------------------------------------------------------
+[root@harbor ~]# vgdisplay
+  --- Volume group ---
+  VG Name               centos
+  System ID
+  Format                lvm2
+  Metadata Areas        2
+  Metadata Sequence No  4
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                2
+  Open LV               2
+  Max PV                0
+  Cur PV                2
+  Act PV                2
+  VG Size               18.99 GiB
+  PE Size               4.00 MiB
+  Total PE              4862
+  Alloc PE / Size       1791 / &lt;7.00 GiB
+  Free  PE / Size       3071 / &lt;12.00 GiB
+  VG UUID               Cn32hR-TEcI-Z5zC-Rmrf-cIwI-fUwW-QymcyG
+
+## 扩展到卷 组（centos便是下图中的VG Name）
+-------------------------------------------------------------------------
+[root@harbor ~]# vgextend centos /dev/sda3
+信息缺失。。。
+
+查看LVM信息
+3.lvdisplay 查看逻辑卷，根据大小判定/dev/centos/root即是根分区
+-------------------------------------------------------------------------
+[root@harbor ~]# lvdisplay
+  --- Logical volume ---
+  LV Path                /dev/centos/swap
+  LV Name                swap
+  VG Name                centos
+  LV UUID                hNLuJD-KQZI-QziE-dXSg-orES-qVqj-gRyX4X
+  LV Write Access        read/write
+  LV Creation host, time db-mysql, 2020-06-02 16:12:47 +0800
+  LV Status              available
+  # open                 2
+  LV Size                820.00 MiB
+  Current LE             205
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:1
+
+  --- Logical volume ---
+  LV Path                /dev/centos/root
+  LV Name                root
+  VG Name                centos
+  LV UUID                kE4nqp-3z3Q-JhDB-fBcK-FnYZ-WiFc-fLef6w
+  LV Write Access        read/write
+  LV Creation host, time db-mysql, 2020-06-02 16:12:48 +0800
+  LV Status              available
+  # open                 1
+  LV Size                &lt;6.20 GiB
+  Current LE             1586
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:0
+  
+-------------------------------------------------------------------------
+[root@harbor ~]# lvextend /dev/centos/root /dev/sda3
+  Size of logical volume centos/root changed from &lt;6.20 GiB (1586 extents) to 18.19 GiB (4657 extents).
+  Logical volume centos/root successfully resized.
+[root@harbor ~]# sudo resize2fs /dev/centos/root
+resize2fs 1.42.9 (28-Dec-2013)
+resize2fs: Bad magic number in super-block 当尝试打开 /dev/centos/root 时
+找不到有效的文件系统超级块.
+
+
+## 刷新逻辑分区容量
+##如果报错则是因为你的某些分区使用的是xfs的文件系统，执行 xfs_growfs /dev/centos/root 刷新逻辑分区即可
+-------------------------------------------------------------------------
+[root@harbor ~]# resize2fs /dev/centos/root
+
+## 刷新逻辑分区
+-------------------------------------------------------------------------
+[root@harbor ~]# xfs_growfs /dev/centos/root
+meta-data=/dev/mapper/centos-root isize=512    agcount=4, agsize=406016 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=0 spinodes=0
+data     =                       bsize=4096   blocks=1624064, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal               bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+data blocks changed from 1624064 to 4768768
+
+## 这时执行sudo df -h //会发现根分区容量变大了，恭喜你成功了
+-------------------------------------------------------------------------
+[root@harbor ~]# df -h
+文件系统                 容量  已用  可用 已用% 挂载点
+devtmpfs                 485M     0  485M    0% /dev
+tmpfs                    496M     0  496M    0% /dev/shm
+tmpfs                    496M  6.8M  489M    2% /run
+tmpfs                    496M     0  496M    0% /sys/fs/cgroup
+/dev/mapper/centos-root   19G  4.8G   14G   26% /
+/dev/sda1               1014M  168M  847M   17% /boot
+tmpfs                    100M     0  100M    0% /run/user/0
+
+## 最后reboot重启一下便可以啦！
+-------------------------------------------------------------------------
+[root@harbor ~]# reboot
+</code></pre></div></div>
+
+
+
+  </section>
+</article>
+
+<section>
+
+            <div class="content-play">
+              <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">打赏一个呗</a></p>
+              <div class="hide_box-play"></div>
+              <div class="shang_box-play">
+                <a class="shang_close-play" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="/images/payimg/close.jpg" alt="取消" /></a>
+                <div class="shang_tit-play">
+                  <p>感谢您的支持!!!</p>
+                </div>
+                <div class="shang_payimg">
+                    <img src="/images/payimg/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+              <div class="shang_payimg">    
+                    <img src="/images/payimg/weipayimg.jpg" alt="扫码支持" title="扫一扫" />
+                </div>
+                <div class="pay_explain">扫码打赏</div>
+                <div class="shang_payselect">
+                  <div class="pay_item checked" data-id="alipay">
+                    <span class="pay_logo"><img src="/images/payimg/alipay.jpg" alt="支付宝" /></span>
+                  </div>
+                  <div class="pay_item" data-id="weipay">
+                    <span class="pay_logo"><img src="/images/payimg/wechat.jpg" alt="微信" /></span>
+                  </div>
+                </div>
+                <div class="shang_info-play">
+                  <p>打开<span id="shang_pay_txt">支付宝或微信</span>扫一扫，即可进行扫码打赏哦</p>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+            function dashangToggle(){
+              $(".hide_box-play").fadeToggle();
+              $(".shang_box-play").fadeToggle();
+            }
+            </script>
+
+            <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"></div>
+
+            <style type="text/css">
+              .content-play{width:80%;margin-top: 20px;margin-bottom: 10px;height:40px;}
+              .hide_box-play{z-index:999;filter:alpha(opacity=50);background:#666;opacity: 0.5;-moz-opacity: 0.5;left:0;top:0;height:99%;width:100%;position:fixed;display:none;}
+              .shang_box-play{width:540px;height:540px;padding:10px;background-color:#fff;border-radius:10px;position:fixed;z-index:1000;left:50%;top:50%;margin-left:-280px;margin-top:-280px;border:1px dotted #dedede;display:none;}
+              .shang_box-play img{border:none;border-width:0;}
+              .dashang{display:block;width:100px;margin:5px auto;height:25px;line-height:25px;padding:10px;background-color:#E74851;color:#fff;text-align:center;text-decoration:none;border-radius:10px;font-weight:bold;font-size:16px;transition: all 0.3s;}
+              .dashang:hover{opacity:0.8;padding:15px;font-size:18px;}
+              .shang_close-play{float:right;display:inline-block;
+                margin-right: 10px;margin-top: 20px;
+              }
+              .shang_logo{display:block;text-align:center;margin:20px auto;}
+              .shang_tit-play{width: 100%;height: 75px;text-align: center;line-height: 66px;color: #a3a3a3;font-size: 16px;background: url('/images/payimg/cy-reward-title-bg.jpg');font-family: 'Microsoft YaHei';margin-top: 7px;margin-right:2px;}
+              .shang_tit-play p{color:#a3a3a3;text-align:center;font-size:16px;}
+              .shang_payimg{width:140px;padding:10px;padding-left: 80px; /*border:6px solid #EA5F00;**/margin:0 auto;border-radius:3px;height:140px;display:inline-block;}
+              .shang_payimg img{display:inline-block;margin-right:10px;float:left;text-align:center;width:140px;height:140px; }
+              .pay_explain{text-align:center;margin:10px auto;font-size:12px;color:#545454;}
+              .shang_payselect{text-align:center;margin:0 auto;margin-top:40px;cursor:pointer;height:60px;width:500px;margin-left:110px;}
+              .shang_payselect .pay_item{display:inline-block;margin-right:140px;float:left;}
+              .shang_info-play{clear:both;}
+              .shang_info-play p,.shang_info-play a{color:#C3C3C3;text-align:center;font-size:12px;text-decoration:none;line-height:2em;}
+            </style>
+
+       <ul class="pager">
+        
+        <li class="previous">
+            <a href="/2020/05/cas_03_client/" data-toggle="tooltip" data-placement="top" title="CAS单点登录-客户端搭建">上一篇：  <span>CAS单点登录-客户端搭建</span>
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2020/06/intellij_plugin/" data-toggle="tooltip" data-placement="top" title="IntelliJ插件开发">下一篇：  <span>IntelliJ插件开发</span>
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+<section class="post-comments">
+
+
+    <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+    <script>
+    var cloudTieConfig = {
+      url: document.location.href, 
+      sourceId: "",
+      productKey: "aa395cf7778f458492060f3f53301b7c",
+      target: "cloud-tie-wrapper"
+    };
+    var yunManualLoad = true;
+    Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+    </script>
+
+
+  
+</section>
+
+
+            <section class="footer">
+    <footer>
+        <div class = "footer_div">  
+        <nav class="cover-navigation navigation--social">
+          <ul class="navigation">
+
+          
+
+          
+          <!-- Github -->
+          <li class="navigation__item_social">
+            <a href="https://github.com/wanghengliang" title="@wanghengliang 的 Github" target="_blank">
+              <i class='social fa fa-github fa-2x'></i>
+              <span class="label">Github</span>
+            </a>
+          </li>
+          
+          
+          
+
+          
+
+          <!-- RSS -->
+          <li class="navigation__item_social">
+            <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+              <i class='social fa fa-rss fa-2x'></i>
+              <span class="label">RSS</span>
+            </a>
+          </li>
+
+          
+          <!-- Email -->
+          <li class="navigation__item_social">
+            <a href="mailto:wanghengliang@outlook.com" title="Contact me">
+              <i class='social fa fa-envelope fa-2x'></i>
+              <span class="label">Email</span>
+            </a>
+          </li>
+          
+
+          </ul>
+        </nav>
+
+        </div>
+
+        <div class = "footer_div">  
+           <p class="copyright text-muted">
+            Copyright &copy; hengliang 2020 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
+            <iframe
+                style="margin-left: 2px; margin-bottom:-5px;"
+                frameborder="0" scrolling="0" width="91px" height="20px"
+                src="https://ghbtns.com/github-btn.html?user=wanghengliang&repo=wanghengliang.github.io&type=star&count=true" >
+            </iframe>
+            </p>
+        	<div align="right">
+    			<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+          <!-- 访问统计 -->
+          <!-- <span id="busuanzi_container_site_pv">
+            本站总访问量
+            <span id="busuanzi_value_site_pv"></span>次
+          </span> -->
+          <!-- 备案信息 -->
+          
+          <span id="busuanzi_container_site_pv">蜀ICP备09035688号</span>
+
+        </div>
+        <div>
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    showProcessingMessages: false,
+    messageStyle: "none",
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath:  [ ["$", "$"] ],
+        displayMath: [ ["$$","$$"] ],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+        ignoreClass:"comment-content"
+    },
+    "HTML-CSS": {
+        availableFonts: ["STIX","TeX"],
+        showMathMenu: false
+    }
+});
+MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  </body>
+
+</html>

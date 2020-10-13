@@ -179,7 +179,7 @@
 
 <p>注解是Java 1.5引入的，可以提供代码的额外信息，目前正在被广泛应用。除了Java内置注解，我们也可以自定义注解。以下就是一个自定义注解的例子：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Target(ElementType.TYPE)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
@@ -215,7 +215,7 @@ ElementType.LOCAL_VARIABLE 注解作用于局部变量
 
 <p>@Target注解源码如下：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Documented
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.ANNOTATION_TYPE})
 public @interface Target {
@@ -234,7 +234,7 @@ RetentionPolicy.RUNTIME 运行时保留，运行中可以处理
 
 <p>@Retention注解源码如下：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Documented
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.ANNOTATION_TYPE})
 public @interface Retention {
@@ -248,7 +248,7 @@ public @interface Retention {
 <p>标记注解，使用@Inherited修饰的注解作用于一个类，则该注解将被用于该类的子类。
 @Inherited注解源码如下：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Documented
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.ANNOTATION_TYPE})
 public @interface Inherited {
@@ -262,7 +262,7 @@ public @interface Inherited {
 在生成javadoc的时候，是不包含注释的，但是如果注解被@Documented修饰，则生成的文档就包含该注解。
 @Documented注解源码如下：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Documented
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.ANNOTATION_TYPE})
 public @interface Documented {
@@ -272,7 +272,7 @@ public @interface Documented {
 
 <h3 id="自定义注解实例">自定义注解实例</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Target(ElementType.TYPE)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented

@@ -193,19 +193,19 @@
 
 <h4 id="查看防火墙的状态-1">查看防火墙的状态</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># firewall-cmd --state
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># firewall-cmd --state
 </code></pre></div></div>
 
 <h4 id="查看已经开放的端口-1">查看已经开放的端口</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>firewall-cmd --list-ports
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>firewall-cmd --list-ports
 
 firewall-cmd --list-all
 </code></pre></div></div>
 
 <h4 id="开启端口或服务">开启端口或服务</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>firewall-cmd --zone=public --add-port=80/tcp --permanent
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>firewall-cmd --zone=public --add-port=80/tcp --permanent
 firewall-cmd --zone=public --add-port=30000-30100/tcp --permanent
 firewall-cmd --zone=public --add-service=smtp --permanent
 
@@ -215,32 +215,33 @@ firewall-cmd --permanent --zone=public --add-rich-rule="rule family='ipv4' sourc
 </code></pre></div></div>
 <h4 id="删除端口或服务">删除端口或服务</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>firewall-cmd --zone=public --remove-port=80/tcp --permanent
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>firewall-cmd --zone=public --remove-port=80/tcp --permanent
 firewall-cmd --zone=public --remove-port=23/tcp --permanent
 firewall-cmd --zone=public --remove-service=smtp --permanent
 
 </code></pre></div></div>
 <h4 id="启动防火墙-1">启动防火墙</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 </code></pre></div></div>
 
 <h4 id="关闭防火墙-1">关闭防火墙</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl start firewalld.service #启动firewall
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl start firewalld.service #启动firewall
 systemctl stop firewalld.service #停止firewall
 systemctl disable firewalld.service #禁止firewall开机启动
 </code></pre></div></div>
 
 <h4 id="重启防火墙-1">重启防火墙</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>firewall-cmd --reload
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>firewall-cmd --reload
 </code></pre></div></div>
 
 <h4 id="其他">其他</h4>
 
 <p>通过掩码设置连续主机IP段，掩码设置包含主机数信息如下表：
 <img src="/images/posts/linux/firewall_mask.jpg" alt="" /></p>
+
 
 
   </section>

@@ -18,10 +18,10 @@ mysql db_abc -uroot -p -e "call SP_PET_STATISTICS(1)" > /data/tj_20160819.xls
 mysql db_abc -uroot -p -e "select user_id,code ,create_time from tbl_statistics_order where code like '%result_0' and TO_DAYS(NOW())-TO_DAYS(CREATE_TIME) = 1 order by create_time desc " > /data/order_tj_20160822.xls
 ```
 
-2.因为office默认的是gb2312编码，服务器端生成的很有可能是utf-8编码，采用如下命令可将其转换为gb2312编码：
+2.因为office默认的是gb2312编码，服务器端生成的很有可能是utf-8编码，采用如下命令可将其转换为gb2312编码,-c 忽略无效的字符：
 
 ```
-iconv -futf8 -tgb2312 -otj_20160819_gb2312.xls tj_20160819.xls
+iconv -c -futf8 -tgb2312 -otj_20160819_gb2312.xls tj_20160819.xls
 ```
 
 shell脚本如下：
@@ -116,6 +116,8 @@ Query OK, 0 rows affected, 1 warning (0.00 sec)
 mysql 添加索引
 ALTER TABLE `table_name` ADD UNIQUE ( `column` ) 
 
+ALTER TABLE `table_name` ADD INDEX index_name ( `column` ) 
+
 mysql 添加表字段
 
 ```
@@ -125,5 +127,7 @@ mysql 取消timestamp列默认为设置成记录被更新时的时间戳
 
 ```
 ALTER TABLE tbl_abc CHANGE CREATE_TIME CREATE_TIME timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '统计时间';
+
+ALTER TABLE ak_project_sitesurvey MODIFY COLUMN attach varchar(2304) COMMENT '附件';
 ```
 

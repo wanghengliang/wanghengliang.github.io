@@ -165,11 +165,6 @@ ssh -V
 #### 修改配置文件
 
 ```
-useradd maihe
-passwd maihe
-```
-
-```
 vi /etc/ssh/sshd_config
 
 # Port 22

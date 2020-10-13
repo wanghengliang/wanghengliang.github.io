@@ -177,7 +177,7 @@
 
 <h3 id="生成ssh-key">生成ssh-key</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh-keygen -t rsa -C “wanghengliang@outlook.com”
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh-keygen -t rsa -C “wanghengliang@outlook.com”
 提示输入文件名称：github_rsa，或者直接回车则采用默认为id_rsa
 提示输入密码：直接回车采用空密码
 提示再次输入密码：直接回车采用空密码
@@ -192,13 +192,13 @@
 
 <p>2.新建配置文件，并修改权限</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>touch ~/.ssh/config
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>touch ~/.ssh/config
 chmod 600 ~/.ssh/config
 </code></pre></div></div>
 
 <p>3.编辑配置文件，这样在登陆的时候，ssh会根据登陆不同的域来读取相应的私钥文件，内容如下：</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi ~/.ssh/config
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi ~/.ssh/config
 
 # #######该配置用于个人gitee上#######
 Host gitee.com
@@ -289,7 +289,7 @@ Host github.com
         
         
         <li class="next">
-            <a href="/2019/11/mac_redis/" data-toggle="tooltip" data-placement="top" title="MacBook安装使用redis">下一篇：  <span>MacBook安装使用redis</span>
+            <a href="/2019/11/redis_mac/" data-toggle="tooltip" data-placement="top" title="MacBook安装使用redis">下一篇：  <span>MacBook安装使用redis</span>
             </a>
         </li>
         
