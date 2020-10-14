@@ -5,8 +5,8 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 13 Oct 2020 10:02:42 +0800</pubDate>
-    <lastBuildDate>Tue, 13 Oct 2020 10:02:42 +0800</lastBuildDate>
+    <pubDate>Wed, 14 Oct 2020 09:49:02 +0800</pubDate>
+    <lastBuildDate>Wed, 14 Oct 2020 09:49:02 +0800</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
@@ -663,7 +663,9 @@ tmpfs                    100M     0  100M    0% /run/user/0
 
 &lt;p&gt;优先级顺序为： &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.git/config&lt;/code&gt; &amp;gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.gitconfig&lt;/code&gt;  &amp;gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/gitconfig&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;配置用户信息&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;配置用户信息&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;…&lt;/p&gt;
 
 &lt;h3 id=&quot;git基本概念&quot;&gt;Git基本概念&lt;/h3&gt;
 
@@ -854,7 +856,7 @@ tagger hengliang &amp;lt;wanghengliang@outlook.com&amp;gt; 1601172803 +0800
 
 &lt;p&gt;此时的仓库用图形可视化表示看上去像这样&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/posts/git/git_summary_01.jpg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://wanghengliang.cn/images/posts/git/git_summary_01.jpg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;git的三个分区&quot;&gt;Git的三个分区&lt;/h4&gt;
 
@@ -874,14 +876,14 @@ tagger hengliang &amp;lt;wanghengliang@outlook.com&amp;gt; 1601172803 +0800
 
 &lt;p&gt;接着上面的例子，目前的仓库状态如下：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/posts/git/git_summary_02.jpg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://wanghengliang.cn/images/posts/git/git_summary_02.jpg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;修改一个文件，修改文件是在工作目录完成（动态来自于网络，其中的哈希值可能无法完全对应）&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ echo &quot;333&quot; &amp;gt; a.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/posts/git/git_summary_update_file.gif&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://wanghengliang.cn/images/posts/git/git_summary_update_file.gif&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;添加到索引,当使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git add&lt;/code&gt;命令时，&lt;/p&gt;
 
@@ -899,7 +901,7 @@ tagger hengliang &amp;lt;wanghengliang@outlook.com&amp;gt; 1601172803 +0800
 100644 c200906efd24ec5e783bee7f23b5d7c941b0c12c 0	b.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/posts/git/git_summary_add_to_index.gif&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://wanghengliang.cn/images/posts/git/git_summary_add_to_index.gif&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;提交到git仓库，当执行&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git commit&lt;/code&gt;命令时：&lt;/p&gt;
 
@@ -909,17 +911,99 @@ tagger hengliang &amp;lt;wanghengliang@outlook.com&amp;gt; 1601172803 +0800
   &lt;li&gt;将master分支的指针移到新的commit结点。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/posts/git/git_summary_commit_to_git.gif&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://wanghengliang.cn/images/posts/git/git_summary_commit_to_git.gif&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;至此我们知道了Git的三个分区分别是什么以及他们的作用，以及历史链是怎么被建立起来的。&lt;strong&gt;基本上Git的大部分指令就是在操作这三个分区以及这条链。&lt;/strong&gt;可以尝试的思考一下git的各种命令，试一下你能不能够在上图将它们&lt;strong&gt;“可视化”&lt;/strong&gt;出来，这个很重要，建议尝试一下。&lt;/p&gt;
 
-&lt;h3 id=&quot;git命令&quot;&gt;git命令&lt;/h3&gt;
+&lt;h3 id=&quot;git命令&quot;&gt;Git命令&lt;/h3&gt;
 
-&lt;h3 id=&quot;git工具&quot;&gt;git工具&lt;/h3&gt;
+&lt;h3 id=&quot;git工具&quot;&gt;Git工具&lt;/h3&gt;
 
-&lt;h3 id=&quot;git工作流&quot;&gt;git工作流&lt;/h3&gt;
+&lt;h3 id=&quot;git工作流&quot;&gt;Git工作流&lt;/h3&gt;
 
 &lt;p&gt;####GitFlow简介&lt;/p&gt;
+
+&lt;p&gt;GitFlow工作流定义了一个围绕项目发布的严格分支模型，它为不同的分支分配了明确的角色，并定义分支之间何时以及如何进行交互。&lt;/p&gt;
+
+&lt;h5 id=&quot;分支说明&quot;&gt;分支说明&lt;/h5&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt;分支：存储正式发布的产品，master分支上的产品要求随时处于&lt;strong&gt;可部署状态&lt;/strong&gt;。master分支只能通过与其他分支合并来更新内容，禁止直接在master分支进行修改。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;develop&lt;/code&gt;分支：汇总开发者完成的工作成果，develop分支上的产品可以是缺失功能模块的半成品，但是已有的功能模块不能是半成品。develop分支只能通过与其他分支合并来更新内容，禁止直接在develop分支进行修改。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;feature&lt;/code&gt;分支：当要开发新功能或者试验新功能时，从develop分支创建一个新的feature分支，并在feature分支上进行开发。开发完成后，需要将该feature分支合并到develop分支，最后删除该feature分支。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;release&lt;/code&gt;分支：当develop分支上的项目准备发布时，从develop分支上创建一个新的release分支，新建的release分支只能进行质量测试、bug修复、文档生成等面向发布的任务，不能再添加功能。这一系列发布任务完成后，需要将release分支合并到master分支上，并根据版本号为master分支添加tag，然后将release分支创建以来的修改合并回develop分支，最后删除release分支。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hotfix&lt;/code&gt;分支：当master分支中的产品出现需要立即修复的bug时，从master分支上创建一个新的hotfix分支，并在hotfix分支上进行bug修复。修复完成后，需要将hotfix分支合并到master分支和develop分支，并为master分支添加新的版本号tag，最后删除hotfix分支。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://wanghengliang.cn/images/posts/git/git_summary_gitflow.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;分支命名规范&quot;&gt;分支命名规范&lt;/h5&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt;分支：master分支只有一个，名称即为master。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;develop&lt;/code&gt;分支：develop分支只有一个，名称即为develop。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;feature&lt;/code&gt;分支：feature_&lt;版本号&gt;_&lt;功能名&gt;，例如：feature_v1.0.0_login。&lt;/功能名&gt;&lt;/版本号&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;release&lt;/code&gt;分支：release_&lt;版本号&gt;，例如：release_v1.0.0。&lt;/版本号&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hotfix&lt;/code&gt;分支：hotfix_&lt;版本号&gt;_&lt;问题简述&gt;，例如：hotfix_v1.0.0_username_not_support_chinese。&lt;/问题简述&gt;&lt;/版本号&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;说明：使用尖括号（&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;&amp;gt;&lt;/code&gt;）括起的内容是需要根据情景进行替换的内容，下同。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5 id=&quot;提交信息规范&quot;&gt;提交信息规范&lt;/h5&gt;
+
+&lt;p&gt;提交信息应该描述“做了什么”和“这么做的原因”，必要时还可以加上“造成的影响”，主要由3个部分组成：&lt;strong&gt;Header&lt;/strong&gt;、&lt;strong&gt;Body&lt;/strong&gt;和&lt;strong&gt;Footer&lt;/strong&gt;。提交信息的第一行会被最为Header，其余行会被作为Body（Footer以特定关键字标识）。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Header&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Header部分只有1行，格式为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;type&amp;gt;(&amp;lt;scope&amp;gt;): &amp;lt;subject&amp;gt;&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;type&lt;/strong&gt;用于说明提交的类型，共有8个候选值：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;feat：新功能（feature）&lt;/li&gt;
+  &lt;li&gt;fix：问题修复&lt;/li&gt;
+  &lt;li&gt;docs：文档&lt;/li&gt;
+  &lt;li&gt;style：调整格式（不影响代码运行）&lt;/li&gt;
+  &lt;li&gt;refactor：重构&lt;/li&gt;
+  &lt;li&gt;test：增加测试&lt;/li&gt;
+  &lt;li&gt;chore：构建过程或辅助工具的变动&lt;/li&gt;
+  &lt;li&gt;revert：撤销以前的提交&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;scope&lt;/strong&gt;用于说明提交的影响范围，内容根据具体项目而定。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;subject&lt;/strong&gt;用于概括提交内容。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Body&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Body部分是对本次提交的详细描述，可以分成多行。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Footer&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Footer部分只用于两种情况：&lt;strong&gt;不兼容变动&lt;/strong&gt;和&lt;strong&gt;关闭issue&lt;/strong&gt;。如果本次提交的代码与上一版本不兼容，则Footer部分要以&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BREAKING CHANGE&lt;/code&gt;开头，后面添加&lt;strong&gt;对变动的描述&lt;/strong&gt;、&lt;strong&gt;变动理由&lt;/strong&gt;和&lt;strong&gt;迁移方法&lt;/strong&gt;。如果本次解决了某个issue，那么可以在Footer部分关闭这个issue，格式为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Closes #&amp;lt;issus编号&amp;gt;&lt;/code&gt;，也可以一次关闭多个issue，多个issue之间使用半角逗号分隔。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;说明：revert与其他的提交类型略有不同。
+revert的Header中没有scope和subject部分，其格式为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;revert: &amp;lt;被撤销的提交的Header&amp;gt;&lt;/code&gt;；
+revert的Body部分格式也是固定的，需要写成&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;This reverts commit &amp;lt;被撤销的提交的Hash标识码&amp;gt;.&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5 id=&quot;注意事项&quot;&gt;注意事项&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;开始工作前一定要保证选择了正确的分支。&lt;/li&gt;
+  &lt;li&gt;开始工作前定义好要做的事情，这将有助于确定从哪个分支开始工作和确定新分支的名称。&lt;/li&gt;
+  &lt;li&gt;工单需要包含的内容：
+    &lt;ul&gt;
+      &lt;li&gt;问题：大致描述要解决的问题&lt;/li&gt;
+      &lt;li&gt;原因：为什么要这样做&lt;/li&gt;
+      &lt;li&gt;测试：如何验证问题已得到解决&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Git应该是一个用于&lt;strong&gt;记录结果&lt;/strong&gt;而不是&lt;strong&gt;保存工作&lt;/strong&gt;的工具。这意味着，应该在完成了一个功能模块时才进行提交，而不是每做一点改动就立即提交。过于密集的提交将会使重要的信息分散在大量无意义的信息中，增加管理的难度。&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&quot;参考资料&quot;&gt;参考资料&lt;/h3&gt;
 
@@ -928,6 +1012,8 @@ tagger hengliang &amp;lt;wanghengliang@outlook.com&amp;gt; 1601172803 +0800
 &lt;p&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/UQKrAR3zsdTRz8nFiLk2uQ&quot;&gt;这才是真正的Git——Git内部原理揭秘！&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://marklodato.github.io/visual-git-guide/index-zh-cn.html&quot;&gt;图解Git&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/qq_21397217/article/details/90080766&quot;&gt;GitFlow简介&lt;/a&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Mon, 13 Apr 2020 00:00:00 +0800</pubDate>

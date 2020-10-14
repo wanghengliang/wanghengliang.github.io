@@ -49,7 +49,9 @@ git自带一个config工具，首次安装好git后，可通过此工具设置�
 
 优先级顺序为： `.git/config` > `~/.gitconfig`  >  `/etc/gitconfig`
 
-配置用户信息
+**配置用户信息**
+
+...
 
 
 
@@ -246,7 +248,7 @@ $
 
 此时的仓库用图形可视化表示看上去像这样
 
-![img](/images/posts/git/git_summary_01.jpg)
+![img](http://wanghengliang.cn/images/posts/git/git_summary_01.jpg)
 
 
 
@@ -268,7 +270,7 @@ Git分为三个分区，分别为`工作目录`、`索引区域`、`Git仓库`�
 
 接着上面的例子，目前的仓库状态如下：
 
-![img](/images/posts/git/git_summary_02.jpg)
+![img](http://wanghengliang.cn/images/posts/git/git_summary_02.jpg)
 
 修改一个文件，修改文件是在工作目录完成（动态来自于网络，其中的哈希值可能无法完全对应）
 
@@ -276,7 +278,7 @@ Git分为三个分区，分别为`工作目录`、`索引区域`、`Git仓库`�
 $ echo "333" > a.txt
 ```
 
-![img](/images/posts/git/git_summary_update_file.gif)
+![img](http://wanghengliang.cn/images/posts/git/git_summary_update_file.gif)
 
 添加到索引,当使用`git add`命令时，
 
@@ -293,7 +295,7 @@ $ git ls-files -s
 100644 c200906efd24ec5e783bee7f23b5d7c941b0c12c 0	b.txt
 ```
 
-![img](/images/posts/git/git_summary_add_to_index.gif)
+![img](http://wanghengliang.cn/images/posts/git/git_summary_add_to_index.gif)
 
 
 
@@ -303,23 +305,92 @@ $ git ls-files -s
 2. 创建一个新的commit object，将这次commit的信息储存起来，并且parent指向上一个commit，组成一条链记录变更历史。
 3. 将master分支的指针移到新的commit结点。
 
-![img](/images/posts/git/git_summary_commit_to_git.gif)
+![img](http://wanghengliang.cn/images/posts/git/git_summary_commit_to_git.gif)
 
 至此我们知道了Git的三个分区分别是什么以及他们的作用，以及历史链是怎么被建立起来的。**基本上Git的大部分指令就是在操作这三个分区以及这条链。**可以尝试的思考一下git的各种命令，试一下你能不能够在上图将它们**“可视化”**出来，这个很重要，建议尝试一下。
 
-### git命令
+### Git命令
 
 
 
-### git工具
+
+
+### Git工具
 
 
 
-### git工作流
+
+
+### Git工作流
 
 ####GitFlow简介
 
+GitFlow工作流定义了一个围绕项目发布的严格分支模型，它为不同的分支分配了明确的角色，并定义分支之间何时以及如何进行交互。
 
+##### 分支说明
+
+1. `master`分支：存储正式发布的产品，master分支上的产品要求随时处于**可部署状态**。master分支只能通过与其他分支合并来更新内容，禁止直接在master分支进行修改。
+2. `develop`分支：汇总开发者完成的工作成果，develop分支上的产品可以是缺失功能模块的半成品，但是已有的功能模块不能是半成品。develop分支只能通过与其他分支合并来更新内容，禁止直接在develop分支进行修改。
+3. `feature`分支：当要开发新功能或者试验新功能时，从develop分支创建一个新的feature分支，并在feature分支上进行开发。开发完成后，需要将该feature分支合并到develop分支，最后删除该feature分支。
+4. `release`分支：当develop分支上的项目准备发布时，从develop分支上创建一个新的release分支，新建的release分支只能进行质量测试、bug修复、文档生成等面向发布的任务，不能再添加功能。这一系列发布任务完成后，需要将release分支合并到master分支上，并根据版本号为master分支添加tag，然后将release分支创建以来的修改合并回develop分支，最后删除release分支。
+5. `hotfix`分支：当master分支中的产品出现需要立即修复的bug时，从master分支上创建一个新的hotfix分支，并在hotfix分支上进行bug修复。修复完成后，需要将hotfix分支合并到master分支和develop分支，并为master分支添加新的版本号tag，最后删除hotfix分支。
+
+![img](http://wanghengliang.cn/images/posts/git/git_summary_gitflow.png)
+
+##### 分支命名规范
+
+1. `master`分支：master分支只有一个，名称即为master。
+2. `develop`分支：develop分支只有一个，名称即为develop。
+3. `feature`分支：feature_<版本号>_<功能名>，例如：feature_v1.0.0_login。
+4. `release`分支：release_<版本号>，例如：release_v1.0.0。
+5. `hotfix`分支：hotfix_<版本号>_<问题简述>，例如：hotfix_v1.0.0_username_not_support_chinese。
+
+> 说明：使用尖括号（`<>`）括起的内容是需要根据情景进行替换的内容，下同。
+
+##### 提交信息规范
+
+提交信息应该描述“做了什么”和“这么做的原因”，必要时还可以加上“造成的影响”，主要由3个部分组成：**Header**、**Body**和**Footer**。提交信息的第一行会被最为Header，其余行会被作为Body（Footer以特定关键字标识）。
+
+**Header**
+
+Header部分只有1行，格式为`<type>(<scope>): <subject>`。
+
+**type**用于说明提交的类型，共有8个候选值：
+
+1. feat：新功能（feature）
+2. fix：问题修复
+3. docs：文档
+4. style：调整格式（不影响代码运行）
+5. refactor：重构
+6. test：增加测试
+7. chore：构建过程或辅助工具的变动
+8. revert：撤销以前的提交
+
+**scope**用于说明提交的影响范围，内容根据具体项目而定。
+
+**subject**用于概括提交内容。
+
+**Body**
+
+Body部分是对本次提交的详细描述，可以分成多行。
+
+**Footer**
+
+Footer部分只用于两种情况：**不兼容变动**和**关闭issue**。如果本次提交的代码与上一版本不兼容，则Footer部分要以`BREAKING CHANGE`开头，后面添加**对变动的描述**、**变动理由**和**迁移方法**。如果本次解决了某个issue，那么可以在Footer部分关闭这个issue，格式为`Closes #<issus编号>`，也可以一次关闭多个issue，多个issue之间使用半角逗号分隔。
+
+> 说明：revert与其他的提交类型略有不同。
+> revert的Header中没有scope和subject部分，其格式为`revert: <被撤销的提交的Header>`；
+> revert的Body部分格式也是固定的，需要写成`This reverts commit <被撤销的提交的Hash标识码>.`
+
+##### 注意事项
+
+- 开始工作前一定要保证选择了正确的分支。
+- 开始工作前定义好要做的事情，这将有助于确定从哪个分支开始工作和确定新分支的名称。
+- 工单需要包含的内容：
+  - 问题：大致描述要解决的问题
+  - 原因：为什么要这样做
+  - 测试：如何验证问题已得到解决
+- Git应该是一个用于**记录结果**而不是**保存工作**的工具。这意味着，应该在完成了一个功能模块时才进行提交，而不是每做一点改动就立即提交。过于密集的提交将会使重要的信息分散在大量无意义的信息中，增加管理的难度。
 
 
 
@@ -330,4 +401,8 @@ $ git ls-files -s
 [这才是真正的Git——Git内部原理揭秘！](https://mp.weixin.qq.com/s/UQKrAR3zsdTRz8nFiLk2uQ)
 
 [图解Git](https://marklodato.github.io/visual-git-guide/index-zh-cn.html)
+
+[GitFlow简介](https://blog.csdn.net/qq_21397217/article/details/90080766)
+
+
 
