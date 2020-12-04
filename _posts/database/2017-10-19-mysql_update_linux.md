@@ -2,7 +2,7 @@
 layout: post
 title: 保留旧版本安装新版本MySQL
 date: 2017-10-19
-categories: 
+categories: database
 tags: linux MySQL 服务器架设
 ---
 保留旧版本安装新版本mysql

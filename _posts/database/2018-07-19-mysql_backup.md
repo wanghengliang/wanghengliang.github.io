@@ -2,7 +2,7 @@
 layout: post
 title: MySQL备份
 date: 2018-07-19
-categories: 
+categories: database
 tags: 数据库 MySQL
 ---
 MySQL备份

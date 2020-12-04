@@ -2,7 +2,7 @@
 layout: post
 title: MySQL安装
 date: 2016-12-15
-categories: 
+categories: database
 tags: linux MySQL 服务器架设
 ---
 

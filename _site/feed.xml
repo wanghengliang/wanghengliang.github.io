@@ -5,9 +5,24 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 14 Oct 2020 09:49:02 +0800</pubDate>
-    <lastBuildDate>Wed, 14 Oct 2020 09:49:02 +0800</lastBuildDate>
+    <pubDate>Fri, 04 Dec 2020 11:09:21 +0800</pubDate>
+    <lastBuildDate>Fri, 04 Dec 2020 11:09:21 +0800</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
+    
+      <item>
+        <title>MySQL安全相关配置</title>
+        <description>&lt;p&gt;MySQL安全相关配置&lt;/p&gt;
+</description>
+        <pubDate>Fri, 04 Dec 2020 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2020/12/mysql_safe_config/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/12/mysql_safe_config/</guid>
+        
+        <category>MySQL</category>
+        
+        
+        <category>database</category>
+        
+      </item>
     
       <item>
         <title>APP、软件版本号的命名规范与原则</title>
@@ -1034,21 +1049,6 @@ revert的Body部分格式也是固定的，需要写成&lt;code class=&quot;lang
         <pubDate>Mon, 23 Mar 2020 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2020/03/gc-tuning-tool/</link>
         <guid isPermaLink="true">http://localhost:4000/2020/03/gc-tuning-tool/</guid>
-        
-        <category>jvm</category>
-        
-        
-        <category>JVM</category>
-        
-      </item>
-    
-      <item>
-        <title>GC调优之命令行</title>
-        <description>&lt;p&gt;GC调优之命令行&lt;/p&gt;
-</description>
-        <pubDate>Sat, 21 Mar 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/03/gc-tuning-command/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/03/gc-tuning-command/</guid>
         
         <category>jvm</category>
         
