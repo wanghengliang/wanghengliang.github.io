@@ -168,7 +168,7 @@ tree 4caaa1a9ae0b274fba9e3675f9ef071616e5b209
 author hengliang <wanghengliang@outlook.com> 1601002121 +0800
 committer hengliang <wanghengliang@outlook.com> 1601002121 +0800
 
-feat:增加连个文件a.txt和b.txt
+feat:增加两个文件a.txt和b.txt
 
 ```
 

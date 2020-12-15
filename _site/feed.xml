@@ -5,13 +5,167 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 04 Dec 2020 11:09:21 +0800</pubDate>
-    <lastBuildDate>Fri, 04 Dec 2020 11:09:21 +0800</lastBuildDate>
+    <pubDate>Tue, 15 Dec 2020 14:11:57 +0800</pubDate>
+    <lastBuildDate>Tue, 15 Dec 2020 14:11:57 +0800</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
         <title>MySQL安全相关配置</title>
         <description>&lt;p&gt;MySQL安全相关配置&lt;/p&gt;
+
+&lt;h3 id=&quot;mysql设置密码复杂度&quot;&gt;MySQL设置密码复杂度&lt;/h3&gt;
+
+&lt;p&gt;MySQL5.6.6版本之后增加了密码强度验证插件validate_password，相关参数设置的较为严格。使用了该插件会检查设置的密码是否符合当前设置的强度规则，若不满足则拒绝设置。&lt;/p&gt;
+
+&lt;p&gt;MySQL默认没有安装这个插件，我们可以通过如下方式查看&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;SELECT * from mysql.`plugin`
+# 或者
+show plugin;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;安装插件&quot;&gt;安装插件&lt;/h4&gt;
+
+&lt;p&gt;查看插件文件存放位置&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SHOW GLOBAL VARIABLES LIKE 'plugin_dir';
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;一般情况是在mysql安装路径下的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lib/plugin&lt;/code&gt;目录，完整安装版默认是带有插件文件&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;validate_password.dll&lt;/code&gt;的,如没有需要先将插件文件放入改目录下后再进行安装操作。&lt;/p&gt;
+
+&lt;p&gt;安装插件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-- 添加
+INSTALL PLUGIN validate_password SONAME 'validate_password.dll';
+
+-- 卸载
+UNINSTALL PLUGIN validate_password；
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;查看默认策略&quot;&gt;查看默认策略&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;show variables like 'validate_password%';
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;修改策略&quot;&gt;修改策略&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-- 将策略要求置为LOW，长度要求置为1
+set global validate_password_policy=0;
+set global validate_password_length=1;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;各参数说明&quot;&gt;各参数说明&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;validate_password_policy：密码安全策略，默认MEDIUM策略&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;策略&lt;/th&gt;
+      &lt;th&gt;检查规则&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;0 or LOW&lt;/td&gt;
+      &lt;td&gt;长度&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1 or MEDIUM&lt;/td&gt;
+      &lt;td&gt;长度；数字，字母大小写，特殊符号；&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2 or STRONG&lt;/td&gt;
+      &lt;td&gt;长度；数字，字母大小写，特殊符号；密码策略文件&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;validate_password_dictionary_file：密码策略文件，策略为STRONG才需要&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;validate_password_length：密码最少长度&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;validate_password_mixed_case_count：大小写字符长度，至少1个&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;validate_password_number_count ：数字至少1个&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;validate_password_special_char_count：特殊字符至少1个&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;mysql添加审计功能&quot;&gt;MySQL添加审计功能&lt;/h3&gt;
+
+&lt;p&gt;mysql的审计功能，主要可以记录下对数据库的所有操作，包括登录、连接、对表的增删改查等，便于责任追溯，问题查找，当然一定方面也会影响数据库效率。&lt;/p&gt;
+
+&lt;h4 id=&quot;获取审计插件&quot;&gt;获取审计插件&lt;/h4&gt;
+
+&lt;p&gt;获取插件并将其拷贝到到自己的mysql插件库下（位置参考上面validate_password说明），审计的插件的主要有以下三个：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;McAfee MySQL Audit Plugin&lt;/strong&gt;：&lt;a href=&quot;https://github.com/mcafee/mysql-audit/releases&quot;&gt;源码&lt;/a&gt;，&lt;a href=&quot;https://bintray.com/mcafee/mysql-audit-plugin/release/&quot;&gt;编译好的二进制文件&lt;/a&gt; 只有linux版本，不知怎么编译出windows版本。
+&lt;strong&gt;Percona Audit Log Plugin&lt;/strong&gt;：&lt;a href=&quot;https://www.percona.com/doc/percona-server/5.5/management/audit_log_plugin.html&quot;&gt;地址&lt;/a&gt;：不了解
+&lt;strong&gt;MariaDB Audit Plugin&lt;/strong&gt;：&lt;a href=&quot;https://downloads.mariadb.org/mariadb/+releases/&quot;&gt;下载地址&lt;/a&gt;：MariaDB版本自带审计功能插件，所有可以通过MariaDB官网下载对应版本（版本对应很重要，不然安装会失败，成功了也可能导致数据库崩溃）的安装包，从安装包中获得版本对应的.dll插件（linux系统.so插件），拷贝到到自己的mysql插件库下，安装插件，开启审计功能，配置my.ini文件。&lt;/p&gt;
+
+&lt;h4 id=&quot;安装审计插件&quot;&gt;安装审计插件&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-- 	安装
+INSTALL PLUGIN server_audit SONAME 'server_audit.dll';
+-- 卸载
+UNINSTALL PLUGIN server_audit;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;查看参数配置&quot;&gt;查看参数配置&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-MYSQL&quot;&gt;show variables like '%audit%';
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;修改参数&quot;&gt;修改参数&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-MYSQL&quot;&gt;-- 备注：指定哪些操作被记录到日志文件中
+set global server_audit_events='CONNECT,QUERY,TABLE,QUERY_DDL'
+
+-- 备注：开启审计功能
+set global server_audit_logging=on
+
+-- 备注：默认存放路径，可以不写，默认到data文件下
+set global server_audit_file_path =/data/mysql/auditlogs/
+
+-- 备注：设置文件大小
+set global server_audit_file_rotate_size=200000000
+
+-- 指定日志文件的数量，如果为0日志将从不轮转
+set global server_audit_file_rotations=200
+
+-- 强制日志文件轮转
+set global server_audit_file_rotate_now=ON
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;各个参数说明&quot;&gt;各个参数说明&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;server_audit_output_type：指定日志输出类型，可为SYSLOG或FILE&lt;/li&gt;
+  &lt;li&gt;server_audit_logging：启动或关闭审计&lt;/li&gt;
+  &lt;li&gt;server_audit_events：指定记录事件的类型，可以用逗号分隔的多个值(connect,query,table)，如果开启了查询缓存(query cache)，查询直接从查询缓存返回数据，将没有table记录&lt;/li&gt;
+  &lt;li&gt;server_audit_file_path：如server_audit_output_type为FILE，使用该变量设置存储日志的文件，可以指定目录，默认存放在数据目录的server_audit.log文件中&lt;/li&gt;
+  &lt;li&gt;server_audit_file_rotate_size：限制日志文件的大小&lt;/li&gt;
+  &lt;li&gt;server_audit_file_rotations：指定日志文件的数量，如果为0日志将从不轮&lt;/li&gt;
+  &lt;li&gt;server_audit_file_rotate_now：强制日志文件轮转&lt;/li&gt;
+  &lt;li&gt;server_audit_incl_users：指定哪些用户的活动将记录，connect将不受此变量影响，该变量比server_audit_excl_users优先级高&lt;/li&gt;
+  &lt;li&gt;server_audit_syslog_facility：默认为LOG_USER，指定facility&lt;/li&gt;
+  &lt;li&gt;server_audit_syslog_ident：设置ident，作为每个syslog记录的一部分&lt;/li&gt;
+  &lt;li&gt;server_audit_syslog_info：指定的info字符串将添加到syslog记录&lt;/li&gt;
+  &lt;li&gt;server_audit_syslog_priority：定义记录日志的syslogd priority&lt;/li&gt;
+  &lt;li&gt;server_audit_excl_users：该列表的用户行为将不记录，connect将不受该设置影响&lt;/li&gt;
+  &lt;li&gt;server_audit_mode：标识版本，用于开发测试&lt;/li&gt;
+&lt;/ul&gt;
+
 </description>
         <pubDate>Fri, 04 Dec 2020 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2020/12/mysql_safe_config/</link>
@@ -790,7 +944,7 @@ tree 4caaa1a9ae0b274fba9e3675f9ef071616e5b209
 author hengliang &amp;lt;wanghengliang@outlook.com&amp;gt; 1601002121 +0800
 committer hengliang &amp;lt;wanghengliang@outlook.com&amp;gt; 1601002121 +0800
 
-feat:增加连个文件a.txt和b.txt
+feat:增加两个文件a.txt和b.txt
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 

@@ -371,6 +371,50 @@ for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不
 
 <p>同样也必须加<code class="language-plaintext highlighter-rouge">tokens=*</code>，否则只会显示“第3行第1列”</p>
 
+<h3 id="bat备份mysql数据库未测试">BAT备份mysql数据库(未测试)</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rem ******MySQL backup start******
+@echo off
+
+forfiles /p "D:\Mysql_Backup" /m test_backup_*.sql -d -30 /c "cmd /c del /f @path"
+
+set "Ymd=%date:~0,4%%date:~5,2%%date:~8,2%0%time:~1,1%%time:~3,2%%time:~6,2%"
+mysqldump --opt --single-transaction=TRUE --user=root --password=123456 --host=127.0.0.1 --protocol=tcp --port=3306 --default-character-set=utf8 --single-transaction=TRUE --routines --events "test" &gt; D:\Mysql_Backup\test_backup_%Ymd%.sql
+
+@echo on
+rem ******MySQL backup end******
+</code></pre></div></div>
+
+<ul>
+  <li>forfiles 为删除过期文件的命令，-d -30 删除30天的文件；</li>
+  <li>mysqldump 为MySQL提供的备份命令，该命令所在目录为MySQL安装目录下的bin文件夹中，此处直接使用该命令的前提是该命令所在bin文件夹已被设置为系统环境变量，如未设置，则要写全路径；</li>
+  <li>–user=root 为 MySQL 用户名；</li>
+  <li>–password=123456 为 MySQL 密码；</li>
+  <li>–host=127.0.0.1 为 MySQL 主机名；</li>
+  <li>“test” 为要备份的数据库的名称；</li>
+  <li>test_backup_%Ymd%.sql 是根据当前时间规则生成备份文件的名称。</li>
+</ul>
+
+<h3 id="bat实现局域网内文件传输未测试">BAT实现局域网内文件传输（未测试）</h3>
+
+<p>前提条件：两台电脑在同一局域网，可以互相访问，接收复制文件的电脑，文件夹要设置共享。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>net use  \\192.168.0.1 "password#" /user:"username"
+xcopy  test.sql \\192.168.0.1\temp\  /s/d/y 
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>192.168.0.1是接收文件的电脑ip，temp是设置了共享的文件夹。</p>
+  </li>
+  <li>
+    <p>password  远程连接密码  username  远程连接用户名</p>
+  </li>
+  <li>
+    <p>把本机的test.sql文件，复制到192.168.0.1机器上的temp文件夹下。</p>
+  </li>
+</ul>
+
 
   </section>
 </article>
@@ -547,7 +591,7 @@ for %%i in (a.txt) do echo %%i //而这个只会显示a.txt这个名字，并不
         </div>
     </div>
     
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="/js/main.js"></script>
 
 <script type="text/javascript" src="/js/highlight.pack.js"></script>

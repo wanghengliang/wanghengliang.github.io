@@ -1,5 +1,5 @@
 ---
-layout: post
+dolayout: post
 title: Harbor安装
 date: 2020-06-03
 categories: 
