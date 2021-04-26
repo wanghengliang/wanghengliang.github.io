@@ -117,6 +117,36 @@ $ docker pull 192.168.159.134/blade/demo:latest
 
 </code></pre></div></div>
 
+<h3 id="推送报错">推送报错</h3>
+
+<p>编辑服务器docker配置<code class="language-plaintext highlighter-rouge">/etc/docker/daemon.json</code>，增加”insecure-registries”: [ “192.168.159.134:9020” ],</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "insecure-registries": [ "192.168.8.246:9020" ],
+    "registry-mirrors": [
+        "http://hub-mirror.c.163.com",
+        "https://mirror.ccs.tencentyun.com",
+        "https://dockerhub.azk8s.cn",
+        "https://docker.mirrors.ustc.edu.cn",
+        "https://registry.docker-cn.com"
+    ]
+}
+</code></pre></div></div>
+
+<p>编辑客户机<code class="language-plaintext highlighter-rouge">/etc/docker/daemon.json</code>文件，增加”insecure-registries”: [ “192.168.159.134:9020” ],</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "experimental": false,
+  "debug": true,
+  "registry-mirrors": [
+    "http://hub-mirror.c.163.com",
+    "http://registry.docker-cn.com",
+    "https://qpgr23bh.mirror.aliyuncs.com"
+  ],
+  "insecure-registries": ["192.168.8.246:9020"]
+}
+</code></pre></div></div>
+
 <h3 id="附-virtualbox虚拟机增加磁盘空间">附: VirtualBox虚拟机增加磁盘空间</h3>
 
 <p>之前采用默认分配了8G空间，后来发现空间不够，需增加磁盘空间，方法如下：</p>

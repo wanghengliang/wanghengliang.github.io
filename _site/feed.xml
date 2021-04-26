@@ -5,9 +5,410 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 15 Dec 2020 14:11:57 +0800</pubDate>
-    <lastBuildDate>Tue, 15 Dec 2020 14:11:57 +0800</lastBuildDate>
+    <pubDate>Mon, 26 Apr 2021 14:58:55 +0800</pubDate>
+    <lastBuildDate>Mon, 26 Apr 2021 14:58:55 +0800</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
+    
+      <item>
+        <title>MacOS安装docker及kubernetes</title>
+        <description>&lt;p&gt;MacOS安装docker及kubernetes&lt;/p&gt;
+
+&lt;h3 id=&quot;安装docker-for-mac&quot;&gt;安装Docker for Mac&lt;/h3&gt;
+
+&lt;p&gt;直接在 &lt;a href=&quot;https://www.docker.com/products/docker-desktop&quot;&gt;官网&lt;/a&gt;、&lt;a href=&quot;https://hub.docker.com/editions/community/docker-ce-desktop-mac&quot;&gt;官网Hub&lt;/a&gt; 下载安装。&lt;/p&gt;
+
+&lt;h3 id=&quot;安装kubernetes&quot;&gt;安装Kubernetes&lt;/h3&gt;
+
+&lt;p&gt;正常情况下，在Mac中安装了Docker桌面版之后，可以通过Docker安装Kubernetes，我们只需要在Docker的Preferrences-&amp;gt;Kubernetes中勾选Enable Kubernetes，然后点击&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Apply &amp;amp; Restart&lt;/code&gt;钮即可。
+但由于国内网络原因，有一些Kubernetes依赖的镜像不能正常的下载，如果您是直接在Docker中启用Kubernetes，Kubernetes的状态会一直都是kubernetes is starting…&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;解决办法&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;利用 &lt;a href=&quot;https://developer.github.com/actions/creating-github-actions/&quot;&gt;GitHub Actions&lt;/a&gt; 实现 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k8s.gcr.io&lt;/code&gt; 上 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubernetes&lt;/code&gt; 依赖镜像自动同步到 &lt;a href=&quot;https://hub.docker.com/&quot;&gt;Docker Hub&lt;/a&gt; 上指定的仓库中。 再将所需镜像从 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Docker Hub&lt;/code&gt; 的同步仓库中取回，并重新打上原始的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tag&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Github上有个开源项目就是这样做的，所有我们可以通过此开源项目拉取kubernetes镜像，具体操作如下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;克隆此开源项目&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone git@github.com:maguowei/k8s-docker-desktop-for-mac.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;查看kubernetes版本号&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;进入此开源项目查看images文件，查看版本是否和docker对应的kubernetes版本相同，Docker的Preferrences-&amp;gt;Kubernetes可查看对应版本，我的是v1.19.7版本&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd k8s-docker-desktop-for-mac
+$ cat images
+k8s.gcr.io/kube-proxy:v1.19.7=gotok8s/kube-proxy:v1.19.7
+k8s.gcr.io/kube-controller-manager:v1.19.7=gotok8s/kube-controller-manager:v1.19.7
+k8s.gcr.io/kube-scheduler:v1.19.7=gotok8s/kube-scheduler:v1.19.7
+k8s.gcr.io/kube-apiserver:v1.19.7=gotok8s/kube-apiserver:v1.19.7
+k8s.gcr.io/coredns:1.7.0=gotok8s/coredns:1.7.0
+k8s.gcr.io/pause:3.2=gotok8s/pause:3.2
+k8s.gcr.io/etcd:3.4.13-0=gotok8s/etcd:3.4.13-0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;如果你的版本不同，可通过以下命令修改版本为v1.15.5&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sed -i '' &quot;s/v1.19.7/v1.15.5/g&quot; images
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;拉取kubernetes镜像
+    &lt;blockquote&gt;
+      &lt;p&gt;然后通过此开源项目提供的脚本从 Docker Hub 的同步仓库中取回kubernetes镜像，并重新打上原始的tag.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ./load_images.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;拉取完成后再通过Docker设置中启用 Kubernetes 选项, 并等待一会儿，直到 Kubernetes 开始运行。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Docker的Preferrences-&amp;gt;Kubernetes中勾选Enable Kubernetes，然后点击&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Apply &amp;amp; Restart&lt;/code&gt;钮即可&lt;/p&gt;
+
+  &lt;p&gt;&lt;img src=&quot;http://wanghengliang.cn/images/posts/k8s/mac_docker_kubernetes.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;验证 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Kubernetes&lt;/code&gt; 集群状态&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ kubectl cluster-info
+$ kubectl get nodes
+$ kubectl describe node
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Mon, 26 Apr 2021 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2021/04/k8s-install-for-mac/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/04/k8s-install-for-mac/</guid>
+        
+        <category>kubernetes</category>
+        
+        
+        <category>k8s</category>
+        
+      </item>
+    
+      <item>
+        <title>java应用部署到linux出现中文乱码</title>
+        <description>&lt;p&gt;java应用部署到linux出现中文乱码&lt;/p&gt;
+
+&lt;h3 id=&quot;问题描述&quot;&gt;问题描述&lt;/h3&gt;
+
+&lt;p&gt;应用部署在本地一切正常，部署到linux服务器后出现两个问题&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;swagger出现乱码页面无法跳转&lt;/li&gt;
+  &lt;li&gt;flowable流程图出现乱码&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;问题出现的原因&quot;&gt;问题出现的原因&lt;/h3&gt;
+
+&lt;p&gt;因为linux没有相应的中文字体&lt;/p&gt;
+
+&lt;h3 id=&quot;问题解决办法&quot;&gt;问题解决办法&lt;/h3&gt;
+
+&lt;p&gt;下载或者从本机拷贝相应中文字体文件，放到jdk字体目录下即可&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/java/jdk1.8.0_261/jre/lib/fonts/&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;如果是采用默认java最好重新安装java&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ rpm -qa |grep jdk
+java-1.8.0-openjdk-headless-1.8.0.275.b01-1.el8_3.x86_64
+copy-jdk-configs-3.7-4.el8.noarch
+$ rpm -e --nodeps  java-1.8.0-openjdk-headless-1.8.0.275.b01-1.el8_3.x86_64
+$ rpm -e --nodeps copy-jdk-configs-3.7-4.el8.noarch
+## 解压jdk安装包
+$ cp jdk-8u261-linux-x64.tar.gz /usr/java/
+$ cd /usr/java/
+$ tar -zxvf jdk-8u261-linux-x64.tar.gz
+$ cp chinese_fonts.zip /usr/java/jdk1.8.0_261/jre/lib/fonts/
+$ cd /usr/java/jdk1.8.0_261/jre/lib/fonts/
+$ unzip chinese_fonts.zip
+##配置java环境变量
+$ vi /etc/profile
+export JAVA_HOME=/usr/java/jdk1.8.0_261
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASSPATH=$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+$ source /etc/profile
+## 测试java安装是否成功
+$ java -version
+java version &quot;1.8.0_261&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_261-b12)
+Java HotSpot(TM) 64-Bit Server VM (build 25.261-b12, mixed mode)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Tue, 30 Mar 2021 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2021/03/jdk_linux_chinese_fonts/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/03/jdk_linux_chinese_fonts/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Arcgis安装(linux10.4版本)</title>
+        <description>&lt;h3 id=&quot;arcgis安装linux104版本&quot;&gt;Arcgis安装(linux10.4版本)&lt;/h3&gt;
+
+&lt;h4 id=&quot;配置网络&quot;&gt;配置网络&lt;/h4&gt;
+
+&lt;p&gt;配置固定ip&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;修改host文件&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vim /etc/hosts
+
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+192.168.8.236 arcgis.cdkttc.com dev236
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;开启防火墙&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;firewall-cmd --zone=public --add-port=6080/tcp --permanent
+firewall-cmd --zone=public --add-port=6443/tcp --permanent
+firewall-cmd --zone=public --add-port=600-619/tcp --permanent
+firewall-cmd --reload
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;配置arcgis用户&quot;&gt;配置arcgis用户&lt;/h4&gt;
+
+&lt;p&gt;创建arcgis 用户组和用户,设置密码(8位以上，要有大小写区分，例如 ArcgisServer、Arcgis123)&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ groupadd arcgis
+$ useradd -g arcgis ags
+$ passwd ags
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;修改用户权限&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vim /etc/security/limits.conf
+
+ags soft nofile 65535
+ags hard nofile 65535
+ags soft nproc 25059
+ags hard nproc 25059
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;安装arcgis-server&quot;&gt;安装arcgis server&lt;/h4&gt;
+
+&lt;p&gt;切换到ags用户下，进入ags 文件目录操作解压并安装&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ su ags
+$ cd ags
+$ tar -xzf ArcGIS_for_Server_Linux_104_149446.tar
+$ cd ArcGISServer
+$ ./Setup -m silent -l yes -a /data/ArcGISServer10.4.1.ecp
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;错误处理&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ./Setup
+[ArcGIS 10.4 License Manager Setup Error]
+The ArcGIS 10.4 License Manager setup requires the 32-bit glibc package. Please install this package and run this setup again.
+Exiting.
+
+## 解决办法，安装glibc32位版本
+$ yum install glibc.i686
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ./startserver.sh
+Attempting to start ArcGIS Server... ln: failed to create symbolic link '/home/ags/arcgis/server/framework/runtime/.wine/drive_c/users/ags/Local Settings/Temporary Internet Files': No such file or directory
+
+ERROR: Unable to start Xvfb on any port in the range 600 - 619.
+
+## 解决办法,重新安装xvfb
+$ yum -y install xorg-x11-server-Xvfb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;将-oracle-数据库注册到服务器&quot;&gt;将 Oracle 数据库注册到服务器&lt;/h3&gt;
+
+&lt;h4 id=&quot;安装oracle客户端&quot;&gt;安装oracle客户端&lt;/h4&gt;
+
+&lt;p&gt;下载安装包：http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html，根据实际情况下载，我下载linux版本zip版本，包括instantclient-basic-linux.x64-11.2.0.4.0.zip和instantclient-sqlplus-linux.x64-11.2.0.4.0.zip两个文件。&lt;/p&gt;
+
+&lt;p&gt;解压缩安装到/usr/local/oracle&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ unzip instantclient-basic-linux.x64-11.2.0.4.0.zip
+$ unzip instantclient-sqlplus-linux.x64-11.2.0.4.0.zip
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;配置连接&lt;/p&gt;
+
+&lt;p&gt;在解压后的instantclient_11_2文件夹下创建配置文件&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mkdir -p network/admin
+$ cd network/admin
+$ vi tnsnames.ora
+history_162 =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = 10.1.197.1)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SID =xxx)
+    )
+  )
+$ source .bash_profile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;配置环境变量&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vi ~/.bash_profile
+export ORACLE_HOME=/usr/local/oracle/instantclient_11_2
+export TNS_ADMIN=$ORACLE_HOME/network/admin
+##export NLS_LANG=AMERICAN_AMERICA.ZHS16GBK
+export NLS_LANG=AMERICAN_AMERICA.AL32UTF8
+export LD_LIBRARY_PATH=$ORACLE_HOME
+export PATH=$ORACLE_HOME:$PATH
+
+$ source ~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;连接数据库&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sqlplus sw/sw123@history_162
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;错误处理&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sqlplus: error while loading shared libraries: libnsl.so.1: cannot open shared object file: No such file or directory
+
+解决办法：
+安装libnsl
+$ yum install libnsl.x86_64
+$ sqlplus sw/sw123@history_162
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;更改-init_user_paramsh-脚本&quot;&gt;更改 init_user_param.sh 脚本&lt;/h4&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd /home/ags/arcgis/server/usr/
+$ vi init_user_param.sh
+##如果采用Oracle并且安装本机安装的Oracle，则移除Oracle部分以 export 开头的行中的注释标记 (#)。
+#
+# For connection with Oracle Runtime or Administrator Client
+#
+#export ORACLE_BASE=&amp;lt;Oracle_Installdir&amp;gt;/app
+#export ORACLE_HOME=$ORACLE_BASE/&amp;lt;Oracle_Release&amp;gt;/product/&amp;lt;Oracle_Version&amp;gt;/&amp;lt;client_Version&amp;gt;
+#export ORACLE_SID=&amp;lt;set when applicable&amp;gt;
+#export TNS_ADMIN=&amp;lt;set when applicable. e.g.$ORACLE_HOME/network/admin&amp;gt;
+#export PATH=$ORACLE_HOME/bin:$PATH
+#export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
+
+##如果使用Oracle数据库即时客户端库，您只需取消注释并设置 $LD_LIBRARY_PATH
+#
+# For connection with Oracle Instant Client
+#
+export LD_LIBRARY_PATH=/usr/local/oracle/instantclient_11_2/:$LD_LIBRARY_PATH
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;重启arcgis server&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd /home/ags/arcgis/server/
+$ ./startserver.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;测试arcgis-server&quot;&gt;测试arcgis server&lt;/h4&gt;
+
+&lt;p&gt;浏览器打开 http://localhost:6080/arcgis/manager&lt;/p&gt;
+
+&lt;h4 id=&quot;关闭https服务&quot;&gt;关闭https服务&lt;/h4&gt;
+
+&lt;p&gt;浏览器打开 http://localhost:6080/arcgis/admin/&lt;/p&gt;
+
+&lt;p&gt;账号，密码采用manager账号密码进行登录&lt;/p&gt;
+
+&lt;p&gt;选择，Home&lt;strong&gt;&amp;gt;&lt;/strong&gt; security &lt;strong&gt;&amp;gt;&lt;/strong&gt; config &lt;strong&gt;&amp;gt;&lt;/strong&gt; update，进入修改页面&lt;/p&gt;
+
+&lt;p&gt;修改&lt;strong&gt;Protocol:&lt;/strong&gt;为HTTP Only，然后保存，搞定。&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 17 Mar 2021 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2021/03/arcgis_linux/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/03/arcgis_linux/</guid>
+        
+        <category>arcgis</category>
+        
+        
+        <category>arcgis</category>
+        
+      </item>
+    
+      <item>
+        <title>VIM快捷键</title>
+        <description>&lt;p&gt;VIM快捷键&lt;/p&gt;
+
+&lt;h3 id=&quot;vim快捷键&quot;&gt;Vim快捷键&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;快捷键&lt;/th&gt;
+      &lt;th&gt;功能描述&lt;/th&gt;
+      &lt;th&gt;中文描述&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^ Space&lt;/td&gt;
+      &lt;td&gt;Basic code completion (the name of any class, method or variable)&lt;/td&gt;
+      &lt;td&gt;？基本的代码补全&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;idea-vim插件-快捷键&quot;&gt;Idea Vim插件 快捷键&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;快捷键&lt;/th&gt;
+      &lt;th&gt;功能描述&lt;/th&gt;
+      &lt;th&gt;中文描述&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;^ Space&lt;/td&gt;
+      &lt;td&gt;Basic code completion (the name of any class, method or variable)&lt;/td&gt;
+      &lt;td&gt;？基本的代码补全&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+</description>
+        <pubDate>Wed, 27 Jan 2021 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2021/01/vim_keymap/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/01/vim_keymap/</guid>
+        
+        <category>vim</category>
+        
+        
+        <category>tools</category>
+        
+      </item>
     
       <item>
         <title>MySQL安全相关配置</title>
@@ -388,6 +789,36 @@ $ docker pull 192.168.159.134/blade/demo:latest
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;h3 id=&quot;推送报错&quot;&gt;推送报错&lt;/h3&gt;
+
+&lt;p&gt;编辑服务器docker配置&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/docker/daemon.json&lt;/code&gt;，增加”insecure-registries”: [ “192.168.159.134:9020” ],&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+    &quot;insecure-registries&quot;: [ &quot;192.168.8.246:9020&quot; ],
+    &quot;registry-mirrors&quot;: [
+        &quot;http://hub-mirror.c.163.com&quot;,
+        &quot;https://mirror.ccs.tencentyun.com&quot;,
+        &quot;https://dockerhub.azk8s.cn&quot;,
+        &quot;https://docker.mirrors.ustc.edu.cn&quot;,
+        &quot;https://registry.docker-cn.com&quot;
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;编辑客户机&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/docker/daemon.json&lt;/code&gt;文件，增加”insecure-registries”: [ “192.168.159.134:9020” ],&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+  &quot;experimental&quot;: false,
+  &quot;debug&quot;: true,
+  &quot;registry-mirrors&quot;: [
+    &quot;http://hub-mirror.c.163.com&quot;,
+    &quot;http://registry.docker-cn.com&quot;,
+    &quot;https://qpgr23bh.mirror.aliyuncs.com&quot;
+  ],
+  &quot;insecure-registries&quot;: [&quot;192.168.8.246:9020&quot;]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;h3 id=&quot;附-virtualbox虚拟机增加磁盘空间&quot;&gt;附: VirtualBox虚拟机增加磁盘空间&lt;/h3&gt;
 
 &lt;p&gt;之前采用默认分配了8G空间，后来发现空间不够，需增加磁盘空间，方法如下：&lt;/p&gt;
@@ -739,475 +1170,6 @@ tmpfs                    100M     0  100M    0% /run/user/0
         
         
         <category>cas</category>
-        
-      </item>
-    
-      <item>
-        <title>CAS单点登录-服务器搭建</title>
-        <description>&lt;p&gt;CAS单点登录-服务器搭建&lt;/p&gt;
-</description>
-        <pubDate>Wed, 06 May 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/05/cas_02_server/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/05/cas_02_server/</guid>
-        
-        <category>cas</category>
-        
-        <category>单点登录</category>
-        
-        <category>SSO</category>
-        
-        
-        <category>cas</category>
-        
-      </item>
-    
-      <item>
-        <title>CAS单点登录-SSO</title>
-        <description>&lt;p&gt;CAS单点登录-SSO&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/qq_34021712/category_9278675.html&quot;&gt;“这个名字想了很久”的博客CAS部分&lt;/a&gt;
-&lt;a href=&quot;https://blog.csdn.net/yelllowcong/article/details/86250566&quot;&gt;“狂飙的yellowcong”的博客CAS部分&lt;/a&gt;
-&lt;a href=&quot;https://blog.csdn.net/Anumbrella/category_7765386.html&quot;&gt;“Anumbrella”的博客CAS部分&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 06 May 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/05/cas_01_base/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/05/cas_01_base/</guid>
-        
-        <category>cas</category>
-        
-        <category>单点登录</category>
-        
-        <category>SSO</category>
-        
-        
-        <category>cas</category>
-        
-      </item>
-    
-      <item>
-        <title>git学习总结</title>
-        <description>&lt;p&gt;git学习总结&lt;/p&gt;
-
-&lt;h3 id=&quot;git是什么&quot;&gt;Git是什么？&lt;/h3&gt;
-
-&lt;h4 id=&quot;git的特点&quot;&gt;git的特点&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;有助于分布式开发&lt;/strong&gt;：git允许并行开发，各人可以在自己的版本库中独立且同时开发，不需要与一个中心版本时刻同步。允许许多开发者在不同的地方甚至离线的情况无障碍的开发&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;能够胜任上千开发人员的规模&lt;/strong&gt;：支持上千开发人员规模的VCS(Version Control System)版本控制系统&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;性能优异&lt;/strong&gt;：快速且高效，使用“压缩”和“差异比较”技术节约存储空间，进而节约传输时间。使用分布式开发模型，而非集中式开发模型，确保了网络不确定因素不会影响到日常开发的效率。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;保持完整性和可靠性&lt;/strong&gt;：git采用了一个叫做“安全散列函数”(SHA1)的通用加密散列函数来命名和识别数据库中的对象。虽然理论上不是绝对的，但是在实践中已经证实这是足够可靠的方式。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;强化责任&lt;/strong&gt;：git对每个有文件改动的提交强制使用“改动日志”。进而可对所有的改动进行责任最终。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;不可变性&lt;/strong&gt;：git版本库中存储的对象均为不可变的。一点创建数据对象并把他存储到数据库中，它们便不可修改。这样的好处很多如快速比较相同性。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;原子事务&lt;/strong&gt;：git通过记录完整、离散的版本库状态来实现原子事务。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;支持并鼓励基于分支的开发&lt;/strong&gt;：git支持分支开发，并提供了一个简单、清晰、快速的合并功能。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;完整的版本库&lt;/strong&gt;：每个人的版本库中都有一份关于每个文件的完整历史修订信息。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;一个清晰的内部设计&lt;/strong&gt;：&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;免费自由&lt;/strong&gt;：be free ,as in freedom.&lt;/p&gt;
-
-&lt;h4 id=&quot;git快速入门&quot;&gt;git快速入门&lt;/h4&gt;
-
-&lt;h5 id=&quot;git安装&quot;&gt;git安装&lt;/h5&gt;
-
-&lt;p&gt;到&lt;a href=&quot;https://git-scm.com/download&quot;&gt;git官方网站&lt;/a&gt;上下载软件进行安装即可。&lt;/p&gt;
-
-&lt;h5 id=&quot;git配置&quot;&gt;git配置&lt;/h5&gt;
-
-&lt;p&gt;git自带一个config工具，首次安装好git后，可通过此工具设置控制 Git 外观和行为的配置变量。这些变量存储在三个不同的位置：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/gitconfig&lt;/code&gt; 文件: 包含系统上每一个用户及他们仓库的通用配置。如果在执行 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git config&lt;/code&gt; 时带上 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--system&lt;/code&gt; 选项，那么它就会读写该文件中的配置变量。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.gitconfig&lt;/code&gt; 或 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.config/git/config&lt;/code&gt; 文件：只针对当前用户。你可以传递 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--global&lt;/code&gt; 选项让 Git 读写此文件，这会对你系统上 &lt;strong&gt;所有&lt;/strong&gt; 的仓库生效。&lt;/li&gt;
-  &lt;li&gt;当前使用仓库的 Git 目录中的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config&lt;/code&gt; 文件（即 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.git/config&lt;/code&gt;）：针对该仓库。 你可以传递 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--local&lt;/code&gt; 选项让 Git 强制读写此文件，虽然默认情况下用的就是它。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;优先级顺序为： &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.git/config&lt;/code&gt; &amp;gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.gitconfig&lt;/code&gt;  &amp;gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/gitconfig&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;配置用户信息&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;…&lt;/p&gt;
-
-&lt;h3 id=&quot;git基本概念&quot;&gt;Git基本概念&lt;/h3&gt;
-
-&lt;p&gt;Git版本库不仅仅提供版本库中所有文件的完整副本，还提供 版本库本身的副本。在版本库中，Git维护两个主要的数据结构:对象库(object store)和 索引(index)。所有这些版本库数据存放在工作目录根目录下一个名 为&lt;strong&gt;.git&lt;/strong&gt; 的隐藏子目录中。&lt;/p&gt;
-
-&lt;h4 id=&quot;git对象类型&quot;&gt;git对象类型&lt;/h4&gt;
-
-&lt;p&gt;对象库是Git版本库实现的心脏。它包含你的原始数据文件和所有日志 消息、作者信息、日期，以及其他用来重建项目任意版本或分支的信息。&lt;/p&gt;
-
-&lt;p&gt;Git放在对象库里的对象只有4种类型:&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;块(blob)&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;目录树(tree)&lt;/code&gt;、 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;提交(commit)&lt;/code&gt;和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;标签(tag)&lt;/code&gt;。这4种原子对象构成Git高层数据结构的基 础。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;块(blob)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;文件的每一个版本表示为一个块(blob)。一个blob保存一个文件的数据，但不包含任何关于 这个文件的元数据，甚至连文件名也没有。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;目录树(tree)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;一个目录树(tree)对象代表一层目录信息。它记录blob标识符、路径名和在一个目录里所有文件的一些元数据。它也可以递归引用其他目录树或子树对象，从而建立一个包含文件和子目录的完整层次结构。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;提交(commit)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;一个提交(commit)对象保存版本库中每一次变化的元数据，包括作者、提交者、提交日期和日志消息。每一个提交对象指向一个目录树对象，这个目录树对象在一张完整的快照中捕获提交时版本库的状态。最初的提交或者根提交(root commit)是没有父提交的。大多数提交都有一个父提交。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;标签(tag)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;一个标签对象分配一个任意的且人类可读的名字给一个特定对象，通常是一个提交对象。虽然9da581d910c9c4ac93557ca4859e767f5caf5169指的 是一个确切且定义好的提交，但是一个更熟悉的标签名(如Ver-1.0- Alpha)可能会更有意义!&lt;/p&gt;
-
-&lt;p&gt;随着时间的推移，所有信息在对象库中会变化和增长，项目的编辑、 添加和删除都会被跟踪和建模。为了有效地利用磁盘空间和网络带宽，Git 把对象压缩并存储在打包文件(pack file)里，这些文件也在对象库里。&lt;/p&gt;
-
-&lt;p&gt;这里会用一个简单的例子让大家直观感受一下git是怎么储存信息的。&lt;/p&gt;
-
-&lt;p&gt;首先初始化一个git版本库&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git init
-&lt;span class=&quot;c&quot;&gt;## 初始化后会生成git对象库信息,但是没有对象信息&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ll .git
-total 24
-&lt;span class=&quot;nt&quot;&gt;-rw-r--r--&lt;/span&gt;   1 hengliang  staff    23B  9 25 10:25 HEAD
-drwxr-xr-x   2 hengliang  staff    64B  9 25 10:25 branches
-&lt;span class=&quot;nt&quot;&gt;-rw-r--r--&lt;/span&gt;   1 hengliang  staff   137B  9 25 10:25 config
-&lt;span class=&quot;nt&quot;&gt;-rw-r--r--&lt;/span&gt;   1 hengliang  staff    73B  9 25 10:25 description
-drwxr-xr-x  12 hengliang  staff   384B  9 25 10:25 hooks
-drwxr-xr-x   3 hengliang  staff    96B  9 25 10:25 info
-drwxr-xr-x   4 hengliang  staff   128B  9 25 10:25 objects
-drwxr-xr-x   4 hengliang  staff   128B  9 25 10:25 refs
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;我们先创建两个文件&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'111'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; a.txt
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'222'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; b.txt
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git add &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.txt
-&lt;span class=&quot;c&quot;&gt;## 执行add命令后，仓库里面多了2个object&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;tree .git/objects
-.git/objects
-├── 58
-│   └── c9bdf9d017fcd178dc8c073cbfcbb7ff240d6c
-├── c2
-│   └── 00906efd24ec5e783bee7f23b5d7c941b0c12c
-├── info
-└── pack
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;通过&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git cat-file&lt;/code&gt; 命令查看文件类型和内容,这里我们遇到第一种Git object，blob类型，它只储存的是一个文件的内容，不包括文件名等其他信息。然后将这些信息经过SHA1哈希算法得到对应的哈希值58c9bdf9d017fcd178dc8c073cbfcbb7ff240d6c，作为这个object在Git仓库中的唯一身份证。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;## git cat-file -t 可以查看object的类型&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git cat-file &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; 58c9
-blob
-&lt;span class=&quot;c&quot;&gt;## git cat-file -p可以查看object储存的具体内容&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git cat-file &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 58c9
-111
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;现在我们提交一下刚刚创建的两个文件&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;feat:增加连个文件a.txt和b.txt&quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;master &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;root-commit&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 49ac3b9] feat:增加连个文件a.txt和b.txt
- 2 files changed, 2 insertions&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;+&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
- create mode 100644 a.txt
- create mode 100644 b.txt
-
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;tree .git/objects
-.git/objects
-├── 49
-│   └── ac3b91f06b197d6663859ea4deef2c9ddd49ee
-├── 4c
-│   └── aaa1a9ae0b274fba9e3675f9ef071616e5b209
-├── 58
-│   └── c9bdf9d017fcd178dc8c073cbfcbb7ff240d6c
-├── c2
-│   └── 00906efd24ec5e783bee7f23b5d7c941b0c12c
-├── info
-└── pack
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;当我们commit完成之后，Git仓库里面多出来两个object。同样使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cat-file&lt;/code&gt;命令，我们看看它们分别是什么类型以及具体的内容是什么。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git cat-file &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; 4caa
-tree
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git cat-file &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 4caa
-100644 blob 58c9bdf9d017fcd178dc8c073cbfcbb7ff240d6c	a.txt
-100644 blob c200906efd24ec5e783bee7f23b5d7c941b0c12c	b.txt
-
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git cat-file &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; 49ac
-commit
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git cat-file &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 49ac
-tree 4caaa1a9ae0b274fba9e3675f9ef071616e5b209
-author hengliang &amp;lt;wanghengliang@outlook.com&amp;gt; 1601002121 +0800
-committer hengliang &amp;lt;wanghengliang@outlook.com&amp;gt; 1601002121 +0800
-
-feat:增加两个文件a.txt和b.txt
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;4caa为tree、49ac为commit，再看他们的内容发现&lt;/p&gt;
-
-&lt;p&gt;tree储存了一个目录结构（类似于文件夹），以及每一个文件（或者子文件夹）的权限、类型、对应的身份证（SHA1值）、以及文件名，如果提交文件带目录则目录也是一个tree。&lt;/p&gt;
-
-&lt;p&gt;commit则包含了tree哈希值和提交信息（提交的作者、提交的具体时间和提交的说明信息）。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;再看看平常接触的分支信息储存在哪里呢？在Git仓库里面，HEAD、分支、普通的Tag可以简单的理解成是一个指针，指向对应commit的SHA1值。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; .git/HEAD
-ref: refs/heads/master
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; .git/refs/heads/master
-49ac3b91f06b197d6663859ea4deef2c9ddd49ee
-&lt;span class=&quot;c&quot;&gt;## 新建一个dev分支&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git branch dev
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; .git/refs/heads/dev
-49ac3b91f06b197d6663859ea4deef2c9ddd49ee
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;另起一个Git项目看看带目录的情况&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git init
-$ mkdir d1
-$ echo &quot;123&quot; &amp;gt; d1/a1.txt
-$ git add .
-$ git commit -m &quot;feat:增加带文件夹内容的提交&quot;
-$ tree .git/objects
-.git/objects
-├── 19
-│   └── 0a18037c64c43e6b11489df4bf0b9eb6d2c9bf
-├── 69
-│   └── 700c8f3321a65f7499f3198b3ebbbc1f8fa658
-├── 7d
-│   └── 9ddec14e8e3ca23de8746f11bd6bf58f9ec541
-├── dd
-│   └── d4d0b0bcd7db4f1b1a0527d124d72188fbfec8
-├── info
-└── pack
-$ cat .git/HEAD
-ref: refs/heads/master
-$ cat .git/refs/heads/master
-7d9ddec14e8e3ca23de8746f11bd6bf58f9ec541
-$ git cat-file -p 7d9d
-tree 69700c8f3321a65f7499f3198b3ebbbc1f8fa658
-author hengliang &amp;lt;wanghengliang@outlook.com&amp;gt; 1601184377 +0800
-committer hengliang &amp;lt;wanghengliang@outlook.com&amp;gt; 1601184377 +0800
-
-feat:增加带文件夹内容的提交
-$ git cat-file -p 6970
-040000 tree ddd4d0b0bcd7db4f1b1a0527d124d72188fbfec8	d1
-$ git cat-file -p ddd4
-100644 blob 190a18037c64c43e6b11489df4bf0b9eb6d2c9bf	a1.txt
-$ git cat-file -p 190a
-123
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;现在已经知道了前三种对象类型，最后再简单看看&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;标签(tag)&lt;/code&gt;,其实和前三种相似。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git tag &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; v1.0 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;第一个版本&quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; .git/refs/tags/v1.0
-d809be2a64963ad60fbcb05564bd7cc59bff3ca9
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git cat-file &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; d809
-tag
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git cat-file &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; d809
-object 49ac3b91f06b197d6663859ea4deef2c9ddd49ee
-&lt;span class=&quot;nb&quot;&gt;type &lt;/span&gt;commit
-tag v1.0
-tagger hengliang &amp;lt;wanghengliang@outlook.com&amp;gt; 1601172803 +0800
-
-第一个版本
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;此时的仓库用图形可视化表示看上去像这样&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://wanghengliang.cn/images/posts/git/git_summary_01.jpg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;git的三个分区&quot;&gt;Git的三个分区&lt;/h4&gt;
-
-&lt;p&gt;Git分为三个分区，分别为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;工作目录&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;索引区域&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Git仓库&lt;/code&gt;。接下来我们一起了解这三个分区和Git链的内部原理。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;工作目录(working directory)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;操作系统上的文件，所有代码开发编辑都在这上面完成。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;索引区域(index or staging area)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;索引是一个临时的、动态的二进制文件，它描述整个版本库的目录结 构。更具体地说，索引捕获项目在某个时刻的整体结构的一个版本。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Git仓库(git repository)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;由Git object记录着每一次提交的快照，以及链式结构记录的提交变更历史。&lt;/p&gt;
-
-&lt;p&gt;接着上面的例子，目前的仓库状态如下：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://wanghengliang.cn/images/posts/git/git_summary_02.jpg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;修改一个文件，修改文件是在工作目录完成（动态来自于网络，其中的哈希值可能无法完全对应）&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ echo &quot;333&quot; &amp;gt; a.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://wanghengliang.cn/images/posts/git/git_summary_update_file.gif&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;添加到索引,当使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git add&lt;/code&gt;命令时，&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Git会给添加的每个文件的内容创建一 个对象，但它并不会马上为树创建一个对象。&lt;/li&gt;
-  &lt;li&gt;更新索引。索引位于&lt;strong&gt;.git/index&lt;/strong&gt; 中，它跟踪文件的路径名和相应的blob。每次执行命令(比 如，git add、git rm或者git mv)的时候，Git会用新的路径名和blob信息来 更新索引。查看索引文件内容可以用命令&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git ls-files -s&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git ls-files &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt;
-100644 58c9bdf9d017fcd178dc8c073cbfcbb7ff240d6c 0	a.txt
-100644 c200906efd24ec5e783bee7f23b5d7c941b0c12c 0	b.txt
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git add a.txt
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git ls-files &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt;
-100644 55bd0ac4c42e46cd751eb7405e12a35e61425550 0	a.txt
-100644 c200906efd24ec5e783bee7f23b5d7c941b0c12c 0	b.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://wanghengliang.cn/images/posts/git/git_summary_add_to_index.gif&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;提交到git仓库，当执行&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git commit&lt;/code&gt;命令时：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Git首先根据当前的索引生产一个tree object，充当新提交的一个快照。&lt;/li&gt;
-  &lt;li&gt;创建一个新的commit object，将这次commit的信息储存起来，并且parent指向上一个commit，组成一条链记录变更历史。&lt;/li&gt;
-  &lt;li&gt;将master分支的指针移到新的commit结点。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://wanghengliang.cn/images/posts/git/git_summary_commit_to_git.gif&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;至此我们知道了Git的三个分区分别是什么以及他们的作用，以及历史链是怎么被建立起来的。&lt;strong&gt;基本上Git的大部分指令就是在操作这三个分区以及这条链。&lt;/strong&gt;可以尝试的思考一下git的各种命令，试一下你能不能够在上图将它们&lt;strong&gt;“可视化”&lt;/strong&gt;出来，这个很重要，建议尝试一下。&lt;/p&gt;
-
-&lt;h3 id=&quot;git命令&quot;&gt;Git命令&lt;/h3&gt;
-
-&lt;h3 id=&quot;git工具&quot;&gt;Git工具&lt;/h3&gt;
-
-&lt;h3 id=&quot;git工作流&quot;&gt;Git工作流&lt;/h3&gt;
-
-&lt;p&gt;####GitFlow简介&lt;/p&gt;
-
-&lt;p&gt;GitFlow工作流定义了一个围绕项目发布的严格分支模型，它为不同的分支分配了明确的角色，并定义分支之间何时以及如何进行交互。&lt;/p&gt;
-
-&lt;h5 id=&quot;分支说明&quot;&gt;分支说明&lt;/h5&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt;分支：存储正式发布的产品，master分支上的产品要求随时处于&lt;strong&gt;可部署状态&lt;/strong&gt;。master分支只能通过与其他分支合并来更新内容，禁止直接在master分支进行修改。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;develop&lt;/code&gt;分支：汇总开发者完成的工作成果，develop分支上的产品可以是缺失功能模块的半成品，但是已有的功能模块不能是半成品。develop分支只能通过与其他分支合并来更新内容，禁止直接在develop分支进行修改。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;feature&lt;/code&gt;分支：当要开发新功能或者试验新功能时，从develop分支创建一个新的feature分支，并在feature分支上进行开发。开发完成后，需要将该feature分支合并到develop分支，最后删除该feature分支。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;release&lt;/code&gt;分支：当develop分支上的项目准备发布时，从develop分支上创建一个新的release分支，新建的release分支只能进行质量测试、bug修复、文档生成等面向发布的任务，不能再添加功能。这一系列发布任务完成后，需要将release分支合并到master分支上，并根据版本号为master分支添加tag，然后将release分支创建以来的修改合并回develop分支，最后删除release分支。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hotfix&lt;/code&gt;分支：当master分支中的产品出现需要立即修复的bug时，从master分支上创建一个新的hotfix分支，并在hotfix分支上进行bug修复。修复完成后，需要将hotfix分支合并到master分支和develop分支，并为master分支添加新的版本号tag，最后删除hotfix分支。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://wanghengliang.cn/images/posts/git/git_summary_gitflow.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;分支命名规范&quot;&gt;分支命名规范&lt;/h5&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;master&lt;/code&gt;分支：master分支只有一个，名称即为master。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;develop&lt;/code&gt;分支：develop分支只有一个，名称即为develop。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;feature&lt;/code&gt;分支：feature_&lt;版本号&gt;_&lt;功能名&gt;，例如：feature_v1.0.0_login。&lt;/功能名&gt;&lt;/版本号&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;release&lt;/code&gt;分支：release_&lt;版本号&gt;，例如：release_v1.0.0。&lt;/版本号&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hotfix&lt;/code&gt;分支：hotfix_&lt;版本号&gt;_&lt;问题简述&gt;，例如：hotfix_v1.0.0_username_not_support_chinese。&lt;/问题简述&gt;&lt;/版本号&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;说明：使用尖括号（&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;&amp;gt;&lt;/code&gt;）括起的内容是需要根据情景进行替换的内容，下同。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h5 id=&quot;提交信息规范&quot;&gt;提交信息规范&lt;/h5&gt;
-
-&lt;p&gt;提交信息应该描述“做了什么”和“这么做的原因”，必要时还可以加上“造成的影响”，主要由3个部分组成：&lt;strong&gt;Header&lt;/strong&gt;、&lt;strong&gt;Body&lt;/strong&gt;和&lt;strong&gt;Footer&lt;/strong&gt;。提交信息的第一行会被最为Header，其余行会被作为Body（Footer以特定关键字标识）。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Header&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Header部分只有1行，格式为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;type&amp;gt;(&amp;lt;scope&amp;gt;): &amp;lt;subject&amp;gt;&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;type&lt;/strong&gt;用于说明提交的类型，共有8个候选值：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;feat：新功能（feature）&lt;/li&gt;
-  &lt;li&gt;fix：问题修复&lt;/li&gt;
-  &lt;li&gt;docs：文档&lt;/li&gt;
-  &lt;li&gt;style：调整格式（不影响代码运行）&lt;/li&gt;
-  &lt;li&gt;refactor：重构&lt;/li&gt;
-  &lt;li&gt;test：增加测试&lt;/li&gt;
-  &lt;li&gt;chore：构建过程或辅助工具的变动&lt;/li&gt;
-  &lt;li&gt;revert：撤销以前的提交&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;scope&lt;/strong&gt;用于说明提交的影响范围，内容根据具体项目而定。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;subject&lt;/strong&gt;用于概括提交内容。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Body&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Body部分是对本次提交的详细描述，可以分成多行。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Footer&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Footer部分只用于两种情况：&lt;strong&gt;不兼容变动&lt;/strong&gt;和&lt;strong&gt;关闭issue&lt;/strong&gt;。如果本次提交的代码与上一版本不兼容，则Footer部分要以&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BREAKING CHANGE&lt;/code&gt;开头，后面添加&lt;strong&gt;对变动的描述&lt;/strong&gt;、&lt;strong&gt;变动理由&lt;/strong&gt;和&lt;strong&gt;迁移方法&lt;/strong&gt;。如果本次解决了某个issue，那么可以在Footer部分关闭这个issue，格式为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Closes #&amp;lt;issus编号&amp;gt;&lt;/code&gt;，也可以一次关闭多个issue，多个issue之间使用半角逗号分隔。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;说明：revert与其他的提交类型略有不同。
-revert的Header中没有scope和subject部分，其格式为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;revert: &amp;lt;被撤销的提交的Header&amp;gt;&lt;/code&gt;；
-revert的Body部分格式也是固定的，需要写成&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;This reverts commit &amp;lt;被撤销的提交的Hash标识码&amp;gt;.&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h5 id=&quot;注意事项&quot;&gt;注意事项&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;开始工作前一定要保证选择了正确的分支。&lt;/li&gt;
-  &lt;li&gt;开始工作前定义好要做的事情，这将有助于确定从哪个分支开始工作和确定新分支的名称。&lt;/li&gt;
-  &lt;li&gt;工单需要包含的内容：
-    &lt;ul&gt;
-      &lt;li&gt;问题：大致描述要解决的问题&lt;/li&gt;
-      &lt;li&gt;原因：为什么要这样做&lt;/li&gt;
-      &lt;li&gt;测试：如何验证问题已得到解决&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Git应该是一个用于&lt;strong&gt;记录结果&lt;/strong&gt;而不是&lt;strong&gt;保存工作&lt;/strong&gt;的工具。这意味着，应该在完成了一个功能模块时才进行提交，而不是每做一点改动就立即提交。过于密集的提交将会使重要的信息分散在大量无意义的信息中，增加管理的难度。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;参考资料&quot;&gt;参考资料&lt;/h3&gt;
-
-&lt;p&gt;《Git版本控制管理 第二版》人民邮电出版社&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/UQKrAR3zsdTRz8nFiLk2uQ&quot;&gt;这才是真正的Git——Git内部原理揭秘！&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://marklodato.github.io/visual-git-guide/index-zh-cn.html&quot;&gt;图解Git&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/qq_21397217/article/details/90080766&quot;&gt;GitFlow简介&lt;/a&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 13 Apr 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/04/git_summary/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/04/git_summary/</guid>
-        
-        <category>git</category>
-        
-        
-        <category>git</category>
-        
-      </item>
-    
-      <item>
-        <title>GC调优之工具篇</title>
-        <description>&lt;p&gt;GC调优之工具篇&lt;/p&gt;
-</description>
-        <pubDate>Mon, 23 Mar 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/03/gc-tuning-tool/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/03/gc-tuning-tool/</guid>
-        
-        <category>jvm</category>
-        
-        
-        <category>JVM</category>
         
       </item>
     

@@ -134,6 +134,38 @@ $ docker pull 192.168.159.134/blade/demo:latest
 
 
 
+### 推送报错
+
+编辑服务器docker配置`/etc/docker/daemon.json`，增加"insecure-registries": [ "192.168.159.134:9020" ],
+
+```
+{
+    "insecure-registries": [ "192.168.8.246:9020" ],
+    "registry-mirrors": [
+        "http://hub-mirror.c.163.com",
+        "https://mirror.ccs.tencentyun.com",
+        "https://dockerhub.azk8s.cn",
+        "https://docker.mirrors.ustc.edu.cn",
+        "https://registry.docker-cn.com"
+    ]
+}
+```
+
+编辑客户机`/etc/docker/daemon.json`文件，增加"insecure-registries": [ "192.168.159.134:9020" ],
+
+```
+{
+  "experimental": false,
+  "debug": true,
+  "registry-mirrors": [
+    "http://hub-mirror.c.163.com",
+    "http://registry.docker-cn.com",
+    "https://qpgr23bh.mirror.aliyuncs.com"
+  ],
+  "insecure-registries": ["192.168.8.246:9020"]
+}
+```
+
 
 
 ### 附: VirtualBox虚拟机增加磁盘空间

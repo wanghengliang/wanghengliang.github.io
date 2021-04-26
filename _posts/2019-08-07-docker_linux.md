@@ -92,6 +92,43 @@ $ sudo yum install docker-ce  #由于repo中默认只开启stable仓库，故这
 $ sudo yum install <FQPN>  # 例如：sudo yum install docker-ce-19.03.1
 ```
 
+4.1 centos8安装报错
+
+```
+$ sudo yum install docker-ce
+上次元数据过期检查：0:00:14 前，执行于 2021年04月21日 星期三 05时58分41秒。
+错误：
+ 问题: package docker-ce-3:20.10.6-3.el8.x86_64 requires containerd.io >= 1.4.1, but none of the providers can be installed
+  - package containerd.io-1.4.3-3.1.el8.x86_64 conflicts with runc provided by runc-1.0.0-70.rc92.module_el8.3.0+699+d61d9c41.x86_64
+  - package containerd.io-1.4.3-3.1.el8.x86_64 obsoletes runc provided by runc-1.0.0-70.rc92.module_el8.3.0+699+d61d9c41.x86_64
+  - package containerd.io-1.4.3-3.2.el8.x86_64 conflicts with runc provided by runc-1.0.0-70.rc92.module_el8.3.0+699+d61d9c41.x86_64
+  - package containerd.io-1.4.3-3.2.el8.x86_64 obsoletes runc provided by runc-1.0.0-70.rc92.module_el8.3.0+699+d61d9c41.x86_64
+  - package containerd.io-1.4.4-3.1.el8.x86_64 conflicts with runc provided by runc-1.0.0-70.rc92.module_el8.3.0+699+d61d9c41.x86_64
+  - package containerd.io-1.4.4-3.1.el8.x86_64 obsoletes runc provided by runc-1.0.0-70.rc92.module_el8.3.0+699+d61d9c41.x86_64
+  - problem with installed package buildah-1.16.7-4.module_el8.3.0+699+d61d9c41.x86_64
+  - package buildah-1.16.7-4.module_el8.3.0+699+d61d9c41.x86_64 requires runc >= 1.0.0-26, but none of the providers can be installed
+  - cannot install the best candidate for the job
+  - package runc-1.0.0-56.rc5.dev.git2abd837.module_el8.3.0+569+1bada2e4.x86_64 is filtered out by modular filtering
+  - package runc-1.0.0-64.rc10.module_el8.3.0+479+69e2ae26.x86_64 is filtered out by modular filtering
+(尝试在命令行中添加 '--allowerasing' 来替换冲突的软件包 或 '--skip-broken' 来跳过无法安装的软件包 或 '--nobest' 来不只使用最佳选择的软件包)
+```
+
+先查看containerd.io版本，是否有满足要求的版本（containerd.io >= 1.4.1），有就直接安装，没有就通过其他途径安装（如通过Centos7的RPM包进行安装）
+
+```
+$ yum list containerd.io --showduplicates | sort -r
+containerd.io.x86_64               1.4.4-3.1.el8                docker-ce-stable
+containerd.io.x86_64               1.4.3-3.2.el8                docker-ce-stable
+containerd.io.x86_64               1.4.3-3.1.el8                docker-ce-stable
+containerd.io.x86_64               1.3.9-3.1.el8                docker-ce-stable
+containerd.io.x86_64               1.3.7-3.1.el8                docker-ce-stable
+containerd.io.x86_64               1.2.6-3.3.el7                @@commandline
+$ sudo yum install containerd.io
+$ sudo yum install docker-ce
+```
+
+
+
 5.启动并加入开机启动
 
 ```
@@ -147,18 +184,27 @@ docker run -name=aosun-website -p 80:80\
 
 ### docker-compose 安装
 
-需要先安装python，如有请忽略此步骤，此处安装python2.x ，如需安装python3请自行安装
+Linux 上我们可以从 Github 上下载它的二进制包来使用，最新发行的版本地址：https://github.com/docker/compose/releases。
+
+运行以下命令以下载 Docker Compose 的当前稳定版本：
 
 ```
-$ yum -y install epel-release
-$ yum -y install python-pip
+## 要安装其他版本的 Compose，请替换 1.29.1。
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
 
-安装docker-compose
+将可执行权限应用于二进制文件,并创建软链：
 
 ```
-$ pip install docker-compose
-$ docker-compose version ## 查看版本
+$ sudo chmod +x /usr/local/bin/docker-compose
+$ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
+
+测试是否安装成功：
+
+```
+$ docker-compose --version
+docker-compose version 1.29.1, build c34c88b2
 ```
 
 

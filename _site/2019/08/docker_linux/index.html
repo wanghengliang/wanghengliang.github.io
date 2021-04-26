@@ -251,6 +251,39 @@ Available Packages
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum install &lt;FQPN&gt;  # 例如：sudo yum install docker-ce-19.03.1
 </code></pre></div></div>
 
+<p>4.1 centos8安装报错</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum install docker-ce
+上次元数据过期检查：0:00:14 前，执行于 2021年04月21日 星期三 05时58分41秒。
+错误：
+ 问题: package docker-ce-3:20.10.6-3.el8.x86_64 requires containerd.io &gt;= 1.4.1, but none of the providers can be installed
+  - package containerd.io-1.4.3-3.1.el8.x86_64 conflicts with runc provided by runc-1.0.0-70.rc92.module_el8.3.0+699+d61d9c41.x86_64
+  - package containerd.io-1.4.3-3.1.el8.x86_64 obsoletes runc provided by runc-1.0.0-70.rc92.module_el8.3.0+699+d61d9c41.x86_64
+  - package containerd.io-1.4.3-3.2.el8.x86_64 conflicts with runc provided by runc-1.0.0-70.rc92.module_el8.3.0+699+d61d9c41.x86_64
+  - package containerd.io-1.4.3-3.2.el8.x86_64 obsoletes runc provided by runc-1.0.0-70.rc92.module_el8.3.0+699+d61d9c41.x86_64
+  - package containerd.io-1.4.4-3.1.el8.x86_64 conflicts with runc provided by runc-1.0.0-70.rc92.module_el8.3.0+699+d61d9c41.x86_64
+  - package containerd.io-1.4.4-3.1.el8.x86_64 obsoletes runc provided by runc-1.0.0-70.rc92.module_el8.3.0+699+d61d9c41.x86_64
+  - problem with installed package buildah-1.16.7-4.module_el8.3.0+699+d61d9c41.x86_64
+  - package buildah-1.16.7-4.module_el8.3.0+699+d61d9c41.x86_64 requires runc &gt;= 1.0.0-26, but none of the providers can be installed
+  - cannot install the best candidate for the job
+  - package runc-1.0.0-56.rc5.dev.git2abd837.module_el8.3.0+569+1bada2e4.x86_64 is filtered out by modular filtering
+  - package runc-1.0.0-64.rc10.module_el8.3.0+479+69e2ae26.x86_64 is filtered out by modular filtering
+(尝试在命令行中添加 '--allowerasing' 来替换冲突的软件包 或 '--skip-broken' 来跳过无法安装的软件包 或 '--nobest' 来不只使用最佳选择的软件包)
+</code></pre></div></div>
+
+<p>先查看containerd.io版本，是否有满足要求的版本（containerd.io &gt;= 1.4.1），有就直接安装，没有就通过其他途径安装（如通过Centos7的RPM包进行安装）</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ yum list containerd.io --showduplicates | sort -r
+containerd.io.x86_64               1.4.4-3.1.el8                docker-ce-stable
+containerd.io.x86_64               1.4.3-3.2.el8                docker-ce-stable
+containerd.io.x86_64               1.4.3-3.1.el8                docker-ce-stable
+containerd.io.x86_64               1.3.9-3.1.el8                docker-ce-stable
+containerd.io.x86_64               1.3.7-3.1.el8                docker-ce-stable
+containerd.io.x86_64               1.2.6-3.3.el7                @@commandline
+$ sudo yum install containerd.io
+$ sudo yum install docker-ce
+</code></pre></div></div>
+
 <p>5.启动并加入开机启动</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo systemctl start docker
@@ -302,16 +335,24 @@ docker run -name=aosun-website -p 80:80\
 
 <h3 id="docker-compose-安装">docker-compose 安装</h3>
 
-<p>需要先安装python，如有请忽略此步骤，此处安装python2.x ，如需安装python3请自行安装</p>
+<p>Linux 上我们可以从 Github 上下载它的二进制包来使用，最新发行的版本地址：https://github.com/docker/compose/releases。</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ yum -y install epel-release
-$ yum -y install python-pip
+<p>运行以下命令以下载 Docker Compose 的当前稳定版本：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## 要安装其他版本的 Compose，请替换 1.29.1。
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 </code></pre></div></div>
 
-<p>安装docker-compose</p>
+<p>将可执行权限应用于二进制文件,并创建软链：</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pip install docker-compose
-$ docker-compose version ## 查看版本
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo chmod +x /usr/local/bin/docker-compose
+$ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+</code></pre></div></div>
+
+<p>测试是否安装成功：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker-compose --version
+docker-compose version 1.29.1, build c34c88b2
 </code></pre></div></div>
 
 
@@ -464,7 +505,7 @@ $ docker-compose version ## 查看版本
 
         <div class = "footer_div">  
            <p class="copyright text-muted">
-            Copyright &copy; hengliang 2020 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
+            Copyright &copy; hengliang 2021 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
             <iframe
                 style="margin-left: 2px; margin-bottom:-5px;"
                 frameborder="0" scrolling="0" width="91px" height="20px"

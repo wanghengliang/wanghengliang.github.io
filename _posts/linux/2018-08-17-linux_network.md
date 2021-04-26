@@ -30,6 +30,7 @@ TYPE=Ethernet
 BOOTPROTO=static
 HWADDR=00:0c:29:ce:3f:3c  #MAC地址
 IPADDR=192.168.1.104     #静态IP
+BROADCAST=192.168.1.255 #广播地址
 GATEWAY=192.168.1.2     #默认网关
 NETMASK=255.255.255.0    #子网掩码
 DNS1=192.168.1.2         #DNS配置
