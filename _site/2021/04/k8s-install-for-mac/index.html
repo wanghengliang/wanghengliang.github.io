@@ -201,9 +201,7 @@
   <li>查看kubernetes版本号</li>
 </ul>
 
-<blockquote>
-  <p>进入此开源项目查看images文件，查看版本是否和docker对应的kubernetes版本相同，Docker的Preferrences-&gt;Kubernetes可查看对应版本，我的是v1.19.7版本</p>
-</blockquote>
+<p>进入此开源项目查看images文件，查看版本是否和docker对应的kubernetes版本相同，Docker的Preferrences-&gt;Kubernetes可查看对应版本，我的是v1.19.7版本</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd k8s-docker-desktop-for-mac
 $ cat images
@@ -216,19 +214,14 @@ k8s.gcr.io/pause:3.2=gotok8s/pause:3.2
 k8s.gcr.io/etcd:3.4.13-0=gotok8s/etcd:3.4.13-0
 </code></pre></div></div>
 
-<blockquote>
-  <p>如果你的版本不同，可通过以下命令修改版本为v1.15.5</p>
-</blockquote>
+<p>如果你的版本不同，可通过以下命令修改版本为v1.15.5</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sed -i '' "s/v1.19.7/v1.15.5/g" images
 </code></pre></div></div>
 
 <ul>
   <li>拉取kubernetes镜像
-    <blockquote>
-      <p>然后通过此开源项目提供的脚本从 Docker Hub 的同步仓库中取回kubernetes镜像，并重新打上原始的tag.</p>
-    </blockquote>
-  </li>
+然后通过此开源项目提供的脚本从 Docker Hub 的同步仓库中取回kubernetes镜像，并重新打上原始的tag.</li>
 </ul>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./load_images.sh
@@ -238,11 +231,9 @@ k8s.gcr.io/etcd:3.4.13-0=gotok8s/etcd:3.4.13-0
   <li>拉取完成后再通过Docker设置中启用 Kubernetes 选项, 并等待一会儿，直到 Kubernetes 开始运行。</li>
 </ul>
 
-<blockquote>
-  <p>Docker的Preferrences-&gt;Kubernetes中勾选Enable Kubernetes，然后点击<code class="language-plaintext highlighter-rouge">Apply &amp; Restart</code>钮即可</p>
+<p>Docker的Preferrences-&gt;Kubernetes中勾选Enable Kubernetes，然后点击<code class="language-plaintext highlighter-rouge">Apply &amp; Restart</code>钮即可</p>
 
-  <p><img src="http://wanghengliang.cn/images/posts/k8s/mac_docker_kubernetes.png" alt="img" /></p>
-</blockquote>
+<p><img src="http://wanghengliang.cn/images/posts/k8s/mac_docker_kubernetes.png" alt="img" /></p>
 
 <ul>
   <li>验证 <code class="language-plaintext highlighter-rouge">Kubernetes</code> 集群状态</li>

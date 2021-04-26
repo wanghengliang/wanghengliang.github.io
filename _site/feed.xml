@@ -5,8 +5,8 @@
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 26 Apr 2021 14:58:55 +0800</pubDate>
-    <lastBuildDate>Mon, 26 Apr 2021 14:58:55 +0800</lastBuildDate>
+    <pubDate>Mon, 26 Apr 2021 15:06:44 +0800</pubDate>
+    <lastBuildDate>Mon, 26 Apr 2021 15:06:44 +0800</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
@@ -39,9 +39,7 @@
   &lt;li&gt;查看kubernetes版本号&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;进入此开源项目查看images文件，查看版本是否和docker对应的kubernetes版本相同，Docker的Preferrences-&amp;gt;Kubernetes可查看对应版本，我的是v1.19.7版本&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;进入此开源项目查看images文件，查看版本是否和docker对应的kubernetes版本相同，Docker的Preferrences-&amp;gt;Kubernetes可查看对应版本，我的是v1.19.7版本&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd k8s-docker-desktop-for-mac
 $ cat images
@@ -54,19 +52,14 @@ k8s.gcr.io/pause:3.2=gotok8s/pause:3.2
 k8s.gcr.io/etcd:3.4.13-0=gotok8s/etcd:3.4.13-0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;如果你的版本不同，可通过以下命令修改版本为v1.15.5&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;如果你的版本不同，可通过以下命令修改版本为v1.15.5&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sed -i '' &quot;s/v1.19.7/v1.15.5/g&quot; images
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;ul&gt;
   &lt;li&gt;拉取kubernetes镜像
-    &lt;blockquote&gt;
-      &lt;p&gt;然后通过此开源项目提供的脚本从 Docker Hub 的同步仓库中取回kubernetes镜像，并重新打上原始的tag.&lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
+然后通过此开源项目提供的脚本从 Docker Hub 的同步仓库中取回kubernetes镜像，并重新打上原始的tag.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ./load_images.sh
@@ -76,11 +69,9 @@ k8s.gcr.io/etcd:3.4.13-0=gotok8s/etcd:3.4.13-0
   &lt;li&gt;拉取完成后再通过Docker设置中启用 Kubernetes 选项, 并等待一会儿，直到 Kubernetes 开始运行。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Docker的Preferrences-&amp;gt;Kubernetes中勾选Enable Kubernetes，然后点击&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Apply &amp;amp; Restart&lt;/code&gt;钮即可&lt;/p&gt;
+&lt;p&gt;Docker的Preferrences-&amp;gt;Kubernetes中勾选Enable Kubernetes，然后点击&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Apply &amp;amp; Restart&lt;/code&gt;钮即可&lt;/p&gt;
 
-  &lt;p&gt;&lt;img src=&quot;http://wanghengliang.cn/images/posts/k8s/mac_docker_kubernetes.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;http://wanghengliang.cn/images/posts/k8s/mac_docker_kubernetes.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;验证 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Kubernetes&lt;/code&gt; 集群状态&lt;/li&gt;
