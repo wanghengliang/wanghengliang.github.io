@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>Apache License Version 2.0</title>
-  <meta name="description" content="                             Apache License                       Version 2.0, January 2004                    http://www.apache.org/licenses/">
+  <title>Typora数学模块</title>
+  <meta name="description" content="Typora数学模块">
   <meta name="author" content="leopardpan">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Apache License Version 2.0">
-  <meta name="twitter:description" content="                             Apache License                       Version 2.0, January 2004                    http://www.apache.org/licenses/">
+  <meta name="twitter:title" content="Typora数学模块">
+  <meta name="twitter:description" content="Typora数学模块">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Apache License Version 2.0">
-  <meta property="og:description" content="                             Apache License                       Version 2.0, January 2004                    http://www.apache.org/licenses/">
+  <meta property="og:title" content="Typora数学模块">
+  <meta property="og:description" content="Typora数学模块">
   
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link href="/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2017/09/Apache_License_Version_2.0/">
+  <link rel="canonical" href="http://localhost:4000/2021/07/typora_math_formula/">
   <link rel="alternate" type="application/rss+xml" title="奥尚生活" href="http://localhost:4000/feed.xml">
   
   <link rel="dns-prefetch" href="//cdn.mathjax.org" />
@@ -162,10 +162,10 @@
         <div class="content-wrapper__inner">
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
-    <h1 class="post-title">Apache License Version 2.0</h1>
+    <h1 class="post-title">Typora数学模块</h1>
     <div class="post-meta">
       <img src="/images/calendar.png" width="20px"/> 
-      <time datetime="2017-09-26 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2017-09-26</time>  
+      <time datetime="2021-07-19 00:00:00 +0800" itemprop="datePublished" class="post-meta__date date">2021-07-19</time>  
          
       <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
     </p>
@@ -173,222 +173,536 @@
   </header>
 
   <section class="post">
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                             Apache License
-                       Version 2.0, January 2004
-                    http://www.apache.org/licenses/
+    <p>Typora数学模块</p>
+
+<h3 id="1-打开typora数学模块">1. 打开Typora数学模块</h3>
+
+<ul>
+  <li>点击“段落”—&gt;“公式块”</li>
+  <li>快捷键Ctrl+Shift+m</li>
+  <li>“$$”+回车</li>
+</ul>
+
+<h3 id="2常用公式的代码">2.常用公式的代码</h3>
+
+<p><strong>上/下标</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>算式</th>
+      <th>Markdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$x^2$</td>
+      <td>x^2</td>
+    </tr>
+    <tr>
+      <td>$y_1$</td>
+      <td>y_1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>分式</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>算式</th>
+      <th>Markdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$1/2$</td>
+      <td>1/2</td>
+    </tr>
+    <tr>
+      <td>$\frac{1}{2}$</td>
+      <td>\frac{1}{2}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>省略号</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>省略号</th>
+      <th>Markdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$\cdots$</td>
+      <td>\cdots</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>开根号</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>算式</th>
+      <th>Markdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$\sqrt{2}$</td>
+      <td>\sqrt{2}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>矢量</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>算式</th>
+      <th>Markdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$\vec{a}$</td>
+      <td>\vec{a}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>积分</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>算式</th>
+      <th>Markdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$\int{x}dx$</td>
+      <td>\int{x}dx</td>
+    </tr>
+    <tr>
+      <td>$\int_{1}^{2}{x}dx$</td>
+      <td>\int_{1}^{2}{x}dx</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>极限</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>算式</th>
+      <th>Markdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$\lim{a+b}$</td>
+      <td>\lim{a+b}</td>
+    </tr>
+    <tr>
+      <td>$\lim_{n\rightarrow+\infty}$</td>
+      <td>\lim_{n\rightarrow+\infty}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>累加</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>算式</th>
+      <th>Markdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$\sum{a}$</td>
+      <td>\sum{a}</td>
+    </tr>
+    <tr>
+      <td>$\sum_{n=1}^{100}{a_n}$</td>
+      <td>\sum_{n=1}^{100}{a_n}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>累乘</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>算式</th>
+      <th>Markdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$\prod{x}$</td>
+      <td>\prod{x}</td>
+    </tr>
+    <tr>
+      <td>$\prod_{n=1}^{99}{x_n}$</td>
+      <td>\prod_{n=1}^{99}{x_n}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>希腊字母</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>大写</th>
+      <th>Markdown</th>
+      <th>小写</th>
+      <th>Markdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$A$</td>
+      <td>A</td>
+      <td>$\alpha$</td>
+      <td>\alpha</td>
+    </tr>
+    <tr>
+      <td>$B$</td>
+      <td>B</td>
+      <td>$\beta$</td>
+      <td>\beta</td>
+    </tr>
+    <tr>
+      <td>$\Gamma$</td>
+      <td>\Gamma</td>
+      <td>$\gamma$</td>
+      <td>\gamma</td>
+    </tr>
+    <tr>
+      <td>$\Delta$</td>
+      <td>\Delta</td>
+      <td>$\delta$</td>
+      <td>\delta</td>
+    </tr>
+    <tr>
+      <td>$E$</td>
+      <td>E</td>
+      <td>$\epsilon$</td>
+      <td>\epsilon</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td>$\varepsilon$</td>
+      <td>\varepsilon</td>
+    </tr>
+    <tr>
+      <td>$Z$</td>
+      <td>Z</td>
+      <td>$\zeta$</td>
+      <td>\zeta</td>
+    </tr>
+    <tr>
+      <td>$H$</td>
+      <td>H</td>
+      <td>$\eta$</td>
+      <td>\eta</td>
+    </tr>
+    <tr>
+      <td>$\Theta$</td>
+      <td>\Theta</td>
+      <td>$\theta$</td>
+      <td>\theta</td>
+    </tr>
+    <tr>
+      <td>$I$</td>
+      <td>I</td>
+      <td>$\iota$</td>
+      <td>\iota</td>
+    </tr>
+    <tr>
+      <td>$K$</td>
+      <td>K</td>
+      <td>$\kappa$</td>
+      <td>\kappa</td>
+    </tr>
+    <tr>
+      <td>$\Lambda$</td>
+      <td>\Lambda</td>
+      <td>$\lambda$</td>
+      <td>\lambda</td>
+    </tr>
+    <tr>
+      <td>$M$</td>
+      <td>M</td>
+      <td>$\mu$</td>
+      <td>\mu</td>
+    </tr>
+    <tr>
+      <td>$\nu$</td>
+      <td>N</td>
+      <td>$\nu$</td>
+      <td>\nu</td>
+    </tr>
+    <tr>
+      <td>$\Xi$</td>
+      <td>\Xi</td>
+      <td>$\xi$</td>
+      <td>\xi</td>
+    </tr>
+    <tr>
+      <td>$O$</td>
+      <td>O</td>
+      <td>$\omicron$</td>
+      <td>\omicron</td>
+    </tr>
+    <tr>
+      <td>$\Pi$</td>
+      <td>\Pi</td>
+      <td>$\pi$</td>
+      <td>\pi</td>
+    </tr>
+    <tr>
+      <td>$P$</td>
+      <td>P</td>
+      <td>$\rho$</td>
+      <td>\rho</td>
+    </tr>
+    <tr>
+      <td>$\Sigma$</td>
+      <td>\Sigma</td>
+      <td>$\sigma$</td>
+      <td>\sigma</td>
+    </tr>
+    <tr>
+      <td>$T$</td>
+      <td>T</td>
+      <td>$\tau$</td>
+      <td>\tau</td>
+    </tr>
+    <tr>
+      <td>$\Upsilon$</td>
+      <td>\Upsilon</td>
+      <td>$\upsilon$</td>
+      <td>\upsilon</td>
+    </tr>
+    <tr>
+      <td>$\Phi$</td>
+      <td>\Phi</td>
+      <td>$\phi$</td>
+      <td>\phi</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td>$\varphi$</td>
+      <td>\varphi</td>
+    </tr>
+    <tr>
+      <td>$X$</td>
+      <td>X</td>
+      <td>$\chi$</td>
+      <td>\chi</td>
+    </tr>
+    <tr>
+      <td>$\Psi$</td>
+      <td>\Psi</td>
+      <td>$\psi$</td>
+      <td>\psi</td>
+    </tr>
+    <tr>
+      <td>$\Omega$</td>
+      <td>\Omega</td>
+      <td>$\omega$</td>
+      <td>\omega</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>三角函数</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>三角函数</th>
+      <th>Markdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$\sin$</td>
+      <td>\sin</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>对数函数</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>算式</th>
+      <th>Markdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$\ln2$</td>
+      <td>\ln2</td>
+    </tr>
+    <tr>
+      <td>$\log_28$</td>
+      <td>\log_28</td>
+    </tr>
+    <tr>
+      <td>$\lg10$</td>
+      <td>\lg10</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>关系运算符</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>运算符</th>
+      <th>Markdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$\pm$</td>
+      <td>\pm</td>
+    </tr>
+    <tr>
+      <td>$\times$</td>
+      <td>\times</td>
+    </tr>
+    <tr>
+      <td>$\cdot$</td>
+      <td>\cdot</td>
+    </tr>
+    <tr>
+      <td>$\div$</td>
+      <td>\div</td>
+    </tr>
+    <tr>
+      <td>$\neq$</td>
+      <td>\neq</td>
+    </tr>
+    <tr>
+      <td>$\equiv$</td>
+      <td>\equiv</td>
+    </tr>
+    <tr>
+      <td>$\leq$</td>
+      <td>\leq</td>
+    </tr>
+    <tr>
+      <td>$\geq$</td>
+      <td>\geq</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>其它特殊字符</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>符号</th>
+      <th>Markdown</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$\forall$</td>
+      <td>\forall</td>
+    </tr>
+    <tr>
+      <td>$\infty$</td>
+      <td>\infty</td>
+    </tr>
+    <tr>
+      <td>$\emptyset$</td>
+      <td>\emptyset</td>
+    </tr>
+    <tr>
+      <td>$\exists$</td>
+      <td>\exists</td>
+    </tr>
+    <tr>
+      <td>$\nabla$</td>
+      <td>\nabla</td>
+    </tr>
+    <tr>
+      <td>$bot$</td>
+      <td>\bot</td>
+    </tr>
+    <tr>
+      <td>$\angle$</td>
+      <td>\angle</td>
+    </tr>
+    <tr>
+      <td>$\because$</td>
+      <td>\because</td>
+    </tr>
+    <tr>
+      <td>$\therefore$</td>
+      <td>\therefore</td>
+    </tr>
+    <tr>
+      <td>空格 $\quad$</td>
+      <td>\quad</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>花括号</strong>
+\(c(u)=\begin{cases} \sqrt\frac{1}{N}，u=0\\ \sqrt\frac{2}{N}， u\neq0\end{cases}\)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c(u) = \begin{cases} 
+    \sqrt\frac{1}{N}，u=0\\ 
+    \sqrt\frac{2}{N}，u\neq0
+\end{cases} 
 </code></pre></div></div>
 
-<p>TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION</p>
+<p><strong>矩阵</strong></p>
 
-<ol>
-  <li>
-    <p>Definitions.</p>
+\[a = \left[
+\matrix{
+  \alpha_1 &amp; test1\\
+  \alpha_2 &amp; test2\\
+  \alpha_3 &amp; test3  
+}
+\right]\]
 
-    <p>“License” shall mean the terms and conditions for use, reproduction,
-and distribution as defined by Sections 1 through 9 of this document.</p>
-
-    <p>“Licensor” shall mean the copyright owner or entity authorized by
-the copyright owner that is granting the License.</p>
-
-    <p>“Legal Entity” shall mean the union of the acting entity and all
-other entities that control, are controlled by, or are under common
-control with that entity. For the purposes of this definition,
-“control” means (i) the power, direct or indirect, to cause the
-direction or management of such entity, whether by contract or
-otherwise, or (ii) ownership of fifty percent (50%) or more of the
-outstanding shares, or (iii) beneficial ownership of such entity.</p>
-
-    <p>“You” (or “Your”) shall mean an individual or Legal Entity
-exercising permissions granted by this License.</p>
-
-    <p>“Source” form shall mean the preferred form for making modifications,
-including but not limited to software source code, documentation
-source, and configuration files.</p>
-
-    <p>“Object” form shall mean any form resulting from mechanical
-transformation or translation of a Source form, including but
-not limited to compiled object code, generated documentation,
-and conversions to other media types.</p>
-
-    <p>“Work” shall mean the work of authorship, whether in Source or
-Object form, made available under the License, as indicated by a
-copyright notice that is included in or attached to the work
-(an example is provided in the Appendix below).</p>
-
-    <p>“Derivative Works” shall mean any work, whether in Source or Object
-form, that is based on (or derived from) the Work and for which the
-editorial revisions, annotations, elaborations, or other modifications
-represent, as a whole, an original work of authorship. For the purposes
-of this License, Derivative Works shall not include works that remain
-separable from, or merely link (or bind by name) to the interfaces of,
-the Work and Derivative Works thereof.</p>
-
-    <p>“Contribution” shall mean any work of authorship, including
-the original version of the Work and any modifications or additions
-to that Work or Derivative Works thereof, that is intentionally
-submitted to Licensor for inclusion in the Work by the copyright owner
-or by an individual or Legal Entity authorized to submit on behalf of
-the copyright owner. For the purposes of this definition, “submitted”
-means any form of electronic, verbal, or written communication sent
-to the Licensor or its representatives, including but not limited to
-communication on electronic mailing lists, source code control systems,
-and issue tracking systems that are managed by, or on behalf of, the
-Licensor for the purpose of discussing and improving the Work, but
-excluding communication that is conspicuously marked or otherwise
-designated in writing by the copyright owner as “Not a Contribution.”</p>
-
-    <p>“Contributor” shall mean Licensor and any individual or Legal Entity
-on behalf of whom a Contribution has been received by Licensor and
-subsequently incorporated within the Work.</p>
-  </li>
-  <li>
-    <p>Grant of Copyright License. Subject to the terms and conditions of
-this License, each Contributor hereby grants to You a perpetual,
-worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-copyright license to reproduce, prepare Derivative Works of,
-publicly display, publicly perform, sublicense, and distribute the
-Work and such Derivative Works in Source or Object form.</p>
-  </li>
-  <li>
-    <p>Grant of Patent License. Subject to the terms and conditions of
-this License, each Contributor hereby grants to You a perpetual,
-worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-(except as stated in this section) patent license to make, have made,
-use, offer to sell, sell, import, and otherwise transfer the Work,
-where such license applies only to those patent claims licensable
-by such Contributor that are necessarily infringed by their
-Contribution(s) alone or by combination of their Contribution(s)
-with the Work to which such Contribution(s) was submitted. If You
-institute patent litigation against any entity (including a
-cross-claim or counterclaim in a lawsuit) alleging that the Work
-or a Contribution incorporated within the Work constitutes direct
-or contributory patent infringement, then any patent licenses
-granted to You under this License for that Work shall terminate
-as of the date such litigation is filed.</p>
-  </li>
-  <li>
-    <p>Redistribution. You may reproduce and distribute copies of the
-Work or Derivative Works thereof in any medium, with or without
-modifications, and in Source or Object form, provided that You
-meet the following conditions:</p>
-
-    <p>(a) You must give any other recipients of the Work or
-    Derivative Works a copy of this License; and</p>
-
-    <p>(b) You must cause any modified files to carry prominent notices
-    stating that You changed the files; and</p>
-
-    <p>(c) You must retain, in the Source form of any Derivative Works
-    that You distribute, all copyright, patent, trademark, and
-    attribution notices from the Source form of the Work,
-    excluding those notices that do not pertain to any part of
-    the Derivative Works; and</p>
-
-    <p>(d) If the Work includes a “NOTICE” text file as part of its
-    distribution, then any Derivative Works that You distribute must
-    include a readable copy of the attribution notices contained
-    within such NOTICE file, excluding those notices that do not
-    pertain to any part of the Derivative Works, in at least one
-    of the following places: within a NOTICE text file distributed
-    as part of the Derivative Works; within the Source form or
-    documentation, if provided along with the Derivative Works; or,
-    within a display generated by the Derivative Works, if and
-    wherever such third-party notices normally appear. The contents
-    of the NOTICE file are for informational purposes only and
-    do not modify the License. You may add Your own attribution
-    notices within Derivative Works that You distribute, alongside
-    or as an addendum to the NOTICE text from the Work, provided
-    that such additional attribution notices cannot be construed
-    as modifying the License.</p>
-
-    <p>You may add Your own copyright statement to Your modifications and
-may provide additional or different license terms and conditions
-for use, reproduction, or distribution of Your modifications, or
-for any such Derivative Works as a whole, provided Your use,
-reproduction, and distribution of the Work otherwise complies with
-the conditions stated in this License.</p>
-  </li>
-  <li>
-    <p>Submission of Contributions. Unless You explicitly state otherwise,
-any Contribution intentionally submitted for inclusion in the Work
-by You to the Licensor shall be under the terms and conditions of
-this License, without any additional terms or conditions.
-Notwithstanding the above, nothing herein shall supersede or modify
-the terms of any separate license agreement you may have executed
-with Licensor regarding such Contributions.</p>
-  </li>
-  <li>
-    <p>Trademarks. This License does not grant permission to use the trade
-names, trademarks, service marks, or product names of the Licensor,
-except as required for reasonable and customary use in describing the
-origin of the Work and reproducing the content of the NOTICE file.</p>
-  </li>
-  <li>
-    <p>Disclaimer of Warranty. Unless required by applicable law or
-agreed to in writing, Licensor provides the Work (and each
-Contributor provides its Contributions) on an “AS IS” BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-implied, including, without limitation, any warranties or conditions
-of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
-PARTICULAR PURPOSE. You are solely responsible for determining the
-appropriateness of using or redistributing the Work and assume any
-risks associated with Your exercise of permissions under this License.</p>
-  </li>
-  <li>
-    <p>Limitation of Liability. In no event and under no legal theory,
-whether in tort (including negligence), contract, or otherwise,
-unless required by applicable law (such as deliberate and grossly
-negligent acts) or agreed to in writing, shall any Contributor be
-liable to You for damages, including any direct, indirect, special,
-incidental, or consequential damages of any character arising as a
-result of this License or out of the use or inability to use the
-Work (including but not limited to damages for loss of goodwill,
-work stoppage, computer failure or malfunction, or any and all
-other commercial damages or losses), even if such Contributor
-has been advised of the possibility of such damages.</p>
-  </li>
-  <li>
-    <p>Accepting Warranty or Additional Liability. While redistributing
-the Work or Derivative Works thereof, You may choose to offer,
-and charge a fee for, acceptance of support, warranty, indemnity,
-or other liability obligations and/or rights consistent with this
-License. However, in accepting such obligations, You may act only
-on Your own behalf and on Your sole responsibility, not on behalf
-of any other Contributor, and only if You agree to indemnify,
-defend, and hold each Contributor harmless for any liability
-incurred by, or claims asserted against, such Contributor by reason
-of your accepting any such warranty or additional liability.</p>
-  </li>
-</ol>
-
-<p>END OF TERMS AND CONDITIONS</p>
-
-<p>APPENDIX: How to apply the Apache License to your work.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  To apply the Apache License to your work, attach the following
-  boilerplate notice, with the fields enclosed by brackets "{}"
-  replaced with your own identifying information. (Don't include
-  the brackets!)  The text should be enclosed in the appropriate
-  comment syntax for the file format. We also recommend that a
-  file or class name and description of purpose be included on the
-  same "printed page" as the copyright notice for easier
-  identification within third-party archives.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$$
+a = \left[
+\matrix{
+  \alpha_1 &amp; test1\\
+  \alpha_2 &amp; test2\\
+  \alpha_3 &amp; test3 
+}
+\right]
+$$
 </code></pre></div></div>
 
-<p>Copyright {yyyy} {name of copyright owner}</p>
-
-<p>Licensed under the Apache License, Version 2.0 (the “License”);
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   http://www.apache.org/licenses/LICENSE-2.0
-</code></pre></div></div>
-
-<p>Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an “AS IS” BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.</p>
 
 
   </section>
@@ -458,13 +772,13 @@ of your accepting any such warranty or additional liability.</p>
        <ul class="pager">
         
         <li class="previous">
-            <a href="/2017/09/gitbook/" data-toggle="tooltip" data-placement="top" title="Mac安装Gitbook并导出电子书">上一篇：  <span>Mac安装Gitbook并导出电子书</span>
+            <a href="/2021/07/arcgis_server/" data-toggle="tooltip" data-placement="top" title="ArcGIS服务发布和调用">上一篇：  <span>ArcGIS服务发布和调用</span>
             </a>
         </li>
         
         
         <li class="next">
-            <a href="/2017/09/Apache_License_Version_2.0_zh/" data-toggle="tooltip" data-placement="top" title="Apache许可证2.0 中文版">下一篇：  <span>Apache许可证2.0 中文版</span>
+            <a href="/2021/07/typora_flow/" data-toggle="tooltip" data-placement="top" title="typora流程图">下一篇：  <span>typora流程图</span>
             </a>
         </li>
         

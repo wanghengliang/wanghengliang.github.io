@@ -25,7 +25,7 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="canonical" href="http://localhost:4000/2021/01/vim_keymap/">
-  <link rel="alternate" type="application/rss+xml" title="hengliang" href="http://localhost:4000/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="奥尚生活" href="http://localhost:4000/feed.xml">
   
   <link rel="dns-prefetch" href="//cdn.mathjax.org" />
   
@@ -94,13 +94,13 @@
     <div class="panel-main__content">
         <!-- 头像效果-start -->
         <div class="ih-item circle effect right_to_left">            
-            <a href="/#blog" title="前往 hengliang 的主页" class="blog-button">
+            <a href="/#blog" title="前往 奥尚生活 的主页" class="blog-button">
                 <div class="img"><img src="/images/avatar.jpg" alt="img"></div>
                 <div class="info">
                     <div class="info-back">
                         <h2> 
                             
-                                hengliang
+                                奥尚生活
                             
                         </h2>
                         <p>
@@ -113,7 +113,7 @@
             </a>
         </div>
         <!-- 头像效果-end -->
-        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for hengliang" class="blog-button">hengliang</a></h1>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 奥尚生活" class="blog-button">奥尚生活</a></h1>
         
         <span class="panel-cover__subtitle panel-subtitle">个人站</span>
         
@@ -177,6 +177,8 @@
 
 <h3 id="vim快捷键">Vim快捷键</h3>
 
+<h4 id="退出vim">退出VIM</h4>
+
 <table>
   <thead>
     <tr>
@@ -187,9 +189,153 @@
   </thead>
   <tbody>
     <tr>
-      <td>^ Space</td>
-      <td>Basic code completion (the name of any class, method or variable)</td>
-      <td>？基本的代码补全</td>
+      <td>:q</td>
+      <td>直接退出（无更改）</td>
+      <td>直接退出（无更改）</td>
+    </tr>
+    <tr>
+      <td>:wq</td>
+      <td>保存退出</td>
+      <td>保存退出</td>
+    </tr>
+    <tr>
+      <td>:q!</td>
+      <td>放弃修改，强行退出</td>
+      <td>放弃修改，强行退出</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="模式正常模式命令模式插入模式可视模式">模式：正常模式、命令模式、插入模式、可视模式</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>命令模式</td>
+      <td>command-mode</td>
+      <td>用于输入指令，如：保存、运行、切换标签、切割屏幕等</td>
+    </tr>
+    <tr>
+      <td>插入模式</td>
+      <td>insert-mode</td>
+      <td>也即编辑模式，用于编辑文本</td>
+    </tr>
+    <tr>
+      <td>可视模式</td>
+      <td>visual-mode</td>
+      <td>相当于高亮选取文本后的正常模式</td>
+    </tr>
+    <tr>
+      <td>正常模式</td>
+      <td>normal-mode</td>
+      <td>用于查看文本，也可复制、粘贴、撤销、重做等</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="模式之间切换">模式之间切换</h4>
+
+<ul>
+  <li>
+    <p>其它模式=&gt;正常模式
+<code class="language-plaintext highlighter-rouge">ESC</code></p>
+  </li>
+  <li>
+    <p>正常模式=&gt;插入模式
+| 指令           | 描述                             |
+| ————– | ——————————– |
+| a              | 光标所在下一个位置插入           |
+| A              | 光标所在行末尾插入               |
+| s              | 删除光标所在字符并插入           |
+| S              | 删除光标所在行并插入             |
+| o              | 光标所在下一行插入               |
+| O              | 光标所在上一行插入               |
+| i              | 光标所在位置插入                 |
+| I              | 光标所在行首插入                 |
+| R              | 光标所在位置替换                 |
+| cw             | 删除光标所在位置到单词末尾并插入 |
+| ch（c+左箭头） | 删除上一个字符插入               |
+| cj（c+下箭头） | 删除当前行和下一行插入           |
+| ck（c+上箭头） | 删除当前行和上一行插入           |
+| cl（c+右箭头） | 删除下一个字符插入               |
+| 其它未尽指令   | 其它                             |</p>
+  </li>
+  <li>
+    <p>正常模式=&gt;命令模式
+<code class="language-plaintext highlighter-rouge">:</code></p>
+  </li>
+  <li>
+    <p>正常模式=&gt;可视模式
+| 指令    | 描述                 |
+| ——- | ——————– |
+| v       | 可视模式             |
+| ctrl+v  | 可视块模式           |
+| shift+v | 可视行模式           |</p>
+  </li>
+</ul>
+
+<h4 id="移动和范围选择">移动和范围选择</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>快捷键</th>
+      <th>功能描述</th>
+      <th>中文描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>v</td>
+      <td>选择模式</td>
+      <td>选择文本</td>
+    </tr>
+    <tr>
+      <td>&gt;</td>
+      <td>缩进</td>
+      <td>选中文本后进行缩进</td>
+    </tr>
+    <tr>
+      <td>&lt;</td>
+      <td>缩进</td>
+      <td>选中文本后进行缩进</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
@@ -363,7 +509,7 @@
 
         <div class = "footer_div">  
            <p class="copyright text-muted">
-            Copyright &copy; hengliang 2021 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
+            Copyright &copy; 奥尚生活 2021 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
             <iframe
                 style="margin-left: 2px; margin-bottom:-5px;"
                 frameborder="0" scrolling="0" width="91px" height="20px"
@@ -379,7 +525,6 @@
             <span id="busuanzi_value_site_pv"></span>次
           </span> -->
           <!-- 备案信息 -->
-          
           <span id="busuanzi_container_site_pv">蜀ICP备09035688号</span>
 
         </div>

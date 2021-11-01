@@ -25,7 +25,7 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="canonical" href="http://localhost:4000/2018/10/java_bit_operation/">
-  <link rel="alternate" type="application/rss+xml" title="hengliang" href="http://localhost:4000/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="奥尚生活" href="http://localhost:4000/feed.xml">
   
   <link rel="dns-prefetch" href="//cdn.mathjax.org" />
   
@@ -94,13 +94,13 @@
     <div class="panel-main__content">
         <!-- 头像效果-start -->
         <div class="ih-item circle effect right_to_left">            
-            <a href="/#blog" title="前往 hengliang 的主页" class="blog-button">
+            <a href="/#blog" title="前往 奥尚生活 的主页" class="blog-button">
                 <div class="img"><img src="/images/avatar.jpg" alt="img"></div>
                 <div class="info">
                     <div class="info-back">
                         <h2> 
                             
-                                hengliang
+                                奥尚生活
                             
                         </h2>
                         <p>
@@ -113,7 +113,7 @@
             </a>
         </div>
         <!-- 头像效果-end -->
-        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for hengliang" class="blog-button">hengliang</a></h1>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 奥尚生活" class="blog-button">奥尚生活</a></h1>
         
         <span class="panel-cover__subtitle panel-subtitle">个人站</span>
         
@@ -267,9 +267,9 @@
 5 ^ 3 = 0000 0000 0000 0000 0000 0000 0000 0110 = 6
 </code></pre></div></div>
 
-<h4 id="a小应用">A.小应用</h4>
+<h4 id="小应用">小应用</h4>
 
-<p>一个数字标识位表示多种逻辑,例如：一个任务可分成n个独立小任务，每个小任务之间不分先后顺序，当所有小任务完成则表示此任务完成。</p>
+<p>A. 一个数字标识位表示多种逻辑,例如：一个任务可分成n个独立小任务，每个小任务之间不分先后顺序，当所有小任务完成则表示此任务完成。比较用 <code class="language-plaintext highlighter-rouge">&amp;</code> ，加用<code class="language-plaintext highlighter-rouge"> | </code></p>
 
 <p>如果n=3，则将3个小任务分别用$2^0$ , $2^1$ , $2^2$即1,2,4表示</p>
 
@@ -293,6 +293,33 @@ select * from tbl_task where status&amp;2=0;
 select * from tbl_task where status&amp;2=2;
 
 </code></pre></div></div>
+
+<p>B. 利用异或运算的自反性交换两个数</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public void exchange(int a, int b) {
+	a ^= b;
+	b ^= a;
+	a ^= b;
+}
+</code></pre></div></div>
+
+<p>C.一个数组存放若干整数，一个数出现奇数次，其余数均出现偶数次，找出这个出现奇数次的数？</p>
+
+<p>最直接的办法就是<strong>把所有数异或 (奇数个异或是本身，偶数个是0)</strong></p>
+
+<p>D.1-1000放在含有1001个元素的数组中，只有唯一的一个元素值重复，其它均只出现一次。每个数组元素只能访问一次，设计一个算法，将它找出来；不用辅助存储空间，能否设计一个算法实现？</p>
+
+<p><strong>解法一</strong>：将所有数加起来，减去1+2+…+1000的和。</p>
+
+<p>这个算法已经足够完美了，相信出题者的标准答案也就是这个算法，唯一的问题是，如果数列过大，则可能会导致溢出。
+<strong>解法二</strong>：异或就没有这个问题，并且性能更好。将所有的数全部异或，得到的结果与1^2^3^…^1000的结果进行异或，得到的结果就是重复数。</p>
+
+<p>解法一很显然，解法二需要证明一下：</p>
+
+<p>前面提到异或具有交换律和结合律，所以1^2^…^n^…^n^…^1000^，无论这两个n出现在什么位置，都可以转换成为1^2^…^1000^(n^n)的形式。 其次，对于任何数x，都有x^x=0，x^0=x。 所以1^2^…^n^…^n^…^1000 = 1^2^…^1000^(n^n)= 1^2^…^1000^0 = 1^2^…^1000（即序列中除了n的所有数的异或）。 令，1^2^…^n^..^1000（序列中包含一个n）的结果为T
+则1^2^..^n^..^n^..^1000^（序列中包含2个n）的结果就是T^n。
+T^(T^n)=n。
+所以，将所有的数全部异或，得到的结果与1^2^3^…^1000的结果进行异或，得到的结果就是重复数。</p>
 
 <h3 id="移位运算符">移位运算符</h3>
 
@@ -480,7 +507,7 @@ System.out.println(-5 &gt;&gt;&gt; 3);// 结果是536870911
 
         <div class = "footer_div">  
            <p class="copyright text-muted">
-            Copyright &copy; hengliang 2021 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
+            Copyright &copy; 奥尚生活 2021 Theme by <a href="http://wanghengliang.cn/">hengliang</a> |
             <iframe
                 style="margin-left: 2px; margin-bottom:-5px;"
                 frameborder="0" scrolling="0" width="91px" height="20px"
@@ -496,7 +523,6 @@ System.out.println(-5 &gt;&gt;&gt; 3);// 结果是536870911
             <span id="busuanzi_value_site_pv"></span>次
           </span> -->
           <!-- 备案信息 -->
-          
           <span id="busuanzi_container_site_pv">蜀ICP备09035688号</span>
 
         </div>

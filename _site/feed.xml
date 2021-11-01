@@ -1,13 +1,607 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>hengliang</title>
+    <title>奥尚生活</title>
     <description>快乐地创造和品味生活</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 26 Apr 2021 15:06:44 +0800</pubDate>
-    <lastBuildDate>Mon, 26 Apr 2021 15:06:44 +0800</lastBuildDate>
+    <pubDate>Mon, 01 Nov 2021 13:23:21 +0800</pubDate>
+    <lastBuildDate>Mon, 01 Nov 2021 13:23:21 +0800</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
+    
+      <item>
+        <title>typora流程图</title>
+        <description>&lt;p&gt;typora流程图&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-flow&quot;&gt;st=&amp;gt;start: 开始
+
+cfg_reading_meter_list=&amp;gt;operation: 配置抄表册
+cfg_reading_meter_list_order=&amp;gt;operation: 配置抄表顺序
+create_reading_plan=&amp;gt;operation: 生成抄表计划
+exec_reading_meter=&amp;gt;operation: APP端抄表
+analyse_reading_meter=&amp;gt;operation: 抄表数据分析
+cond1=&amp;gt;condition: 抄表数据是否异常？
+sync_marketing_system=&amp;gt;operation: 同步至营销系统
+data_check=&amp;gt;operation: 进入审核流程
+cond2=&amp;gt;condition: 是否需要质检？
+sumit_quality_check=&amp;gt;operation: 提交质检工单
+quality_check=&amp;gt;subroutine: 进入质检子流程
+sumit_check=&amp;gt;operation: 提交审核记录
+e=&amp;gt;end: 结束
+
+st-&amp;gt;cfg_reading_meter_list-&amp;gt;create_reading_plan
+create_reading_plan-&amp;gt;exec_reading_meter
+exec_reading_meter-&amp;gt;analyse_reading_meter-&amp;gt;cond1
+
+cond1(no)-&amp;gt;sync_marketing_system-&amp;gt;e
+cond1(yes)-&amp;gt;data_check-&amp;gt;cond2
+
+cond2(no)-&amp;gt;sumit_check-&amp;gt;e
+cond2(yes)-&amp;gt;quality_check-&amp;gt;sumit_check(right)-&amp;gt;sync_marketing_system
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+        <pubDate>Wed, 21 Jul 2021 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2021/07/typora_flow/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/07/typora_flow/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Typora数学模块</title>
+        <description>&lt;p&gt;Typora数学模块&lt;/p&gt;
+
+&lt;h3 id=&quot;1-打开typora数学模块&quot;&gt;1. 打开Typora数学模块&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;点击“段落”—&amp;gt;“公式块”&lt;/li&gt;
+  &lt;li&gt;快捷键Ctrl+Shift+m&lt;/li&gt;
+  &lt;li&gt;“$$”+回车&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2常用公式的代码&quot;&gt;2.常用公式的代码&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;上/下标&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;算式&lt;/th&gt;
+      &lt;th&gt;Markdown&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$x^2$&lt;/td&gt;
+      &lt;td&gt;x^2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$y_1$&lt;/td&gt;
+      &lt;td&gt;y_1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;分式&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;算式&lt;/th&gt;
+      &lt;th&gt;Markdown&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$1/2$&lt;/td&gt;
+      &lt;td&gt;1/2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\frac{1}{2}$&lt;/td&gt;
+      &lt;td&gt;\frac{1}{2}&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;省略号&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;省略号&lt;/th&gt;
+      &lt;th&gt;Markdown&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\cdots$&lt;/td&gt;
+      &lt;td&gt;\cdots&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;开根号&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;算式&lt;/th&gt;
+      &lt;th&gt;Markdown&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\sqrt{2}$&lt;/td&gt;
+      &lt;td&gt;\sqrt{2}&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;矢量&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;算式&lt;/th&gt;
+      &lt;th&gt;Markdown&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\vec{a}$&lt;/td&gt;
+      &lt;td&gt;\vec{a}&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;积分&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;算式&lt;/th&gt;
+      &lt;th&gt;Markdown&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\int{x}dx$&lt;/td&gt;
+      &lt;td&gt;\int{x}dx&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\int_{1}^{2}{x}dx$&lt;/td&gt;
+      &lt;td&gt;\int_{1}^{2}{x}dx&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;极限&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;算式&lt;/th&gt;
+      &lt;th&gt;Markdown&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\lim{a+b}$&lt;/td&gt;
+      &lt;td&gt;\lim{a+b}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\lim_{n\rightarrow+\infty}$&lt;/td&gt;
+      &lt;td&gt;\lim_{n\rightarrow+\infty}&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;累加&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;算式&lt;/th&gt;
+      &lt;th&gt;Markdown&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\sum{a}$&lt;/td&gt;
+      &lt;td&gt;\sum{a}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\sum_{n=1}^{100}{a_n}$&lt;/td&gt;
+      &lt;td&gt;\sum_{n=1}^{100}{a_n}&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;累乘&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;算式&lt;/th&gt;
+      &lt;th&gt;Markdown&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\prod{x}$&lt;/td&gt;
+      &lt;td&gt;\prod{x}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\prod_{n=1}^{99}{x_n}$&lt;/td&gt;
+      &lt;td&gt;\prod_{n=1}^{99}{x_n}&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;希腊字母&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;大写&lt;/th&gt;
+      &lt;th&gt;Markdown&lt;/th&gt;
+      &lt;th&gt;小写&lt;/th&gt;
+      &lt;th&gt;Markdown&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$A$&lt;/td&gt;
+      &lt;td&gt;A&lt;/td&gt;
+      &lt;td&gt;$\alpha$&lt;/td&gt;
+      &lt;td&gt;\alpha&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$B$&lt;/td&gt;
+      &lt;td&gt;B&lt;/td&gt;
+      &lt;td&gt;$\beta$&lt;/td&gt;
+      &lt;td&gt;\beta&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\Gamma$&lt;/td&gt;
+      &lt;td&gt;\Gamma&lt;/td&gt;
+      &lt;td&gt;$\gamma$&lt;/td&gt;
+      &lt;td&gt;\gamma&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\Delta$&lt;/td&gt;
+      &lt;td&gt;\Delta&lt;/td&gt;
+      &lt;td&gt;$\delta$&lt;/td&gt;
+      &lt;td&gt;\delta&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$E$&lt;/td&gt;
+      &lt;td&gt;E&lt;/td&gt;
+      &lt;td&gt;$\epsilon$&lt;/td&gt;
+      &lt;td&gt;\epsilon&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;$\varepsilon$&lt;/td&gt;
+      &lt;td&gt;\varepsilon&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$Z$&lt;/td&gt;
+      &lt;td&gt;Z&lt;/td&gt;
+      &lt;td&gt;$\zeta$&lt;/td&gt;
+      &lt;td&gt;\zeta&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$H$&lt;/td&gt;
+      &lt;td&gt;H&lt;/td&gt;
+      &lt;td&gt;$\eta$&lt;/td&gt;
+      &lt;td&gt;\eta&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\Theta$&lt;/td&gt;
+      &lt;td&gt;\Theta&lt;/td&gt;
+      &lt;td&gt;$\theta$&lt;/td&gt;
+      &lt;td&gt;\theta&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$I$&lt;/td&gt;
+      &lt;td&gt;I&lt;/td&gt;
+      &lt;td&gt;$\iota$&lt;/td&gt;
+      &lt;td&gt;\iota&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$K$&lt;/td&gt;
+      &lt;td&gt;K&lt;/td&gt;
+      &lt;td&gt;$\kappa$&lt;/td&gt;
+      &lt;td&gt;\kappa&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\Lambda$&lt;/td&gt;
+      &lt;td&gt;\Lambda&lt;/td&gt;
+      &lt;td&gt;$\lambda$&lt;/td&gt;
+      &lt;td&gt;\lambda&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$M$&lt;/td&gt;
+      &lt;td&gt;M&lt;/td&gt;
+      &lt;td&gt;$\mu$&lt;/td&gt;
+      &lt;td&gt;\mu&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\nu$&lt;/td&gt;
+      &lt;td&gt;N&lt;/td&gt;
+      &lt;td&gt;$\nu$&lt;/td&gt;
+      &lt;td&gt;\nu&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\Xi$&lt;/td&gt;
+      &lt;td&gt;\Xi&lt;/td&gt;
+      &lt;td&gt;$\xi$&lt;/td&gt;
+      &lt;td&gt;\xi&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$O$&lt;/td&gt;
+      &lt;td&gt;O&lt;/td&gt;
+      &lt;td&gt;$\omicron$&lt;/td&gt;
+      &lt;td&gt;\omicron&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\Pi$&lt;/td&gt;
+      &lt;td&gt;\Pi&lt;/td&gt;
+      &lt;td&gt;$\pi$&lt;/td&gt;
+      &lt;td&gt;\pi&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$P$&lt;/td&gt;
+      &lt;td&gt;P&lt;/td&gt;
+      &lt;td&gt;$\rho$&lt;/td&gt;
+      &lt;td&gt;\rho&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\Sigma$&lt;/td&gt;
+      &lt;td&gt;\Sigma&lt;/td&gt;
+      &lt;td&gt;$\sigma$&lt;/td&gt;
+      &lt;td&gt;\sigma&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$T$&lt;/td&gt;
+      &lt;td&gt;T&lt;/td&gt;
+      &lt;td&gt;$\tau$&lt;/td&gt;
+      &lt;td&gt;\tau&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\Upsilon$&lt;/td&gt;
+      &lt;td&gt;\Upsilon&lt;/td&gt;
+      &lt;td&gt;$\upsilon$&lt;/td&gt;
+      &lt;td&gt;\upsilon&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\Phi$&lt;/td&gt;
+      &lt;td&gt;\Phi&lt;/td&gt;
+      &lt;td&gt;$\phi$&lt;/td&gt;
+      &lt;td&gt;\phi&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;$\varphi$&lt;/td&gt;
+      &lt;td&gt;\varphi&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$X$&lt;/td&gt;
+      &lt;td&gt;X&lt;/td&gt;
+      &lt;td&gt;$\chi$&lt;/td&gt;
+      &lt;td&gt;\chi&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\Psi$&lt;/td&gt;
+      &lt;td&gt;\Psi&lt;/td&gt;
+      &lt;td&gt;$\psi$&lt;/td&gt;
+      &lt;td&gt;\psi&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\Omega$&lt;/td&gt;
+      &lt;td&gt;\Omega&lt;/td&gt;
+      &lt;td&gt;$\omega$&lt;/td&gt;
+      &lt;td&gt;\omega&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;三角函数&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;三角函数&lt;/th&gt;
+      &lt;th&gt;Markdown&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\sin$&lt;/td&gt;
+      &lt;td&gt;\sin&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;对数函数&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;算式&lt;/th&gt;
+      &lt;th&gt;Markdown&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\ln2$&lt;/td&gt;
+      &lt;td&gt;\ln2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\log_28$&lt;/td&gt;
+      &lt;td&gt;\log_28&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\lg10$&lt;/td&gt;
+      &lt;td&gt;\lg10&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;关系运算符&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;运算符&lt;/th&gt;
+      &lt;th&gt;Markdown&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\pm$&lt;/td&gt;
+      &lt;td&gt;\pm&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\times$&lt;/td&gt;
+      &lt;td&gt;\times&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\cdot$&lt;/td&gt;
+      &lt;td&gt;\cdot&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\div$&lt;/td&gt;
+      &lt;td&gt;\div&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\neq$&lt;/td&gt;
+      &lt;td&gt;\neq&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\equiv$&lt;/td&gt;
+      &lt;td&gt;\equiv&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\leq$&lt;/td&gt;
+      &lt;td&gt;\leq&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\geq$&lt;/td&gt;
+      &lt;td&gt;\geq&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;其它特殊字符&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;符号&lt;/th&gt;
+      &lt;th&gt;Markdown&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\forall$&lt;/td&gt;
+      &lt;td&gt;\forall&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\infty$&lt;/td&gt;
+      &lt;td&gt;\infty&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\emptyset$&lt;/td&gt;
+      &lt;td&gt;\emptyset&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\exists$&lt;/td&gt;
+      &lt;td&gt;\exists&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\nabla$&lt;/td&gt;
+      &lt;td&gt;\nabla&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$bot$&lt;/td&gt;
+      &lt;td&gt;\bot&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\angle$&lt;/td&gt;
+      &lt;td&gt;\angle&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\because$&lt;/td&gt;
+      &lt;td&gt;\because&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;$\therefore$&lt;/td&gt;
+      &lt;td&gt;\therefore&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;空格 $\quad$&lt;/td&gt;
+      &lt;td&gt;\quad&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;花括号&lt;/strong&gt;
+\(c(u)=\begin{cases} \sqrt\frac{1}{N}，u=0\\ \sqrt\frac{2}{N}， u\neq0\end{cases}\)&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;c(u) = \begin{cases} 
+    \sqrt\frac{1}{N}，u=0\\ 
+    \sqrt\frac{2}{N}，u\neq0
+\end{cases} 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;矩阵&lt;/strong&gt;&lt;/p&gt;
+
+\[a = \left[
+\matrix{
+  \alpha_1 &amp;amp; test1\\
+  \alpha_2 &amp;amp; test2\\
+  \alpha_3 &amp;amp; test3  
+}
+\right]\]
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$$
+a = \left[
+\matrix{
+  \alpha_1 &amp;amp; test1\\
+  \alpha_2 &amp;amp; test2\\
+  \alpha_3 &amp;amp; test3 
+}
+\right]
+$$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Mon, 19 Jul 2021 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2021/07/typora_math_formula/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/07/typora_math_formula/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>ArcGIS服务发布和调用</title>
+        <description>&lt;p&gt;ArcGIS服务发布和调用&lt;/p&gt;
+</description>
+        <pubDate>Fri, 09 Jul 2021 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2021/07/arcgis_server/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/07/arcgis_server/</guid>
+        
+        <category>arcgis</category>
+        
+        
+        <category>arcgis</category>
+        
+      </item>
     
       <item>
         <title>MacOS安装docker及kubernetes</title>
@@ -353,6 +947,8 @@ $ ./startserver.sh
 
 &lt;h3 id=&quot;vim快捷键&quot;&gt;Vim快捷键&lt;/h3&gt;
 
+&lt;h4 id=&quot;退出vim&quot;&gt;退出VIM&lt;/h4&gt;
+
 &lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
@@ -363,9 +959,153 @@ $ ./startserver.sh
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;^ Space&lt;/td&gt;
-      &lt;td&gt;Basic code completion (the name of any class, method or variable)&lt;/td&gt;
-      &lt;td&gt;？基本的代码补全&lt;/td&gt;
+      &lt;td&gt;:q&lt;/td&gt;
+      &lt;td&gt;直接退出（无更改）&lt;/td&gt;
+      &lt;td&gt;直接退出（无更改）&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;:wq&lt;/td&gt;
+      &lt;td&gt;保存退出&lt;/td&gt;
+      &lt;td&gt;保存退出&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;:q!&lt;/td&gt;
+      &lt;td&gt;放弃修改，强行退出&lt;/td&gt;
+      &lt;td&gt;放弃修改，强行退出&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;模式正常模式命令模式插入模式可视模式&quot;&gt;模式：正常模式、命令模式、插入模式、可视模式&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;快捷键&lt;/th&gt;
+      &lt;th&gt;功能描述&lt;/th&gt;
+      &lt;th&gt;中文描述&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;命令模式&lt;/td&gt;
+      &lt;td&gt;command-mode&lt;/td&gt;
+      &lt;td&gt;用于输入指令，如：保存、运行、切换标签、切割屏幕等&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;插入模式&lt;/td&gt;
+      &lt;td&gt;insert-mode&lt;/td&gt;
+      &lt;td&gt;也即编辑模式，用于编辑文本&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;可视模式&lt;/td&gt;
+      &lt;td&gt;visual-mode&lt;/td&gt;
+      &lt;td&gt;相当于高亮选取文本后的正常模式&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;正常模式&lt;/td&gt;
+      &lt;td&gt;normal-mode&lt;/td&gt;
+      &lt;td&gt;用于查看文本，也可复制、粘贴、撤销、重做等&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;模式之间切换&quot;&gt;模式之间切换&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;其它模式=&amp;gt;正常模式
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ESC&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;正常模式=&amp;gt;插入模式
+| 指令           | 描述                             |
+| ————– | ——————————– |
+| a              | 光标所在下一个位置插入           |
+| A              | 光标所在行末尾插入               |
+| s              | 删除光标所在字符并插入           |
+| S              | 删除光标所在行并插入             |
+| o              | 光标所在下一行插入               |
+| O              | 光标所在上一行插入               |
+| i              | 光标所在位置插入                 |
+| I              | 光标所在行首插入                 |
+| R              | 光标所在位置替换                 |
+| cw             | 删除光标所在位置到单词末尾并插入 |
+| ch（c+左箭头） | 删除上一个字符插入               |
+| cj（c+下箭头） | 删除当前行和下一行插入           |
+| ck（c+上箭头） | 删除当前行和上一行插入           |
+| cl（c+右箭头） | 删除下一个字符插入               |
+| 其它未尽指令   | 其它                             |&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;正常模式=&amp;gt;命令模式
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;正常模式=&amp;gt;可视模式
+| 指令    | 描述                 |
+| ——- | ——————– |
+| v       | 可视模式             |
+| ctrl+v  | 可视块模式           |
+| shift+v | 可视行模式           |&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;移动和范围选择&quot;&gt;移动和范围选择&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;快捷键&lt;/th&gt;
+      &lt;th&gt;功能描述&lt;/th&gt;
+      &lt;th&gt;中文描述&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;v&lt;/td&gt;
+      &lt;td&gt;选择模式&lt;/td&gt;
+      &lt;td&gt;选择文本&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&amp;gt;&lt;/td&gt;
+      &lt;td&gt;缩进&lt;/td&gt;
+      &lt;td&gt;选中文本后进行缩进&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&amp;lt;&lt;/td&gt;
+      &lt;td&gt;缩进&lt;/td&gt;
+      &lt;td&gt;选中文本后进行缩进&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -620,547 +1360,6 @@ set global server_audit_file_rotate_now=ON
         
         
         <category>k8s</category>
-        
-      </item>
-    
-      <item>
-        <title>IntelliJ插件开发</title>
-        <description>&lt;p&gt;IntelliJ插件开发&lt;/p&gt;
-
-&lt;h3 id=&quot;插件开发准备&quot;&gt;插件开发准备&lt;/h3&gt;
-
-&lt;h4 id=&quot;gradle安装&quot;&gt;gradle安装&lt;/h4&gt;
-
-&lt;h4 id=&quot;sdk下载&quot;&gt;sdk下载&lt;/h4&gt;
-
-&lt;p&gt;下载地址（不同版本直接在后面的版本号），建议使用迅雷先下载：&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://cache-redirector.jetbrains.com/www.jetbrains.com/intellij-repository/releases/com/jetbrains/intellij/idea/ideaIC/2019.3.3/ideaIC-2019.3.3.zip&quot;&gt;ideaIC-2019.3.3.zip&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://cache-redirector.jetbrains.com/www.jetbrains.com/intellij-repository/releases/com/jetbrains/intellij/idea/ideaIC/2020.1.1/ideaIC-2020.1.1.zip&quot;&gt;ideaIC-2020.1.1.zip&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;下载后安装到本地maven仓库&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;## 注意修改路径到你的真实路径&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mvn &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;:install-file &lt;span class=&quot;nt&quot;&gt;-Dfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/plugins/sdk/ideaIC-2019.3.3.zip&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-DgroupId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;com.jetbrains.intellij.idea &lt;span class=&quot;nt&quot;&gt;-DartifactId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ideaIC &lt;span class=&quot;nt&quot;&gt;-Dpackaging&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;zip &lt;span class=&quot;nt&quot;&gt;-Dversion&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2019.3.3 &lt;span class=&quot;nt&quot;&gt;-DgeneratePom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
-
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mvn &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;:install-file &lt;span class=&quot;nt&quot;&gt;-Dfile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/plugins/sdk/ideaIC-2020.1.1.zip&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-DgroupId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;com.jetbrains.intellij.idea &lt;span class=&quot;nt&quot;&gt;-DartifactId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ideaIC &lt;span class=&quot;nt&quot;&gt;-Dpackaging&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;zip &lt;span class=&quot;nt&quot;&gt;-Dversion&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2020.1.1 &lt;span class=&quot;nt&quot;&gt;-DgeneratePom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Fri, 05 Jun 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/06/intellij_plugin/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/06/intellij_plugin/</guid>
-        
-        <category>IntelliJIDEA</category>
-        
-        <category>plugin</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Harbor安装</title>
-        <description>&lt;p&gt;利用Harbor搭建docker 私有仓库&lt;/p&gt;
-
-&lt;h3 id=&quot;下载harbor&quot;&gt;下载harbor&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/goharbor/harbor&quot;&gt;harbor github 地址&lt;/a&gt;
-直接下载编译好的包&lt;a href=&quot;https://github.com/goharbor/harbor/releases&quot;&gt;下载地址&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;包括有两个包&lt;strong&gt;Harbor offline installer&lt;/strong&gt; 和 &lt;strong&gt;Harbor online installer&lt;/strong&gt;，此处下载offline版本。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Online installer :&lt;/strong&gt; 在线安装版直接从DockerHub下载Harbor镜像。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Offline installer :&lt;/strong&gt; 如果部署Harbor的主机不能联网可选择离线安装版，离线安装版包括Harbor镜像文件。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;解压安装harbor&quot;&gt;解压安装harbor&lt;/h3&gt;
-
-&lt;p&gt;解压安装包&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#使用tar命令解压到/usr/local/目录下
-tar -zxvf harbor-online-installer-v1.10.2.tgz -C /usr/local/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;安装harbor&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd /usr/local/harbor
-## 编辑harbor的配置文件
-$ vi harbor.yml
-	#修改以下内容
-	hostname = 192.168.159.134 #修改harbor的启动ip，这里需要依据系统ip设置
-	port: 80 #harbor的端口,有两个端口,http协议(80)和https协议(443)
-	harbor_admin_password = admin #修改harbor的admin用户的密码
-	data_volume: /data/harbor	#修改harbor存储位置
-	#注释掉https配置，包括端口及证书路径
-	# https:
-	#   port: 443
-	#   certificate: /your/certificate/path
-  #   private_key: /your/private/key/path
-  
-$ ./prepare #配置Harbor
-$ ./install.sh #安装Harbor
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;配置harbor&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## 设置Harbor开机启动
-$ vi /lib/systemd/system/harbor.service
-
-[Unit]
-Description=Harbor
-After=docker.service systemd-networkd.service systemd-resolved.service
-Requires=docker.service
-Documentation=http://github.com/vmware/harbor
-
-[Service]
-Type=simple
-Restart=on-failure
-RestartSec=5
-#需要注意harbor的安装位置
-ExecStart=/usr/bin/docker-compose -f  /usr/local/harbor/docker-compose.yml up
-ExecStop=/usr/bin/docker-compose -f /usr/local/harbor/docker-compose.yml down	
-
-[Install]
-WantedBy=multi-user.target
-
-$ systemctl enable harbor
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;开放2375端口&lt;/p&gt;
-
-&lt;p&gt;注意:在外网开放有安全风险，只推荐在内网对外开放&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vi /lib/systemd/system/docker.service
-## 修改[Service]节点，增加 -H tcp://0.0.0.0:2375
-ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock
-
-$ systemctl daemon-reload
-$ systemctl restart docker
-$ systemctl restart harbor
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;harbor操作说明&quot;&gt;harbor操作说明&lt;/h3&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## 关闭harbor服务
-$ docker-compose down -v
-
-## 启动Harbor服务
-$ docker-compose up -d
-
-## 重启harbor
-$ docker-compose down -v &amp;amp;&amp;amp; docker-compose up -d
-
-## 常用debug方式
-## 查看docker程序的配置信息
-$ docker info  
-## 查看harbor相关的容器信息
-$ docker-compose ps
-
-## 注意：如果更改了harbor.yml文件，必须要重新执行install脚本,或者执行./prepare脚本，生成新的配置文件；
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;harbor测试&quot;&gt;harbor测试&lt;/h3&gt;
-
-&lt;p&gt;修改docker配置文件，使docker支持harbor&lt;/p&gt;
-
-&lt;p&gt;编辑客户机&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/docker/daemon.json&lt;/code&gt;文件&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ vi /etc/docker/daemon.json
-{ &quot;insecure-registries&quot;: [ &quot;192.168.159.134&quot; ] }
-
-$ systemctl daemon-reload &amp;amp;&amp;amp; systemctl restart docker
-
-$ docker login 192.168.159.134
-Username: admin
-Password:
-Login Succeeded
-$ docker pull 192.168.159.134/blade/demo:latest
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;推送报错&quot;&gt;推送报错&lt;/h3&gt;
-
-&lt;p&gt;编辑服务器docker配置&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/docker/daemon.json&lt;/code&gt;，增加”insecure-registries”: [ “192.168.159.134:9020” ],&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-    &quot;insecure-registries&quot;: [ &quot;192.168.8.246:9020&quot; ],
-    &quot;registry-mirrors&quot;: [
-        &quot;http://hub-mirror.c.163.com&quot;,
-        &quot;https://mirror.ccs.tencentyun.com&quot;,
-        &quot;https://dockerhub.azk8s.cn&quot;,
-        &quot;https://docker.mirrors.ustc.edu.cn&quot;,
-        &quot;https://registry.docker-cn.com&quot;
-    ]
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;编辑客户机&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/docker/daemon.json&lt;/code&gt;文件，增加”insecure-registries”: [ “192.168.159.134:9020” ],&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-  &quot;experimental&quot;: false,
-  &quot;debug&quot;: true,
-  &quot;registry-mirrors&quot;: [
-    &quot;http://hub-mirror.c.163.com&quot;,
-    &quot;http://registry.docker-cn.com&quot;,
-    &quot;https://qpgr23bh.mirror.aliyuncs.com&quot;
-  ],
-  &quot;insecure-registries&quot;: [&quot;192.168.8.246:9020&quot;]
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;附-virtualbox虚拟机增加磁盘空间&quot;&gt;附: VirtualBox虚拟机增加磁盘空间&lt;/h3&gt;
-
-&lt;p&gt;之前采用默认分配了8G空间，后来发现空间不够，需增加磁盘空间，方法如下：&lt;/p&gt;
-
-&lt;p&gt;修改磁盘大小，停掉虚拟机，在VirtualBox设置-存储中查看磁盘位置，通过VBoxManage命令修改磁盘大小&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## 增加磁盘空间到20G，resize参数单位为M，20G=20480M
-$ VBoxManage modifyhd /Volumes/wd/vbox/harbor/harbor-disk1.vdi --resize 20480
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;扩容核心操作，启动虚拟机并进入，执行下面命令&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-------------------------------------------------------------------------
-[root@harbor ~]# fdisk -l
-
-磁盘 /dev/sda：21.5 GB, 21474836480 字节，41943040 个扇区
-Units = 扇区 of 1 * 512 = 512 bytes
-扇区大小(逻辑/物理)：512 字节 / 512 字节
-I/O 大小(最小/最佳)：512 字节 / 512 字节
-磁盘标签类型：dos
-磁盘标识符：0x0003864b
-
-   设备 Boot      Start         End      Blocks   Id  System
-/dev/sda1   *        2048     2099199     1048576   83  Linux
-/dev/sda2         2099200    16777215     7339008   8e  Linux LVM
-
-磁盘 /dev/mapper/centos-root：6652 MB, 6652166144 字节，12992512 个扇区
-Units = 扇区 of 1 * 512 = 512 bytes
-扇区大小(逻辑/物理)：512 字节 / 512 字节
-I/O 大小(最小/最佳)：512 字节 / 512 字节
-
-
-磁盘 /dev/mapper/centos-swap：859 MB, 859832320 字节，1679360 个扇区
-Units = 扇区 of 1 * 512 = 512 bytes
-扇区大小(逻辑/物理)：512 字节 / 512 字节
-I/O 大小(最小/最佳)：512 字节 / 512 字节
-
--------------------------------------------------------------------------
-[root@harbor ~]# fdisk /dev/sda
-欢迎使用 fdisk (util-linux 2.23.2)。
-
-更改将停留在内存中，直到您决定将更改写入磁盘。
-使用写入命令前请三思。
-
-命令(输入 m 获取帮助)：m
-命令操作
-   a   toggle a bootable flag
-   b   edit bsd disklabel
-   c   toggle the dos compatibility flag
-   d   delete a partition
-   g   create a new empty GPT partition table
-   G   create an IRIX (SGI) partition table
-   l   list known partition types
-   m   print this menu
-   n   add a new partition
-   o   create a new empty DOS partition table
-   p   print the partition table
-   q   quit without saving changes
-   s   create a new empty Sun disklabel
-   t   change a partition's system id
-   u   change display/entry units
-   v   verify the partition table
-   w   write table to disk and exit
-   x   extra functionality (experts only)
-
-命令(输入 m 获取帮助)：n
-Partition type:
-   p   primary (2 primary, 0 extended, 2 free)
-   e   extended
-Select (default p): p
-分区号 (3,4，默认 3)：3
-起始 扇区 (16777216-41943039，默认为 16777216)：
-将使用默认值 16777216
-Last 扇区, +扇区 or +size{K,M,G} (16777216-41943039，默认为 41943039)：
-将使用默认值 41943039
-分区 3 已设置为 Linux 类型，大小设为 12 GiB
-
-命令(输入 m 获取帮助)：t
-分区号 (1-3，默认 3)：3
-Hex 代码(输入 L 列出所有代码)：l
-
- 0  空              24  NEC DOS         81  Minix / 旧 Linu bf  Solaris
- 1  FAT12           27  隐藏的 NTFS Win 82  Linux 交换 / So c1  DRDOS/sec (FAT-
- 2  XENIX root      39  Plan 9          83  Linux           c4  DRDOS/sec (FAT-
- 3  XENIX usr       3c  PartitionMagic  84  OS/2 隐藏的 C:  c6  DRDOS/sec (FAT-
- 4  FAT16 &amp;lt;32M      40  Venix 80286     85  Linux 扩展      c7  Syrinx
- 5  扩展            41  PPC PReP Boot   86  NTFS 卷集       da  非文件系统数据
- 6  FAT16           42  SFS             87  NTFS 卷集       db  CP/M / CTOS / .
- 7  HPFS/NTFS/exFAT 4d  QNX4.x          88  Linux 纯文本    de  Dell 工具
- 8  AIX             4e  QNX4.x 第2部分  8e  Linux LVM       df  BootIt
- 9  AIX 可启动      4f  QNX4.x 第3部分  93  Amoeba          e1  DOS 访问
- a  OS/2 启动管理器 50  OnTrack DM      94  Amoeba BBT      e3  DOS R/O
- b  W95 FAT32       51  OnTrack DM6 Aux 9f  BSD/OS          e4  SpeedStor
- c  W95 FAT32 (LBA) 52  CP/M            a0  IBM Thinkpad 休 eb  BeOS fs
- e  W95 FAT16 (LBA) 53  OnTrack DM6 Aux a5  FreeBSD         ee  GPT
- f  W95 扩展 (LBA)  54  OnTrackDM6      a6  OpenBSD         ef  EFI (FAT-12/16/
-10  OPUS            55  EZ-Drive        a7  NeXTSTEP        f0  Linux/PA-RISC
-11  隐藏的 FAT12    56  Golden Bow      a8  Darwin UFS      f1  SpeedStor
-12  Compaq 诊断     5c  Priam Edisk     a9  NetBSD          f4  SpeedStor
-14  隐藏的 FAT16 &amp;lt;3 61  SpeedStor       ab  Darwin 启动     f2  DOS 次要
-16  隐藏的 FAT16    63  GNU HURD or Sys af  HFS / HFS+      fb  VMware VMFS
-17  隐藏的 HPFS/NTF 64  Novell Netware  b7  BSDI fs         fc  VMware VMKCORE
-18  AST 智能睡眠    65  Novell Netware  b8  BSDI swap       fd  Linux raid 自动
-1b  隐藏的 W95 FAT3 70  DiskSecure 多启 bb  Boot Wizard 隐  fe  LANstep
-1c  隐藏的 W95 FAT3 75  PC/IX           be  Solaris 启动    ff  BBT
-1e  隐藏的 W95 FAT1 80  旧 Minix
-Hex 代码(输入 L 列出所有代码)：8e
-已将分区“Linux”的类型更改为“Linux LVM”
-
-命令(输入 m 获取帮助)：w
-The partition table has been altered!
-
-Calling ioctl() to re-read partition table.
-
-WARNING: Re-reading the partition table failed with error 16: 设备或资源忙.
-The kernel still uses the old table. The new table will be used at
-the next reboot or after you run partprobe(8) or kpartx(8)
-正在同步磁盘。
-
-## 重启后执行sudo fdisk -l查看设备Boot（我的为 /dev/sda3 ）
--------------------------------------------------------------------------
-[root@harbor ~]# reboot
-[root@harbor ~]# fdisk -l
-
-磁盘 /dev/sda：21.5 GB, 21474836480 字节，41943040 个扇区
-Units = 扇区 of 1 * 512 = 512 bytes
-扇区大小(逻辑/物理)：512 字节 / 512 字节
-I/O 大小(最小/最佳)：512 字节 / 512 字节
-磁盘标签类型：dos
-磁盘标识符：0x0003864b
-
-   设备 Boot      Start         End      Blocks   Id  System
-/dev/sda1   *        2048     2099199     1048576   83  Linux
-/dev/sda2         2099200    16777215     7339008   8e  Linux LVM
-/dev/sda3        16777216    41943039    12582912   8e  Linux LVM
-
-磁盘 /dev/mapper/centos-root：6652 MB, 6652166144 字节，12992512 个扇区
-Units = 扇区 of 1 * 512 = 512 bytes
-扇区大小(逻辑/物理)：512 字节 / 512 字节
-I/O 大小(最小/最佳)：512 字节 / 512 字节
-
-
-磁盘 /dev/mapper/centos-swap：859 MB, 859832320 字节，1679360 个扇区
-Units = 扇区 of 1 * 512 = 512 bytes
-扇区大小(逻辑/物理)：512 字节 / 512 字节
-I/O 大小(最小/最佳)：512 字节 / 512 字节
-
-## 将分区格式化为ext4格式
--------------------------------------------------------------------------
-[root@harbor ~]# mkfs.ext4 /dev/sda3
-mke2fs 1.42.9 (28-Dec-2013)
-文件系统标签=
-OS type: Linux
-块大小=4096 (log=2)
-分块大小=4096 (log=2)
-Stride=0 blocks, Stripe width=0 blocks
-786432 inodes, 3145728 blocks
-157286 blocks (5.00%) reserved for the super user
-第一个数据块=0
-Maximum filesystem blocks=2151677952
-96 block groups
-32768 blocks per group, 32768 fragments per group
-8192 inodes per group
-Superblock backups stored on blocks:
-	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208
-
-Allocating group tables: 完成
-正在写入inode表: 完成
-Creating journal (32768 blocks): 完成
-Writing superblocks and filesystem accounting information: 完成
-
-## 创建新的物理分区
--------------------------------------------------------------------------
-[root@harbor ~]# sudo pvcreate /dev/sda3
-WARNING: ext4 signature detected on /dev/sda3 at offset 1080. Wipe it? [y/n]: y
-  Wiping ext4 signature on /dev/sda3.
-  Physical volume &quot;/dev/sda3&quot; successfully created.
-[root@harbor ~]# sudo vgextend centos /dev/sda3
-  Volume group &quot;centos&quot; successfully extended
-
-
-查看LVM信息
-1.pvdisplay 查看物理卷
-2.vgdisplay 查看虚拟卷
-3.lvdisplay 查看逻辑卷
--------------------------------------------------------------------------
-[root@harbor ~]# pvdisplay
-  --- Physical volume ---
-  PV Name               /dev/sda2
-  VG Name               centos
-  PV Size               &amp;lt;7.00 GiB / not usable 3.00 MiB
-  Allocatable           yes (but full)
-  PE Size               4.00 MiB
-  Total PE              1791
-  Free PE               0
-  Allocated PE          1791
-  PV UUID               jhAzWm-Cbsk-UjUg-328S-Ckk4-IHyQ-e2AnR8
-
-  --- Physical volume ---
-  PV Name               /dev/sda3
-  VG Name               centos
-  PV Size               12.00 GiB / not usable 4.00 MiB
-  Allocatable           yes
-  PE Size               4.00 MiB
-  Total PE              3071
-  Free PE               3071
-  Allocated PE          0
-  PV UUID               DqL9Bo-HC7B-HMde-cG9o-eAXy-MSQ5-fedoxS
-
-查看LVM信息
-2.vgdisplay 查看虚拟卷
--------------------------------------------------------------------------
-[root@harbor ~]# vgdisplay
-  --- Volume group ---
-  VG Name               centos
-  System ID
-  Format                lvm2
-  Metadata Areas        2
-  Metadata Sequence No  4
-  VG Access             read/write
-  VG Status             resizable
-  MAX LV                0
-  Cur LV                2
-  Open LV               2
-  Max PV                0
-  Cur PV                2
-  Act PV                2
-  VG Size               18.99 GiB
-  PE Size               4.00 MiB
-  Total PE              4862
-  Alloc PE / Size       1791 / &amp;lt;7.00 GiB
-  Free  PE / Size       3071 / &amp;lt;12.00 GiB
-  VG UUID               Cn32hR-TEcI-Z5zC-Rmrf-cIwI-fUwW-QymcyG
-
-## 扩展到卷 组（centos便是下图中的VG Name）
--------------------------------------------------------------------------
-[root@harbor ~]# vgextend centos /dev/sda3
-信息缺失。。。
-
-查看LVM信息
-3.lvdisplay 查看逻辑卷，根据大小判定/dev/centos/root即是根分区
--------------------------------------------------------------------------
-[root@harbor ~]# lvdisplay
-  --- Logical volume ---
-  LV Path                /dev/centos/swap
-  LV Name                swap
-  VG Name                centos
-  LV UUID                hNLuJD-KQZI-QziE-dXSg-orES-qVqj-gRyX4X
-  LV Write Access        read/write
-  LV Creation host, time db-mysql, 2020-06-02 16:12:47 +0800
-  LV Status              available
-  # open                 2
-  LV Size                820.00 MiB
-  Current LE             205
-  Segments               1
-  Allocation             inherit
-  Read ahead sectors     auto
-  - currently set to     8192
-  Block device           253:1
-
-  --- Logical volume ---
-  LV Path                /dev/centos/root
-  LV Name                root
-  VG Name                centos
-  LV UUID                kE4nqp-3z3Q-JhDB-fBcK-FnYZ-WiFc-fLef6w
-  LV Write Access        read/write
-  LV Creation host, time db-mysql, 2020-06-02 16:12:48 +0800
-  LV Status              available
-  # open                 1
-  LV Size                &amp;lt;6.20 GiB
-  Current LE             1586
-  Segments               1
-  Allocation             inherit
-  Read ahead sectors     auto
-  - currently set to     8192
-  Block device           253:0
-  
--------------------------------------------------------------------------
-[root@harbor ~]# lvextend /dev/centos/root /dev/sda3
-  Size of logical volume centos/root changed from &amp;lt;6.20 GiB (1586 extents) to 18.19 GiB (4657 extents).
-  Logical volume centos/root successfully resized.
-[root@harbor ~]# sudo resize2fs /dev/centos/root
-resize2fs 1.42.9 (28-Dec-2013)
-resize2fs: Bad magic number in super-block 当尝试打开 /dev/centos/root 时
-找不到有效的文件系统超级块.
-
-
-## 刷新逻辑分区容量
-##如果报错则是因为你的某些分区使用的是xfs的文件系统，执行 xfs_growfs /dev/centos/root 刷新逻辑分区即可
--------------------------------------------------------------------------
-[root@harbor ~]# resize2fs /dev/centos/root
-
-## 刷新逻辑分区
--------------------------------------------------------------------------
-[root@harbor ~]# xfs_growfs /dev/centos/root
-meta-data=/dev/mapper/centos-root isize=512    agcount=4, agsize=406016 blks
-         =                       sectsz=512   attr=2, projid32bit=1
-         =                       crc=1        finobt=0 spinodes=0
-data     =                       bsize=4096   blocks=1624064, imaxpct=25
-         =                       sunit=0      swidth=0 blks
-naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
-log      =internal               bsize=4096   blocks=2560, version=2
-         =                       sectsz=512   sunit=0 blks, lazy-count=1
-realtime =none                   extsz=4096   blocks=0, rtextents=0
-data blocks changed from 1624064 to 4768768
-
-## 这时执行sudo df -h //会发现根分区容量变大了，恭喜你成功了
--------------------------------------------------------------------------
-[root@harbor ~]# df -h
-文件系统                 容量  已用  可用 已用% 挂载点
-devtmpfs                 485M     0  485M    0% /dev
-tmpfs                    496M     0  496M    0% /dev/shm
-tmpfs                    496M  6.8M  489M    2% /run
-tmpfs                    496M     0  496M    0% /sys/fs/cgroup
-/dev/mapper/centos-root   19G  4.8G   14G   26% /
-/dev/sda1               1014M  168M  847M   17% /boot
-tmpfs                    100M     0  100M    0% /run/user/0
-
-## 最后reboot重启一下便可以啦！
--------------------------------------------------------------------------
-[root@harbor ~]# reboot
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Wed, 03 Jun 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/06/harbor_install/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/06/harbor_install/</guid>
-        
-        <category>docker</category>
-        
-        <category>harbor</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>CAS单点登录-客户端搭建</title>
-        <description>&lt;p&gt;CAS单点登录-客户端搭建&lt;/p&gt;
-</description>
-        <pubDate>Wed, 06 May 2020 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2020/05/cas_03_client/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/05/cas_03_client/</guid>
-        
-        <category>cas</category>
-        
-        <category>单点登录</category>
-        
-        <category>SSO</category>
-        
-        
-        <category>cas</category>
         
       </item>
     

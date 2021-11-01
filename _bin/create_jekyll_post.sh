@@ -82,14 +82,14 @@ function tipHelp(){
 !
 function setFileName(){
 	if  [ ! -n "$1" ] ;then
+		while [ 1 ]; do
 		read -p "请输入文件名 > " pFileName
-		if  [ ! -n "$pFileName" ] ;then
-			echo "没有输入文件名，设置为默认文件名：${defaultFileName}"
-			fileName="${defaultFileName}"
-		else
-			#echo "输入的文件名为：$pFileName"
-			fileName="$pFileName"
-		fi
+			if  [ -n "$pFileName" ] ;then
+				fileName="$pFileName"
+				title="$pFileName"
+				break
+			fi
+		done
 	else
 		fileName=$1
 	fi
@@ -102,8 +102,8 @@ function setTitle(){
 	if  [ ! -n "$1" ] ;then
 		read -p "请输入文档标题 > " pTitle
 		if  [ ! -n "$pTitle" ] ;then
-			echo "没有输入文档标题，设置为默认文档标题：${defaultTitle}"
-			title="${defaultTitle}"
+			echo "没有输入文档标题，设置为默认文档标题：${fileName}"
+			title="${fileName}"
 		else
 			#echo "输入的文档标题为：$pTitle"
 			title="$pTitle"
@@ -230,6 +230,8 @@ function createPost(){
 	#done
 	if  [ -n "$1" ] ;then
 		setFileName $1
+	else
+		setFileName
 	fi
 	if  [ -n "$2" ] ;then
 		setTitle $2
